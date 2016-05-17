@@ -41,18 +41,6 @@
                                     </connections>
                                 </barButtonItem>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="KWG-IH-f6Q"/>
-                                <barButtonItem title="Email" width="71" id="oXi-6Q-bdx">
-                                    <connections>
-                                        <action selector="emailData:" destination="Htf-Q0-Vo4" id="w90-je-NI6"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="Hje-cB-Inv"/>
-                                <barButtonItem title="Upgrade" width="91" id="IAD-19-sw5">
-                                    <connections>
-                                        <action selector="purchaseItem:" destination="Htf-Q0-Vo4" id="N1N-8o-FEd"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="MAJ-hN-3cB"/>
                             </items>
                         </toolbar>
                         <prototypes>

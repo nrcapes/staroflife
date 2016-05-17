@@ -22,7 +22,7 @@
 			<key>DefaultValue</key>
 			<string></string>
 			<key>KeyboardType</key>
-			<string>EmailAddress</string>
+			<string>NumbersAndPunctuation</string>
 			<key>Title</key>
 			<string>Central Admin URL</string>
 			<key>Key</key>

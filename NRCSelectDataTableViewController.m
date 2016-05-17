@@ -92,6 +92,10 @@
     NSNumber *n2 = [self.iapdata objectAtIndex:1];
     self.centralAdminActivated = [n1 boolValue];
     self.centralAdminSelected = [n2 boolValue];
+    
+    // override to allow Central Admin for free
+    self.centralAdminActivated = YES;
+    
     if(self.centralAdminActivated == NO){
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Central Administration Check" message:@"The data select feature is only available with the Central Administration Upgrade" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Press any key to continue." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
