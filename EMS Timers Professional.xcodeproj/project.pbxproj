@@ -47,7 +47,6 @@
 		5274CD1D1C39D0AC00708C95 /* NRCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5274CD1C1C39D0AC00708C95 /* NRCTableViewController.m */; };
 		527D90111CA8682000361DF7 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 527D900F1CA8682000361DF7 /* PurchaseViewController.m */; };
 		527D90121CA8682000361DF7 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527D90101CA8682000361DF7 /* PurchaseViewController.xib */; };
-		527D90141CA876F900361DF7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 527D90131CA876F900361DF7 /* StoreKit.framework */; };
 		5280BA7E1CBD9D170039DF4C /* jsondata in Resources */ = {isa = PBXBuildFile; fileRef = 5280BA7D1CBD9D170039DF4C /* jsondata */; };
 		52932FDD1C3200D10046BB5A /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52932FD81C31FD960046BB5A /* images.xcassets */; };
 		529415371C3F688200D790E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529415361C3F688200D790E1 /* AVFoundation.framework */; };
@@ -189,7 +188,6 @@
 		527D900E1CA8682000361DF7 /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = EMSTimers/PurchaseViewController.h; sourceTree = "<group>"; };
 		527D900F1CA8682000361DF7 /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = EMSTimers/PurchaseViewController.m; sourceTree = "<group>"; };
 		527D90101CA8682000361DF7 /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseViewController.xib; path = EMSTimers/PurchaseViewController.xib; sourceTree = "<group>"; };
-		527D90131CA876F900361DF7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5280BA7D1CBD9D170039DF4C /* jsondata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = jsondata; sourceTree = "<group>"; };
 		52932FD81C31FD960046BB5A /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = images.xcassets; path = ../images.xcassets; sourceTree = "<group>"; };
 		529415361C3F688200D790E1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -240,7 +238,6 @@
 			files = (
 				52DD282E1C92798200F036AE /* UIKit.framework in Frameworks */,
 				52DD282C1C92796100F036AE /* CoreGraphics.framework in Frameworks */,
-				527D90141CA876F900361DF7 /* StoreKit.framework in Frameworks */,
 				52DD282A1C92794200F036AE /* project.pbxproj in Frameworks */,
 				529415371C3F688200D790E1 /* AVFoundation.framework in Frameworks */,
 			);
@@ -394,7 +391,6 @@
 				5280BA7D1CBD9D170039DF4C /* jsondata */,
 				5270883A1CAF20D20059163F /* Note.h */,
 				5270883B1CAF20D20059163F /* Note.m */,
-				527D90131CA876F900361DF7 /* StoreKit.framework */,
 				52DD282D1C92798200F036AE /* UIKit.framework */,
 				52DD282B1C92796100F036AE /* CoreGraphics.framework */,
 				52DD28291C92794200F036AE /* project.pbxproj */,
@@ -609,7 +605,7 @@
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.iCloud = {
 								enabled = 1;
