@@ -16,6 +16,7 @@
 #import "Note.h"
 #import "patientItemStore.h"
 @class PurchaseViewController;
+@class LoginViewController;
 @interface NRCTableViewController : UITableViewController <MFMailComposeViewControllerDelegate, NRCPasscodeViewControllerDelegate, UIAlertViewDelegate>
 @property (nonatomic) NSMutableArray *productIDS;
 @property (strong, nonatomic) NSString *providerID;
@@ -101,4 +102,6 @@
 @property UIBarButtonItem *iCloudButton;
 -(IBAction)iCloudButtonIndicator:(id)sender;
 -(IBAction)centralAdminButtonIndicator:(id)sender;
+@property BOOL isAuthenticated;
+@property BOOL didReturnFromBackground;
 @end

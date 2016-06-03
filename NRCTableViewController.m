@@ -114,6 +114,7 @@
 #import "NRCErrorStore.h"
 #import "iapstore.h"
 #import "NRCSelectDataTableViewController.h"
+#import "LoginViewController"
 
 @interface NRCTableViewController ()
 
@@ -336,18 +337,31 @@
     NSLog(@"view will appear");
     [super viewWillAppear:animated];
     [self refresh];
-    
-    
 }
-
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self showLoginView];
+}
 
 #pragma mark application became active
 -(void)applicationBecameActive{
-    
+    if(self.didReturnFromBackground == NO){
+    [self showLoginView];
+    }
  //  [self refresh];
     
 }
 
+-(void)showLoginView{
+    if (self.isAuthenticated == NO){
+        //[self performSegueWithIdentifier:@"toLoginView" sender:self];
+        LoginViewController *lvc = [[LoginViewController alloc]init];
+    }
+}
+-(IBAction)logoutAction :(id)sender{
+    self.isAuthenticated = NO;
+    [self performSegueWithIdentifier:@"loginView" sender:self];
+}
 AVAudioPlayer *_audioPlayer;
 AVAudioPlayer *_audioPlayer1;
 AVAudioPlayer *_audioPlayer2;
@@ -366,7 +380,7 @@ AVAudioPlayer *_audioPlayer2;
     
     [self splashScreen];
     
-    
+    self.isAuthenticated = NO;
     
     if(!self.labels){
         self.labels = [[NSMutableArray alloc]init];}
@@ -1374,21 +1388,14 @@ AVAudioPlayer *_audioPlayer2;
     if([segue.identifier isEqualToString:@"toPurchaseViewController"]){
         
     }
+    if([segue.identifier isEqualToString:@"toLoginView"]){
+        NSLog(@"segue toLoginView");
+    }
 }
 # pragma mark unwind segues
-/*
--(IBAction)unwindFromPasscodeController:(UIStoryboardSegue*)segue{
-    NSLog(@"Unwound from passcode controller");
-    self.passwordEntered =YES
-    ;
-    NRCPasscodeControllerViewController *sourceViewController = segue.sourceViewController;
-    self.password = sourceViewController.password;
-    NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
-    
-    [defaults setObject:self.password forKey:@"passwordValue"];
-    
+-(IBAction)unwindFromLoginViewController:(UIStoryboardSegue *)seque{
+    self.isAuthenticated = YES;
 }
- */
 -(IBAction)unwindFrompatientDataController:(UIStoryboardSegue *)segue{
     NSLog(@"unwind from patientDataController");
     [self playCheckout];

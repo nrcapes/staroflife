@@ -27,6 +27,8 @@
 		524683861BEAAC780086213B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 524683821BEAAC780086213B /* AppDelegate.m */; };
 		5246838F1BEAADD70086213B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5246838E1BEAADD70086213B /* Main.storyboard */; };
 		524683911BEAB1F10086213B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 524683901BEAB1F10086213B /* Media.xcassets */; };
+		52491D7A1CED502A00D19190 /* LoginViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52491D791CED502900D19190 /* LoginViewController1.swift */; };
+		52491D7D1CED520D00D19190 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 52491D7C1CED520D00D19190 /* KeychainWrapper.m */; };
 		5250255D1C249FFC0047DA16 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5250255C1C249FFC0047DA16 /* InterfaceController.m */; };
 		525025601C249FFC0047DA16 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5250255F1C249FFC0047DA16 /* NotificationController.m */; };
 		525025701C249FFC0047DA16 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5250256E1C249FFC0047DA16 /* Interface.storyboard */; };
@@ -156,6 +158,10 @@
 		524683821BEAAC780086213B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5246838E1BEAADD70086213B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		524683901BEAB1F10086213B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		52491D791CED502900D19190 /* LoginViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController1.swift; sourceTree = "<group>"; };
+		52491D7B1CED520D00D19190 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		52491D7C1CED520D00D19190 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		52491D7E1CED526C00D19190 /* EMSTimers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EMSTimers-Bridging-Header.h"; sourceTree = "<group>"; };
 		525025281C238F4F0047DA16 /* test1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = test1.m; sourceTree = "<group>"; };
 		525025571C249FFC0047DA16 /* EMSTimers WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "EMSTimers WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5250255A1C249FFC0047DA16 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -386,6 +392,10 @@
 		5246835E1BEAAC430086213B = {
 			isa = PBXGroup;
 			children = (
+				52491D7B1CED520D00D19190 /* KeychainWrapper.h */,
+				52491D7C1CED520D00D19190 /* KeychainWrapper.m */,
+				52491D791CED502900D19190 /* LoginViewController1.swift */,
+				52491D7E1CED526C00D19190 /* EMSTimers-Bridging-Header.h */,
 				520F3C451CD6D54400D4EC94 /* central.png */,
 				520F3C411CD6D25000D4EC94 /* cloud.png */,
 				5280BA7D1CBD9D170039DF4C /* jsondata */,
@@ -721,6 +731,7 @@
 				52A0B05E1C615E7D0015D481 /* NRCAssessmentViewControllerTableViewController.m in Sources */,
 				5270883C1CAF20D30059163F /* Note.m in Sources */,
 				52A0B0611C62542C0015D481 /* PatientListTableViewController.m in Sources */,
+				52491D7D1CED520D00D19190 /* KeychainWrapper.m in Sources */,
 				5251154D1C976C0600DCAD9B /* NRCSelectDataTableViewController.m in Sources */,
 				52A0B0521C5F03B20015D481 /* patientItem.m in Sources */,
 				52D637B91C9DE4240024E97E /* NRCErrorStore.m in Sources */,
@@ -733,6 +744,7 @@
 				52ED66321C26003C00BFFCD5 /* NRCInterfaceController1.m in Sources */,
 				5246836C1BEAAC430086213B /* main.m in Sources */,
 				5274CD1D1C39D0AC00708C95 /* NRCTableViewController.m in Sources */,
+				52491D7A1CED502A00D19190 /* LoginViewController1.swift in Sources */,
 				521A678C1C63FD97008D3E71 /* NRCPasscodeController2ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -885,6 +897,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = EMSTimers/EMSTimers.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = EMSTimers/Info.plist;
@@ -892,6 +905,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nelsoncapes.ems-timers-pro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EMSTimers-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -900,6 +915,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = EMSTimers/EMSTimers.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = EMSTimers/Info.plist;
@@ -907,6 +923,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nelsoncapes.ems-timers-pro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EMSTimers-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
