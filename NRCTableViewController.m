@@ -114,7 +114,7 @@
 #import "NRCErrorStore.h"
 #import "iapstore.h"
 #import "NRCSelectDataTableViewController.h"
-#import "LoginViewController"
+#import "LoginViewController.h"
 
 @interface NRCTableViewController ()
 
