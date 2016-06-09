@@ -114,7 +114,7 @@
 #import "NRCErrorStore.h"
 #import "iapstore.h"
 #import "NRCSelectDataTableViewController.h"
-#import "LoginViewController.h"
+#import "EMSTimers-Swift.h"
 
 @interface NRCTableViewController ()
 
@@ -354,8 +354,8 @@
 
 -(void)showLoginView{
     if (self.isAuthenticated == NO){
-        //[self performSegueWithIdentifier:@"toLoginView" sender:self];
-        LoginViewController *lvc = [[LoginViewController alloc]init];
+        [self performSegueWithIdentifier:@"toLoginView" sender:self];
+        //NRCLoginViewController *lvc = [[NRCLoginViewController alloc]init];
     }
 }
 -(IBAction)logoutAction :(id)sender{

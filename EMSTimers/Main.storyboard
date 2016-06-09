@@ -95,7 +95,7 @@
                         <segue destination="OEO-iD-BNh" kind="show" identifier="patientDataController" id="vpN-Bk-4bU"/>
                         <segue destination="afr-uS-Ljd" kind="show" identifier="patientListController" id="NuE-dk-5ut"/>
                         <segue destination="Amh-lf-cD1" kind="show" identifier="toPurchaseViewController" id="4Uq-wb-eep"/>
-                        <segue destination="QFq-S7-nSj" kind="show" identifier="toLoginView" id="nrZ-BJ-idt"/>
+                        <segue destination="QFq-S7-nSj" kind="show" identifier="toLoginView" id="IgH-5O-SzO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXL-QR-VRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -775,7 +775,7 @@
         <!--Login View Controller-->
         <scene sceneID="WrU-1n-o8m">
             <objects>
-                <viewController id="QFq-S7-nSj" customClass="LoginViewController" customModule="EMSTimers" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Login View Controller" id="QFq-S7-nSj" customClass="NRCLoginViewController" customModule="EMSTimers" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KU9-Rj-0Us"/>
                         <viewControllerLayoutGuide type="bottom" id="83P-Rk-2xo"/>

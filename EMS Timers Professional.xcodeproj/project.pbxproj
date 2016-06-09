@@ -27,7 +27,6 @@
 		524683861BEAAC780086213B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 524683821BEAAC780086213B /* AppDelegate.m */; };
 		5246838F1BEAADD70086213B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5246838E1BEAADD70086213B /* Main.storyboard */; };
 		524683911BEAB1F10086213B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 524683901BEAB1F10086213B /* Media.xcassets */; };
-		52491D7A1CED502A00D19190 /* LoginViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52491D791CED502900D19190 /* LoginViewController1.swift */; };
 		52491D7D1CED520D00D19190 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 52491D7C1CED520D00D19190 /* KeychainWrapper.m */; };
 		5250255D1C249FFC0047DA16 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5250255C1C249FFC0047DA16 /* InterfaceController.m */; };
 		525025601C249FFC0047DA16 /* NotificationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5250255F1C249FFC0047DA16 /* NotificationController.m */; };
@@ -45,6 +44,7 @@
 		526290AB1C2614C000289F2A /* NRCInterfaceController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A81C2614C000289F2A /* NRCInterfaceController3.m */; };
 		52681A1B1C2DCCEE00B2656A /* Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 52681A1A1C2DCCEE00B2656A /* Launch.png */; };
 		5270883C1CAF20D30059163F /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 5270883B1CAF20D20059163F /* Note.m */; };
+		5273238D1D090518003CA93B /* NRCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5273238C1D090518003CA93B /* NRCLoginViewController.swift */; };
 		527494CF1CD55CEA00469CFA /* Add Patient and Assess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527494CE1CD55CEA00469CFA /* Add Patient and Assess.swift */; };
 		5274CD1D1C39D0AC00708C95 /* NRCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5274CD1C1C39D0AC00708C95 /* NRCTableViewController.m */; };
 		527D90111CA8682000361DF7 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 527D900F1CA8682000361DF7 /* PurchaseViewController.m */; };
@@ -158,10 +158,8 @@
 		524683821BEAAC780086213B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5246838E1BEAADD70086213B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		524683901BEAB1F10086213B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		52491D791CED502900D19190 /* LoginViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController1.swift; sourceTree = "<group>"; };
 		52491D7B1CED520D00D19190 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		52491D7C1CED520D00D19190 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
-		52491D7E1CED526C00D19190 /* EMSTimers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EMSTimers-Bridging-Header.h"; sourceTree = "<group>"; };
 		525025281C238F4F0047DA16 /* test1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = test1.m; sourceTree = "<group>"; };
 		525025571C249FFC0047DA16 /* EMSTimers WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "EMSTimers WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5250255A1C249FFC0047DA16 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
@@ -189,6 +187,7 @@
 		527088391CAF17620059163F /* EMSTimers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EMSTimers.entitlements; sourceTree = "<group>"; };
 		5270883A1CAF20D20059163F /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		5270883B1CAF20D20059163F /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		5273238C1D090518003CA93B /* NRCLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRCLoginViewController.swift; sourceTree = "<group>"; };
 		527494CE1CD55CEA00469CFA /* Add Patient and Assess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Patient and Assess.swift"; sourceTree = "<group>"; };
 		5274CD1C1C39D0AC00708C95 /* NRCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCTableViewController.m; sourceTree = "<group>"; };
 		527D900E1CA8682000361DF7 /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = EMSTimers/PurchaseViewController.h; sourceTree = "<group>"; };
@@ -392,10 +391,9 @@
 		5246835E1BEAAC430086213B = {
 			isa = PBXGroup;
 			children = (
+				5273238C1D090518003CA93B /* NRCLoginViewController.swift */,
 				52491D7B1CED520D00D19190 /* KeychainWrapper.h */,
 				52491D7C1CED520D00D19190 /* KeychainWrapper.m */,
-				52491D791CED502900D19190 /* LoginViewController1.swift */,
-				52491D7E1CED526C00D19190 /* EMSTimers-Bridging-Header.h */,
 				520F3C451CD6D54400D4EC94 /* central.png */,
 				520F3C411CD6D25000D4EC94 /* cloud.png */,
 				5280BA7D1CBD9D170039DF4C /* jsondata */,
@@ -717,6 +715,7 @@
 				529FBBCF1CA97FBA0018C97D /* iapstore.m in Sources */,
 				5260B5081C5BCBB800ACC837 /* NRCPasscodeControllerViewController.m in Sources */,
 				524683861BEAAC780086213B /* AppDelegate.m in Sources */,
+				5273238D1D090518003CA93B /* NRCLoginViewController.swift in Sources */,
 				52A0B0581C6100460015D481 /* NRCDisplayTableViewController.m in Sources */,
 				526290A91C2614C000289F2A /* NRCInterfaceController3.m in Sources */,
 				52A0B05B1C615D410015D481 /* assessmentItem.m in Sources */,
@@ -744,7 +743,6 @@
 				52ED66321C26003C00BFFCD5 /* NRCInterfaceController1.m in Sources */,
 				5246836C1BEAAC430086213B /* main.m in Sources */,
 				5274CD1D1C39D0AC00708C95 /* NRCTableViewController.m in Sources */,
-				52491D7A1CED502A00D19190 /* LoginViewController1.swift in Sources */,
 				521A678C1C63FD97008D3E71 /* NRCPasscodeController2ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -833,6 +831,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -876,6 +875,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
