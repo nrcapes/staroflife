@@ -345,15 +345,15 @@
 
 #pragma mark application became active
 -(void)applicationBecameActive{
-    /*
-    if(self.didReturnFromBackground == NO){
-    [self showLoginView];
-    }
-     */
+    
+    self.isAuthenticated = NO;
+   [self showLoginView];
+    
+    
  //  [self refresh];
     
 }
-
+#pragma mark showLoginView
 -(void)showLoginView{
     if (self.isAuthenticated == NO){
         [self performSegueWithIdentifier:@"presentLogin" sender:self];
@@ -375,6 +375,16 @@ AVAudioPlayer *_audioPlayer2;
 }
 -(void)playCheckout{
     [_audioPlayer2 play];
+}
+- (instancetype)init
+{
+    self = [super initWithStyle:UITableViewStylePlain];
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+
+    [nc addObserver:self selector:@selector(applicationBecameActive) name:UIApplicationDidBecomeActiveNotification  object:nil];
+    
+    return self;
 }
 #pragma mark - viewDidLoad
 - (void)viewDidLoad {
