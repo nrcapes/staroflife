@@ -15,16 +15,23 @@ class NRCLoginViewController: UIViewController {
     let loginButtonTag = 1
     
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
     @IBOutlet weak var createInfoLabel: UILabel!
-    /*
-     override func init(){
-     
-     }
-     */
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.setHidesBackButton(true, animated:true);
+        
+        //set the background color to #fde8d7
+        view.backgroundColor = UIColor(
+            red: 0xfd/255,
+            green: 0xe8/255,
+            blue: 0xd7/255,
+            alpha: 1.0)
+        
         // 1.
         let hasLogin = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
         
@@ -41,7 +48,7 @@ class NRCLoginViewController: UIViewController {
         
         // 3.
         if let storedUsername = NSUserDefaults.standardUserDefaults().valueForKey("username") as? String {
-            usernameTextField.text = storedUsername as String
+            username.text = storedUsername as String
         }
     }
     
@@ -49,18 +56,18 @@ class NRCLoginViewController: UIViewController {
     @IBAction func loginAction(sender: AnyObject) {
         
         // 1.
-        if (usernameTextField.text == "" || passwordTextField.text == "") {
+        if (username.text == "" || password.text == "") {
             let alertView = UIAlertController(title: "Login Problem",
                                               message: "Wrong username or password." as String, preferredStyle:.Alert)
-            let okAction = UIAlertAction(title: "Foiled Again!", style: .Default, handler: nil)
+            let okAction = UIAlertAction(title: "Re-enter", style: .Default, handler: nil)
             alertView.addAction(okAction)
             self.presentViewController(alertView, animated: true, completion: nil)
             return;
         }
         
         // 2.
-        usernameTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
+        username.resignFirstResponder()
+        password.resignFirstResponder()
         
         // 3.
         if sender.tag == createLoginButtonTag {
@@ -68,26 +75,26 @@ class NRCLoginViewController: UIViewController {
             // 4.
             let hasLoginKey = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
             if hasLoginKey == false {
-                NSUserDefaults.standardUserDefaults().setValue(self.usernameTextField.text, forKey: "username")
+                NSUserDefaults.standardUserDefaults().setValue(self.username.text, forKey: "username")
             }
             
             // 5.
-            MyKeychainWrapper.mySetObject(passwordTextField.text, forKey:kSecValueData)
+            MyKeychainWrapper.mySetObject(password.text, forKey:kSecValueData)
             MyKeychainWrapper.writeToKeychain()
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLoginKey")
             NSUserDefaults.standardUserDefaults().synchronize()
             loginButton.tag = loginButtonTag
             
-            performSegueWithIdentifier("dismissLogin", sender: self)
+            performSegueWithIdentifier("unwindFromLogin:", sender: self)
         } else if sender.tag == loginButtonTag {
             // 6.
-            if checkLogin(usernameTextField.text!, password: passwordTextField.text!) {
-                performSegueWithIdentifier("dismissLogin", sender: self)
+            if checkLogin(username.text!, password: password.text!) {
+                performSegueWithIdentifier("unwindFromLogin:", sender: self)
             } else {
                 // 7.
                 let alertView = UIAlertController(title: "Login Problem",
                                                   message: "Wrong username or password." as String, preferredStyle:.Alert)
-                let okAction = UIAlertAction(title: "Foiled Again!", style: .Default, handler: nil)
+                let okAction = UIAlertAction(title: "Re-enter", style: .Default, handler: nil)
                 alertView.addAction(okAction)
                 self.presentViewController(alertView, animated: true, completion: nil)
             }

@@ -25,7 +25,6 @@
 		524683771BEAAC430086213B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 524683761BEAAC430086213B /* Assets.xcassets */; };
 		5246837A1BEAAC430086213B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524683781BEAAC430086213B /* LaunchScreen.storyboard */; };
 		524683861BEAAC780086213B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 524683821BEAAC780086213B /* AppDelegate.m */; };
-		5246838F1BEAADD70086213B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5246838E1BEAADD70086213B /* Main.storyboard */; };
 		524683911BEAB1F10086213B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 524683901BEAB1F10086213B /* Media.xcassets */; };
 		52491D7D1CED520D00D19190 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 52491D7C1CED520D00D19190 /* KeychainWrapper.m */; };
 		5250255D1C249FFC0047DA16 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5250255C1C249FFC0047DA16 /* InterfaceController.m */; };
@@ -76,6 +75,7 @@
 		52ED66321C26003C00BFFCD5 /* NRCInterfaceController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ED66311C26003C00BFFCD5 /* NRCInterfaceController1.m */; };
 		52ED66341C26003C00BFFCD5 /* NRCInterfaceController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ED66311C26003C00BFFCD5 /* NRCInterfaceController1.m */; };
 		52F6D7D21C9A07C900C6F39E /* jsonStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F6D7D11C9A07C900C6F39E /* jsonStore.m */; };
+		52F88E611D0A01DB003600B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F88E601D0A01DB003600B0 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,7 +156,6 @@
 		5246837B1BEAAC430086213B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		524683811BEAAC780086213B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		524683821BEAAC780086213B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5246838E1BEAADD70086213B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		524683901BEAB1F10086213B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		52491D7B1CED520D00D19190 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		52491D7C1CED520D00D19190 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
@@ -234,6 +233,7 @@
 		52ED66311C26003C00BFFCD5 /* NRCInterfaceController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRCInterfaceController1.m; path = ../NRCInterfaceController1.m; sourceTree = "<group>"; };
 		52F6D7D01C9A07C900C6F39E /* jsonStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsonStore.h; sourceTree = "<group>"; };
 		52F6D7D11C9A07C900C6F39E /* jsonStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jsonStore.m; sourceTree = "<group>"; };
+		52F88E601D0A01DB003600B0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +391,7 @@
 		5246835E1BEAAC430086213B = {
 			isa = PBXGroup;
 			children = (
+				52F88E601D0A01DB003600B0 /* Main.storyboard */,
 				5273238C1D090518003CA93B /* NRCLoginViewController.swift */,
 				52491D7B1CED520D00D19190 /* KeychainWrapper.h */,
 				52491D7C1CED520D00D19190 /* KeychainWrapper.m */,
@@ -456,7 +457,6 @@
 				529FBBCE1CA97FBA0018C97D /* iapstore.m */,
 				52681A1A1C2DCCEE00B2656A /* Launch.png */,
 				52208E431BEAE06D00A2DF93 /* star-of-life.jpeg */,
-				5246838E1BEAADD70086213B /* Main.storyboard */,
 				524683761BEAAC430086213B /* Assets.xcassets */,
 				524683901BEAB1F10086213B /* Media.xcassets */,
 				524683781BEAAC430086213B /* LaunchScreen.storyboard */,
@@ -667,7 +667,6 @@
 				52681A1B1C2DCCEE00B2656A /* Launch.png in Resources */,
 				5244AA3C1CA45DB6004F8849 /* NRCPasscodeViewController.xib in Resources */,
 				52BFCAF01C57150200970D40 /* Settings.bundle in Resources */,
-				5246838F1BEAADD70086213B /* Main.storyboard in Resources */,
 				52D637B61C9DAE550024E97E /* checkout scanner beep.mp3 in Resources */,
 				524683911BEAB1F10086213B /* Media.xcassets in Resources */,
 				52B6B7251BEAC849007B8ACD /* star-of-life.jpeg in Resources */,
@@ -676,6 +675,7 @@
 				52A0B0531C5F03B20015D481 /* NRCPatientDataTableViewCell.xib in Resources */,
 				5280BA7E1CBD9D170039DF4C /* jsondata in Resources */,
 				524683771BEAAC430086213B /* Assets.xcassets in Resources */,
+				52F88E611D0A01DB003600B0 /* Main.storyboard in Resources */,
 				527D90121CA8682000361DF7 /* PurchaseViewController.xib in Resources */,
 				525302671C727A7200D4414E /* Beeping-sound.mp3 in Resources */,
 			);

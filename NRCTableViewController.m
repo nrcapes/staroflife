@@ -345,22 +345,24 @@
 
 #pragma mark application became active
 -(void)applicationBecameActive{
+    /*
     if(self.didReturnFromBackground == NO){
     [self showLoginView];
     }
+     */
  //  [self refresh];
     
 }
 
 -(void)showLoginView{
     if (self.isAuthenticated == NO){
-        [self performSegueWithIdentifier:@"toLoginView" sender:self];
+        [self performSegueWithIdentifier:@"presentLogin" sender:self];
         //NRCLoginViewController *lvc = [[NRCLoginViewController alloc]init];
     }
 }
 -(IBAction)logoutAction :(id)sender{
     self.isAuthenticated = NO;
-    [self performSegueWithIdentifier:@"loginView" sender:self];
+    [self performSegueWithIdentifier:@"presentLogin" sender:self];
 }
 AVAudioPlayer *_audioPlayer;
 AVAudioPlayer *_audioPlayer1;
@@ -378,9 +380,14 @@ AVAudioPlayer *_audioPlayer2;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self splashScreen];
     
     self.isAuthenticated = NO;
+    [self showLoginView];
+    
+    
+    [self splashScreen];
+    
+    
     
     if(!self.labels){
         self.labels = [[NSMutableArray alloc]init];}
@@ -1388,8 +1395,8 @@ AVAudioPlayer *_audioPlayer2;
     if([segue.identifier isEqualToString:@"toPurchaseViewController"]){
         
     }
-    if([segue.identifier isEqualToString:@"toLoginView"]){
-        NSLog(@"segue toLoginView");
+    if([segue.identifier isEqualToString:@"presentLogin"]){
+        NSLog(@"segue presentLogin");
     }
 }
 # pragma mark unwind segues
@@ -1441,7 +1448,9 @@ AVAudioPlayer *_audioPlayer2;
 -(IBAction)unwindFromPurchase:(UIStoryboardSegue*)segue{
     [self enablePurchase];
 }
-
+-(IBAction)unwindFromLogin:(UIStoryboardSegue *)segue{
+    self.isAuthenticated = true;
+}
 // this method lets the user enter patient data.
 // an alert is displayed asking the user whether they want to enter patient data.  If they touch on "OK" the block calls addNewItem to create a new patient item and then segues to the patient datatable view controller.
 
