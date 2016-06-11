@@ -23,6 +23,36 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
         self.view.endEditing(true)
         return false
     }
+    
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField == password {
+            animateViewMoving(true, moveValue: 90)
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if  textField == password {
+            animateViewMoving(false, moveValue: 90)
+        }
+    }
+    
+    func animateViewMoving (up:Bool, moveValue :CGFloat){
+        let movementDuration:NSTimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        UIView.commitAnimations()
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        view.backgroundColor = UIColor(white: 0x255/255, alpha: 1.0)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +61,7 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
         
         self.navigationItem.setHidesBackButton(true, animated:true);
         
-        view.backgroundColor = UIColor(white: 0x255, alpha: 1.0)
+        view.backgroundColor = UIColor(white: 0x255/255, alpha: 1.0)
         
         
         //set the background color to blue-green

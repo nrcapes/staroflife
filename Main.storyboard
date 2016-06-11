@@ -945,7 +945,6 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="user name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FiL-Lo-b5h" userLabel="username">
                                 <rect key="frame" x="220" y="173" width="161" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="FOK-bu-plf"/>
                                     <constraint firstAttribute="height" constant="30" id="LwC-uN-Zon"/>
@@ -1094,7 +1093,6 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EXz-X1-gyi">
                                 <rect key="frame" x="220" y="221" width="161" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8zr-Fp-won"/>
                                     <constraint firstAttribute="height" constant="30" id="oR7-uK-xCz"/>
@@ -1217,8 +1215,6 @@
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="83P-Rk-2xo" firstAttribute="top" secondItem="eVY-Lq-WkP" secondAttribute="bottom" constant="209" id="00Z-p6-hIM"/>
                             <constraint firstItem="FiL-Lo-b5h" firstAttribute="leading" secondItem="EXz-X1-gyi" secondAttribute="leading" id="3Gn-Jz-oWV"/>
