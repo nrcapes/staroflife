@@ -25,10 +25,10 @@ class NRCLoginViewController: UIViewController {
         
         self.navigationItem.setHidesBackButton(true, animated:true);
         
+        view.backgroundColor = UIColor(white: 0x255, alpha: 1.0)
         
         
-        
-        //set the background color to #fde8d7
+        //set the background color to blue-green
         view.backgroundColor = UIColor(
             red: 0x00/255,
             green: 0x7d/255,

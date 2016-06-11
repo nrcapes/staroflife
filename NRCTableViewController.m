@@ -392,7 +392,7 @@ AVAudioPlayer *_audioPlayer2;
     
     
     self.isAuthenticated = NO;
-    [self showLoginView];
+    
     
     
     [self splashScreen];
@@ -581,9 +581,10 @@ AVAudioPlayer *_audioPlayer2;
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"I agree to all of the above conditions." style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action) {
                                                    
-                                                   
+                                                   [self showLoginView];
                                                    // check provider ID if central admin is turned on.
                                                    // this will be turned on only if the in app purchase completed
+                                                   // NOTE: in app purchase was removed in version 3.
                                                    
                                                    if(self.centralAdminActivated == YES && self.centralAdmin == YES){
                                                        [self checkProviderID];}
