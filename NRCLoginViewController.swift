@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-class NRCLoginViewController: UIViewController {
+class NRCLoginViewController: UIViewController, UITextFieldDelegate{
     var managedObjectContext: NSManagedObjectContext? = nil
     let MyKeychainWrapper = KeychainWrapper()
     let createLoginButtonTag = 0
@@ -19,9 +19,15 @@ class NRCLoginViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var createInfoLabel: UILabel!
     
-    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.username.delegate = self;
+        self.password.delegate = self;
         
         self.navigationItem.setHidesBackButton(true, animated:true);
         
