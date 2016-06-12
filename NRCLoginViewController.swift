@@ -28,13 +28,13 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
     
     
     func textFieldDidBeginEditing(textField: UITextField) {
-        if textField == password {
+        if (textField == password || textField == passwordcopy) {
             animateViewMoving(true, moveValue: 90)
         }
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        if  textField == password {
+        if  (textField == password || textField == passwordcopy) {
             animateViewMoving(false, moveValue: 90)
         }
     }
