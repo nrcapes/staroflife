@@ -19,6 +19,7 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var createInfoLabel: UITextField!
+    @IBOutlet weak var passwordcopy: UITextField!
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -53,12 +54,20 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
        // view.backgroundColor = UIColor(white: 0x255/255, alpha: 1.0)
     }
     
-    
+    func checkLogin(username: String, password: String ) -> Bool {
+        if password == MyKeychainWrapper.myObjectForKey("v_Data") as? String &&
+            username == NSUserDefaults.standardUserDefaults().valueForKey("username") as? String {
+            return true
+        } else {
+            return false
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.username.delegate = self;
         self.password.delegate = self;
+        self.passwordcopy.delegate = self;
         
         self.navigationItem.setHidesBackButton(true, animated:true);
         
@@ -80,10 +89,12 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
             loginButton.setTitle("Login", forState: UIControlState.Normal)
             loginButton.tag = loginButtonTag
             createInfoLabel.hidden = true
+            passwordcopy.hidden = true
         } else {
             loginButton.setTitle("Create", forState: UIControlState.Normal)
             loginButton.tag = createLoginButtonTag
             createInfoLabel.hidden = false
+            passwordcopy.hidden = false
         }
         
         // 3.
@@ -94,29 +105,48 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
     
     // MARK: - Action for checking username/password
     @IBAction func loginAction(sender: AnyObject) {
+    
         
         // 1.
-        if (username.text == "" || password.text == "") {
-            let alertView = UIAlertController(title: "Login Problem",
-                                              message: "Wrong username or password." as String, preferredStyle:.Alert)
-            let okAction = UIAlertAction(title: "Re-enter", style: .Default, handler: nil)
-            alertView.addAction(okAction)
-            self.presentViewController(alertView, animated: true, completion: nil)
-            return;
-        }
-        
-        // 2.
         username.resignFirstResponder()
         password.resignFirstResponder()
+        passwordcopy.resignFirstResponder()
         
-        // 3.
-        if sender.tag == createLoginButtonTag {
+        // 2.
+        
+        if sender.tag == createLoginButtonTag{
             
+            
+            if (username.text == "" || password.text == "" || passwordcopy.text == "") {
+                let alertView = UIAlertController(title: "Login Problem",
+                                                  message: "Wrong username or password." as String, preferredStyle:.Alert)
+                let okAction = UIAlertAction(title: "Re-enter", style: .Default, handler: nil)
+                alertView.addAction(okAction)
+                self.presentViewController(alertView, animated: true, completion: nil)
+                return;
+            }
+            
+            if password.text != passwordcopy.text{
+                let alertView = UIAlertController(title: "Login problem" ,
+                                                  message: "Passwords don't match!" as String,
+                                                  preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "Re-enter", style:.Default, handler:nil)
+                alertView.addAction(okAction)
+                self.presentViewController(alertView, animated:true, completion:nil)
+                return;
+            }
+
+
+
             // 4.
+            
             let hasLoginKey = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
             if hasLoginKey == false {
                 NSUserDefaults.standardUserDefaults().setValue(self.username.text, forKey: "username")
             }
+            
+            
+            
             
             // 5.
             MyKeychainWrapper.mySetObject(password.text, forKey:kSecValueData)
@@ -126,30 +156,43 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
             loginButton.tag = loginButtonTag
             
             performSegueWithIdentifier("unwindFromLogin:", sender: self)
-        } else if sender.tag == loginButtonTag {
-            // 6.
-            if checkLogin(username.text!, password: password.text!) {
-                performSegueWithIdentifier("unwindFromLogin:", sender: self)
-            } else {
-                // 7.
-                let alertView = UIAlertController(title: "Login Problem",
-                                                  message: "Wrong username or password." as String, preferredStyle:.Alert)
-                let okAction = UIAlertAction(title: "Re-enter", style: .Default, handler: nil)
-                alertView.addAction(okAction)
-                self.presentViewController(alertView, animated: true, completion: nil)
+        
+        
+        }else if sender.tag == loginButtonTag {
+                
+                    if (username.text == "" || password.text == "") {
+                        let alertView = UIAlertController(title: "Login Problem",
+                                                          message: "Wrong username or password." as String, preferredStyle:.Alert)
+                        let okAction = UIAlertAction(title: "Re-enter", style: .Default, handler: nil)
+                        alertView.addAction(okAction)
+                        self.presentViewController(alertView, animated: true, completion: nil)
+                        return;
+                    }
+            
+            
+                else{
+                    if checkLogin(username.text!, password: password.text!) {
+                    performSegueWithIdentifier("unwindFromLogin:", sender: self)
+                    } else
+                        {
+                        let alertView = UIAlertController(title: "Login Problem",
+                                                      message: "Wrong username or password." as String, preferredStyle:.Alert)
+                        let okAction = UIAlertAction(title: "Re-enter", style: .Default, handler: nil)
+                        alertView.addAction(okAction)
+                        self.presentViewController(alertView, animated: true, completion: nil)
+                }
+                }
             }
         }
-    }
-    
-    func checkLogin(username: String, password: String ) -> Bool {
-        if password == MyKeychainWrapper.myObjectForKey("v_Data") as? String &&
-            username == NSUserDefaults.standardUserDefaults().valueForKey("username") as? String {
-            return true
-        } else {
-            return false
-        }
-    }
     
 }
+        
+
+            
+        
+    
+    
+    
+    
 
 

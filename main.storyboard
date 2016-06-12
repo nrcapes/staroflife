@@ -891,7 +891,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6J-jg-wgP">
                                 <rect key="frame" x="279" y="83" width="104" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="104" id="me9-ha-Ild"/>
+                                    <constraint firstAttribute="width" constant="104" id="6WM-qN-znw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -908,7 +908,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3t8-vu-Qpq">
-                                <rect key="frame" x="308" y="234" width="46" height="30"/>
+                                <rect key="frame" x="308" y="285" width="46" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -916,34 +916,43 @@
                                     <action selector="loginAction:" destination="QFq-S7-nSj" eventType="touchUpInside" id="Y4l-bW-0TY"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password copy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUU-rh-lYn">
+                                <rect key="frame" x="60" y="226" width="459" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Start by creating a user name and password" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OBp-O3-9h3">
-                                <rect key="frame" x="144" y="291" width="375" height="30"/>
+                                <rect key="frame" x="129" y="340" width="375" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="ab1-g7-4lv"/>
+                                    <constraint firstAttribute="width" constant="375" id="zgb-Yc-t7d"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="14L-Ff-aMs" firstAttribute="leading" secondItem="Owe-6P-4FC" secondAttribute="leading" id="0Oq-9u-aJn"/>
-                            <constraint firstItem="F6J-jg-wgP" firstAttribute="top" secondItem="Atv-uQ-lH0" secondAttribute="bottom" constant="19" id="3th-Nm-1lT"/>
-                            <constraint firstItem="14L-Ff-aMs" firstAttribute="trailing" secondItem="Owe-6P-4FC" secondAttribute="trailing" id="9vF-o4-aGO"/>
-                            <constraint firstItem="3t8-vu-Qpq" firstAttribute="top" secondItem="Owe-6P-4FC" secondAttribute="bottom" constant="31" id="GIT-gG-o8F"/>
-                            <constraint firstItem="3t8-vu-Qpq" firstAttribute="centerX" secondItem="OBp-O3-9h3" secondAttribute="centerX" id="Lnh-wD-nES"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="14L-Ff-aMs" secondAttribute="trailing" constant="61" id="Vkn-lh-gTC"/>
-                            <constraint firstItem="Owe-6P-4FC" firstAttribute="top" secondItem="14L-Ff-aMs" secondAttribute="bottom" constant="25" id="acz-dq-FAk"/>
-                            <constraint firstItem="OBp-O3-9h3" firstAttribute="top" secondItem="3t8-vu-Qpq" secondAttribute="bottom" constant="27" id="bJA-6J-7SO"/>
-                            <constraint firstItem="Owe-6P-4FC" firstAttribute="trailing" secondItem="OBp-O3-9h3" secondAttribute="trailing" id="hGE-W6-vmF"/>
-                            <constraint firstItem="F6J-jg-wgP" firstAttribute="centerX" secondItem="3t8-vu-Qpq" secondAttribute="centerX" id="iHJ-Ti-efY"/>
-                            <constraint firstItem="14L-Ff-aMs" firstAttribute="leading" secondItem="rSI-gn-g9E" secondAttribute="leadingMargin" constant="40" id="vTx-QW-WOs"/>
-                            <constraint firstItem="14L-Ff-aMs" firstAttribute="top" secondItem="F6J-jg-wgP" secondAttribute="bottom" constant="14" id="x3e-OP-DHt"/>
+                            <constraint firstItem="Owe-6P-4FC" firstAttribute="top" secondItem="14L-Ff-aMs" secondAttribute="bottom" constant="25" id="2eZ-cv-mky"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OBp-O3-9h3" secondAttribute="trailing" constant="76" id="90g-nL-dXK"/>
+                            <constraint firstItem="Owe-6P-4FC" firstAttribute="trailing" secondItem="hUU-rh-lYn" secondAttribute="trailing" id="DR4-Jb-iyD"/>
+                            <constraint firstItem="F6J-jg-wgP" firstAttribute="top" secondItem="Atv-uQ-lH0" secondAttribute="bottom" constant="19" id="Djb-ax-mGF"/>
+                            <constraint firstItem="OBp-O3-9h3" firstAttribute="top" secondItem="3t8-vu-Qpq" secondAttribute="bottom" constant="25" id="HgL-9n-j0e"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="14L-Ff-aMs" secondAttribute="trailing" constant="61" id="JO1-Lx-s0K"/>
+                            <constraint firstItem="F6J-jg-wgP" firstAttribute="leading" secondItem="rSI-gn-g9E" secondAttribute="leading" constant="279" id="LRI-jK-ou3"/>
+                            <constraint firstItem="14L-Ff-aMs" firstAttribute="leading" secondItem="rSI-gn-g9E" secondAttribute="leadingMargin" constant="40" id="P7E-bI-ZeZ"/>
+                            <constraint firstItem="F6J-jg-wgP" firstAttribute="centerX" secondItem="3t8-vu-Qpq" secondAttribute="centerX" id="XsS-ma-AhT"/>
+                            <constraint firstItem="Owe-6P-4FC" firstAttribute="leading" secondItem="hUU-rh-lYn" secondAttribute="leading" id="ZtR-44-7QP"/>
+                            <constraint firstItem="14L-Ff-aMs" firstAttribute="leading" secondItem="Owe-6P-4FC" secondAttribute="leading" id="avP-iZ-4Qm"/>
+                            <constraint firstItem="3t8-vu-Qpq" firstAttribute="centerY" secondItem="rSI-gn-g9E" secondAttribute="centerY" id="mnb-cq-fcX"/>
+                            <constraint firstItem="hUU-rh-lYn" firstAttribute="top" secondItem="Owe-6P-4FC" secondAttribute="bottom" constant="23" id="rMb-2d-hcC"/>
+                            <constraint firstItem="14L-Ff-aMs" firstAttribute="top" secondItem="F6J-jg-wgP" secondAttribute="bottom" constant="14" id="uc3-Dq-1sr"/>
+                            <constraint firstItem="14L-Ff-aMs" firstAttribute="trailing" secondItem="Owe-6P-4FC" secondAttribute="trailing" id="w2B-mR-gAq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="createInfoLabel" destination="OBp-O3-9h3" id="p0a-dT-1nN"/>
                         <outlet property="loginButton" destination="3t8-vu-Qpq" id="BmF-je-wiG"/>
                         <outlet property="password" destination="Owe-6P-4FC" id="LA1-Xr-clN"/>
+                        <outlet property="passwordcopy" destination="hUU-rh-lYn" id="6rG-Vc-xd5"/>
                         <outlet property="username" destination="14L-Ff-aMs" id="ZeQ-PI-Jy5"/>
                         <segue destination="mvU-eQ-wIg" kind="unwind" identifier="unwindFromLogin:" unwindAction="unwindFromLogin:" id="lcN-M0-BWg"/>
                     </connections>
