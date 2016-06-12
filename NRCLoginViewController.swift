@@ -14,10 +14,11 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
     let createLoginButtonTag = 0
     let loginButtonTag = 1
     
+
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var createInfoLabel: UILabel!
+    @IBOutlet weak var createInfoLabel: UITextField!
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -49,7 +50,7 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
     
     
     override func viewWillAppear(animated: Bool) {
-        view.backgroundColor = UIColor(white: 0x255/255, alpha: 1.0)
+       // view.backgroundColor = UIColor(white: 0x255/255, alpha: 1.0)
     }
     
     
@@ -61,11 +62,11 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
         
         self.navigationItem.setHidesBackButton(true, animated:true);
         
-        view.backgroundColor = UIColor(white: 0x255/255, alpha: 1.0)
+       // view.backgroundColor = UIColor(white: 0x255/255, alpha: 1.0)
         
         
         //set the background color to blue-green
-        view.backgroundColor = UIColor(
+        self.view.backgroundColor = UIColor(
             red: 0x00/255,
             green: 0x7d/255,
             blue: 0x96/255,
