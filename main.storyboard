@@ -891,7 +891,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6J-jg-wgP">
                                 <rect key="frame" x="60" y="78" width="104" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="104" id="A5H-EB-HZC"/>
+                                    <constraint firstAttribute="width" constant="104" id="HXy-Cz-D4p"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -915,13 +915,16 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Start by creating a user name and password" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OBp-O3-9h3">
                                 <rect key="frame" x="131" y="363" width="375" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="i3D-vb-9g8"/>
+                                    <constraint firstAttribute="width" constant="375" id="Mzz-j5-MjU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3t8-vu-Qpq">
-                                <rect key="frame" x="60" y="303" width="104" height="30"/>
+                                <rect key="frame" x="20" y="303" width="104" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="104" id="Ljd-l2-SYF"/>
+                                </constraints>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -929,34 +932,34 @@
                                     <action selector="loginAction:" destination="QFq-S7-nSj" eventType="touchUpInside" id="Y4l-bW-0TY"/>
                                 </connections>
                             </button>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93d-EB-yPp">
-                                <rect key="frame" x="-5" y="556" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="Reset Password" id="TGb-j0-Zw2">
-                                        <connections>
-                                            <action selector="resetPassword:" destination="QFq-S7-nSj" id="mdv-Ky-sOk"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vow-9O-dc6">
+                                <rect key="frame" x="471" y="297" width="109" height="30"/>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetPassword:" destination="QFq-S7-nSj" eventType="touchUpInside" id="lqe-gm-jAw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="14L-Ff-aMs" firstAttribute="top" secondItem="F6J-jg-wgP" secondAttribute="bottom" constant="19" id="0wl-oL-6QK"/>
-                            <constraint firstItem="F6J-jg-wgP" firstAttribute="leading" secondItem="14L-Ff-aMs" secondAttribute="leading" id="33l-kO-BUa"/>
-                            <constraint firstItem="Owe-6P-4FC" firstAttribute="trailing" secondItem="hUU-rh-lYn" secondAttribute="trailing" id="BqH-4R-QNf"/>
-                            <constraint firstItem="F6J-jg-wgP" firstAttribute="trailing" secondItem="3t8-vu-Qpq" secondAttribute="trailing" id="DqF-20-FAf"/>
-                            <constraint firstItem="Owe-6P-4FC" firstAttribute="top" secondItem="14L-Ff-aMs" secondAttribute="bottom" constant="25" id="IHR-tS-eLy"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="14L-Ff-aMs" secondAttribute="trailing" constant="61" id="IMk-ip-PU1"/>
-                            <constraint firstItem="14L-Ff-aMs" firstAttribute="leading" secondItem="Owe-6P-4FC" secondAttribute="leading" id="J4b-ef-cOV"/>
-                            <constraint firstItem="hUU-rh-lYn" firstAttribute="top" secondItem="Owe-6P-4FC" secondAttribute="bottom" constant="23" id="OJc-AN-Pgr"/>
-                            <constraint firstItem="F6J-jg-wgP" firstAttribute="leading" secondItem="rSI-gn-g9E" secondAttribute="leadingMargin" constant="40" id="P9P-qK-g0o"/>
-                            <constraint firstItem="3t8-vu-Qpq" firstAttribute="top" secondItem="hUU-rh-lYn" secondAttribute="bottom" constant="47" id="QVf-CC-bgh"/>
-                            <constraint firstItem="OBp-O3-9h3" firstAttribute="top" secondItem="3t8-vu-Qpq" secondAttribute="bottom" constant="30" id="TMA-BB-KLx"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OBp-O3-9h3" secondAttribute="trailing" constant="74" id="UJr-cf-yj3"/>
-                            <constraint firstItem="F6J-jg-wgP" firstAttribute="top" secondItem="Atv-uQ-lH0" secondAttribute="bottom" constant="14" id="eTE-CS-w3Q"/>
-                            <constraint firstItem="14L-Ff-aMs" firstAttribute="trailing" secondItem="Owe-6P-4FC" secondAttribute="trailing" id="mD5-FH-vfu"/>
-                            <constraint firstItem="Owe-6P-4FC" firstAttribute="leading" secondItem="hUU-rh-lYn" secondAttribute="leading" id="w1b-3z-rtG"/>
-                            <constraint firstItem="hUU-rh-lYn" firstAttribute="leading" secondItem="3t8-vu-Qpq" secondAttribute="leading" id="xyu-Vb-uKj"/>
+                            <constraint firstItem="3t8-vu-Qpq" firstAttribute="top" secondItem="hUU-rh-lYn" secondAttribute="bottom" constant="47" id="4Wk-o9-R2L"/>
+                            <constraint firstItem="F6J-jg-wgP" firstAttribute="leading" secondItem="rSI-gn-g9E" secondAttribute="leadingMargin" constant="40" id="B3O-9E-scv"/>
+                            <constraint firstItem="3t8-vu-Qpq" firstAttribute="leading" secondItem="rSI-gn-g9E" secondAttribute="leadingMargin" id="BvI-zX-9cg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="14L-Ff-aMs" secondAttribute="trailing" constant="61" id="DgD-04-8yS"/>
+                            <constraint firstItem="OBp-O3-9h3" firstAttribute="top" secondItem="Vow-9O-dc6" secondAttribute="bottom" constant="36" id="NYK-gA-57W"/>
+                            <constraint firstItem="F6J-jg-wgP" firstAttribute="leading" secondItem="14L-Ff-aMs" secondAttribute="leading" id="P3E-dv-emh"/>
+                            <constraint firstItem="Vow-9O-dc6" firstAttribute="trailing" secondItem="rSI-gn-g9E" secondAttribute="trailingMargin" id="QBd-3O-d7s"/>
+                            <constraint firstItem="Owe-6P-4FC" firstAttribute="leading" secondItem="hUU-rh-lYn" secondAttribute="leading" id="Tx4-mA-lcZ"/>
+                            <constraint firstItem="F6J-jg-wgP" firstAttribute="top" secondItem="Atv-uQ-lH0" secondAttribute="bottom" constant="14" id="bgQ-Xg-bpD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OBp-O3-9h3" secondAttribute="trailing" constant="74" id="d6X-IE-KvB"/>
+                            <constraint firstItem="Owe-6P-4FC" firstAttribute="top" secondItem="14L-Ff-aMs" secondAttribute="bottom" constant="25" id="dR5-pb-4rV"/>
+                            <constraint firstItem="Owe-6P-4FC" firstAttribute="trailing" secondItem="hUU-rh-lYn" secondAttribute="trailing" id="hrD-51-ZGP"/>
+                            <constraint firstItem="hUU-rh-lYn" firstAttribute="top" secondItem="Owe-6P-4FC" secondAttribute="bottom" constant="23" id="irg-jA-8EM"/>
+                            <constraint firstItem="14L-Ff-aMs" firstAttribute="top" secondItem="F6J-jg-wgP" secondAttribute="bottom" constant="19" id="oMm-Wf-oen"/>
+                            <constraint firstItem="14L-Ff-aMs" firstAttribute="leading" secondItem="Owe-6P-4FC" secondAttribute="leading" id="rtN-xC-L58"/>
+                            <constraint firstItem="Vow-9O-dc6" firstAttribute="top" secondItem="hUU-rh-lYn" secondAttribute="bottom" constant="41" id="sQD-Cw-do4"/>
+                            <constraint firstItem="14L-Ff-aMs" firstAttribute="trailing" secondItem="Owe-6P-4FC" secondAttribute="trailing" id="tii-Ta-wWt"/>
                         </constraints>
                     </view>
                     <connections>
