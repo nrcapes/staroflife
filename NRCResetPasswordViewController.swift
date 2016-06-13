@@ -28,13 +28,13 @@ class NRCResetPasswordViewController: UIViewController, UITextFieldDelegate{
     
     func textFieldDidBeginEditing(textField: UITextField) {
         if (textField == password || textField == passwordcopy) {
-            animateViewMoving(true, moveValue: 90)
+            animateViewMoving(true, moveValue: 70)
         }
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
         if  (textField == password || textField == passwordcopy) {
-            animateViewMoving(false, moveValue: 90)
+            animateViewMoving(false, moveValue: 70)
         }
     }
     
@@ -106,8 +106,10 @@ class NRCResetPasswordViewController: UIViewController, UITextFieldDelegate{
             MyKeychainWrapper.mySetObject(password.text, forKey:kSecValueData)
             MyKeychainWrapper.writeToKeychain()
                 
-            
-            performSegueWithIdentifier("toLogin", sender: self)}
+            currentPassword.textColor = UIColor(red: 0x255/255, green: 0, blue: 0, alpha: 1.0)
+            password.textColor = UIColor(red: 0, green: 0x200/255, blue: 0x55/255, alpha: 1.0)
+            passwordcopy.textColor = UIColor(red: 0, green: 0x200/255, blue: 0x55/255, alpha: 1.0)
+            }
         } else
         {
             let alertView = UIAlertController(title: "Login Problem",
@@ -117,9 +119,14 @@ class NRCResetPasswordViewController: UIViewController, UITextFieldDelegate{
             self.presentViewController(alertView, animated: true, completion: nil)
         }
         }
-    func finished(){
-        self.performSegueWithIdentifier("toLogin", sender: self)
+    
+    
+    @IBAction func finished(sender: AnyObject) {
+      self.performSegueWithIdentifier("toLogin", sender: self)
+        
     }
+    
+    
 }
 
             
