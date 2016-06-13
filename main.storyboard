@@ -929,6 +929,16 @@
                                     <action selector="loginAction:" destination="QFq-S7-nSj" eventType="touchUpInside" id="Y4l-bW-0TY"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="93d-EB-yPp">
+                                <rect key="frame" x="-5" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Reset Password" id="TGb-j0-Zw2">
+                                        <connections>
+                                            <action selector="resetPassword:" destination="QFq-S7-nSj" id="mdv-Ky-sOk"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <constraints>
                             <constraint firstItem="14L-Ff-aMs" firstAttribute="top" secondItem="F6J-jg-wgP" secondAttribute="bottom" constant="19" id="0wl-oL-6QK"/>
@@ -956,12 +966,80 @@
                         <outlet property="passwordcopy" destination="hUU-rh-lYn" id="6rG-Vc-xd5"/>
                         <outlet property="username" destination="14L-Ff-aMs" id="ZeQ-PI-Jy5"/>
                         <segue destination="mvU-eQ-wIg" kind="unwind" identifier="unwindFromLogin:" unwindAction="unwindFromLogin:" id="lcN-M0-BWg"/>
+                        <segue destination="0Gu-1U-zbH" kind="show" identifier="reset" id="TuU-Ak-bs1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HD1-mO-Vxk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="mvU-eQ-wIg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="411" y="-425"/>
+        </scene>
+        <!--Reset Password Controller-->
+        <scene sceneID="rud-5t-PeV">
+            <objects>
+                <viewController title="Reset Password Controller" id="0Gu-1U-zbH" customClass="NRCResetPasswordViewController" customModule="EMSTimers" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2K3-GA-isZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ual-jZ-Z9k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lY8-s1-Q2U">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="current password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yIz-Hz-WEQ">
+                                <rect key="frame" x="20" y="55" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWL-8n-dyL">
+                                <rect key="frame" x="20" y="118" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="new password copy" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mMs-bT-nyG">
+                                <rect key="frame" x="20" y="182" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJM-cL-qRY">
+                                <rect key="frame" x="201" y="262" width="199" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="199" id="PDO-2J-jxn"/>
+                                </constraints>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetAction:" destination="0Gu-1U-zbH" eventType="touchUpInside" id="ej4-Km-3M2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="mMs-bT-nyG" firstAttribute="centerX" secondItem="xJM-cL-qRY" secondAttribute="centerX" id="HHk-HO-r6c"/>
+                            <constraint firstItem="yIz-Hz-WEQ" firstAttribute="leading" secondItem="eWL-8n-dyL" secondAttribute="leading" id="Hti-vJ-Mjm"/>
+                            <constraint firstItem="eWL-8n-dyL" firstAttribute="top" secondItem="yIz-Hz-WEQ" secondAttribute="bottom" constant="33" id="JdG-cy-2bk"/>
+                            <constraint firstItem="yIz-Hz-WEQ" firstAttribute="top" secondItem="2K3-GA-isZ" secondAttribute="bottom" constant="35" id="KWx-0Z-G8d"/>
+                            <constraint firstItem="eWL-8n-dyL" firstAttribute="trailing" secondItem="mMs-bT-nyG" secondAttribute="trailing" id="TRp-Ej-LY5"/>
+                            <constraint firstItem="yIz-Hz-WEQ" firstAttribute="trailing" secondItem="lY8-s1-Q2U" secondAttribute="trailingMargin" id="ZBS-uz-vMD"/>
+                            <constraint firstItem="yIz-Hz-WEQ" firstAttribute="leading" secondItem="lY8-s1-Q2U" secondAttribute="leadingMargin" id="btK-Mh-aLF"/>
+                            <constraint firstItem="mMs-bT-nyG" firstAttribute="top" secondItem="eWL-8n-dyL" secondAttribute="bottom" constant="34" id="eHH-GF-gaD"/>
+                            <constraint firstItem="xJM-cL-qRY" firstAttribute="top" secondItem="mMs-bT-nyG" secondAttribute="bottom" constant="50" id="fCX-Lw-qfn"/>
+                            <constraint firstItem="eWL-8n-dyL" firstAttribute="leading" secondItem="mMs-bT-nyG" secondAttribute="leading" id="mGo-h9-IAY"/>
+                            <constraint firstItem="yIz-Hz-WEQ" firstAttribute="trailing" secondItem="eWL-8n-dyL" secondAttribute="trailing" id="mjY-Oi-yOA"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="currentPassword" destination="yIz-Hz-WEQ" id="fNi-Rg-MLd"/>
+                        <outlet property="password" destination="eWL-8n-dyL" id="A8M-cJ-Xyj"/>
+                        <outlet property="passwordcopy" destination="mMs-bT-nyG" id="Ik2-JS-Oja"/>
+                        <outlet property="reset" destination="xJM-cL-qRY" id="1h7-04-YU7"/>
+                        <segue destination="tHh-cK-3FK" kind="unwind" identifier="toLogin" unwindAction="unwindFromReset:" id="Irb-ka-4OX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fdt-t7-gRM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="tHh-cK-3FK" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1070" y="-425"/>
         </scene>
         <!--Patient List Controller-->
         <scene sceneID="Ja4-dN-SiG">

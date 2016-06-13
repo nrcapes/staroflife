@@ -103,6 +103,24 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
         }
     }
     
+    
+    
+    @IBAction func resetPassword(sender: AnyObject) {
+        
+        let hasLoginKey = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
+        if hasLoginKey == false {
+            
+            let alertView = UIAlertController(title: "Login Problem", message: "You have not set your user name and password", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "Press any key", style: .Default, handler: nil)
+            alertView.addAction(okAction)
+            self.presentViewController(alertView, animated: true, completion: nil)
+            return
+        }else{
+            self.performSegueWithIdentifier("reset", sender: self)
+        }
+    }
+    
+    
     // MARK: - Action for checking username/password
     @IBAction func loginAction(sender: AnyObject) {
     
@@ -112,7 +130,7 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
         password.resignFirstResponder()
         passwordcopy.resignFirstResponder()
         
-        // 2.
+        // 2.n
         
         if sender.tag == createLoginButtonTag{
             
@@ -184,7 +202,11 @@ class NRCLoginViewController: UIViewController, UITextFieldDelegate{
                 }
             }
         }
-    
+    @IBAction func unwindFromReset(sender: UIStoryboardSegue)
+    {
+        password.text = MyKeychainWrapper.myObjectForKey("v_Data") as? String
+        performSegueWithIdentifier("unwindFromLogin:", sender: self)
+    }
 }
         
 
