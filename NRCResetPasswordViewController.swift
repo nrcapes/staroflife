@@ -105,22 +105,21 @@ class NRCResetPasswordViewController: UIViewController, UITextFieldDelegate{
             
             MyKeychainWrapper.mySetObject(password.text, forKey:kSecValueData)
             MyKeychainWrapper.writeToKeychain()
+                
+            
             performSegueWithIdentifier("toLogin", sender: self)}
-            
-            
-            
         } else
         {
             let alertView = UIAlertController(title: "Login Problem",
                                               message: "Wrong password." as String, preferredStyle:.Alert)
-            let okAction = UIAlertAction(title: "Press any key to return", style: .Default, handler: nil)
+            let okAction = UIAlertAction(title: "Press any key to return", style: .Default, handler:nil)
             alertView.addAction(okAction)
             self.presentViewController(alertView, animated: true, completion: nil)
-            self.performSegueWithIdentifier("toLogin", sender: self)
         }
-    
-        
         }
+    func finished(){
+        self.performSegueWithIdentifier("toLogin", sender: self)
+    }
 }
 
             
