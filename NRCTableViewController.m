@@ -115,6 +115,7 @@
 #import "iapstore.h"
 #import "NRCSelectDataTableViewController.h"
 #import "EMSTimers-Swift.h"
+#import "NRCEmailTableViewController.h"
 
 @interface NRCTableViewController ()
 
@@ -1423,9 +1424,9 @@ AVAudioPlayer *_audioPlayer2;
     self.patientItem = sourceViewController.item;
     // item was added.  Go check to see whether it needs to be written to iCloud
     [self itemAdded];
-    
-    
-    
+}
+-(IBAction)unwindFromEmailViewController:(UIStoryboardSegue *)segue{
+    NRCEmailTableViewController *sourceViewController = segue.sourceViewController;
     
 }
 

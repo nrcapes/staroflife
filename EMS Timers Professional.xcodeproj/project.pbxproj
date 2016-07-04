@@ -42,6 +42,7 @@
 		526290A91C2614C000289F2A /* NRCInterfaceController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A81C2614C000289F2A /* NRCInterfaceController3.m */; };
 		526290AB1C2614C000289F2A /* NRCInterfaceController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A81C2614C000289F2A /* NRCInterfaceController3.m */; };
 		52681A1B1C2DCCEE00B2656A /* Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 52681A1A1C2DCCEE00B2656A /* Launch.png */; };
+		526C3CA51D2B1CD0003A1322 /* NRCEmailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 526C3CA31D2B1CD0003A1322 /* NRCEmailTableViewController.m */; };
 		5270883C1CAF20D30059163F /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 5270883B1CAF20D20059163F /* Note.m */; };
 		5273238D1D090518003CA93B /* NRCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5273238C1D090518003CA93B /* NRCLoginViewController.swift */; };
 		527494CF1CD55CEA00469CFA /* Add Patient and Assess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527494CE1CD55CEA00469CFA /* Add Patient and Assess.swift */; };
@@ -185,6 +186,8 @@
 		526290A71C2614C000289F2A /* NRCInterfaceController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCInterfaceController3.h; sourceTree = "<group>"; };
 		526290A81C2614C000289F2A /* NRCInterfaceController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCInterfaceController3.m; sourceTree = "<group>"; };
 		52681A1A1C2DCCEE00B2656A /* Launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch.png; sourceTree = "<group>"; };
+		526C3CA31D2B1CD0003A1322 /* NRCEmailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCEmailTableViewController.m; sourceTree = "<group>"; };
+		526C3CA41D2B1CD0003A1322 /* NRCEmailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCEmailTableViewController.h; sourceTree = "<group>"; };
 		527088391CAF17620059163F /* EMSTimers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EMSTimers.entitlements; sourceTree = "<group>"; };
 		5270883A1CAF20D20059163F /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		5270883B1CAF20D20059163F /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
@@ -398,6 +401,8 @@
 			children = (
 				52E5039C1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift */,
 				52F88E601D0A01DB003600B0 /* Main.storyboard */,
+				526C3CA31D2B1CD0003A1322 /* NRCEmailTableViewController.m */,
+				526C3CA41D2B1CD0003A1322 /* NRCEmailTableViewController.h */,
 				52E503991D0E546B00A1B109 /* NRCPasswordReset.h */,
 				52E5039A1D0E546B00A1B109 /* NRCPasswordReset.m */,
 				5273238C1D090518003CA93B /* NRCLoginViewController.swift */,
@@ -737,6 +742,7 @@
 				520728001C71821D0019096D /* NRCMedicalHistoryDisplayTableViewController.m in Sources */,
 				526290A41C26083100289F2A /* NRCInterfaceController2.m in Sources */,
 				52A0B05E1C615E7D0015D481 /* NRCAssessmentViewControllerTableViewController.m in Sources */,
+				526C3CA51D2B1CD0003A1322 /* NRCEmailTableViewController.m in Sources */,
 				5270883C1CAF20D30059163F /* Note.m in Sources */,
 				52A0B0611C62542C0015D481 /* PatientListTableViewController.m in Sources */,
 				52491D7D1CED520D00D19190 /* KeychainWrapper.m in Sources */,
