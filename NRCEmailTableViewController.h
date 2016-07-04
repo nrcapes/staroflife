@@ -39,11 +39,9 @@
 @property (nonatomic) patientItem *item;
 @property (nonatomic) NSMutableArray *patients;
 @property (nonatomic) NSMutableArray *assessments;
--(BOOL) isNumericOrSlash:(NSString*)inputString;
+
 @property UITextView * textView;
--(UITextField *)makeTextField: (NSString *)text
-                  placeholder: (NSString *)placeholder
-                 type_of_text:(NSInteger)type_of_text;
+
 -(IBAction)textFieldFinished:(id)sender;
 
 
