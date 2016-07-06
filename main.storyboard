@@ -150,6 +150,11 @@
                                 <action selector="finishedEnteringData:" destination="5kz-bJ-AMf" id="227-Zo-M2K"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="5C7-LS-wEF">
+                            <connections>
+                                <action selector="emailData:" destination="5kz-bJ-AMf" id="a8W-1n-VVm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="lr3-jZ-r6N" kind="unwind" identifier="unwindFromEmail" unwindAction="unwindFromEmailViewController:" id="q53-IZ-1p2"/>
