@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "patientItem.h"
+#import <MessageUI/MessageUI.h>
 
-
-@interface NRCEmailTableViewController : UITableViewController <UITextFieldDelegate>
+@interface NRCEmailTableViewController : UITableViewController <UITextFieldDelegate, MFMailComposeViewControllerDelegate>
 
 @property UITextField *firstNameField;
 @property UITextField *middleNameField;
@@ -39,8 +39,15 @@
 @property (nonatomic) patientItem *item;
 @property (nonatomic) NSMutableArray *patients;
 @property (nonatomic) NSMutableArray *assessments;
-
+@property (nonatomic) BOOL centralAdminActivated;
+@property (nonatomic) BOOL centralAdmin;
 @property UITextView * textView;
+
+@property (strong, nonatomic)NSString *emailAddress;
+@property (strong, nonatomic) NSArray *toRecipients;
+@property (strong,nonatomic) NSString *tempBody;
+@property (strong, nonatomic) NSString *messageBody;
+@property (strong, nonatomic) NSMutableArray *assessmentsForEmail;
 
 -(IBAction)textFieldFinished:(id)sender;
 

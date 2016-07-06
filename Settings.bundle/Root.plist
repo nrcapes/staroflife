@@ -6,6 +6,7 @@
 	<string>Root</string>
 	<key>PreferenceSpecifiers</key>
 	<array>
+		<dict/>
 		<dict>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>

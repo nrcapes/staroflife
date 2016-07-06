@@ -1410,6 +1410,10 @@ AVAudioPlayer *_audioPlayer2;
     if([segue.identifier isEqualToString:@"presentLogin"]){
         NSLog(@"segue presentLogin");
     }
+    if([segue.identifier isEqualToString:@"toEmail"]){
+        NRCEmailTableViewController *destViewController = segue.destinationViewController;
+        destViewController.patients = self.patients;
+    }
 }
 # pragma mark unwind segues
 -(IBAction)unwindFromLoginViewController:(UIStoryboardSegue *)seque{

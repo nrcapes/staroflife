@@ -14,6 +14,7 @@
 #import "NRCEmailTableViewController.h"
 #import "patientItem.h"
 #import "patientItemStore.h"
+#import "assessmentItem.h"
 typedef NS_ENUM(int, row){
     first_name,
     middle_name,
@@ -36,7 +37,7 @@ typedef NS_ENUM(int, row){
 @property NSIndexPath *currentCategory;
 @property NSMutableArray *checkedArray;
 @property NSNumber* numberIndicator;
-
+@property assessmentItem *assessmentItem;
 @end
 
 @implementation NRCEmailTableViewController
@@ -255,7 +256,165 @@ typedef NS_ENUM(int, row){
     }else{
         oldCell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
+}
+
+
+#pragma  mark - emailData
+- (IBAction)emailData:(id)sender {
+     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    // self.centralAdminActivated = [defaults boolForKey:@"centralAdmin_unlocked"];
+    self.centralAdminActivated = YES;
+     self.centralAdmin = [[defaults valueForKey:@"centralAdmin"]boolValue];
+    if(self.centralAdminActivated == NO){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Email Unavailable" message:@"The email feature is only available with the Central Administration Upgrade" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Press any key to continue." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+            
+        }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil// Email Subject
+         ];
+    }
+    else{
+        //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if(self.centralAdmin == NO){
+            UIAlertController *alert1 = [UIAlertController alertControllerWithTitle:@"Email Unavailable" message:@"Central Administration must be enabled in Settings" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *ok1 = [UIAlertAction actionWithTitle:@"Press any key to continue." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+            }];
+            [alert1 addAction:ok1];
+            [self presentViewController:alert1 animated:YES completion:nil// Email Subject
+             ];
+        }
+        else
+        {
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:@"Email?"
+                                          message:@"Do you want to email the data? CAUTION: Comply with HIPAA regulations."
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction* ok = [UIAlertAction actionWithTitle:@"YES -Enter the email address." style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                           
+                                                           UITextField *textField = alert.textFields[0];
+                                                           NSString *text = textField.text;
+                                                           
+                                                           self.emailAddress = text;
+                                                           NSLog(@"Email address = %@", self.emailAddress);
+                                                           NSString *emailTitle = @"Patient Data (confidential)";
+                                                           // Email Content
+                                                           
+                                                           
+                                                           [self buildEmail];
+                                                           
+                                                           
+                                                           // _messageBody = @"From EMS Timers Professional!";
+                                                           // To address
+                                                           _toRecipients = [NSArray arrayWithObject:self.emailAddress];
+                                                           
+                                                           MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+                                                           mc.mailComposeDelegate = self;
+                                                           [mc setSubject:emailTitle];
+                                                           [mc setMessageBody:_messageBody isHTML:NO];
+                                                           [mc setToRecipients:_toRecipients];
+                                                           
+                                                           // Present mail view controller on screen
+                                                           [self presentViewController:mc animated:YES completion:nil];
+                                                           
+                                                       }];
+            UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action) {
+                                                               
+                                                               
+                                                           }];
+            
+            
+            [alert addAction:ok];
+            [alert addAction:cancel];
+            
+            
+            
+            
+            [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                textField.placeholder = @"Email address?";
+                textField.keyboardType = UIKeyboardTypeEmailAddress;
+                NSLog(@"Textfield %@",textField);
+            }];
+            
+            [self presentViewController:alert animated:YES completion:nil// Email Subject
+             ];
+        }
+    }
+}
+#pragma mark - mailComposeController
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
     
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+#pragma mark - buildEmail
+-(void)buildEmail{
+    
+    self.patients = [[patientItemStore sharedStore]allItems];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    dateFormatter.timeStyle = NSDateFormatterShortStyle;
+    dateFormatter.dateStyle = NSDateIntervalFormatterShortStyle;
+    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [dateFormatter setLocale:usLocale];
+    _messageBody =@"";
+    // loop through all patients, building CSV string
+    for(patientItem *item in self.patients)
+    {
+        _tempBody = [NSString stringWithFormat:@"\nProvider ID: %@\n",
+                     item.providerID];
+        _messageBody = [_messageBody stringByAppendingString:_tempBody];
+        // first, put the patient's full name and contact time into the email message body.
+        // replace any commas in contact time with semicolon to keep CSV from splitting date/time
+        
+        NSString *formattedDateString = [dateFormatter stringFromDate:item.contactTime];
+        formattedDateString = [formattedDateString stringByReplacingOccurrencesOfString:@"," withString:@";"];
+        _tempBody = [NSString stringWithFormat:@"Patient's full name :%@, Contact date/time: %@, Venue: %@, Event: %@\n",
+                     item.fullName,
+                     formattedDateString,
+                     item.venue, item.event
+                     ];
+        _messageBody = [_messageBody stringByAppendingString:_tempBody];
+        _tempBody = [NSString stringWithFormat:@"DOB: %@, Gender: %@, Address: %@, City: %@, State: %@, Zip: %@, Phone: %@,\n", item.dateOfBirth, item.gender, item.streetAddress, item.cityAddress, item.stateAddress, item.zipCode, item.phoneNumber];
+        _messageBody = [_messageBody stringByAppendingString:_tempBody];
+        
+        
+        // then loop through the assessments and add them.
+        self.assessmentsForEmail = item.assessments;
+        for(assessmentItem *aItem in self.assessmentsForEmail){
+            NSString *assessmentTime = [dateFormatter stringFromDate:aItem.assessmentTime];
+            _tempBody = [NSString stringWithFormat:@"Assessment: %@, Systolic BP: %@, Diastolic BP: %@, Pulse: %@, Respirations: %@, SPO2: %@,\n", assessmentTime, aItem.sytolicBloodPressure, aItem.diastolicBloodPressure, aItem.pulse, aItem.respirations, aItem.spO2];
+            _messageBody = [_messageBody stringByAppendingString:_tempBody];
+            _tempBody = [NSString stringWithFormat:@"Chief compl: %@, Clin. Impr: %@, Med. Hist:%@, Curr. Meds: %@, Allergies: %@,",
+                         aItem.chiefComplaint, aItem.clinicalImpression, aItem.medicalHistory, aItem.currentMedications, aItem.allergies];
+            _messageBody = [_messageBody stringByAppendingString:_tempBody];
+            _tempBody = [NSString stringWithFormat:@"MOI/NOI: %@, Treatments: %@\n\n",aItem. mechanismOfInjury, aItem.treatments];
+            _messageBody = [_messageBody stringByAppendingString:_tempBody];
+            _tempBody = [NSString stringWithFormat:@"Narrative: %@, \n\n", aItem.narrative];
+            _messageBody = [_messageBody stringByAppendingString:_tempBody];
+        }
+    }
 }
 
 /*
