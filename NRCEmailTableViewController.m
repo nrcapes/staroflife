@@ -30,6 +30,12 @@ typedef NS_ENUM(int, row){
     
 };
 @interface NRCEmailTableViewController ()
+@property NSInteger prev;
+
+@property NSMutableArray *taskCategories;
+@property NSIndexPath *currentCategory;
+@property NSMutableArray *checkedArray;
+@property NSNumber* numberIndicator;
 
 @end
 
@@ -59,7 +65,40 @@ typedef NS_ENUM(int, row){
     self.venue =@"";
     self.event =@"";
     [self.navigationItem setHidesBackButton:YES animated:YES];
-   
+    
+    self.taskCategories = [NSMutableArray arrayWithCapacity:12];
+    self.currentCategory =[[NSIndexPath alloc]init];
+    
+    _checkedArray = [NSMutableArray arrayWithObjects:[NSNumber numberWithBool:YES],
+                     [NSNumber numberWithBool:YES],
+                     [NSNumber numberWithBool:YES],
+                     [NSNumber numberWithBool:YES],
+                     [NSNumber numberWithBool:YES],
+                     [NSNumber numberWithBool:YES],
+                     [NSNumber numberWithBool:YES],
+                     [NSNumber numberWithBool:YES],
+                     [NSNumber numberWithBool:YES],
+                     [NSNumber numberWithBool:YES],
+                     [NSNumber numberWithBool:YES],
+                     [NSNumber numberWithBool:YES], nil];
+    
+    
+    _taskCategories = [NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:0],
+                     [NSNumber numberWithInteger:0],
+                     [NSNumber numberWithInteger:0],
+                     [NSNumber numberWithInteger:0],
+                     [NSNumber numberWithInteger:0],
+                     [NSNumber numberWithInteger:0],
+                     [NSNumber numberWithInteger:0],
+                     [NSNumber numberWithInteger:0],
+                     [NSNumber numberWithInteger:0],
+                     [NSNumber numberWithInteger:0],
+                     [NSNumber numberWithInteger:0],
+                     [NSNumber numberWithInteger:0], nil];
+    
+    
+    
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -108,6 +147,9 @@ typedef NS_ENUM(int, row){
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault
                                                   reuseIdentifier:@"emailSelectionCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    [_taskCategories addObject:indexPath];
+    
    // tableView.rowHeight = 30.0f;
     UITextField* tf = nil ;
     // Configure the cell...
@@ -178,6 +220,55 @@ typedef NS_ENUM(int, row){
 -(void)textFieldDidEndEditing:(UITextField *)textField{
         }
     
+-(void)tableView: (UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    self.currentCategory = indexPath;
+    NSInteger catIndex = [_taskCategories indexOfObject:self.currentCategory];
+    /*
+    if (catIndex == indexPath.row) {
+        return;
+    }
+    */
+    NSIndexPath *oldIndexPath = [NSIndexPath indexPathForRow:catIndex inSection:0];
+    
+    UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    // can't look at the cell for deciding whether to
+    // check, because the cell may have been used.
+    // need to look at data model.
+    
+    NSNumber *number = [_checkedArray objectAtIndex:indexPath.row];
+    
+    if (number == [NSNumber numberWithBool:0]) {
+        newCell.accessoryType =UITableViewCellAccessoryNone;
+        BOOL myValue = 1;
+        number = [NSNumber numberWithBool: myValue];
+    }
+    else{
+        newCell.accessoryType = UITableViewCellAccessoryCheckmark;
+        BOOL myValue = 0;
+        number = [NSNumber numberWithBool:myValue];
+    }
+    
+    [_checkedArray replaceObjectAtIndex:indexPath.row withObject:number];
+    
+    
+    self.currentCategory = [self.taskCategories objectAtIndex:indexPath.row];
+    
+    UITableViewCell *oldCell = [tableView cellForRowAtIndexPath:oldIndexPath];
+    
+    if(oldIndexPath != indexPath){
+        return;
+    }
+    
+    if (oldCell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        oldCell.accessoryType = UITableViewCellAccessoryNone;
+    }else{
+        oldCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    
+}
 
 /*
 // Override to support conditional editing of the table view.
