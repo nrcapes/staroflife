@@ -52,18 +52,6 @@ typedef NS_ENUM(int, row){
     }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.firstName = @"";
-    self.middleName =@"";
-    self.lastName = @"";
-    self.dateOfBirth = @"";
-    self.gender = @"";
-    self.streetAddress = @"";
-    self.cityAddress = @"";
-    self.stateAddress = @"";
-    self.zipCode = @"";
-    self.phoneNumber = @"";
-    self.venue =@"";
-    self.event =@"";
     [self.navigationItem setHidesBackButton:YES animated:YES];
     
     self.taskCategories = [NSMutableArray arrayWithCapacity:12];
