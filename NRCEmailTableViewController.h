@@ -50,7 +50,7 @@
 @property (strong, nonatomic) NSMutableArray *assessmentsForEmail;
 
 -(IBAction)textFieldFinished:(id)sender;
-
-
+-(patientItem *)checkUserSelectedPatientData:(patientItem *)item;
+@property (nonatomic) BOOL myValue;
 
 @end

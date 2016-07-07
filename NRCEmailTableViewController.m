@@ -58,18 +58,19 @@ typedef NS_ENUM(int, row){
     self.taskCategories = [NSMutableArray arrayWithCapacity:12];
     self.currentCategory =[[NSIndexPath alloc]init];
     
-    _checkedArray = [NSMutableArray arrayWithObjects:[NSNumber numberWithBool:YES],
-                     [NSNumber numberWithBool:YES],
-                     [NSNumber numberWithBool:YES],
-                     [NSNumber numberWithBool:YES],
-                     [NSNumber numberWithBool:YES],
-                     [NSNumber numberWithBool:YES],
-                     [NSNumber numberWithBool:YES],
-                     [NSNumber numberWithBool:YES],
-                     [NSNumber numberWithBool:YES],
-                     [NSNumber numberWithBool:YES],
-                     [NSNumber numberWithBool:YES],
-                     [NSNumber numberWithBool:YES], nil];
+    _checkedArray = [NSMutableArray arrayWithObjects:
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO], nil];
     
     
     _taskCategories = [NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:0],
@@ -83,7 +84,8 @@ typedef NS_ENUM(int, row){
                      [NSNumber numberWithInteger:0],
                      [NSNumber numberWithInteger:0],
                      [NSNumber numberWithInteger:0],
-                     [NSNumber numberWithInteger:0], nil];
+                     [NSNumber numberWithInteger:0],
+                     [NSNumber numberWithInteger:0],nil];
     
     
     
@@ -231,16 +233,20 @@ typedef NS_ENUM(int, row){
     
     if (number == [NSNumber numberWithBool:0]) {
         newCell.accessoryType =UITableViewCellAccessoryNone;
-        BOOL myValue = 1;
-        number = [NSNumber numberWithBool: myValue];
+        self.myValue = false;
+        number = [NSNumber numberWithBool: self.myValue];
+        [_checkedArray replaceObjectAtIndex:indexPath.row withObject:number];
+        
     }
     else{
         newCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        BOOL myValue = 0;
+        BOOL myValue = 1;
         number = [NSNumber numberWithBool:myValue];
+        [_checkedArray replaceObjectAtIndex:indexPath.row withObject:number];
+        self.myValue = true;
     }
     
-    [_checkedArray replaceObjectAtIndex:indexPath.row withObject:number];
+    
     
     
     self.currentCategory = [self.taskCategories objectAtIndex:indexPath.row];
@@ -382,21 +388,27 @@ typedef NS_ENUM(int, row){
     // loop through all patients, building CSV string
     for(patientItem *item in self.patients)
     {
+        patientItem * localItem;
         _tempBody = [NSString stringWithFormat:@"\nProvider ID: %@\n",
                      item.providerID];
         _messageBody = [_messageBody stringByAppendingString:_tempBody];
         // first, put the patient's full name and contact time into the email message body.
         // replace any commas in contact time with semicolon to keep CSV from splitting date/time
         
-        NSString *formattedDateString = [dateFormatter stringFromDate:item.contactTime];
+        NSString *formattedDateString = [dateFormatter stringFromDate:_item.contactTime];
+        
+        // this method call checks the data that the user has selected to
+        // send in the email. Any unselected data will be sent as "*".
+       localItem = [self checkUserSelectedPatientData:item];
+        
         formattedDateString = [formattedDateString stringByReplacingOccurrencesOfString:@"," withString:@";"];
-        _tempBody = [NSString stringWithFormat:@"Patient's full name :%@, Contact date/time: %@, Venue: %@, Event: %@\n",
-                     item.fullName,
+        _tempBody = [NSString stringWithFormat:@"First name :%@, @Middle name :%@, @Last Name %@, Contact date/time: %@, Venue: %@, Event: %@\n",
+                     localItem.firstName, localItem.middleName, localItem.lastName,
                      formattedDateString,
-                     item.venue, item.event
+                     localItem.venue, localItem.event
                      ];
         _messageBody = [_messageBody stringByAppendingString:_tempBody];
-        _tempBody = [NSString stringWithFormat:@"DOB: %@, Gender: %@, Address: %@, City: %@, State: %@, Zip: %@, Phone: %@,\n", item.dateOfBirth, item.gender, item.streetAddress, item.cityAddress, item.stateAddress, item.zipCode, item.phoneNumber];
+        _tempBody = [NSString stringWithFormat:@"DOB: %@, Gender: %@, Address: %@, City: %@, State: %@, Zip: %@, Phone: %@,\n", localItem.dateOfBirth, localItem.gender, localItem.streetAddress, localItem.cityAddress, localItem.stateAddress, localItem.zipCode, localItem.phoneNumber];
         _messageBody = [_messageBody stringByAppendingString:_tempBody];
         
         
@@ -416,7 +428,17 @@ typedef NS_ENUM(int, row){
         }
     }
 }
-
+-(patientItem *)checkUserSelectedPatientData:(patientItem *)item{
+    BOOL myValue = 0;
+    NSNumber *number;
+    NSNumber *number1;
+    number = [NSNumber numberWithBool: myValue];
+    number1 = self.checkedArray[0];
+    if(number1 == number){
+        item.firstName = @"*";
+    }
+    return item;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
