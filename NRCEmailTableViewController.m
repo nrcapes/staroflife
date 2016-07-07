@@ -35,7 +35,6 @@ typedef NS_ENUM(int, row){
 
 @property NSMutableArray *taskCategories;
 @property NSIndexPath *currentCategory;
-@property NSMutableArray *checkedArray;
 @property NSNumber* numberIndicator;
 @property assessmentItem *assessmentItem;
 @end
@@ -50,27 +49,26 @@ typedef NS_ENUM(int, row){
         navItem.title = @"Email Controller";
     }
         return self;
-    }
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES animated:YES];
     
+    
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Prepare email" message:@"Checkmark the items you want to send" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+    
     self.taskCategories = [NSMutableArray arrayWithCapacity:12];
     self.currentCategory =[[NSIndexPath alloc]init];
     
-    _checkedArray = [NSMutableArray arrayWithObjects:
-                     [NSNumber numberWithBool:NO],
-                     [NSNumber numberWithBool:NO],
-                     [NSNumber numberWithBool:NO],
-                     [NSNumber numberWithBool:NO],
-                     [NSNumber numberWithBool:NO],
-                     [NSNumber numberWithBool:NO],
-                     [NSNumber numberWithBool:NO],
-                     [NSNumber numberWithBool:NO],
-                     [NSNumber numberWithBool:NO],
-                     [NSNumber numberWithBool:NO],
-                     [NSNumber numberWithBool:NO],
-                     [NSNumber numberWithBool:NO], nil];
+    
     
     
     _taskCategories = [NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:0],
@@ -93,13 +91,7 @@ typedef NS_ENUM(int, row){
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Prepare email" message:@"Checkmark the items you want to send" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
-    
-    [alert addAction:defaultAction];
-    [self presentViewController:alert animated:YES completion:nil];
+   
     
 }
 -(void)viewWillDisappear:(BOOL)animated{
@@ -140,76 +132,114 @@ typedef NS_ENUM(int, row){
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     [_taskCategories addObject:indexPath];
-    
-   // tableView.rowHeight = 30.0f;
-    UITextField* tf = nil ;
+   
     // Configure the cell...
     if(indexPath.section == 0){
         switch (indexPath.row) {
             case 0:
                 
                 cell.textLabel.text =@"First Name";
-            
+                if([self checkForSelectedUserData:indexPath] == YES){
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
+                
                 break;
             case 1:
                 cell.textLabel.text = @"Mid. Name";
-                
+                if([self checkForSelectedUserData:indexPath] == YES){
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
                 break;
             case 2:
                 cell.textLabel.text = @"Last Name";
-                                break;
+                if([self checkForSelectedUserData:indexPath] == YES){
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
+                break;
             case 3:
                 cell.textLabel.text = @"Date of Birth";
-                
+                if([self checkForSelectedUserData:indexPath] == YES){
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
                 break;
             case 4:
                 cell.textLabel.text = @"Gender";
-                
+                if([self checkForSelectedUserData:indexPath] == YES){
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
                 break;
             case 5:
                 cell.textLabel.text = @"Address";
-                
+                if([self checkForSelectedUserData:indexPath] == YES){
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
                 break;
             case 6:
                 cell.textLabel.text =@"City";
-                                break;
+                if([self checkForSelectedUserData:indexPath] == YES){
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
+                break;
             case 7:
                 cell.textLabel.text = @"State";
-                
+                if([self checkForSelectedUserData:indexPath] == YES){
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
                 break;
             case 8:
                 cell.textLabel.text =@"Zip Code";
-                
+                if([self checkForSelectedUserData:indexPath] == YES){
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
                 break;
             case 9:
                 cell.textLabel.text = @"Phone #";
-                                break;
+                if([self checkForSelectedUserData:indexPath] == YES){
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
+                break;
             case 10:
                 cell.textLabel.text =@"Venue";
-                
+                if([self checkForSelectedUserData:indexPath] == YES){
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
                 break;
             case 11:
                 cell.textLabel.text =@"Event";
-                
+                if([self checkForSelectedUserData:indexPath] == YES){
+                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                }else{
+                    cell.accessoryType = UITableViewCellAccessoryNone;
+                }
                 break;
         }
     }
-    // Textfield dimensions
-    tf.frame = CGRectMake(120, 12, 170, 30);
     
-    // Workaround to dismiss keyboard when Done/Return is tapped
-    [tf addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    
-    // We want to handle textFieldDidEndEditing
-    tf.delegate = self ;
     return cell;
 }
--(IBAction)textFieldFinished:(id)sender{
 
-    [sender resignFirstResponder];
-}
--(void)textFieldDidEndEditing:(UITextField *)textField{
-        }
     
 -(void)tableView: (UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -229,21 +259,20 @@ typedef NS_ENUM(int, row){
     // check, because the cell may have been used.
     // need to look at data model.
     
-    NSNumber *number = [_checkedArray objectAtIndex:indexPath.row];
+    NSNumber *number = [_checkedArray objectAtIndex:indexPath.row];// was this row previously selected?
     
-    if (number == [NSNumber numberWithBool:0]) {
+    if (number == [NSNumber numberWithBool:1]) {// yes, it was previously selected
         newCell.accessoryType =UITableViewCellAccessoryNone;
-        self.myValue = false;
+        self.myValue = false;// so change it to unselected
         number = [NSNumber numberWithBool: self.myValue];
         [_checkedArray replaceObjectAtIndex:indexPath.row withObject:number];
         
     }
-    else{
+    else{ // it was not previously selected
         newCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        BOOL myValue = 1;
-        number = [NSNumber numberWithBool:myValue];
+        self.myValue = true; // so change it to selected
+        number = [NSNumber numberWithBool:self.myValue];
         [_checkedArray replaceObjectAtIndex:indexPath.row withObject:number];
-        self.myValue = true;
     }
     
     
@@ -263,7 +292,20 @@ typedef NS_ENUM(int, row){
         oldCell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
 }
-
+-(BOOL)checkForSelectedUserData:(NSIndexPath *)indexPath{
+    BOOL decision;
+    
+    NSNumber *number = [_checkedArray objectAtIndex:indexPath.row];// was this row previously selected?
+    
+    if (number == [NSNumber numberWithBool:1]) {// yes, it was previously selected
+        decision = YES;
+    }
+    else{ // it was not previously selected
+        decision = NO;
+    }
+    
+    return decision;;
+}
 
 #pragma  mark - emailData
 - (IBAction)emailData:(id)sender {
@@ -389,17 +431,19 @@ typedef NS_ENUM(int, row){
     for(patientItem *item in self.patients)
     {
         patientItem * localItem;
+        // this method call checks the data that the user has selected to
+        // send in the email. Any unselected data will be sent as "*".
+        localItem = [self checkUserSelectedPatientData:item];
+        
         _tempBody = [NSString stringWithFormat:@"\nProvider ID: %@\n",
-                     item.providerID];
+                     localItem.providerID];
         _messageBody = [_messageBody stringByAppendingString:_tempBody];
         // first, put the patient's full name and contact time into the email message body.
         // replace any commas in contact time with semicolon to keep CSV from splitting date/time
         
-        NSString *formattedDateString = [dateFormatter stringFromDate:_item.contactTime];
+        NSString *formattedDateString = [dateFormatter stringFromDate:localItem.contactTime];
         
-        // this method call checks the data that the user has selected to
-        // send in the email. Any unselected data will be sent as "*".
-       localItem = [self checkUserSelectedPatientData:item];
+        
         
         formattedDateString = [formattedDateString stringByReplacingOccurrencesOfString:@"," withString:@";"];
         _tempBody = [NSString stringWithFormat:@"First name :%@, @Middle name :%@, @Last Name %@, Contact date/time: %@, Venue: %@, Event: %@\n",
@@ -433,9 +477,53 @@ typedef NS_ENUM(int, row){
     NSNumber *number;
     NSNumber *number1;
     number = [NSNumber numberWithBool: myValue];
-    number1 = self.checkedArray[0];
+    number1 = self.checkedArray[first_name];
     if(number1 == number){
-        item.firstName = @"*";
+        item.firstName = @"******";
+    }
+    number1 = self.checkedArray[middle_name];
+    if(number1 == number){
+        item.middleName = @"*****";
+    }
+    number1 = self.checkedArray[last_name];
+    if(number1 == number){
+        item.lastName = @"*******";
+    }
+    number1 = self.checkedArray[date_of_birth];
+    if(number1 == number){
+        item.dateOfBirth = @"********";
+    }
+    number1 = self.checkedArray[gender];
+    if(number1 == number){
+        item.gender = @"**";
+    }
+    number1 = self.checkedArray[street_address];
+    if(number1 == number){
+        item.streetAddress = @"***********************";
+    }
+    number1 = self.checkedArray[city];
+    if(number1 == number){
+        item.cityAddress = @"******************";
+    }
+    number1 = self.checkedArray[state];
+    if(number1 == number){
+        item.stateAddress = @"**";
+    }
+    number1 = self.checkedArray[zipcode];
+    if(number1 == number){
+        item.zipCode = @"*****";
+    }
+    number1 = self.checkedArray[phone];
+    if(number1 == number){
+        item.phoneNumber = @"**********";
+    }
+    number1 = self.checkedArray[venue];
+    if(number1 == number){
+        item.venue = @"*******";
+    }
+    number1 = self.checkedArray[name_of_event];
+    if(number1 == number){
+        item.event = @"********";
     }
     return item;
 }

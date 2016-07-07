@@ -11,7 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "patientItemStore.h"
 #import "PurchaseViewController.h"
-
+#import "NRCEmailTableViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -128,7 +128,12 @@
     
     NRCTableViewController *vc = [[NRCTableViewController alloc]init];
     
-    
+    BOOL userSelectedPatientDataSaved = [vc saveUserSelectedPatientData];
+    if(userSelectedPatientDataSaved) {
+        NSLog(@"Saved user selected patient data");
+    }else{
+        NSLog(@"Could not save user selected patient data");
+    }
     
     BOOL itWorked =[vc savePassword];
     if(itWorked){
@@ -151,6 +156,7 @@
     } else {
         NSLog(@"Could not save any of the Items");
     }
+    
     
 }
 - (void)registerDefaultsFromSettingsBundle

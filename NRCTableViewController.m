@@ -377,6 +377,7 @@ AVAudioPlayer *_audioPlayer2;
 -(void)playCheckout{
     [_audioPlayer2 play];
 }
+#
 - (instancetype)init
 {
     self = [super initWithStyle:UITableViewStylePlain];
@@ -386,6 +387,20 @@ AVAudioPlayer *_audioPlayer2;
     [nc addObserver:self selector:@selector(applicationBecameActive) name:UIApplicationDidBecomeActiveNotification  object:nil];
     
     return self;
+}
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _checkedArray = [aDecoder decodeObjectForKey:@"checkedArray"];
+    }
+    return self;
+}
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.checkedArray forKey:@"checkedArray"];
+    
 }
 #pragma mark - viewDidLoad
 - (void)viewDidLoad {
@@ -437,6 +452,22 @@ AVAudioPlayer *_audioPlayer2;
     
     self.taskCategories = [[NSMutableArray alloc]init];
     self.currentCategory =[[NSIndexPath alloc]init];
+    
+    // set up array to hold user selected patient items in email view Controller
+    _checkedArray = [NSMutableArray arrayWithObjects:
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO],
+                     [NSNumber numberWithBool:NO], nil];
+    
     
     // Construct URL to sound file
     NSString *path = [NSString stringWithFormat:@"%@/Beep-short.mp3", [[NSBundle mainBundle] resourcePath]];
@@ -1340,6 +1371,7 @@ AVAudioPlayer *_audioPlayer2;
             break;
     }
 }
+#pragma - MARK archive all the data
 //save the entered password.
 -(BOOL)savePassword
 {
@@ -1367,6 +1399,19 @@ AVAudioPlayer *_audioPlayer2;
     NSString *documentDirectory = [documentDirectories firstObject];
     return [documentDirectory stringByAppendingPathComponent:@"providerID.archive"];
 }
+
+-(BOOL)saveUserSelectedPatientData{
+    NSString *path = [self checkedArrayArchivePath];
+    
+    return [NSKeyedArchiver archiveRootObject:self.checkedArray toFile:path];
+}
+-(NSString *)checkedArrayArchivePath
+{
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [documentDirectories firstObject];
+    return [documentDirectory stringByAppendingPathComponent:@"checkedArray.archive"];
+}
+
 #pragma mark prepareForeSegues
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -1413,6 +1458,7 @@ AVAudioPlayer *_audioPlayer2;
     if([segue.identifier isEqualToString:@"toEmail"]){
         NRCEmailTableViewController *destViewController = segue.destinationViewController;
         destViewController.patients = self.patients;
+        destViewController.checkedArray = self.checkedArray;
     }
 }
 # pragma mark unwind segues
@@ -1431,7 +1477,7 @@ AVAudioPlayer *_audioPlayer2;
 }
 -(IBAction)unwindFromEmailViewController:(UIStoryboardSegue *)segue{
     NRCEmailTableViewController *sourceViewController = segue.sourceViewController;
-    
+    self.checkedArray = sourceViewController.checkedArray;
 }
 
 -(IBAction)unwindFromListController:(UIStoryboardSegue *)segue{

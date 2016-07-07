@@ -78,11 +78,13 @@
 @property (strong,nonatomic) NSMutableArray *patients;
 @property assessmentItem *assessmentItem;
 @property (nonatomic) NSMutableArray *assessments;
+@property (nonatomic) NSMutableArray *checkedArray;
 -(void)enterDate;
 
 -(void)applicationBecameActive;
 -(BOOL)savePassword;
 -(BOOL)saveProviderID;
+-(BOOL)saveUserSelectedPatientData;
 -(void)playBeep1;
 -(void)playBeep2;
 -(void)playCheckout;

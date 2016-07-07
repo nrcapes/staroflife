@@ -42,14 +42,14 @@
 @property (nonatomic) BOOL centralAdminActivated;
 @property (nonatomic) BOOL centralAdmin;
 @property UITextView * textView;
-
+@property NSMutableArray *checkedArray;
 @property (strong, nonatomic)NSString *emailAddress;
 @property (strong, nonatomic) NSArray *toRecipients;
 @property (strong,nonatomic) NSString *tempBody;
 @property (strong, nonatomic) NSString *messageBody;
 @property (strong, nonatomic) NSMutableArray *assessmentsForEmail;
+-(BOOL)saveUserSelectedPatientData;
 
--(IBAction)textFieldFinished:(id)sender;
 -(patientItem *)checkUserSelectedPatientData:(patientItem *)item;
 @property (nonatomic) BOOL myValue;
 
