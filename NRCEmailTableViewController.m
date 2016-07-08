@@ -428,31 +428,51 @@ typedef NS_ENUM(int, row){
     [dateFormatter setLocale:usLocale];
     _messageBody =@"";
     // loop through all patients, building CSV string
-    for(patientItem *item in self.patients)
+    // first, we have to do "deep copying" on the patients array. If we just do: NSMutableArray * localPatients = self.patients,
+    // the two arrays will be identical with identical memory addresssesm
+    // so any changes we make to localPatients will also change self.patients. We don't want this.
+    //
+    // we also can't do: NSMutableArray * localPatients = [self.patients copy].
+    // Then the two arrays would be at different addresses but the items in the array would point to the same addresses, so again anything we do
+    // to the localPatients properties will change those of self.patients.
+    // The following technique implements "deep copying" so that each of the
+    // properties of localPatients, i.e. patientItem's, will be at completely different memory addresses, so we can change localItems
+    // without making any changes to self.patients.
+    
+    NSMutableArray *localPatients;
+    NSData *buffer;
+    buffer = [NSKeyedArchiver archivedDataWithRootObject: self.patients];
+    localPatients = [NSKeyedUnarchiver unarchiveObjectWithData: buffer];
+    
+    
+    
+    
+    for(patientItem *item in localPatients)
     {
-        patientItem * localItem;
+        self.localItem = item;
+        
         // this method call checks the data that the user has selected to
         // send in the email. Any unselected data will be sent as "*".
-        localItem = [self checkUserSelectedPatientData:localItem];
+        [self checkUserSelectedPatientData:self.localItem];
         
         _tempBody = [NSString stringWithFormat:@"\nProvider ID: %@\n",
-                     localItem.providerID];
+                     self.localItem.providerID];
         _messageBody = [_messageBody stringByAppendingString:_tempBody];
         // first, put the patient's full name and contact time into the email message body.
         // replace any commas in contact time with semicolon to keep CSV from splitting date/time
         
-        NSString *formattedDateString = [dateFormatter stringFromDate:localItem.contactTime];
+        NSString *formattedDateString = [dateFormatter stringFromDate:self.localItem.contactTime];
         
         
         
         formattedDateString = [formattedDateString stringByReplacingOccurrencesOfString:@"," withString:@";"];
         _tempBody = [NSString stringWithFormat:@"First name :%@, @Middle name :%@, @Last Name %@, Contact date/time: %@, Venue: %@, Event: %@\n",
-                     localItem.firstName, localItem.middleName, localItem.lastName,
+                     self.localItem.firstName, self.localItem.middleName, self.localItem.lastName,
                      formattedDateString,
-                     localItem.venue, localItem.event
+                     self.localItem.venue, self.localItem.event
                      ];
         _messageBody = [_messageBody stringByAppendingString:_tempBody];
-        _tempBody = [NSString stringWithFormat:@"DOB: %@, Gender: %@, Address: %@, City: %@, State: %@, Zip: %@, Phone: %@,\n", localItem.dateOfBirth, localItem.gender, localItem.streetAddress, localItem.cityAddress, localItem.stateAddress, localItem.zipCode, localItem.phoneNumber];
+        _tempBody = [NSString stringWithFormat:@"DOB: %@, Gender: %@, Address: %@, City: %@, State: %@, Zip: %@, Phone: %@,\n", self.localItem.dateOfBirth, self.localItem.gender, self.localItem.streetAddress, self.localItem.cityAddress, self.localItem.stateAddress, self.localItem.zipCode, self.localItem.phoneNumber];
         _messageBody = [_messageBody stringByAppendingString:_tempBody];
         
         
@@ -472,7 +492,7 @@ typedef NS_ENUM(int, row){
         }
     }
 }
--(patientItem *)checkUserSelectedPatientData:(patientItem *)item{
+-(void)checkUserSelectedPatientData:(patientItem *)item{
     BOOL myValue = 0;
     NSNumber *number;
     NSNumber *number1;
@@ -525,7 +545,7 @@ typedef NS_ENUM(int, row){
     if(number1 == number){
         item.event = @"********";
     }
-    return item;
+   // return item;
 }
 /*
 // Override to support conditional editing of the table view.

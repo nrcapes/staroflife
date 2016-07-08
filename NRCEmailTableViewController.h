@@ -37,7 +37,7 @@
 @property NSString *venue;
 @property NSString *event;
 @property (nonatomic) patientItem *item;
-@property (nonatomic) NSMutableArray *patients;
+@property (nonatomic, copy) NSMutableArray *patients;
 @property (nonatomic) NSMutableArray *assessments;
 @property (nonatomic) BOOL centralAdminActivated;
 @property (nonatomic) BOOL centralAdmin;
@@ -49,8 +49,8 @@
 @property (strong, nonatomic) NSString *messageBody;
 @property (strong, nonatomic) NSMutableArray *assessmentsForEmail;
 -(BOOL)saveUserSelectedPatientData;
-
--(patientItem *)checkUserSelectedPatientData:(patientItem *)item;
+@property patientItem *localItem;
+-(void)checkUserSelectedPatientData:(patientItem *)item;
 @property (nonatomic) BOOL myValue;
 
 @end
