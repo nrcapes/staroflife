@@ -316,17 +316,14 @@ typedef NS_ENUM(int, row){
 #pragma  mark - emailData
 // handles all emailing of data
 - (IBAction)emailData:(id)sender {
-    iapstore *store = [iapstore getInstance];
-    self.iapdata = [store getData];
-    NSNumber *n1 = [self.iapdata objectAtIndex:0];
-    NSNumber *n2 = [self.iapdata objectAtIndex:1];
-    self.centralAdminActivated = [n1 boolValue];
-    self.centralAdminSelected = [n2 boolValue];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.emailActivated = [defaults boolForKey:@"email_unlocked"];
+
     
-    self.centralAdminActivated = YES;
+    //self.emailActivated = YES;
      self.centralAdmin = [[defaults valueForKey:@"centralAdmin"]boolValue];
-    if(self.centralAdminActivated == NO){
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Email Unavailable" message:@"The email feature is only available with the Central Administration Upgrade" preferredStyle:UIAlertControllerStyleAlert];
+    if(self.emailActivated == NO){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Email Unavailable" message:@"The email feature is only available with the Unlimited Emails Upgrade" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Press any key to continue." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
             
         }];
@@ -446,20 +443,16 @@ typedef NS_ENUM(int, row){
     
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.numberOfEmailsSent = [defaults valueForKey:@"emailsSent"];
-    
-    
-    int value = [self.numberOfEmailsSent intValue];
-    self.numberOfEmailsSent = [NSNumber numberWithInt:value + 1];
-    [defaults setValue:self.numberOfEmailsSent forKey:@"emailsSent"];
-    
-    
-    NSLog(@"Emails sent = %@", self.numberOfEmailsSent);
-    if(self.numberOfEmailsSent == self.maxEmails){
-        [defaults setBool:YES forKey:@"maximumEmailsExceeded"];
+    if(![defaults boolForKey:@"emailUnlocked"]){
+        self.numberOfEmailsSent = [defaults valueForKey:@"emailsSent"];
+        int value = [self.numberOfEmailsSent intValue];
+        self.numberOfEmailsSent = [NSNumber numberWithInt:value + 1];
+        [defaults setValue:self.numberOfEmailsSent forKey:@"emailsSent"];
+        NSLog(@"Emails sent = %@", self.numberOfEmailsSent);
+        if(self.numberOfEmailsSent == self.maxEmails){
+            [defaults setBool:YES forKey:@"maximumEmailsExceeded"];
+        }
     }
-
-    
 }
 #pragma mark - buildEmail
 -(void)buildEmail{

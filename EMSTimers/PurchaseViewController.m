@@ -65,7 +65,7 @@
 {
     //self.homeViewController = viewController;
     
-    NSArray *productIDArray = [[NSArray alloc]initWithObjects:@"com.nelsoncapes.emstimerspro.centraladministration", nil];
+    NSArray *productIDArray = [[NSArray alloc]initWithObjects:@"com.nelsoncapes.emstimerspro3.emailunlock", nil];
     
     if ([SKPaymentQueue canMakePayments])
     {
@@ -96,7 +96,7 @@
     if (self.products.count != 0)
     {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Purchase Products" message:@"Which product do you want to purchase or restore?" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* centralAdmin = [UIAlertAction actionWithTitle:@"Central Administration" style:UIAlertActionStyleDefault
+        UIAlertAction* centralAdmin = [UIAlertAction actionWithTitle:@"Unlimited emails" style:UIAlertActionStyleDefault
                                                              handler:^(UIAlertAction * action) {
                                                                  
                                                                  _product = [self.products objectAtIndex:0];
@@ -117,7 +117,7 @@
                                                                      self.productDict = [[NSMutableDictionary alloc]init];
                                                                  }
                                                                  
-                                                                 [self.productDict setValue:self.payment.productIdentifier  forKey:@"centAdmin"];
+                                                                 [self.productDict setValue:self.payment.productIdentifier  forKey:@"unlockEmail"];
                                                                  NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
                                                                  [storage setObject:self.productDict forKey:@"productDict"];
                                                                  [storage synchronize];
@@ -254,14 +254,14 @@
     */
     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
     self.productDict = [storage objectForKey:@"productDict"];
-    NSString *productId1 = [self.productDict objectForKey:@"centAdmin"];
+    NSString *productId1 = [self.productDict objectForKey:@"unlockEmail"];
     SKPayment *payment = self.transaction.payment;
 
     NSString *productId2 = payment.productIdentifier;
     
     if([productId1 isEqual:productId2]){
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-        [storage setBool:YES forKey:@"centralAdmin_unlocked"];
+        [storage setBool:YES forKey:@"email_unlocked"];
         [storage synchronize];
     }else{
             NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];

@@ -39,7 +39,7 @@
 @property (nonatomic) patientItem *item;
 @property (nonatomic, copy) NSMutableArray *patients;
 @property (nonatomic) NSMutableArray *assessments;
-@property (nonatomic) BOOL centralAdminActivated;
+@property (nonatomic) BOOL emailActivated;
 @property (nonatomic) BOOL centralAdmin;
 @property UITextView * textView;
 @property NSMutableArray *checkedArray;

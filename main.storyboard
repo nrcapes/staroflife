@@ -40,6 +40,12 @@
                                         <action selector="displayData:" destination="Htf-Q0-Vo4" id="4tQ-aQ-ZbJ"/>
                                     </connections>
                                 </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="jPw-7j-GBy"/>
+                                <barButtonItem title="Upgrade" id="VOg-uS-Aus">
+                                    <connections>
+                                        <action selector="purchaseItem:" destination="Htf-Q0-Vo4" id="4MK-J3-gng"/>
+                                    </connections>
+                                </barButtonItem>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="KWG-IH-f6Q"/>
                                 <barButtonItem title="Email" id="tmG-ge-04A">
                                     <connections>
