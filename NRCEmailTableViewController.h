@@ -48,9 +48,11 @@
 @property (strong,nonatomic) NSString *tempBody;
 @property (strong, nonatomic) NSString *messageBody;
 @property (strong, nonatomic) NSMutableArray *assessmentsForEmail;
--(BOOL)saveUserSelectedPatientData;
+@property NSNumber *numberOfEmailsSent;
+@property NSNumber *maxEmails;
 @property patientItem *localItem;
 -(void)checkUserSelectedPatientData:(patientItem *)item;
 @property (nonatomic) BOOL myValue;
-
+@property NSArray *iapdata;
+@property BOOL centralAdminSelected;
 @end

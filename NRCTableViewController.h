@@ -68,9 +68,8 @@
 @property(strong, nonatomic) NSIndexPath *path;
 @property (strong, nonatomic) NSString *password;
 @property (nonatomic) BOOL passwordEntered;
-// ********************changed 9/30/05
-// these properties are needed for exclusive selection of timer type in didSelectRowForIndexPath
 @property NSInteger prev;
+@property NSInteger numberofEmailsSent;
 @property NSMutableArray *taskCategories;
 @property NSIndexPath *currentCategory;
 @property (nonatomic, strong) patientItem *patientItem;

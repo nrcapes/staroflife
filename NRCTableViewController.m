@@ -408,8 +408,12 @@ AVAudioPlayer *_audioPlayer2;
     
     
     self.isAuthenticated = NO;
+// to allow for in app purchase upgrade to unlimited emails, in the non-
+    // upgraded object we count the number of emails sent.
     
-    
+    self.numberofEmailsSent = 0;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:0 forKey:@"emailsSent"];
     
     [self splashScreen];
     
@@ -493,7 +497,7 @@ AVAudioPlayer *_audioPlayer2;
     
     //self.centralAdminActivated = NO;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
     self.centralAdmin = [[defaults valueForKey:@"centralAdmin_unlocked"]boolValue];
     self.centralURL = [defaults valueForKey:@"centralURL"];
 
