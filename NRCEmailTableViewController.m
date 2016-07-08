@@ -433,7 +433,7 @@ typedef NS_ENUM(int, row){
         patientItem * localItem;
         // this method call checks the data that the user has selected to
         // send in the email. Any unselected data will be sent as "*".
-        localItem = [self checkUserSelectedPatientData:item];
+        localItem = [self checkUserSelectedPatientData:localItem];
         
         _tempBody = [NSString stringWithFormat:@"\nProvider ID: %@\n",
                      localItem.providerID];
