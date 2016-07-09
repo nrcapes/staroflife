@@ -36,6 +36,7 @@
 		525302671C727A7200D4414E /* Beeping-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 525302651C727A7200D4414E /* Beeping-sound.mp3 */; };
 		525A22B41C24A4E4006021C2 /* EMSTimers WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 525025571C249FFC0047DA16 /* EMSTimers WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		525A22B71C24A4E4006021C2 /* EMSTimers WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 525025691C249FFC0047DA16 /* EMSTimers WatchKit App.app */; };
+		525D33811D3197E700862C26 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D33801D3197E700862C26 /* StoreKit.framework */; };
 		5260B5081C5BCBB800ACC837 /* NRCPasscodeControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5260B5061C5BCBB800ACC837 /* NRCPasscodeControllerViewController.m */; };
 		526290A41C26083100289F2A /* NRCInterfaceController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A31C26083100289F2A /* NRCInterfaceController2.m */; };
 		526290A61C26083100289F2A /* NRCInterfaceController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A31C26083100289F2A /* NRCInterfaceController2.m */; };
@@ -179,6 +180,7 @@
 		5251FCAC1C73C6D700E819FF /* NRCMedHistItemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCMedHistItemTableViewController.m; sourceTree = "<group>"; };
 		525302641C727A7200D4414E /* Beep-short.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Beep-short.mp3"; sourceTree = "<group>"; };
 		525302651C727A7200D4414E /* Beeping-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Beeping-sound.mp3"; sourceTree = "<group>"; };
+		525D33801D3197E700862C26 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		5260B5051C5BCBB800ACC837 /* NRCPasscodeControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCPasscodeControllerViewController.h; sourceTree = "<group>"; };
 		5260B5061C5BCBB800ACC837 /* NRCPasscodeControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCPasscodeControllerViewController.m; sourceTree = "<group>"; };
 		526290A21C26083100289F2A /* NRCInterfaceController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRCInterfaceController2.h; path = "../EMSTimers WatchKit 1 App/NRCInterfaceController2.h"; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			files = (
 				52DD282E1C92798200F036AE /* UIKit.framework in Frameworks */,
 				52DD282C1C92796100F036AE /* CoreGraphics.framework in Frameworks */,
+				525D33811D3197E700862C26 /* StoreKit.framework in Frameworks */,
 				52DD282A1C92794200F036AE /* project.pbxproj in Frameworks */,
 				529415371C3F688200D790E1 /* AVFoundation.framework in Frameworks */,
 			);
@@ -399,6 +402,7 @@
 		5246835E1BEAAC430086213B = {
 			isa = PBXGroup;
 			children = (
+				525D33801D3197E700862C26 /* StoreKit.framework */,
 				52E5039C1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift */,
 				52F88E601D0A01DB003600B0 /* Main.storyboard */,
 				526C3CA31D2B1CD0003A1322 /* NRCEmailTableViewController.m */,
@@ -626,7 +630,7 @@
 								enabled = 0;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.iCloud = {
 								enabled = 0;

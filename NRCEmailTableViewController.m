@@ -443,7 +443,7 @@ typedef NS_ENUM(int, row){
     
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if(![defaults boolForKey:@"emailUnlocked"]){
+    if(![defaults boolForKey:@"email_unlocked"]){
         self.numberOfEmailsSent = [defaults valueForKey:@"emailsSent"];
         int value = [self.numberOfEmailsSent intValue];
         self.numberOfEmailsSent = [NSNumber numberWithInt:value + 1];

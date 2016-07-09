@@ -65,7 +65,7 @@
 {
     //self.homeViewController = viewController;
     
-    NSArray *productIDArray = [[NSArray alloc]initWithObjects:@"com.nelsoncapes.emstimerspro3.emailunlock", nil];
+    NSArray *productIDArray = [[NSArray alloc]initWithObjects:@"com.nelsoncapes.emstimerspro.emailunlock", nil];
     
     if ([SKPaymentQueue canMakePayments])
     {
@@ -117,7 +117,7 @@
                                                                      self.productDict = [[NSMutableDictionary alloc]init];
                                                                  }
                                                                  
-                                                                 [self.productDict setValue:self.payment.productIdentifier  forKey:@"unlockEmail"];
+                                                                 [self.productDict setValue:self.payment.productIdentifier  forKey:@"com.nelsoncapes.emstimerspro.emailunlock"];
                                                                  NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
                                                                  [storage setObject:self.productDict forKey:@"productDict"];
                                                                  [storage synchronize];
@@ -254,7 +254,7 @@
     */
     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
     self.productDict = [storage objectForKey:@"productDict"];
-    NSString *productId1 = [self.productDict objectForKey:@"unlockEmail"];
+    NSString *productId1 = [self.productDict objectForKey:@"com.nelsoncapes.emstimerspro.emailunlock"];
     SKPayment *payment = self.transaction.payment;
 
     NSString *productId2 = payment.productIdentifier;
