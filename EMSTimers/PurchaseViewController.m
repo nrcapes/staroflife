@@ -262,10 +262,12 @@
     if([productId1 isEqual:productId2]){
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
         [storage setBool:YES forKey:@"email_unlocked"];
+        [storage setBool:NO forKey:@"maximumEmailsExceeded"];
         [storage synchronize];
     }else{
             NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
             [storage setBool:YES forKey:@"iCloudSupport_unlocked"];
+        
             [storage synchronize];
         }
         
