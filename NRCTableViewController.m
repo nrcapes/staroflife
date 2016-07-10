@@ -341,7 +341,11 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([defaults boolForKey:@"firstTimeDidAppear"] == YES){
     [self showLoginView];
+    [defaults setBool:NO forKey:@"firstTimeDidAppear"];
+    }
 }
 
 #pragma mark application became active

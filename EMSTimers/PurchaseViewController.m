@@ -265,10 +265,7 @@
         [storage setBool:NO forKey:@"maximumEmailsExceeded"];
         [storage synchronize];
     }else{
-            NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-            [storage setBool:YES forKey:@"iCloudSupport_unlocked"];
-        
-            [storage synchronize];
+        // here would be support for other in app purchases.
         }
         
     

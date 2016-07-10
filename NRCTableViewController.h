@@ -105,4 +105,5 @@
 -(IBAction)centralAdminButtonIndicator:(id)sender;
 @property BOOL isAuthenticated;
 @property BOOL didReturnFromBackground;
+
 @end
