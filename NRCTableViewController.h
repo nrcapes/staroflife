@@ -88,8 +88,8 @@
 -(void)playBeep2;
 -(void)playCheckout;
 -(void)splashScreen;
--(void)checkProviderID;
--(void)getinAppPurchases;
+
+
 - (IBAction)purchaseItem:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *level2Button;
 @property (strong, nonatomic) PurchaseViewController *purchaseController;
