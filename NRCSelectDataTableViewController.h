@@ -36,4 +36,6 @@
 @property NSArray *iapdata;
 @property BOOL centralAdminActivated;
 @property BOOL centralAdminSelected;
+@property (strong, nonatomic) NSIndexPath *selectedPath;
+@property NSData *savedPath;
 @end

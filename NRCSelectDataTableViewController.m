@@ -42,36 +42,10 @@
     self.moinoi = [self.jsonData objectForKey:@"moinoi"];
     self.moinoiSorted =[self.moinoi sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
     self.moinoiKeys = [[NSArray alloc]init];
-    /*
-    // if central administration is not available, alert the user.
     
-    iapstore *store1 = [iapstore getInstance];
-    self.iapdata = [store1 getData];
-    NSNumber *number = [self.iapdata objectForKey:@"central_admin_enabled"];
-    NSLog(@"enablePurchase store data: %@", number);
-    
-    self.centralAdminActivated = [number boolValue];
-     
-    
-   NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-    
-    self.centralAdminActivated = [storage boolForKey:@"centralAdmin_unlocked"];
-    if(self.centralAdminActivated == NO){
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Data Select is Unavailable" message:@"The Data Select feature is only available with the Central Administration Upgrade" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Press any key to continue." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
-            [self dismissViewControllerAnimated:YES completion:nil];
-        }];
-        [alert addAction:ok];
-        [self presentViewController:alert animated:YES completion:nil// Email Subject
-         ];
-    }
-*/
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self scrollToLastSelectedRow];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -241,6 +215,8 @@
 -(void)tableView: (UITableView *) tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];{
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        self.selectedPath = indexPath;
+        [self saveSelectedRow];
         if(self.centralAdminActivated == YES){
         self.selectedItem = cell.detailTextLabel.text;
         }else{
@@ -248,10 +224,24 @@
         }
         
         [self performSegueWithIdentifier:@"unwindToMedHistItem" sender:self];
-
-    }
+        }
+    
 }
+-(void)scrollToLastSelectedRow{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.savedPath = [defaults objectForKey:@"lastSelectedRow"];
+    if(self.savedPath){
+        self.selectedPath = [NSKeyedUnarchiver unarchiveObjectWithData:self.savedPath];
+        [self.tableView scrollToRowAtIndexPath:self.selectedPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
+    }
 
+-(void)saveSelectedRow{
+    if(self.selectedPath){
+        self.savedPath = [NSKeyedArchiver archivedDataWithRootObject: self.selectedPath];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:self.savedPath forKey:@"lastSelectedRow"];
+    }}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

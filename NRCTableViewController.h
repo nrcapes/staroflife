@@ -105,5 +105,8 @@
 -(IBAction)centralAdminButtonIndicator:(id)sender;
 @property BOOL isAuthenticated;
 @property BOOL didReturnFromBackground;
+@property NSIndexPath *selectedPath;
+@property NSData *savedPath;
+
 
 @end

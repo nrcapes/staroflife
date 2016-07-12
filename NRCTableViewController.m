@@ -1007,9 +1007,17 @@ AVAudioPlayer *_audioPlayer2;
     
     [self playCheckout];
     
+    self.selectedPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self saveSelectedRow];
+    
     [self presentViewController:alert animated:YES completion:nil];
 }
-                         
+-(void)saveSelectedRow{
+    if(self.selectedPath){
+        self.savedPath = [NSKeyedArchiver archivedDataWithRootObject: self.selectedPath];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:self.savedPath forKey:@"lastSelectedRow"];
+    }}
 // the main method for handling all timer expirations.
 -(void)calculateTimer:(NSTimer *)theTimer
 {
