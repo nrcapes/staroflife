@@ -41,6 +41,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [self getProductInfo];
+    [super viewWillAppear:animated];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
