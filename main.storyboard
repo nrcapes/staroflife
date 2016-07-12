@@ -35,23 +35,23 @@
                             <rect key="frame" x="0.0" y="192" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
-                                <barButtonItem title="Show Data" width="92" id="WfG-fB-XXG">
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="P9W-lh-uNF"/>
+                                <barButtonItem title="Show Data" width="100" id="WfG-fB-XXG">
                                     <connections>
                                         <action selector="displayData:" destination="Htf-Q0-Vo4" id="4tQ-aQ-ZbJ"/>
                                     </connections>
                                 </barButtonItem>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="jPw-7j-GBy"/>
-                                <barButtonItem title="Upgrade" id="VOg-uS-Aus">
+                                <barButtonItem title="Upgrade" width="100" id="VOg-uS-Aus">
                                     <connections>
                                         <action selector="purchaseItem:" destination="Htf-Q0-Vo4" id="4MK-J3-gng"/>
                                     </connections>
                                 </barButtonItem>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="KWG-IH-f6Q"/>
-                                <barButtonItem title="Email" id="tmG-ge-04A">
+                                <barButtonItem title="Email" width="100" id="tmG-ge-04A">
                                     <connections>
                                         <segue destination="5kz-bJ-AMf" kind="show" identifier="toEmail" id="vjB-Og-zTj"/>
                                     </connections>
                                 </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="GQX-hY-byR"/>
                             </items>
                         </toolbar>
                         <prototypes>
@@ -143,6 +143,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.27273988723754883" green="0.65312302112579346" blue="0.68095874786376953" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>

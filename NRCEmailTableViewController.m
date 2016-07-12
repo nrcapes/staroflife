@@ -133,7 +133,7 @@ typedef NS_ENUM(int, row){
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault
                                                   reuseIdentifier:@"emailSelectionCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    cell.backgroundColor = [UIColor colorWithRed:0.0f/255 green:125.0f/255 blue:150.0f/255 alpha:0.6f];
     [_taskCategories addObject:indexPath];
    
     // Configure the cell...
