@@ -4,7 +4,8 @@
 //
 //
 //  Created by Nelson Capes on 01/03/2016.
-//  Copyright © 2015 Nelson Capes. All rights reserved.
+//  Version 6 07/12/2016.
+//  Copyright © 2015, 2016 Nelson Capes. All rights reserved.
 /*
 // This is the initial view controller in the project. It consists of a tableView with tableViewCells in one section with the
 // number of rows equal to the number of labels in the self.labels NSMutableArray. Each tableViewCell is a standard UITableViewCell and is
@@ -26,13 +27,13 @@
 // when enterContact is called, if the user agrees, the enterPatientData method is called. This calls the patientItemStore to create a
 // new patientItem. We then segue to the patient data table controller to allow patient biographic information to be entered.
  //
- // Toolbar buttons are: Display Data, Email, Assess.
+ // Toolbar buttons are: Display Data, Email, Upgrade.
  
  //
- // Display Data button will display Patient Contact Times, further clicking will show Assessments, then clicking on Assessment List will show each assessment, and clicking on
+ // Display Data button will display Patient Contact Times, further clicking will show Assess, Assessments, then clicking on Assessment List will show each assessment, and clicking on
  // Medical History button will show detailed medical history for that assessment.
  
- // Assess button lets the user enter an assessment.
+ // Upgrade button lets the user enter an in app purchase.
  
  // Email button creates an email with a body consisting of CSV fields according to the following:
  
