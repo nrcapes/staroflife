@@ -1308,7 +1308,7 @@ AVAudioPlayer *_audioPlayer2;
     if([segue.identifier isEqualToString:@"presentLogin"]){
         NSLog(@"segue presentLogin");
     }
-    if([segue.identifier isEqualToString:@"toEmail"]){
+    if([segue.identifier isEqualToString:@"toTransmit"]){
         NRCEmailTableViewController *destViewController = segue.destinationViewController;
         destViewController.patients = self.patients;
         destViewController.checkedArray = self.checkedArray;
@@ -1328,7 +1328,7 @@ AVAudioPlayer *_audioPlayer2;
     // item was added.  Go check to see whether it needs to be written to iCloud
     [self itemAdded];
 }
--(IBAction)unwindFromEmailViewController:(UIStoryboardSegue *)segue{
+-(IBAction)unwindFromTransmitViewController:(UIStoryboardSegue *)segue{
     NRCEmailTableViewController *sourceViewController = segue.sourceViewController;
     self.checkedArray = sourceViewController.checkedArray;
 }
