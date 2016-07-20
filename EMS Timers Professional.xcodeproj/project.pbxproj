@@ -19,6 +19,7 @@
 		521A678C1C63FD97008D3E71 /* NRCPasscodeController2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 521A678A1C63FD97008D3E71 /* NRCPasscodeController2ViewController.m */; };
 		521B85641CD54BBC0044D4FF /* Add Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B85631CD54BBC0044D4FF /* Add Patient.swift */; };
 		52208E441BEAE06D00A2DF93 /* star-of-life.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 52208E431BEAE06D00A2DF93 /* star-of-life.jpeg */; };
+		5230B0FA1D3FE4750098D7FB /* NRCTransmitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5230B0F91D3FE4750098D7FB /* NRCTransmitTableViewController.swift */; };
 		5237938C1CD51E3900265063 /* Display Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5237938B1CD51E3900265063 /* Display Data.swift */; };
 		5244AA3C1CA45DB6004F8849 /* NRCPasscodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5244AA3B1CA45DB6004F8849 /* NRCPasscodeViewController.xib */; };
 		5246836C1BEAAC430086213B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5246836B1BEAAC430086213B /* main.m */; };
@@ -74,7 +75,6 @@
 		52DD282A1C92794200F036AE /* project.pbxproj in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DD28291C92794200F036AE /* project.pbxproj */; };
 		52DD282C1C92796100F036AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DD282B1C92796100F036AE /* CoreGraphics.framework */; };
 		52DD282E1C92798200F036AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DD282D1C92798200F036AE /* UIKit.framework */; };
-		52E5039B1D0E546B00A1B109 /* NRCPasswordReset.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E5039A1D0E546B00A1B109 /* NRCPasswordReset.m */; };
 		52E5039D1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E5039C1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift */; };
 		52ED66321C26003C00BFFCD5 /* NRCInterfaceController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ED66311C26003C00BFFCD5 /* NRCInterfaceController1.m */; };
 		52ED66341C26003C00BFFCD5 /* NRCInterfaceController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ED66311C26003C00BFFCD5 /* NRCInterfaceController1.m */; };
@@ -150,6 +150,7 @@
 		521A678B1C63FD97008D3E71 /* NRCPasscodeController2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCPasscodeController2ViewController.h; sourceTree = "<group>"; };
 		521B85631CD54BBC0044D4FF /* Add Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Patient.swift"; sourceTree = "<group>"; };
 		52208E431BEAE06D00A2DF93 /* star-of-life.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "star-of-life.jpeg"; sourceTree = "<group>"; };
+		5230B0F91D3FE4750098D7FB /* NRCTransmitTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRCTransmitTableViewController.swift; sourceTree = "<group>"; };
 		5237938B1CD51E3900265063 /* Display Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Display Data.swift"; sourceTree = "<group>"; };
 		5244AA371CA328BF004F8849 /* NRCPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRCPasscodeViewController.h; path = "../Downloads/Passcode-master/NRCPasscodeViewController.h"; sourceTree = "<group>"; };
 		5244AA3B1CA45DB6004F8849 /* NRCPasscodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NRCPasscodeViewController.xib; sourceTree = "<group>"; };
@@ -236,8 +237,6 @@
 		52DD28291C92794200F036AE /* project.pbxproj */ = {isa = PBXFileReference; lastKnownFileType = text.pbxproject; name = project.pbxproj; path = "EMS Timers Professional.xcodeproj/project.pbxproj"; sourceTree = "<group>"; };
 		52DD282B1C92796100F036AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		52DD282D1C92798200F036AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		52E503991D0E546B00A1B109 /* NRCPasswordReset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCPasswordReset.h; sourceTree = "<group>"; };
-		52E5039A1D0E546B00A1B109 /* NRCPasswordReset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCPasswordReset.m; sourceTree = "<group>"; };
 		52E5039C1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRCResetPasswordViewController.swift; sourceTree = "<group>"; };
 		52ED66301C26003C00BFFCD5 /* NRCInterfaceController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRCInterfaceController1.h; path = ../NRCInterfaceController1.h; sourceTree = "<group>"; };
 		52ED66311C26003C00BFFCD5 /* NRCInterfaceController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRCInterfaceController1.m; path = ../NRCInterfaceController1.m; sourceTree = "<group>"; };
@@ -319,6 +318,7 @@
 		52115FA31C78D4E1002A05B2 /* Passcode controllers */ = {
 			isa = PBXGroup;
 			children = (
+				52E5039C1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift */,
 				5260B5051C5BCBB800ACC837 /* NRCPasscodeControllerViewController.h */,
 				5260B5061C5BCBB800ACC837 /* NRCPasscodeControllerViewController.m */,
 				529EC4ED1CB9AAB4006DE53F /* NRCPasscodeViewController.m */,
@@ -380,6 +380,15 @@
 			name = "Medical History Item Controllers";
 			sourceTree = "<group>";
 		};
+		5230B0FB1D3FE6140098D7FB /* Swift controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5273238C1D090518003CA93B /* NRCLoginViewController.swift */,
+				5230B0F91D3FE4750098D7FB /* NRCTransmitTableViewController.swift */,
+			);
+			name = "Swift controllers";
+			sourceTree = "<group>";
+		};
 		523793891CD51DE900265063 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,13 +412,10 @@
 			isa = PBXGroup;
 			children = (
 				525D33801D3197E700862C26 /* StoreKit.framework */,
-				52E5039C1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift */,
 				52F88E601D0A01DB003600B0 /* Main.storyboard */,
+				5230B0FB1D3FE6140098D7FB /* Swift controllers */,
 				526C3CA31D2B1CD0003A1322 /* NRCEmailTableViewController.m */,
 				526C3CA41D2B1CD0003A1322 /* NRCEmailTableViewController.h */,
-				52E503991D0E546B00A1B109 /* NRCPasswordReset.h */,
-				52E5039A1D0E546B00A1B109 /* NRCPasswordReset.m */,
-				5273238C1D090518003CA93B /* NRCLoginViewController.swift */,
 				52491D7B1CED520D00D19190 /* KeychainWrapper.h */,
 				52491D7C1CED520D00D19190 /* KeychainWrapper.m */,
 				520F3C451CD6D54400D4EC94 /* central.png */,
@@ -750,8 +756,8 @@
 				5270883C1CAF20D30059163F /* Note.m in Sources */,
 				52A0B0611C62542C0015D481 /* PatientListTableViewController.m in Sources */,
 				52491D7D1CED520D00D19190 /* KeychainWrapper.m in Sources */,
-				52E5039B1D0E546B00A1B109 /* NRCPasswordReset.m in Sources */,
 				5251154D1C976C0600DCAD9B /* NRCSelectDataTableViewController.m in Sources */,
+				5230B0FA1D3FE4750098D7FB /* NRCTransmitTableViewController.swift in Sources */,
 				52A0B0521C5F03B20015D481 /* patientItem.m in Sources */,
 				52D637B91C9DE4240024E97E /* NRCErrorStore.m in Sources */,
 				529EC4EE1CB9AAB4006DE53F /* NRCPasscodeViewController.m in Sources */,
