@@ -16,7 +16,7 @@
 #import "patientItemStore.h"
 #import "NRCPatientDataTableViewController.h"
 #import "NRCDisplayTableViewController.h"
-#import "NRCPasscodeController2ViewController.h"
+
 #import "NRCSelectDataTableViewController.h"
 @interface PatientListTableViewController ()
 
@@ -181,18 +181,7 @@
         destViewController.interventions = self.interventions;
     }
     
-    if([segue.identifier isEqualToString:@"passcode2Controller"]){
-        NRCPasscode2ControllerViewController *destViewController = segue.destinationViewController;
-        NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
-            
-        NSString *passwordValue = [defaults valueForKey:@"passwordValue"];
-            
-        destViewController.password = passwordValue;
-        destViewController.passwordWasEntered = YES
-            ;
-
-}
-}
+    }
 -(IBAction)unwindToListView:(UIStoryboardSegue *)segue{
     NSLog(@"unwind to list view");
 }

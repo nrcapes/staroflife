@@ -175,6 +175,7 @@
                     <connections>
                         <segue destination="dvl-Hf-uz7" kind="unwind" identifier="unwindFromTransmitViewController" unwindAction="unwindFromTransmitViewController:" id="d3f-qa-3i5"/>
                         <segue destination="5kz-bJ-AMf" kind="show" identifier="toEmail" id="9je-jq-fPP"/>
+                        <segue destination="VzE-FD-lQp" kind="show" identifier="toDropbox" id="CHf-N1-K1I"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fvS-DI-kQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,6 +241,96 @@
                 <exit id="lr3-jZ-r6N" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1118" y="1017"/>
+        </scene>
+        <!--Dropbox View Controller-->
+        <scene sceneID="fKp-3K-jnI">
+            <objects>
+                <viewController title="Dropbox View Controller" id="VzE-FD-lQp" customClass="NRCdbViewController" customModule="EMSTimers" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XJ5-hR-gQR"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ggh-Ls-XTe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w08-gE-7aM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62Z-4J-sOk">
+                                <rect key="frame" x="0.0" y="58" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Connect" id="drt-oG-MEJ">
+                                        <connections>
+                                            <action selector="connectToDropbox:" destination="VzE-FD-lQp" id="u2Q-tN-5fS"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="1uZ-j1-BYz"/>
+                                    <barButtonItem systemItem="refresh" id="yBb-XZ-TOm">
+                                        <connections>
+                                            <action selector="reloadFiles:" destination="VzE-FD-lQp" id="4yH-Ak-i1H"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="m2r-hD-etP"/>
+                                    <barButtonItem systemItem="action" id="cq9-nE-QPe">
+                                        <connections>
+                                            <action selector="performAction:" destination="VzE-FD-lQp" id="q0J-t9-TbF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ICp-Aa-hEf" customClass="tblFiles">
+                                <rect key="frame" x="81" y="122" width="359" height="406"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="406" id="JzU-gp-7yQ"/>
+                                    <constraint firstAttribute="width" constant="359" id="NXX-c3-MOy"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="idCellFile" id="NS4-bP-R1Z">
+                                        <rect key="frame" x="0.0" y="28" width="359" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NS4-bP-R1Z" id="lEy-Ns-E0b">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="M5y-42-Ycr">
+                                <rect key="frame" x="198" y="554" width="150" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Gwo-qu-7bY"/>
+                                </constraints>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="62Z-4J-sOk" firstAttribute="leading" secondItem="w08-gE-7aM" secondAttribute="leading" id="IJz-Bk-32Z"/>
+                            <constraint firstItem="62Z-4J-sOk" firstAttribute="top" secondItem="w08-gE-7aM" secondAttribute="topMargin" constant="58" id="SqW-rX-RgZ"/>
+                            <constraint firstItem="ICp-Aa-hEf" firstAttribute="leading" secondItem="w08-gE-7aM" secondAttribute="leadingMargin" constant="61" id="UOz-2r-agW"/>
+                            <constraint firstItem="ICp-Aa-hEf" firstAttribute="top" secondItem="62Z-4J-sOk" secondAttribute="bottom" constant="20" id="ZPL-g2-tmQ"/>
+                            <constraint firstItem="M5y-42-Ycr" firstAttribute="top" secondItem="ICp-Aa-hEf" secondAttribute="bottom" constant="26" id="Zd1-ZG-KeU"/>
+                            <constraint firstItem="M5y-42-Ycr" firstAttribute="leading" secondItem="w08-gE-7aM" secondAttribute="leading" constant="198" id="a6p-Yz-gQA"/>
+                            <constraint firstAttribute="trailing" secondItem="62Z-4J-sOk" secondAttribute="trailing" id="mXX-Qu-jBb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="2kw-iz-MLV">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="XcD-Lh-fRL">
+                            <connections>
+                                <action selector="finishedEnteringData:" destination="VzE-FD-lQp" id="e6t-AZ-c4m"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="bbiConnect" destination="drt-oG-MEJ" id="ppY-T5-Kas"/>
+                        <outlet property="progressBar" destination="M5y-42-Ycr" id="kKm-ld-k2B"/>
+                        <outlet property="tblFiles" destination="ICp-Aa-hEf" id="Cek-lm-682"/>
+                        <segue destination="onl-qa-i0A" kind="unwind" identifier="unwindFromDropbox" unwindAction="unwindFromDropboxViewController:" id="fJS-QF-GHK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xhg-nG-vUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="onl-qa-i0A" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="399" y="1011"/>
         </scene>
         <!--Assessment List-->
         <scene sceneID="U7F-v3-ffx">

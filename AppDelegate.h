@@ -17,5 +17,7 @@
 @property patientItem *item;
 @property (strong) Note *doc;
 @property (strong)NSMetadataQuery *query;
+@property NSString *appKey;
+@property NSString *appSecret;
 @end
 

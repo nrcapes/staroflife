@@ -104,7 +104,7 @@
 
 #import "NRCTableViewController.h"
 #import <AVFoundation/AVFoundation.h>
-#import "NRCPasscodeControllerViewController.h"
+
 #import "NRCPatientDataTableViewController.h"
 #import "NRCDisplayTableViewController.h"
 #import "patientItemStore.h"

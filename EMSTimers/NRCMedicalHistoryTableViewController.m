@@ -10,8 +10,8 @@
 #import "NRCDisplayTableViewController.h"
 #import "patientItem.h"
 #import "patientItemStore.h"
-#import "NRCPasscodeControllerViewController.h"
-#import "NRCPasscodeController2ViewController.h"
+
+
 #import "AssessmentListTableViewController.h"
 #import "NRCMedicalHistoryTableViewController.h"
 #import "NRCMedHistItemTableViewController.h"

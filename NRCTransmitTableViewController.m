@@ -24,7 +24,7 @@
     [self.navigationItem setHidesBackButton:YES animated:YES];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 2;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -34,9 +34,7 @@
     if(indexPath.section == 0){
        cell.textLabel.text =@"Email Data";
     }else if (indexPath.section == 1){
-        cell.textLabel.text = @"Send Data to Dropbox";
-    }else{
-        cell.textLabel.text = @"Get Data from Dropbox";
+        cell.textLabel.text = @"Backup/Restore to Dropbox";
     }
     return  cell;
 }
@@ -44,11 +42,8 @@
     if(indexPath.section == 0){
         [self performSegueWithIdentifier:@"toEmail" sender:self];
     }else if(indexPath.section == 1){
-        [self performSegueWithIdentifier:@"toDropBox" sender:self];
-    }else{
-        
+        [self performSegueWithIdentifier:@"toDropbox" sender:self];
     }
-    
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"toEmail"]){
@@ -61,6 +56,8 @@
     NRCEmailTableViewController *sourceViewController = segue.sourceViewController;
     self.checkedArray = sourceViewController.checkedArray;
 }
+-(IBAction)unwindFromDropboxViewController:(UIStoryboardSegue *)segue{
+     }
 - (IBAction)finishedEnteringData:(id)sender {
     
     
