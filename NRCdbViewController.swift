@@ -30,6 +30,12 @@ class NRCdbViewController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        self.navigationItem.hidesBackButton = true
+        
+        DBSession.sharedSession().unlinkAll()
+        bbiConnect.title = "Connect"
+        print("Disconnect from Dropbox")
+        
         let patientItems = myPatientItemStore.allItems
         print("patientItems =\(patientItems)")
         tblFiles.delegate = self
@@ -43,6 +49,7 @@ class NRCdbViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
     }
+    
     func handleDidLinkNotification(notification: NSNotification) {
         initDropboxRestClient()
         bbiConnect.title = "Disconnect"
@@ -58,11 +65,14 @@ class NRCdbViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBAction func connectToDropbox(sender: AnyObject) {
         if !DBSession.sharedSession().isLinked() {
             DBSession.sharedSession().linkFromController(self)
+            print("Connect to Dropbox")
+            bbiConnect.title = "Disconnect"
         }
         else {
             DBSession.sharedSession().unlinkAll()
             bbiConnect.title = "Connect"
-            dbRestClient = nil
+            print("Disconnect from Dropbox")
+           // dbRestClient = nil
         }
     }
     func initDropboxRestClient() {
@@ -81,10 +91,11 @@ class NRCdbViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let uploadTextFileAction = UIAlertAction(title: "Upload text file", style: UIAlertActionStyle.Default) { (action) -> Void in
             let uploadFilename = "testtext.txt"
-            let sourcePath = NSBundle.mainBundle().pathForResource("testtext", ofType: "txt")
-            let destinationPath = "/"
-            self.showProgressBar()
-            self.dbRestClient.uploadFile(uploadFilename, toPath: destinationPath, withParentRev: nil, fromPath: sourcePath)
+            if let sourcePath = NSBundle.mainBundle().pathForResource("testtext", ofType: "txt"){
+                let destinationPath = "/"
+                self.showProgressBar()
+                self.dbRestClient.uploadFile(uploadFilename, toPath: destinationPath, withParentRev: nil, fromPath: sourcePath)
+            }
         }
         
         let uploadImageFileAction = UIAlertAction(title: "Upload image", style: UIAlertActionStyle.Default) { (action) -> Void in
@@ -125,7 +136,10 @@ class NRCdbViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func reloadFiles(sender: AnyObject) {
+        
+        print("Reload files")
         dbRestClient.loadMetadata("/")
+        
     }
     @IBAction func finishedEnteringData(sender: AnyObject){
         self.performSegueWithIdentifier("unwindFromDropbox", sender: self)

@@ -313,9 +313,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="2kw-iz-MLV">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="XcD-Lh-fRL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="PZT-4c-5JN">
                             <connections>
-                                <action selector="finishedEnteringData:" destination="VzE-FD-lQp" id="e6t-AZ-c4m"/>
+                                <action selector="finishedEnteringData:" destination="VzE-FD-lQp" id="Tmw-kD-0XU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

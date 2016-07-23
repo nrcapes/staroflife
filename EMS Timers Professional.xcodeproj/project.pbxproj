@@ -395,6 +395,7 @@
 		5230B0FB1D3FE6140098D7FB /* Swift controllers */ = {
 			isa = PBXGroup;
 			children = (
+				52AF0E241D405B68002CA4E6 /* NRCdbViewController.swift */,
 				5273238C1D090518003CA93B /* NRCLoginViewController.swift */,
 			);
 			name = "Swift controllers";
@@ -425,7 +426,6 @@
 				52AF0E1A1D40289B002CA4E6 /* DropboxSDK.framework */,
 				52AF0E171D402457002CA4E6 /* emstimers-Bridging-Header.h */,
 				52F01B761D401BD80055BD45 /* temp.swift */,
-				52AF0E241D405B68002CA4E6 /* NRCdbViewController.swift */,
 				52AF0E261D406A69002CA4E6 /* tblFiles.h */,
 				52AF0E271D406A69002CA4E6 /* tblFiles.m */,
 				52AF0E201D4051DA002CA4E6 /* nature.jpg */,

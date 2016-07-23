@@ -13,7 +13,7 @@
 #import "PurchaseViewController.h"
 #import "NRCEmailTableViewController.h"
 #import <DropboxSDK/DropboxSDK.h>
-@interface AppDelegate ()
+@interface AppDelegate () 
 
 @end
 
@@ -28,6 +28,7 @@
 }
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url
   sourceApplication:(NSString *)source annotation:(id)annotation {
+    NSLog(@"openUrl, %@", source);
     if ([[DBSession sharedSession] handleOpenURL:url]) {
         if ([[DBSession sharedSession] isLinked]) {
             NSLog(@"App linked successfully!");
