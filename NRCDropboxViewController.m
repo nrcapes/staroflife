@@ -27,7 +27,7 @@
         NSLog(@"You are not connected to Dropbox");
     }else{
     NSString *filename = @"items.archive";
-    NSString *destDir = @"\\";
+    NSString *destDir = @"/";
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"items.archive"];
@@ -70,7 +70,7 @@
     
     self.restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
     self.restClient.delegate = self;
-    self.destPath =@"\\";
+    self.destPath =@"/";
     [self showProgressBar];
 }
 -(void)showProgressBar{
