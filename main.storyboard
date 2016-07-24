@@ -245,7 +245,7 @@
         <!--Dropbox View Controller-->
         <scene sceneID="fKp-3K-jnI">
             <objects>
-                <viewController title="Dropbox View Controller" id="VzE-FD-lQp" customClass="NRCdbViewController" customModule="EMSTimers" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Dropbox View Controller" id="VzE-FD-lQp" customClass="NRCDropboxViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XJ5-hR-gQR"/>
                         <viewControllerLayoutGuide type="bottom" id="Ggh-Ls-XTe"/>
@@ -257,21 +257,21 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62Z-4J-sOk">
                                 <rect key="frame" x="0.0" y="58" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Connect" id="drt-oG-MEJ">
+                                    <barButtonItem title="Upload" id="hLZ-GW-rid">
                                         <connections>
-                                            <action selector="connectToDropbox:" destination="VzE-FD-lQp" id="u2Q-tN-5fS"/>
+                                            <action selector="uploadToDropbox" destination="VzE-FD-lQp" id="m5E-Jd-Ih8"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1uZ-j1-BYz"/>
-                                    <barButtonItem systemItem="refresh" id="yBb-XZ-TOm">
+                                    <barButtonItem title="Download" id="2AT-Le-HXF">
                                         <connections>
-                                            <action selector="reloadFiles:" destination="VzE-FD-lQp" id="4yH-Ak-i1H"/>
+                                            <action selector="downloadFromDropbox" destination="VzE-FD-lQp" id="czr-GO-aH2"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="m2r-hD-etP"/>
-                                    <barButtonItem systemItem="action" id="cq9-nE-QPe">
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="8pd-Fo-dmg"/>
+                                    <barButtonItem title="Connect" id="aVc-Fj-lzw">
                                         <connections>
-                                            <action selector="performAction:" destination="VzE-FD-lQp" id="q0J-t9-TbF"/>
+                                            <action selector="connectToDropbox:" destination="VzE-FD-lQp" id="IZM-a4-VbQ"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -315,16 +315,15 @@
                     <navigationItem key="navigationItem" title="Title" id="2kw-iz-MLV">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="PZT-4c-5JN">
                             <connections>
-                                <action selector="finishedEnteringData:" destination="VzE-FD-lQp" id="Tmw-kD-0XU"/>
+                                <action selector="finishedEnteringData:" destination="VzE-FD-lQp" id="w2A-hh-lyq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="bbiConnect" destination="drt-oG-MEJ" id="ppY-T5-Kas"/>
-                        <outlet property="progressBar" destination="M5y-42-Ycr" id="kKm-ld-k2B"/>
-                        <outlet property="tblFiles" destination="ICp-Aa-hEf" id="Cek-lm-682"/>
+                        <outlet property="bbiConnect" destination="aVc-Fj-lzw" id="kcZ-NT-guT"/>
                         <segue destination="onl-qa-i0A" kind="unwind" identifier="unwindFromDropbox" unwindAction="unwindFromDropboxViewController:" id="fJS-QF-GHK"/>
+                        <segue destination="onl-qa-i0A" kind="unwind" unwindAction="unwindFromDropboxViewController:" id="jdh-Y2-eLb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xhg-nG-vUl" userLabel="First Responder" sceneMemberID="firstResponder"/>

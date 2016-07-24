@@ -16,6 +16,8 @@
 		520F3C3E1CD6B3AA00D4EC94 /* Add Multiple Patients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F3C3D1CD6B3A900D4EC94 /* Add Multiple Patients.swift */; };
 		520F3C421CD6D25000D4EC94 /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 520F3C411CD6D25000D4EC94 /* cloud.png */; };
 		520F3C461CD6D54400D4EC94 /* central.png in Resources */ = {isa = PBXBuildFile; fileRef = 520F3C451CD6D54400D4EC94 /* central.png */; };
+		52109E271D44325A00DF27E5 /* NRCDropboxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52109E261D44325A00DF27E5 /* NRCDropboxViewController.m */; };
+		52109E2A1D443E4500DF27E5 /* tblFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 52109E291D443E4500DF27E5 /* tblFiles.m */; };
 		521B85641CD54BBC0044D4FF /* Add Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B85631CD54BBC0044D4FF /* Add Patient.swift */; };
 		52208E441BEAE06D00A2DF93 /* star-of-life.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 52208E431BEAE06D00A2DF93 /* star-of-life.jpeg */; };
 		5237938C1CD51E3900265063 /* Display Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5237938B1CD51E3900265063 /* Display Data.swift */; };
@@ -66,7 +68,6 @@
 		52AF0E221D4051DA002CA4E6 /* nature.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52AF0E201D4051DA002CA4E6 /* nature.jpg */; };
 		52AF0E231D4051DA002CA4E6 /* testtext.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52AF0E211D4051DA002CA4E6 /* testtext.txt */; };
 		52AF0E251D405B68002CA4E6 /* NRCdbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AF0E241D405B68002CA4E6 /* NRCdbViewController.swift */; };
-		52AF0E281D406A69002CA4E6 /* tblFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AF0E271D406A69002CA4E6 /* tblFiles.m */; };
 		52B23FCA1CD45215006231EC /* EMSTimersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B23FC91CD45215006231EC /* EMSTimersUITests.swift */; };
 		52B6B7251BEAC849007B8ACD /* star-of-life.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 52B6B7241BEAC849007B8ACD /* star-of-life.jpeg */; };
 		52BFCAF01C57150200970D40 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52BFCAEF1C57150200970D40 /* Settings.bundle */; };
@@ -152,6 +153,10 @@
 		520F3C411CD6D25000D4EC94 /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
 		520F3C451CD6D54400D4EC94 /* central.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = central.png; sourceTree = "<group>"; };
 		52109E1E1D419E4300DF27E5 /* NRCPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCPasscodeViewController.h; sourceTree = "<group>"; };
+		52109E251D44325A00DF27E5 /* NRCDropboxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCDropboxViewController.h; sourceTree = "<group>"; };
+		52109E261D44325A00DF27E5 /* NRCDropboxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCDropboxViewController.m; sourceTree = "<group>"; };
+		52109E281D443E4500DF27E5 /* tblFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tblFiles.h; sourceTree = "<group>"; };
+		52109E291D443E4500DF27E5 /* tblFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tblFiles.m; sourceTree = "<group>"; };
 		521B85631CD54BBC0044D4FF /* Add Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Patient.swift"; sourceTree = "<group>"; };
 		52208E431BEAE06D00A2DF93 /* star-of-life.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "star-of-life.jpeg"; sourceTree = "<group>"; };
 		5237938B1CD51E3900265063 /* Display Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Display Data.swift"; sourceTree = "<group>"; };
@@ -229,8 +234,6 @@
 		52AF0E201D4051DA002CA4E6 /* nature.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature.jpg; sourceTree = "<group>"; };
 		52AF0E211D4051DA002CA4E6 /* testtext.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testtext.txt; sourceTree = "<group>"; };
 		52AF0E241D405B68002CA4E6 /* NRCdbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRCdbViewController.swift; sourceTree = "<group>"; };
-		52AF0E261D406A69002CA4E6 /* tblFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tblFiles.h; sourceTree = "<group>"; };
-		52AF0E271D406A69002CA4E6 /* tblFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tblFiles.m; sourceTree = "<group>"; };
 		52B23FC71CD45215006231EC /* EMSTimersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EMSTimersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B23FC91CD45215006231EC /* EMSTimersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMSTimersUITests.swift; sourceTree = "<group>"; };
 		52B23FCB1CD45215006231EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -423,11 +426,13 @@
 		5246835E1BEAAC430086213B = {
 			isa = PBXGroup;
 			children = (
+				52109E281D443E4500DF27E5 /* tblFiles.h */,
+				52109E291D443E4500DF27E5 /* tblFiles.m */,
+				52109E251D44325A00DF27E5 /* NRCDropboxViewController.h */,
+				52109E261D44325A00DF27E5 /* NRCDropboxViewController.m */,
 				52AF0E1A1D40289B002CA4E6 /* DropboxSDK.framework */,
 				52AF0E171D402457002CA4E6 /* emstimers-Bridging-Header.h */,
 				52F01B761D401BD80055BD45 /* temp.swift */,
-				52AF0E261D406A69002CA4E6 /* tblFiles.h */,
-				52AF0E271D406A69002CA4E6 /* tblFiles.m */,
 				52AF0E201D4051DA002CA4E6 /* nature.jpg */,
 				52109E1E1D419E4300DF27E5 /* NRCPasscodeViewController.h */,
 				52AF0E211D4051DA002CA4E6 /* testtext.txt */,
@@ -762,7 +767,6 @@
 			files = (
 				52E5039D1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift in Sources */,
 				529FBBCF1CA97FBA0018C97D /* iapstore.m in Sources */,
-				52AF0E281D406A69002CA4E6 /* tblFiles.m in Sources */,
 				52F01B771D401BD80055BD45 /* temp.swift in Sources */,
 				524683861BEAAC780086213B /* AppDelegate.m in Sources */,
 				5273238D1D090518003CA93B /* NRCLoginViewController.swift in Sources */,
@@ -775,10 +779,12 @@
 				52A0B0501C5F03B20015D481 /* NRCPatientDataTableViewController.m in Sources */,
 				52A0B0541C5F03B20015D481 /* NRCPatientDataTableViewCell.m in Sources */,
 				527D90111CA8682000361DF7 /* PurchaseViewController.m in Sources */,
+				52109E2A1D443E4500DF27E5 /* tblFiles.m in Sources */,
 				520727F61C712FB50019096D /* NRCMedicalHistoryTableViewCell.m in Sources */,
 				520728001C71821D0019096D /* NRCMedicalHistoryDisplayTableViewController.m in Sources */,
 				526290A41C26083100289F2A /* NRCInterfaceController2.m in Sources */,
 				52A0B05E1C615E7D0015D481 /* NRCAssessmentViewControllerTableViewController.m in Sources */,
+				52109E271D44325A00DF27E5 /* NRCDropboxViewController.m in Sources */,
 				526C3CA51D2B1CD0003A1322 /* NRCEmailTableViewController.m in Sources */,
 				5270883C1CAF20D30059163F /* Note.m in Sources */,
 				52A0B0611C62542C0015D481 /* PatientListTableViewController.m in Sources */,
