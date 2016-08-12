@@ -67,6 +67,8 @@
 		52AF0E1B1D40289B002CA4E6 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52AF0E1A1D40289B002CA4E6 /* DropboxSDK.framework */; };
 		52AF0E221D4051DA002CA4E6 /* nature.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52AF0E201D4051DA002CA4E6 /* nature.jpg */; };
 		52AF0E231D4051DA002CA4E6 /* testtext.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52AF0E211D4051DA002CA4E6 /* testtext.txt */; };
+		52AF50721D5D52FE0097A24D /* DBBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AF50701D5D52FE0097A24D /* DBBViewController.m */; };
+		52AF50751D5D55280097A24D /* DropboxBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52AF50741D5D55280097A24D /* DropboxBrowserViewController.m */; };
 		52B23FCA1CD45215006231EC /* EMSTimersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B23FC91CD45215006231EC /* EMSTimersUITests.swift */; };
 		52B6B7251BEAC849007B8ACD /* star-of-life.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 52B6B7241BEAC849007B8ACD /* star-of-life.jpeg */; };
 		52BFCAF01C57150200970D40 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52BFCAEF1C57150200970D40 /* Settings.bundle */; };
@@ -232,6 +234,10 @@
 		52AF0E1A1D40289B002CA4E6 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		52AF0E201D4051DA002CA4E6 /* nature.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature.jpg; sourceTree = "<group>"; };
 		52AF0E211D4051DA002CA4E6 /* testtext.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testtext.txt; sourceTree = "<group>"; };
+		52AF506F1D5D52FE0097A24D /* DBBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBBViewController.h; path = "../Downloads/DropboxBrowser-master/Example Project/DropboxBrowser/DBBViewController.h"; sourceTree = "<group>"; };
+		52AF50701D5D52FE0097A24D /* DBBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBBViewController.m; path = "../Downloads/DropboxBrowser-master/Example Project/DropboxBrowser/DBBViewController.m"; sourceTree = "<group>"; };
+		52AF50731D5D55280097A24D /* DropboxBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DropboxBrowserViewController.h; path = "../Downloads/DropboxBrowser-master/DropboxBrowserViewController.h"; sourceTree = "<group>"; };
+		52AF50741D5D55280097A24D /* DropboxBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DropboxBrowserViewController.m; path = "../Downloads/DropboxBrowser-master/DropboxBrowserViewController.m"; sourceTree = "<group>"; };
 		52B23FC71CD45215006231EC /* EMSTimersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EMSTimersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B23FC91CD45215006231EC /* EMSTimersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMSTimersUITests.swift; sourceTree = "<group>"; };
 		52B23FCB1CD45215006231EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -424,6 +430,10 @@
 			isa = PBXGroup;
 			children = (
 				52E96C441D46BDE800F92BEA /* Main.storyboard */,
+				52AF506F1D5D52FE0097A24D /* DBBViewController.h */,
+				52AF50701D5D52FE0097A24D /* DBBViewController.m */,
+				52AF50731D5D55280097A24D /* DropboxBrowserViewController.h */,
+				52AF50741D5D55280097A24D /* DropboxBrowserViewController.m */,
 				52109E281D443E4500DF27E5 /* tblFiles.h */,
 				52109E291D443E4500DF27E5 /* tblFiles.m */,
 				52109E251D44325A00DF27E5 /* NRCDropboxViewController.h */,
@@ -769,6 +779,7 @@
 				5273238D1D090518003CA93B /* NRCLoginViewController.swift in Sources */,
 				52A0B0581C6100460015D481 /* NRCDisplayTableViewController.m in Sources */,
 				526290A91C2614C000289F2A /* NRCInterfaceController3.m in Sources */,
+				52AF50751D5D55280097A24D /* DropboxBrowserViewController.m in Sources */,
 				52A0B05B1C615D410015D481 /* assessmentItem.m in Sources */,
 				5251FCAD1C73C6D700E819FF /* NRCMedHistItemTableViewController.m in Sources */,
 				52F01B611D4001940055BD45 /* NRCTransmitTableViewController.m in Sources */,
@@ -777,6 +788,7 @@
 				52A0B0541C5F03B20015D481 /* NRCPatientDataTableViewCell.m in Sources */,
 				527D90111CA8682000361DF7 /* PurchaseViewController.m in Sources */,
 				52109E2A1D443E4500DF27E5 /* tblFiles.m in Sources */,
+				52AF50721D5D52FE0097A24D /* DBBViewController.m in Sources */,
 				520727F61C712FB50019096D /* NRCMedicalHistoryTableViewCell.m in Sources */,
 				520728001C71821D0019096D /* NRCMedicalHistoryDisplayTableViewController.m in Sources */,
 				526290A41C26083100289F2A /* NRCInterfaceController2.m in Sources */,

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import  <DropboxSDK/DropboxSDK.h>
-@interface NRCDropboxViewController : UIViewController <DBRestClientDelegate>
+#import "DBBViewController.h"
+@interface NRCDropboxViewController : UIViewController <DBRestClientDelegate, DropboxBrowserDelegate>
 @property (nonatomic, strong) DBRestClient *restClient;
 @property UIProgressView *progressBar;
 @property UITableView *tblFiles;
