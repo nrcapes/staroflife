@@ -269,6 +269,12 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="8pd-Fo-dmg"/>
+                                    <barButtonItem systemItem="refresh" id="Wwq-6B-mTy">
+                                        <connections>
+                                            <action selector="refreshDropbox:" destination="VzE-FD-lQp" id="AKk-4t-tvX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Obf-Vn-mDn"/>
                                     <barButtonItem title="Connect" id="aVc-Fj-lzw">
                                         <connections>
                                             <action selector="connectToDropbox:" destination="VzE-FD-lQp" id="IZM-a4-VbQ"/>

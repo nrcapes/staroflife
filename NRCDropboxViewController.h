@@ -15,4 +15,10 @@
 @property IBOutlet UIBarButtonItem *bbiConnect;
 @property NSString *srcPath;
 @property NSString *destPath;
+@property (nonatomic,strong)DBMetadata *dropboxMetaData;
+@property (nonatomic,strong)  NSMutableArray *dropboxContents;
+@property (nonatomic,strong)  NSMutableArray *dropboxFilenames;
+@property (nonatomic, strong)  NSMutableArray *dropboxRevs;
+@property (nonatomic, strong
+           ) NSString* rev;
 @end

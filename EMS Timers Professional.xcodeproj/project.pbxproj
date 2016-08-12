@@ -77,7 +77,6 @@
 		52DD282C1C92796100F036AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DD282B1C92796100F036AE /* CoreGraphics.framework */; };
 		52DD282E1C92798200F036AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DD282D1C92798200F036AE /* UIKit.framework */; };
 		52E5039D1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E5039C1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift */; };
-		52E96C411D46BBC300F92BEA /* NRCDBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E96C401D46BBC300F92BEA /* NRCDBViewController.swift */; };
 		52E96C451D46BDE800F92BEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52E96C441D46BDE800F92BEA /* Main.storyboard */; };
 		52ED66321C26003C00BFFCD5 /* NRCInterfaceController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ED66311C26003C00BFFCD5 /* NRCInterfaceController1.m */; };
 		52ED66341C26003C00BFFCD5 /* NRCInterfaceController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ED66311C26003C00BFFCD5 /* NRCInterfaceController1.m */; };
@@ -248,7 +247,6 @@
 		52DD282B1C92796100F036AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		52DD282D1C92798200F036AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		52E5039C1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRCResetPasswordViewController.swift; sourceTree = "<group>"; };
-		52E96C401D46BBC300F92BEA /* NRCDBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRCDBViewController.swift; sourceTree = "<group>"; };
 		52E96C441D46BDE800F92BEA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		52ED66301C26003C00BFFCD5 /* NRCInterfaceController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRCInterfaceController1.h; path = ../NRCInterfaceController1.h; sourceTree = "<group>"; };
 		52ED66311C26003C00BFFCD5 /* NRCInterfaceController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRCInterfaceController1.m; path = ../NRCInterfaceController1.m; sourceTree = "<group>"; };
@@ -426,7 +424,6 @@
 			isa = PBXGroup;
 			children = (
 				52E96C441D46BDE800F92BEA /* Main.storyboard */,
-				52E96C401D46BBC300F92BEA /* NRCDBViewController.swift */,
 				52109E281D443E4500DF27E5 /* tblFiles.h */,
 				52109E291D443E4500DF27E5 /* tblFiles.m */,
 				52109E251D44325A00DF27E5 /* NRCDropboxViewController.h */,
@@ -785,7 +782,6 @@
 				526290A41C26083100289F2A /* NRCInterfaceController2.m in Sources */,
 				52A0B05E1C615E7D0015D481 /* NRCAssessmentViewControllerTableViewController.m in Sources */,
 				52109E271D44325A00DF27E5 /* NRCDropboxViewController.m in Sources */,
-				52E96C411D46BBC300F92BEA /* NRCDBViewController.swift in Sources */,
 				526C3CA51D2B1CD0003A1322 /* NRCEmailTableViewController.m in Sources */,
 				5270883C1CAF20D30059163F /* Note.m in Sources */,
 				52A0B0611C62542C0015D481 /* PatientListTableViewController.m in Sources */,
