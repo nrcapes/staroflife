@@ -11,7 +11,7 @@
 @interface patientItemStore : NSObject
 
 @property (nonatomic, readonly) NSMutableArray *allItems;
-
+@property (nonatomic) NSMutableArray *allItemsActual;
 
 + (instancetype)sharedStore;
 - (patientItem *)createItem;
@@ -23,6 +23,7 @@
 - (void)itemReplace:(patientItem*)item1
                with:(patientItem*)item2;
 -(void)sortByDate:(BOOL)direction;
-- (BOOL)saveChanges;
 
+- (BOOL)saveChanges;
+-(BOOL)saveChangedPrivateItems:(NSMutableArray*)items;
 @end

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "NRCEmailTableViewController.h"
+#import "DBBViewController.h"
+#import "patientItemStore.h"
 @interface NRCTransmitTableViewController : UITableViewController
 @property (strong,nonatomic) NSMutableArray *patients;
 @property NSMutableArray *checkedArray;

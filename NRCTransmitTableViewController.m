@@ -50,14 +50,24 @@
         NRCEmailTableViewController *destViewController = segue.destinationViewController;
         destViewController.patients = self.patients;
         destViewController.checkedArray = self.checkedArray;
+    }else{
+        DBBViewController *destViewController = segue.destinationViewController;
+        destViewController.patients = self.patients;
     }
 }
 -(IBAction)unwindFromEmailViewController:(UIStoryboardSegue *)segue{
     NRCEmailTableViewController *sourceViewController = segue.sourceViewController;
     self.checkedArray = sourceViewController.checkedArray;
 }
--(IBAction)unwindFromDropboxViewController:(UIStoryboardSegue *)segue{
+/*
+-(IBAction)unwindFromDBB:(UIStoryboardSegue *)segue{
+    NSLog(@"Transmit view controller: unwindFromDBBViewController");
+    DBBViewController *sourceViewController = segue.sourceViewController;
+    self.patients = sourceViewController.patients;
+    
+    
      }
+ */
 - (IBAction)finishedEnteringData:(id)sender {
     
     

@@ -78,12 +78,19 @@
     // Returns YES on success
     return [NSKeyedArchiver archiveRootObject:self.privateItems toFile:path];
 }
-
+-(BOOL)saveChangedPrivateItems:(NSMutableArray*)items{
+    NSString *path = [self itemArchivePath];
+    
+    // Returns YES on success
+    return [NSKeyedArchiver archiveRootObject:items toFile:path];
+}
 - (NSArray *)allItems
 {
     return [self.privateItems copy];
 }
-
+-(NSArray*)allItemsActual{
+    return self.privateItems;
+}
 - (patientItem *)createItem
 {
     patientItem *item = [[patientItem alloc] init];
@@ -134,6 +141,5 @@
     [self.privateItems sortUsingDescriptors:@[sortDescriptor]];
     }
 }
-
 
 @end
