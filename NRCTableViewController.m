@@ -625,7 +625,7 @@ AVAudioPlayer *_audioPlayer2;
                                                    [self showLoginView];
                                                    
                                                    
-                                                   [self dismissViewControllerAnimated:YES completion:nil];[self dismissViewControllerAnimated:YES completion:nil];
+                                                   [self dismissViewControllerAnimated:YES completion:nil];
                                                }];
 
     
