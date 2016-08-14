@@ -80,9 +80,9 @@
 }
 -(BOOL)saveChangedPrivateItems:(NSMutableArray*)items{
     NSString *path = [self itemArchivePath];
-    
+    self.privateItems = items;
     // Returns YES on success
-    return [NSKeyedArchiver archiveRootObject:items toFile:path];
+    return [NSKeyedArchiver archiveRootObject:self.privateItems toFile:path];
 }
 - (NSArray *)allItems
 {

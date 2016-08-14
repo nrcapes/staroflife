@@ -121,7 +121,8 @@ typedef NS_ENUM(NSInteger, backup_restore){
         NSMutableArray *newItems = [[NSMutableArray alloc]init];;
         int i;
         int j;
-    for(i=0; i< [oldItems count];i++){
+    if([oldItems count]>0){
+        for(i=0; i< [oldItems count];i++){
             NSLog(@"i:%d", i);
            // BOOL itemFound = NO;
             oldItem = oldItems[i];
@@ -148,7 +149,16 @@ typedef NS_ENUM(NSInteger, backup_restore){
         }
              */
     }
-    [[patientItemStore sharedStore]saveChangedPrivateItems:newItems];
+    }else{
+        if(self.patients){
+        newItems = self.patients;
+        }
+    }
+    BOOL result;
+    result = [[patientItemStore sharedStore]saveChangedPrivateItems:newItems];
+    if (result == false){
+        NSLog(@"DBBViewController:didDownloadFile: could not save newItems in patientItemStore");
+    }
 }
 
 - (void)dropboxBrowser:(DropboxBrowserViewController *)browser didFailToDownloadFile:(NSString *)fileName {
