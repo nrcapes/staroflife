@@ -130,7 +130,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mUg-a7-chv" id="lbh-Vm-hDE">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -256,6 +258,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elX-Pv-4d1">
                                 <rect key="frame" x="49" y="285" width="531" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Restore from Dropbox"/>
                                 <connections>
                                     <segue destination="VHi-h4-f10" kind="show" identifier="restoreFromDropbox" id="kEW-f1-ICQ"/>
@@ -263,6 +266,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gu-Uo-I67">
                                 <rect key="frame" x="30" y="223" width="540" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Backup to Dropbox"/>
                                 <connections>
                                     <segue destination="VHi-h4-f10" kind="show" identifier="backupToDropbox" id="AU5-7U-uVj"/>
@@ -270,13 +274,22 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJq-nP-7kr">
                                 <rect key="frame" x="53" y="349" width="495" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Clear Docs"/>
                                 <connections>
                                     <action selector="clearDocs:" destination="VzE-FD-lQp" eventType="touchUpInside" id="zDT-Wt-3aK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8c-Iv-6c3">
+                                <rect key="frame" x="86" y="398" width="429" height="30"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Logout of Dropbox"/>
+                                <connections>
+                                    <segue destination="VHi-h4-f10" kind="show" identifier="logoutOfDropbox" id="lxV-ic-tXz"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.27417010068893433" green="0.66741138696670532" blue="0.73107606172561646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="elX-Pv-4d1" firstAttribute="leading" secondItem="w08-gE-7aM" secondAttribute="leadingMargin" constant="29" id="9Mx-Iu-hZg"/>
                             <constraint firstItem="ZJq-nP-7kr" firstAttribute="leading" secondItem="w08-gE-7aM" secondAttribute="leadingMargin" constant="33" id="AJl-1p-SCN"/>
@@ -285,8 +298,11 @@
                             <constraint firstItem="elX-Pv-4d1" firstAttribute="top" secondItem="0gu-Uo-I67" secondAttribute="bottom" constant="32" id="UNa-bV-9SB"/>
                             <constraint firstItem="elX-Pv-4d1" firstAttribute="trailing" secondItem="w08-gE-7aM" secondAttribute="trailingMargin" id="aiG-Yj-4Dz"/>
                             <constraint firstItem="ZJq-nP-7kr" firstAttribute="top" secondItem="elX-Pv-4d1" secondAttribute="bottom" constant="34" id="dpW-Q8-5wg"/>
+                            <constraint firstItem="b8c-Iv-6c3" firstAttribute="top" secondItem="ZJq-nP-7kr" secondAttribute="bottom" constant="19" id="gzz-si-0Mo"/>
+                            <constraint firstItem="b8c-Iv-6c3" firstAttribute="centerX" secondItem="ZJq-nP-7kr" secondAttribute="centerX" id="qlq-Qn-CL2"/>
                             <constraint firstItem="elX-Pv-4d1" firstAttribute="centerY" secondItem="w08-gE-7aM" secondAttribute="centerY" id="tLW-H1-ge4"/>
                             <constraint firstItem="0gu-Uo-I67" firstAttribute="centerX" secondItem="ZJq-nP-7kr" secondAttribute="centerX" id="wpt-vc-YmJ"/>
+                            <constraint firstItem="b8c-Iv-6c3" firstAttribute="leading" secondItem="w08-gE-7aM" secondAttribute="leadingMargin" constant="66" id="yeE-RW-Xuj"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -1342,7 +1358,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kEW-f1-ICQ"/>
+        <segue reference="lxV-ic-tXz"/>
         <segue reference="Oo4-dg-7dw"/>
     </inferredMetricsTieBreakers>
 </document>

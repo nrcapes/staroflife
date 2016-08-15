@@ -17,7 +17,8 @@
 
 typedef NS_ENUM(NSInteger, backup_restore){
     backup_to_dropbox = 1,
-    restore_from_dropbox = 2
+    restore_from_dropbox = 2,
+    logout_of_dropbox = 3
 };
 
 //------------------------------------------------------------------------------------------------------------//
@@ -82,7 +83,9 @@ typedef NS_ENUM(NSInteger, backup_restore){
         // Set the delegate property to recieve delegate method calls
         dropboxBrowser.rootViewDelegate = self;
         dropboxBrowser.backup_restore = restore_from_dropbox;
-    }else{ // backup to dropbox
+    }else{
+        if ([[segue identifier] isEqualToString:@"backupToDropbox"]) {
+        // backup to dropbox
         UINavigationController *navigationController = [segue destinationViewController];
         
         // Pass any objects to the view controller here, like...
@@ -90,6 +93,16 @@ typedef NS_ENUM(NSInteger, backup_restore){
         // Set the delegate property to recieve delegate method calls
         dropboxBrowser.rootViewDelegate = self;
         dropboxBrowser.backup_restore = backup_to_dropbox;
+        }
+        else{// logout of Dropbox
+            UINavigationController *navigationController = [segue destinationViewController];
+            
+            // Pass any objects to the view controller here, like...
+            DropboxBrowserViewController *dropboxBrowser = (DropboxBrowserViewController *)navigationController.topViewController;
+            // Set the delegate property to recieve delegate method calls
+            dropboxBrowser.rootViewDelegate = self;
+            dropboxBrowser.backup_restore = logout_of_dropbox;
+        }
     }
 }
 
