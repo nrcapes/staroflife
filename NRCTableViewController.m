@@ -1325,6 +1325,10 @@ AVAudioPlayer *_audioPlayer2;
     
     
     self.patientItem = sourceViewController.item;
+    // make sure new item gets archived
+    BOOL result;
+    result = [[patientItemStore sharedStore]saveChanges];
+    
     // item was added.  Go check to see whether it needs to be written to iCloud
     [self itemAdded];
 }
@@ -1337,6 +1341,10 @@ AVAudioPlayer *_audioPlayer2;
     NSLog(@"unwind from List Controller");
     PatientListTableViewController *sourceViewController = segue.sourceViewController;
     self.patientItem = sourceViewController.patientItem;
+    // make sure changes get archived
+    BOOL result;
+    result = [[patientItemStore sharedStore]saveChanges];
+    
     // check for iCloud
     [self itemModified];
 }
@@ -1430,6 +1438,7 @@ AVAudioPlayer *_audioPlayer2;
         NSString *key = [uuid UUIDString];
         self.patientItem.itemKey = key;
     }
+    
 }
 #pragma mark - patient item added. 
 -(void)itemAdded{

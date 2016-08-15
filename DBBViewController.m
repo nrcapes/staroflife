@@ -124,7 +124,7 @@ typedef NS_ENUM(NSInteger, backup_restore){
     NSData *data = [fileMgr contentsAtPath:filePath];
     self.patients = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
-    
+    /*
     // loop through the old file and the new file; if a match is found
     // replace the old item with the new item.
     // otherwise, add the new item to the items array.
@@ -147,28 +147,34 @@ typedef NS_ENUM(NSInteger, backup_restore){
                 NSLog(@"oldItem contact time =%@, newItem contact time=%@",oldItem.contactTime, newItem.contactTime);
             if([newItem.contactTime isEqualToDate:oldItem.contactTime]){
               //  itemFound = YES;
-               // [[patientItemStore sharedStore]itemReplace:oldItem with:newItem];
+                [[patientItemStore sharedStore]itemReplace:oldItem with:newItem];
                // break;
             }else{
+                if([newItem.contactTime timeIntervalSince1970] > [oldItem.contactTime timeIntervalSince1970]
+                   && [newItem.itemKey isEqual:oldItem.itemKey])
+                {
+                    [[patientItemStore sharedStore]itemReplace:oldItem with:newItem];
+                }else
                 [newItems addObject:newItem];
             }
         }
         
-            /*
+     
         if(itemFound == NO){
             if(newItem){
             [[patientItemStore sharedStore]addItem:newItem];
             }
         }
-             */
+     
     }
     }else{
         if(self.patients){
         newItems = self.patients;
         }
     }
+*/
     BOOL result;
-    result = [[patientItemStore sharedStore]saveChangedPrivateItems:newItems];
+    result = [[patientItemStore sharedStore]saveChangedPrivateItems:self.patients];
     if (result == false){
         NSLog(@"DBBViewController:didDownloadFile: could not save newItems in patientItemStore");
     }
