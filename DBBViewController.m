@@ -198,8 +198,8 @@ typedef NS_ENUM(NSInteger, backup_restore){
     // This method is called after Dropbox Browser is dismissed. Do NOT dismiss DropboxBrowser from this method
     // Perform any UI updates here to display any new data from Dropbox Browser
     // ex. Update a UITableView that shows downloaded files or get the name of the most recently selected file:
-    DropboxBrowserViewController *controller = [[DropboxBrowserViewController alloc]init];
-    NSString *fileName = controller.currentFileName;
+    
+    
 }
 
 - (void)dropboxBrowser:(DropboxBrowserViewController *)browser deliveredFileDownloadNotification:(UILocalNotification *)notification {

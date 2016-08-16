@@ -1328,7 +1328,9 @@ AVAudioPlayer *_audioPlayer2;
     // make sure new item gets archived
     BOOL result;
     result = [[patientItemStore sharedStore]saveChanges];
-    
+    if(result == false){
+        NSLog(@"unwindFrompatientDataController: could not update items.archive");
+    }
     // item was added.  Go check to see whether it needs to be written to iCloud
     [self itemAdded];
 }
@@ -1344,7 +1346,9 @@ AVAudioPlayer *_audioPlayer2;
     // make sure changes get archived
     BOOL result;
     result = [[patientItemStore sharedStore]saveChanges];
-    
+    if(result == false){
+        NSLog(@"unwindFromListController: could not update items.archive");
+    }
     // check for iCloud
     [self itemModified];
 }

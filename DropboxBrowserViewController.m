@@ -188,7 +188,7 @@ static NSUInteger const kDBSignOutAlertViewTag = 3;
         else{// restore
                 if(self.backup_restore == 2){
                     [self listDirectoryAtPath:@"/"];
-            } else // logot
+            } else // logout
                 if(self.backup_restore  == 3){
                     [self logoutOfDropbox];
                     
