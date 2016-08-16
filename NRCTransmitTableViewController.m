@@ -36,6 +36,7 @@
     }else if (indexPath.section == 1){
         cell.textLabel.text = @"Backup/Restore to Dropbox";
     }
+    cell.backgroundColor = [UIColor colorWithRed:0.0f/255 green:125.0f/255 blue:150.0f/255 alpha:0.8f];
     return  cell;
 }
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
