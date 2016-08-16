@@ -257,7 +257,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elX-Pv-4d1">
-                                <rect key="frame" x="49" y="285" width="531" height="30"/>
+                                <rect key="frame" x="96" y="285" width="399" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Restore from Dropbox"/>
                                 <connections>
@@ -265,7 +265,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gu-Uo-I67">
-                                <rect key="frame" x="30" y="223" width="540" height="30"/>
+                                <rect key="frame" x="96" y="223" width="399" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Backup to Dropbox"/>
                                 <connections>
@@ -273,7 +273,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZJq-nP-7kr">
-                                <rect key="frame" x="53" y="349" width="495" height="30"/>
+                                <rect key="frame" x="96" y="349" width="399" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Clear Docs"/>
                                 <connections>
@@ -281,7 +281,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8c-Iv-6c3">
-                                <rect key="frame" x="86" y="398" width="429" height="30"/>
+                                <rect key="frame" x="96" y="407" width="399" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Logout of Dropbox"/>
                                 <connections>
@@ -291,18 +291,18 @@
                         </subviews>
                         <color key="backgroundColor" red="0.27417010068893433" green="0.66741138696670532" blue="0.73107606172561646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="elX-Pv-4d1" firstAttribute="leading" secondItem="w08-gE-7aM" secondAttribute="leadingMargin" constant="29" id="9Mx-Iu-hZg"/>
-                            <constraint firstItem="ZJq-nP-7kr" firstAttribute="leading" secondItem="w08-gE-7aM" secondAttribute="leadingMargin" constant="33" id="AJl-1p-SCN"/>
-                            <constraint firstItem="0gu-Uo-I67" firstAttribute="leading" secondItem="w08-gE-7aM" secondAttribute="leadingMargin" constant="10" id="AUc-M2-Qhg"/>
-                            <constraint firstItem="0gu-Uo-I67" firstAttribute="centerX" secondItem="w08-gE-7aM" secondAttribute="centerX" id="CmM-Jd-fCq"/>
-                            <constraint firstItem="elX-Pv-4d1" firstAttribute="top" secondItem="0gu-Uo-I67" secondAttribute="bottom" constant="32" id="UNa-bV-9SB"/>
-                            <constraint firstItem="elX-Pv-4d1" firstAttribute="trailing" secondItem="w08-gE-7aM" secondAttribute="trailingMargin" id="aiG-Yj-4Dz"/>
-                            <constraint firstItem="ZJq-nP-7kr" firstAttribute="top" secondItem="elX-Pv-4d1" secondAttribute="bottom" constant="34" id="dpW-Q8-5wg"/>
-                            <constraint firstItem="b8c-Iv-6c3" firstAttribute="top" secondItem="ZJq-nP-7kr" secondAttribute="bottom" constant="19" id="gzz-si-0Mo"/>
-                            <constraint firstItem="b8c-Iv-6c3" firstAttribute="centerX" secondItem="ZJq-nP-7kr" secondAttribute="centerX" id="qlq-Qn-CL2"/>
-                            <constraint firstItem="elX-Pv-4d1" firstAttribute="centerY" secondItem="w08-gE-7aM" secondAttribute="centerY" id="tLW-H1-ge4"/>
-                            <constraint firstItem="0gu-Uo-I67" firstAttribute="centerX" secondItem="ZJq-nP-7kr" secondAttribute="centerX" id="wpt-vc-YmJ"/>
-                            <constraint firstItem="b8c-Iv-6c3" firstAttribute="leading" secondItem="w08-gE-7aM" secondAttribute="leadingMargin" constant="66" id="yeE-RW-Xuj"/>
+                            <constraint firstItem="elX-Pv-4d1" firstAttribute="trailing" secondItem="ZJq-nP-7kr" secondAttribute="trailing" id="1jo-bf-phe"/>
+                            <constraint firstItem="0gu-Uo-I67" firstAttribute="trailing" secondItem="elX-Pv-4d1" secondAttribute="trailing" id="4zA-7j-Yyi"/>
+                            <constraint firstItem="elX-Pv-4d1" firstAttribute="centerY" secondItem="w08-gE-7aM" secondAttribute="centerY" id="8Gd-vW-Nm1"/>
+                            <constraint firstItem="ZJq-nP-7kr" firstAttribute="leading" secondItem="b8c-Iv-6c3" secondAttribute="leading" id="Hi5-EU-Mew"/>
+                            <constraint firstItem="elX-Pv-4d1" firstAttribute="leading" secondItem="ZJq-nP-7kr" secondAttribute="leading" id="SxU-nC-1me"/>
+                            <constraint firstItem="0gu-Uo-I67" firstAttribute="leading" secondItem="w08-gE-7aM" secondAttribute="leadingMargin" constant="76" id="Urz-SJ-kXJ"/>
+                            <constraint firstItem="0gu-Uo-I67" firstAttribute="leading" secondItem="elX-Pv-4d1" secondAttribute="leading" id="cmt-DZ-buL"/>
+                            <constraint firstItem="ZJq-nP-7kr" firstAttribute="trailing" secondItem="b8c-Iv-6c3" secondAttribute="trailing" id="lm0-0b-giN"/>
+                            <constraint firstItem="elX-Pv-4d1" firstAttribute="top" secondItem="0gu-Uo-I67" secondAttribute="bottom" constant="32" id="oXS-XL-iYV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0gu-Uo-I67" secondAttribute="trailing" constant="85" id="xa3-2G-exX"/>
+                            <constraint firstItem="ZJq-nP-7kr" firstAttribute="top" secondItem="elX-Pv-4d1" secondAttribute="bottom" constant="34" id="yce-8e-4x5"/>
+                            <constraint firstItem="b8c-Iv-6c3" firstAttribute="top" secondItem="ZJq-nP-7kr" secondAttribute="bottom" constant="28" id="zcC-oV-IYg"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
