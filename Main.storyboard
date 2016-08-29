@@ -817,10 +817,10 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="dfU-Bh-g94" secondAttribute="bottom" constant="9" id="3ka-aI-vJn"/>
-                                                <constraint firstItem="dfU-Bh-g94" firstAttribute="leading" secondItem="RB2-mX-ZjY" secondAttribute="leadingMargin" constant="46" id="DI2-lv-3Ob"/>
-                                                <constraint firstItem="dfU-Bh-g94" firstAttribute="top" secondItem="RB2-mX-ZjY" secondAttribute="topMargin" constant="6" id="j5A-uf-jzz"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="dfU-Bh-g94" secondAttribute="trailing" constant="44" id="odr-Bo-ek7"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="dfU-Bh-g94" secondAttribute="bottom" constant="9" id="euE-VA-TMl"/>
+                                                <constraint firstItem="dfU-Bh-g94" firstAttribute="leading" secondItem="RB2-mX-ZjY" secondAttribute="leadingMargin" constant="46" id="hsv-fO-ZxR"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="dfU-Bh-g94" secondAttribute="trailing" constant="44" id="kpO-Mh-lxa"/>
+                                                <constraint firstItem="dfU-Bh-g94" firstAttribute="top" secondItem="RB2-mX-ZjY" secondAttribute="topMargin" constant="6" id="sc8-X8-vwe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.27417010068893433" green="0.66741138696670532" blue="0.73107606172561646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

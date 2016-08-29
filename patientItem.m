@@ -20,7 +20,7 @@
         _fullName = [aDecoder decodeObjectForKey:@"fullName"];
         _dateOfBirth = [aDecoder decodeObjectForKey:@"dateOfBirth"];
         _gender = [aDecoder decodeObjectForKey:@"gender"];
-        _stateAddress = [aDecoder decodeObjectForKey:@"streetAddress"];
+        _streetAddress = [aDecoder decodeObjectForKey:@"streetAddress"];
         _cityAddress = [aDecoder decodeObjectForKey:@"cityAddress"];
         _stateAddress = [aDecoder decodeObjectForKey:@"stateAddress"];
         _zipCode = [aDecoder decodeObjectForKey:@"zipCode"];
