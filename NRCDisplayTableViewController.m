@@ -250,8 +250,16 @@
         self.lastNameField.text= textField.text;
         self.item.lastName = self.lastNameField.text;
     }else if (textField == self.dateofBirthField){
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM-dd-yyyy"];
+        NSDate * dateFromString = [dateFormatter dateFromString:self.dateofBirthField.text];
+        if(!dateFromString){
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Invalid Input" message:@"Only acceptable format is MM-dd-yyyy." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+            [av show];
+        }else{
         self.dateofBirthField.text = textField.text;
         self.item.dateOfBirth = self.dateofBirthField.text;
+        }
     }else if (textField == self.genderField){
         self.genderField.text = textField.text;
         self.item.gender = self.genderField.text;
