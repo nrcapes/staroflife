@@ -343,8 +343,13 @@ typedef NS_ENUM(int, row){
         self.lastNameField.text= textField.text;
         self.item.lastName = self.lastNameField.text;
     }else if (textField == self.dateofBirthField){
-        if([self isNumericOrSlash:textField.text] == NO && ![textField.text  isEqual:@""]){
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Invalid Input" message:@"Only acceptable format is numeric and /." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM-dd-yyyy"];
+        NSDate * dateFromString = [dateFormatter dateFromString:self.dateofBirthField.text];
+       // if([self isNumericOrSlash:textField.text] == NO && ![textField.text  isEqual:@""]){
+        if(!dateFromString){
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Invalid Input" message:@"Only acceptable format is MM-dd-yyyy." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
             [av show];
         }else{
             self.dateofBirthField.text = textField.text;
