@@ -17,6 +17,7 @@
 @property UITextField *dateofBirthField;
 @property UITextField *genderField;
 @property UITextField *streetAddressField;
+@property UITextField *streetAddress2Field;
 @property UITextField *cityAddressField;
 @property UITextField *stateAddressField;
 @property UITextField *zipCodeField;
@@ -29,6 +30,7 @@
 @property NSString *dateOfBirth;
 @property NSString *gender;
 @property NSString *streetAddress;
+@property NSString *streetAddress2;
 @property NSString *cityAddress;
 @property NSString *stateAddress;
 @property NSString *zipCode;

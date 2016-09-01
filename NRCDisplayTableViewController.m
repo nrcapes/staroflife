@@ -38,6 +38,7 @@
     self.dateOfBirth = @"";
     self.gender = @"";
     self.streetAddress = @"";
+    self.streetAddress2 = @"";
     self.cityAddress = @"";
     self.stateAddress = @"";
     self.zipCode = @"";
@@ -130,7 +131,7 @@
 
 
 #pragma mark - Table view data source
-
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -138,7 +139,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 12;
 }
-
+*/
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
@@ -179,31 +180,36 @@
                 [cell addSubview:self.streetAddressField];
                 break;
             case 6:
+                cell.textLabel.text = @"Address2";
+                tf = self.streetAddress2Field = [self makeTextField:self.item.streetAddress2 placeholder:@"Apt. 25"];
+                [cell addSubview:self.streetAddress2Field];
+                break;
+            case 7:
                 cell.textLabel.text =@"City";
                 tf = self.cityAddressField = [self makeTextField:self.item.cityAddress placeholder:@""];
                 [cell addSubview:self.cityAddressField];
                 break;
-            case 7:
+            case 8:
                 cell.textLabel.text = @"State";
                 tf = self.stateAddressField = [self makeTextField:self.item.stateAddress placeholder:@""];
                 [cell addSubview:self.stateAddressField];
                 break;
-            case 8:
+            case 9:
                 cell.textLabel.text =@"Zip Code";
                 tf = self.zipCodeField = [self makeTextField:self.item.zipCode placeholder:@""];
                 [cell addSubview:self.zipCodeField];
                 break;
-            case 9:
+            case 10:
                 cell.textLabel.text = @"Phone #";
                 tf = self.phoneNumberField = [self makeTextField:self.item.phoneNumber placeholder:@""];
                 [cell addSubview:self.phoneNumberField];
                 break;
-            case 10:
+            case 11:
                 cell.textLabel.text =@"Venue";
                 tf = self.venueField = [self makeTextField:self.item.venue placeholder:@""];
                 [cell addSubview:self.venueField];
                 break;
-            case 11:
+            case 12:
                 cell.textLabel.text =@"Event";
                 tf = self.eventField = [self makeTextField:self.item.event placeholder:@""];
                 [cell addSubview:self.eventField];
@@ -251,7 +257,15 @@
         self.item.lastName = self.lastNameField.text;
     }else if (textField == self.dateofBirthField){
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"MM-dd-yyyy"];
+        NSLocale *myLocale = [NSLocale currentLocale];
+        NSString *myLocaleID = [myLocale localeIdentifier];
+        if([myLocaleID isEqualToString:@"en_US"]){
+            dateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MMddyyyy" options:0 locale:myLocale];
+            }else{
+                if([myLocaleID isEqualToString:@"en_GB"]){
+                dateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"ddMMyyyy" options:0 locale:myLocale];
+                }
+                }
         NSDate * dateFromString = [dateFormatter dateFromString:self.dateofBirthField.text];
         if(!dateFromString){
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Invalid Input" message:@"Only acceptable formats are: MM/dd/yyyy and dd/MM/YYYY." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
@@ -266,6 +280,12 @@
     }else if (textField == self.streetAddressField) {
         self.streetAddressField.text = textField.text;
         self.item.streetAddress = self.streetAddressField.text;
+    }else if (textField == self.streetAddress2Field) {
+        self.streetAddress2Field.text = textField.text;
+        self.item.streetAddress2 = self.streetAddressField.text;
+    }else if (textField == self.streetAddress2Field) {
+        self.streetAddress2Field.text = textField.text;
+        self.item.streetAddress2 = self.streetAddress2Field.text;
     }else if (textField == self.cityAddressField){
         self.cityAddressField.text = textField.text;
         self.item.cityAddress = self.cityAddressField.text;

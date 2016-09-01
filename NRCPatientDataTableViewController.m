@@ -21,6 +21,7 @@ typedef NS_ENUM(int, row){
     date_of_birth,
     gender,
     street_address,
+    street_address2,
     city,
     state,
     zipcode,
@@ -52,6 +53,7 @@ typedef NS_ENUM(int, row){
     self.dateOfBirth = @"";
     self.gender = @"";
     self.streetAddress = @"";
+    self.streetAddress2 =@"";
     self.cityAddress = @"";
     self.stateAddress = @"";
     self.zipCode = @"";
@@ -137,7 +139,7 @@ typedef NS_ENUM(int, row){
 }
 
 #pragma mark - Table view data source
-
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -145,7 +147,7 @@ typedef NS_ENUM(int, row){
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 12;
 }
-
+*/
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault
@@ -188,31 +190,36 @@ typedef NS_ENUM(int, row){
                 [cell addSubview:self.streetAddressField];
                 break;
             case 6:
+                cell.textLabel.text = @"Address2";
+                tf = self.streetAddress2Field = [self makeTextField:self.item.streetAddress2 placeholder:@"Apt. 25" type_of_text:(street_address2)];
+                [cell addSubview:self.streetAddress2Field];
+                break;
+            case 7:
                 cell.textLabel.text =@"City";
                 tf = self.cityAddressField = [self makeTextField:self.item.cityAddress placeholder:@"Boston" type_of_text:(city)];
                 [cell addSubview:self.cityAddressField];
                 break;
-            case 7:
+            case 8:
                 cell.textLabel.text = @"State";
                 tf = self.stateAddressField = [self makeTextField:self.item.stateAddress placeholder:@"MA" type_of_text:(state)];
                 [cell addSubview:self.stateAddressField];
                 break;
-            case 8:
+            case 9:
                 cell.textLabel.text =@"Zip Code";
                 tf = self.zipCodeField = [self makeTextField:self.item.zipCode placeholder:@"02174" type_of_text:(zipcode)];
                 [cell addSubview:self.zipCodeField];
                 break;
-            case 9:
+            case 10:
                 cell.textLabel.text = @"Phone #";
                 tf = self.phoneNumberField = [self makeTextField:self.item.phoneNumber placeholder:@"617-000-000" type_of_text:(phone)];
                 [cell addSubview:self.phoneNumberField];
                 break;
-            case 10:
+            case 11:
                 cell.textLabel.text =@"Venue";
                 tf = self.venueField = [self makeTextField:self.item.venue placeholder:@"Venue" type_of_text:(venue)];
                 [cell addSubview:self.venueField];
                 break;
-            case 11:
+            case 12:
                 cell.textLabel.text =@"Event";
                 tf = self.eventField = [self makeTextField:self.item.event placeholder:@"Event" type_of_text:(name_of_event)];
                 [cell addSubview:self.eventField];
@@ -258,6 +265,9 @@ typedef NS_ENUM(int, row){
     }else
     if(type_of_text == street_address){
         [tf setKeyboardType:UIKeyboardTypeDefault];
+    }else
+        if(type_of_text == street_address2){
+            [tf setKeyboardType:UIKeyboardTypeDefault];
     }else
     if(type_of_text == city){
         [tf setKeyboardType:UIKeyboardTypeDefault];
@@ -374,6 +384,9 @@ typedef NS_ENUM(int, row){
     }else if (textField == self.streetAddressField) {
         self.streetAddressField.text = textField.text;
         self.item.streetAddress = self.streetAddressField.text;
+    }else if (textField == self.streetAddress2Field) {
+        self.streetAddress2Field.text = textField.text;
+        self.item.streetAddress2 = self.streetAddress2Field.text;
     }else if (textField == self.cityAddressField){
         self.cityAddressField.text = textField.text;
         self.item.cityAddress = self.cityAddressField.text;
@@ -433,25 +446,29 @@ typedef NS_ENUM(int, row){
                 break;}
             case 6:{
                 self.textView = [cell viewWithTag:1];
-                self.cityAddress = self.textView.text;
+                self.streetAddress2 = self.textView.text;
                 break;}
             case 7:{
                 self.textView = [cell viewWithTag:1];
-                self.stateAddress = self.textView.text;
+                self.cityAddress = self.textView.text;
                 break;}
             case 8:{
                 self.textView = [cell viewWithTag:1];
-                self.zipCode = self.textView.text;
+                self.stateAddress = self.textView.text;
                 break;}
             case 9:{
                 self.textView = [cell viewWithTag:1];
-                self.phoneNumber = self.textView.text;
+                self.zipCode = self.textView.text;
                 break;}
             case 10:{
                 self.textView = [cell viewWithTag:1];
-                self.venue = self.textView.text;
+                self.phoneNumber = self.textView.text;
                 break;}
             case 11:{
+                self.textView = [cell viewWithTag:1];
+                self.venue = self.textView.text;
+                break;}
+            case 12:{
                 self.textView = [cell viewWithTag:1];
                 self.event = self.textView.text;
                 break;

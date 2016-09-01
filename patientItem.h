@@ -16,6 +16,7 @@
 @property NSString *dateOfBirth;
 @property NSString *gender;
 @property NSString *streetAddress;
+@property NSString *streetAddress2;
 @property NSString *cityAddress;
 @property NSString *stateAddress;
 @property NSString *zipCode;

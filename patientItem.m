@@ -21,6 +21,7 @@
         _dateOfBirth = [aDecoder decodeObjectForKey:@"dateOfBirth"];
         _gender = [aDecoder decodeObjectForKey:@"gender"];
         _streetAddress = [aDecoder decodeObjectForKey:@"streetAddress"];
+        _streetAddress2 = [aDecoder decodeObjectForKey:@"streetAddress2"];
         _cityAddress = [aDecoder decodeObjectForKey:@"cityAddress"];
         _stateAddress = [aDecoder decodeObjectForKey:@"stateAddress"];
         _zipCode = [aDecoder decodeObjectForKey:@"zipCode"];
@@ -48,6 +49,7 @@
     [aCoder encodeObject:self.dateOfBirth forKey:@"dateOfBirth"];
     [aCoder encodeObject:self.gender forKey:@"gender"];
     [aCoder encodeObject:self.streetAddress forKey:@"streetAddress"];
+    [aCoder encodeObject:self.streetAddress2 forKey:@"streetAddress2"];
     [aCoder encodeObject:self.cityAddress forKey:@"cityAddress"];
     [aCoder encodeObject:self.stateAddress forKey:@"stateAddress"];
     [aCoder encodeObject:self.zipCode forKey:@"zipCode"];
