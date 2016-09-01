@@ -343,18 +343,26 @@ typedef NS_ENUM(int, row){
         self.lastNameField.text= textField.text;
         self.item.lastName = self.lastNameField.text;
     }else if (textField == self.dateofBirthField){
-        
+        NSLocale *myLocale = [NSLocale currentLocale];
+        NSString *myLocaleID = [myLocale localeIdentifier];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"MM-dd-yyyy"];
+       // [dateFormatter setDateFormat:@"MM-dd-yyyy"];
+        if([myLocaleID isEqualToString:@"en_US"
+           ]){
+            dateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"MMddyyyy" options:0 locale:myLocale];
+        }else{
+            dateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"ddMMyyyy" options:0 locale:myLocale];
+        }
         NSDate * dateFromString = [dateFormatter dateFromString:self.dateofBirthField.text];
-       // if([self isNumericOrSlash:textField.text] == NO && ![textField.text  isEqual:@""]){
+      //  if([self isNumericOrSlash:textField.text] == NO && ![textField.text  isEqual:@""]){
         if(!dateFromString){
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Invalid Input" message:@"Only acceptable format is MM-dd-yyyy." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Invalid Input" message:@"Your input is incorrect for your locale." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
             [av show];
         }else{
             self.dateofBirthField.text = textField.text;
             self.item.dateOfBirth = self.dateofBirthField.text;
         }
+        
     }else if (textField == self.genderField){
         if([textField.text isEqualToString:@"M" ]  || ([textField.text isEqualToString:@"F"] && ![textField.text  isEqual:@""])){
         self.genderField.text = textField.text;

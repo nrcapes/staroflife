@@ -254,7 +254,7 @@
         [dateFormatter setDateFormat:@"MM-dd-yyyy"];
         NSDate * dateFromString = [dateFormatter dateFromString:self.dateofBirthField.text];
         if(!dateFromString){
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Invalid Input" message:@"Only acceptable format is MM-dd-yyyy." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Invalid Input" message:@"Only acceptable formats are: MM/dd/yyyy and dd/MM/YYYY." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
             [av show];
         }else{
         self.dateofBirthField.text = textField.text;

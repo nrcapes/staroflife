@@ -796,7 +796,6 @@ AVAudioPlayer *_audioPlayer2;
     [dateFormatter setDateStyle:NSDateFormatterNoStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     NSString *dateString = [dateFormatter stringFromDate:date];
-    self.contactTime = dateString;
     NSIndexPath *ip =[NSIndexPath indexPathForRow:2 inSection:0];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:ip];
     cell.detailTextLabel.font = [cell.detailTextLabel.font fontWithSize:24];
