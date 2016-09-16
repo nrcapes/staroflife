@@ -10,7 +10,6 @@
 #import "patientItemStore.h"
 
 @interface patientItemStore ()
-
 @property (nonatomic) NSMutableArray *privateItems;
 @end
 
@@ -86,7 +85,7 @@
 }
 - (NSArray *)allItems
 {
-    return [self.privateItems copy];
+    return [self.privateItems mutableCopy];
 }
 -(NSArray*)allItemsActual{
     return self.privateItems;
