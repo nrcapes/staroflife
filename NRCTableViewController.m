@@ -187,12 +187,15 @@
     self.iCloudActivated = (self.iCloudEnabled  && iCloudAlwaysAvailable);
     
     // if we are not using iCloud:
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincompatible-pointer-types"
     if(self.iCloudActivated == NO){
         self.patients = [[patientItemStore sharedStore]allItems];
     }else{
         // if we are using icloud
         [self loadNotes];
     }
+#pragma clang diagnostic pop
     BOOL iCloudAvailable;
     NSURL *ubiq = [[NSFileManager defaultManager]
                    URLForUbiquityContainerIdentifier:nil];
@@ -1288,7 +1291,10 @@ AVAudioPlayer *_audioPlayer2;
     if([segue.identifier isEqualToString:@"patientListController"]){
         PatientListTableViewController *destViewController = segue.destinationViewController;
         [[patientItemStore sharedStore]sortByDate:YES];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincompatible-pointer-types"
         self.patients = [[patientItemStore sharedStore]allItems];
+#pragma clang diagnostic pop
         destViewController.patients = self.patients;
         destViewController.medications = [self.medications mutableCopy];
         destViewController.interventions = [self.interventions mutableCopy];
@@ -1549,7 +1555,10 @@ AVAudioPlayer *_audioPlayer2;
     if(self.patientItem){
         patientItem *item;
         BOOL itemFound = NO;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincompatible-pointer-types"
         NSMutableArray *items = [[patientItemStore sharedStore]allItems];
+#pragma clang diagnostic pop
         for(item in items){
            // NSLog(@"item contact time =%@, self.patientItem contact time=%@",item.contactTime, self.patientItem.contactTime);
             if([item.contactTime isEqualToDate:self.patientItem.contactTime]){

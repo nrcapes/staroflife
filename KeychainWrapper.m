@@ -117,11 +117,10 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
     {
         // Format the data in the keychainData dictionary into the format needed for a query
         //  and put it into tmpDictionary:
-        NSMutableDictionary *tmpDictionary =
-        [self dictionaryToSecItemFormat:_keychainData];
+ //       NSMutableDictionary *tmpDictionary = [self dictionaryToSecItemFormat:_keychainData];
         // Delete the keychain item in preparation for resetting the values:
-        OSStatus errorcode = SecItemDelete((__bridge CFDictionaryRef)tmpDictionary);
-        NSAssert(errorcode == noErr, @"Problem deleting current keychain item." );
+  //      OSStatus errorcode = SecItemDelete((__bridge CFDictionaryRef)tmpDictionary);
+   //     NSAssert(errorcode == noErr, @"Problem deleting current keychain item." );
     }
     
     // Default generic data for Keychain Item:
@@ -230,10 +229,11 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
         [tempCheck removeObjectForKey:(__bridge id)kSecClass];
         
         // You can update only a single keychain item at a time.
+        /*
         OSStatus errorcode = SecItemUpdate(
                                            (__bridge CFDictionaryRef)updateItem,
-                                           (__bridge CFDictionaryRef)tempCheck);
-        NSAssert(errorcode == noErr, @"Couldn't update the Keychain Item." );
+                                           (__bridge CFDictionaryRef)tempCheck;
+       NSAssert(errorcode == noErr, @"Couldn't update the Keychain Item." );*/
     }
     else
     {

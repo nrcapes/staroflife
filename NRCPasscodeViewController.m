@@ -95,7 +95,7 @@
             AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
             
             CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
-            [animation setDelegate:self]; 
+            [animation setDelegate:self];
             [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
             [animation setDuration:0.025];
             [animation setRepeatCount:8];

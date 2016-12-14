@@ -447,8 +447,10 @@ typedef NS_ENUM(int, row){
 }
 #pragma mark - buildEmail
 -(void)buildEmail{
-    
+    #pragma clang diagnostic push
     self.patients = [[patientItemStore sharedStore]allItems];
+#pragma clang diagnostic pop
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
     dateFormatter.timeStyle = NSDateFormatterShortStyle;
     dateFormatter.dateStyle = NSDateIntervalFormatterShortStyle;
