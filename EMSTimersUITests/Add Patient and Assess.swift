@@ -53,7 +53,7 @@ class Add_Patient_and_Assess: XCTestCase {
         
         
         tablesQuery.textFields["120"].tap()
-        tablesQuery2.cells.containingType(.StaticText, identifier:"Systolic BP").childrenMatchingType(.TextField).element
+        tablesQuery2.cells.containing(.staticText, identifier:"Systolic BP").children(matching: .textField).element
         
         app.buttons["Return"].tap()
         //app.typeText("\n")

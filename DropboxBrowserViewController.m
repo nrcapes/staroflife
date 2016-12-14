@@ -120,7 +120,9 @@ static NSUInteger const kDBSignOutAlertViewTag = 3;
         searchBar.delegate = self;
         searchBar.placeholder = [NSString stringWithFormat:NSLocalizedString(@"Search %@", @"DropboxBrowser: Search Field Placeholder Text. Search 'CURRENT FOLDER NAME'"), self.title];
         self.tableView.tableHeaderView = searchBar;
-        
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+  
         // Setup Search Controller
         UISearchDisplayController *searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
         searchController.searchResultsDataSource = self;
@@ -128,7 +130,7 @@ static NSUInteger const kDBSignOutAlertViewTag = 3;
         searchController.delegate = self;
         self.tableView.contentOffset = CGPointMake(0, self.searchDisplayController.searchBar.frame.size.height);
     }
-    
+#pragma clang diagnostic pop
     // Add Download Progress View to Navigation Bar
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         // The user is on an iPad - Add progressview

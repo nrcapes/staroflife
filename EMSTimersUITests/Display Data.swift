@@ -37,12 +37,12 @@ class Display_Data: XCTestCase {
         let tablesQuery = tablesQuery2
         //tablesQuery.staticTexts["At Hospital"].tap()
         tablesQuery2.buttons["Show Data"].tap()
-        XCTAssertTrue(tablesQuery.staticTexts.elementBoundByIndex(0).exists)
-        tablesQuery.staticTexts.elementBoundByIndex(0).tap()
+        XCTAssertTrue(tablesQuery.staticTexts.element(boundBy: 0).exists)
+        tablesQuery.staticTexts.element(boundBy: 0).tap()
         XCTAssertTrue(tablesQuery2.buttons["Assessments"].exists)
         tablesQuery2.buttons["Assessments"].tap()
-        XCTAssertTrue(tablesQuery.staticTexts.elementBoundByIndex(0).exists)
-        tablesQuery.staticTexts.elementBoundByIndex(0).tap()
+        XCTAssertTrue(tablesQuery.staticTexts.element(boundBy: 0).exists)
+        tablesQuery.staticTexts.element(boundBy: 0).tap()
         tablesQuery2.buttons["Medical History"].tap()
         
         let doneButton = app.navigationBars.buttons["Done"]

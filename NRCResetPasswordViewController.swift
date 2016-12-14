@@ -20,41 +20,41 @@ class NRCResetPasswordViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var passwordcopy: UITextField!
     @IBOutlet weak var reset: UIButton!
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
     
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         if (textField == password || textField == passwordcopy) {
             animateViewMoving(true, moveValue: 70)
         }
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if  (textField == password || textField == passwordcopy) {
             animateViewMoving(false, moveValue: 70)
         }
     }
     
-    func animateViewMoving (up:Bool, moveValue :CGFloat){
-        let movementDuration:NSTimeInterval = 0.3
+    func animateViewMoving (_ up:Bool, moveValue :CGFloat){
+        let movementDuration:TimeInterval = 0.3
         let movement:CGFloat = ( up ? -moveValue : moveValue)
         UIView.beginAnimations( "animateView", context: nil)
         UIView.setAnimationBeginsFromCurrentState(true)
         UIView.setAnimationDuration(movementDuration )
-        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
         UIView.commitAnimations()
     }
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
        // view.backgroundColor = UIColor(white: 0x255/255, alpha: 1.0)
     }
     
-    func checkLogin(password: String ) -> Bool {
-        if password == MyKeychainWrapper.myObjectForKey("v_Data") as? String  {
+    func checkLogin(_ password: String ) -> Bool {
+        if password == MyKeychainWrapper.myObject(forKey: "v_Data") as? String  {
             return true
         } else {
             return false
@@ -87,7 +87,7 @@ class NRCResetPasswordViewController: UIViewController, UITextFieldDelegate{
     }
     
     // MARK: - Action for checking username/password
-    @IBAction func resetAction(sender: AnyObject) {
+    @IBAction func resetAction(_ sender: AnyObject) {
     
         
         if checkLogin(currentPassword.text!) {
@@ -95,10 +95,10 @@ class NRCResetPasswordViewController: UIViewController, UITextFieldDelegate{
             if password.text != passwordcopy.text{
                 let alertView = UIAlertController(title: "Login problem" ,
                                                   message: "Passwords don't match!" as String,
-                                                  preferredStyle: .Alert)
-                let okAction = UIAlertAction(title: "Re-enter", style:.Default, handler:nil)
+                                                  preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Re-enter", style:.default, handler:nil)
                 alertView.addAction(okAction)
-                self.presentViewController(alertView, animated:true, completion:nil)
+                self.present(alertView, animated:true, completion:nil)
                 return;
             }else{
             
@@ -113,16 +113,16 @@ class NRCResetPasswordViewController: UIViewController, UITextFieldDelegate{
         } else
         {
             let alertView = UIAlertController(title: "Login Problem",
-                                              message: "Wrong password." as String, preferredStyle:.Alert)
-            let okAction = UIAlertAction(title: "Press any key to return", style: .Default, handler:nil)
+                                              message: "Wrong password." as String, preferredStyle:.alert)
+            let okAction = UIAlertAction(title: "Press any key to return", style: .default, handler:nil)
             alertView.addAction(okAction)
-            self.presentViewController(alertView, animated: true, completion: nil)
+            self.present(alertView, animated: true, completion: nil)
         }
         }
     
     
-    @IBAction func finished(sender: AnyObject) {
-      self.performSegueWithIdentifier("toLogin", sender: self)
+    @IBAction func finished(_ sender: AnyObject) {
+      self.performSegue(withIdentifier: "toLogin", sender: self)
         
     }
     

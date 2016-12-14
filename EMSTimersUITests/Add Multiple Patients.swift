@@ -35,7 +35,7 @@ class Add_Multiple_Patients: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
         
-        XCUIDevice.sharedDevice().orientation = .Portrait
+        XCUIDevice.shared().orientation = .portrait
         
         let app = XCUIApplication()
         app.alerts["Legal Notice"].collectionViews.buttons["Press any key to continue"].tap()

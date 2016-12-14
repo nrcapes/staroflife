@@ -36,14 +36,14 @@ class EMSTimersUITests: XCTestCase {
         let pressAnyKeyToContinueButton = XCUIApplication().alerts["Legal Notice"].collectionViews.buttons["Press any key to continue"]
         pressAnyKeyToContinueButton.tap()
         
-        XCTAssertTrue(app.tables.element.cells.elementBoundByIndex(0).exists)
-        XCTAssertEqual(app.tables.element.cells.elementBoundByIndex(0).label, "")
-        app.tables.element.cells.elementBoundByIndex(0).tap()
+        XCTAssertTrue(app.tables.element.cells.element(boundBy: 0).exists)
+        XCTAssertEqual(app.tables.element.cells.element(boundBy: 0).label, "")
+        app.tables.element.cells.element(boundBy: 0).tap()
         sleep(5)
         
-        XCTAssertTrue(app.tables.element.cells.elementBoundByIndex(1).exists)
-        XCTAssertEqual(app.tables.element.cells.elementBoundByIndex(1).label, "")
-        app.tables.element.cells.elementBoundByIndex(1).tap()
+        XCTAssertTrue(app.tables.element.cells.element(boundBy: 1).exists)
+        XCTAssertEqual(app.tables.element.cells.element(boundBy: 1).label, "")
+        app.tables.element.cells.element(boundBy: 1).tap()
         sleep(5)
         
         //XCTAssertTrue(app.tables.element.cells.elementBoundByIndex(2).exists)
@@ -51,19 +51,19 @@ class EMSTimersUITests: XCTestCase {
         //app.tables.element.cells.elementBoundByIndex(2).tap()
         //sleep(5)
         
-        XCTAssertTrue(app.tables.element.cells.elementBoundByIndex(3).exists)
-        XCTAssertEqual(app.tables.element.cells.elementBoundByIndex(3).label, "")
-        app.tables.element.cells.elementBoundByIndex(3).tap()
+        XCTAssertTrue(app.tables.element.cells.element(boundBy: 3).exists)
+        XCTAssertEqual(app.tables.element.cells.element(boundBy: 3).label, "")
+        app.tables.element.cells.element(boundBy: 3).tap()
         sleep(5)
         
-        XCTAssertTrue(app.tables.element.cells.elementBoundByIndex(4).exists)
-        XCTAssertEqual(app.tables.element.cells.elementBoundByIndex(4).label, "")
-        app.tables.element.cells.elementBoundByIndex(4).tap()
+        XCTAssertTrue(app.tables.element.cells.element(boundBy: 4).exists)
+        XCTAssertEqual(app.tables.element.cells.element(boundBy: 4).label, "")
+        app.tables.element.cells.element(boundBy: 4).tap()
         sleep(5)
         
-        XCTAssertTrue(app.tables.element.cells.elementBoundByIndex(5).exists)
-        XCTAssertEqual(app.tables.element.cells.elementBoundByIndex(5).label, "")
-        app.tables.element.cells.elementBoundByIndex(5).tap()
+        XCTAssertTrue(app.tables.element.cells.element(boundBy: 5).exists)
+        XCTAssertEqual(app.tables.element.cells.element(boundBy: 5).label, "")
+        app.tables.element.cells.element(boundBy: 5).tap()
         sleep(5)
         
         
