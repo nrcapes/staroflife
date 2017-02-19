@@ -124,7 +124,9 @@
 
 @implementation NRCTableViewController
 #pragma mark Helpers
-
+#define APP_STORE_ID 1076129873
+#define stopsBeforeReview 4
+static NSString *const iOSAppStoreURLFormat = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d";
 - (BOOL)iCloudOn {
     NSLog(@"iCloudOn = %d", [[NSUserDefaults standardUserDefaults] boolForKey:@"iCloudEnabled"]);
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"iCloudEnabled"];
@@ -410,10 +412,49 @@ AVAudioPlayer *_audioPlayer2;
     [aCoder encodeObject:self.checkedArray forKey:@"checkedArray"];
     
 }
+-(void)askForReview{
+    NSLog(@"askForReview");
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+    self.reviewCount = [storage integerForKey:@"reviewCount"];
+    if(self.reviewCount == stopsBeforeReview){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"We would really appreciate your review! Your review will help us continue to produce great software!" message:@"Do you want to write a review? We won't bug you again." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok =[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+            NSURL *appStoreURL = [NSURL URLWithString:[NSString stringWithFormat:iOSAppStoreURLFormat, APP_STORE_ID]];
+            
+            if ([[UIApplication sharedApplication] canOpenURL:appStoreURL]) {
+                [[UIApplication sharedApplication] openURL:appStoreURL];
+            }
+        }];
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                           self.reviewCount = self.reviewCount + 1;
+                                                           [storage setInteger:self.reviewCount forKey:@"reviewCount"];
+                                                           [storage synchronize];
+                                                           
+                                                           [self playCheckout];
+                                                       }];
+        
+        [alert addAction:ok];
+        [alert addAction:cancel];
+        
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
+        
+    } else{
+        self.reviewCount = self.reviewCount + 1;
+        [storage setInteger:self.reviewCount forKey:@"reviewCount"];
+        [storage synchronize];
+    }
+}
+
 #pragma mark - viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    // set count of display data presses before asking for review
+    self.reviewCount = 0;
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+    [storage setInteger:self.reviewCount forKey:@"reviewCount"];
     
     self.isAuthenticated = NO;
 // to allow for in app purchase upgrade to unlimited emails, in the non-
@@ -1321,6 +1362,7 @@ AVAudioPlayer *_audioPlayer2;
 }
 # pragma mark unwind segues
 -(IBAction)unwindFromLoginViewController:(UIStoryboardSegue *)seque{
+    NRCLoginViewController *controller = seque.sourceViewController;
     self.isAuthenticated = YES;
 }
 -(IBAction)unwindFrompatientDataController:(UIStoryboardSegue *)segue{
@@ -1381,6 +1423,7 @@ AVAudioPlayer *_audioPlayer2;
     [self enablePurchase];
 }
 -(IBAction)unwindFromLogin:(UIStoryboardSegue *)segue{
+   
     self.isAuthenticated = true;
 }
 // this method lets the user enter patient data.
@@ -1428,6 +1471,7 @@ AVAudioPlayer *_audioPlayer2;
     if(self.iCloudActivated == YES){
     [self loadNotes];
     }
+    [self askForReview];
     
     [self performSegueWithIdentifier:@"patientListController" sender:self];
 

@@ -97,6 +97,8 @@
 @property (nonatomic, strong) NSMutableArray *notes;
 @property (nonatomic) NSMetadataQuery *query;
 
+-(void)askForReview;
+
 -(void)enablePurchase;
 @property BOOL iCloudEnabled;
 @property BOOL iCloudActivated;
@@ -107,6 +109,6 @@
 @property BOOL didReturnFromBackground;
 @property NSIndexPath *selectedPath;
 @property NSData *savedPath;
-
+@property NSInteger reviewCount;
 
 @end
