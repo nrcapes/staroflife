@@ -59,7 +59,7 @@
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
 - (IBAction)buyProduct:(id)sender {
-    
+    [self showTransactionAsInProgress:_transaction];
     [[SKPaymentQueue defaultQueue] addPayment:self.payment];
 }
 -(void)getProductInfo

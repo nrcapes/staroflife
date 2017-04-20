@@ -1362,7 +1362,7 @@ AVAudioPlayer *_audioPlayer2;
 }
 # pragma mark unwind segues
 -(IBAction)unwindFromLoginViewController:(UIStoryboardSegue *)seque{
-    NRCLoginViewController *controller = seque.sourceViewController;
+   // NRCLoginViewController *controller = seque.sourceViewController;
     self.isAuthenticated = YES;
 }
 -(IBAction)unwindFrompatientDataController:(UIStoryboardSegue *)segue{
