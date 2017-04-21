@@ -20,11 +20,47 @@
     self.textView = [self.cellToZoom viewWithTag:1];
     self.displayedText.text= self.textView.text;
     self.displayedText.delegate = self;
+    [self.microphoneButton setEnabled:false];
+    self.speechRecognizer.delegate = self;
+    
+    [SFSpeechRecognizer requestAuthorization:^(SFSpeechRecognizerAuthorizationStatus status) {
+        _isButtonEnabled = false;
+        switch(status){
+            case SFSpeechRecognizerAuthorizationStatusAuthorized:{
+                _isButtonEnabled = true;
+                break;
+            }
+            case SFSpeechRecognizerAuthorizationStatusDenied:{
+                _isButtonEnabled = false;
+                break;
+            }
+            case SFSpeechRecognizerAuthorizationStatusRestricted:{
+                _isButtonEnabled = false;
+                NSLog(@"Speech recognition restricted on this device");
+                break;
+            }
+            case SFSpeechRecognizerAuthorizationStatusNotDetermined:{
+                NSLog(@"Speech recognition not yet authorized");
+                break;
+            }
+        }
+    }
+     ];
+    operationQueue = [NSOperationQueue new];
+    NSInvocationOperation *operation =[[NSInvocationOperation alloc]initWithTarget:self selector:@selector(checkButtonEnabled) object:nil];
+    [operationQueue addOperation:operation];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+-(void)checkButtonEnabled{
+    if(_isButtonEnabled == true){
+        [self.microphoneButton setEnabled:true];
+    }else{
+        [self.microphoneButton setEnabled:false];
+    };
 }
 -(IBAction)finishedDisplaying:(id)sender{
     self.textView = [self.cellToZoom viewWithTag:1];
@@ -67,8 +103,52 @@
     NSLog(@"Data Select button tapped");
     [self performSegueWithIdentifier:@"toSelectData" sender:self];
 }
-
-
+-(IBAction)microphoneTapped :(id)sender{
+    if(_audioEngine.isRunning){
+        [_audioEngine stop];
+        [_recognitionRequest endAudio];
+        [_microphoneButton setEnabled:false];
+        _microphoneButton.title = @"Start Recording";
+    }else{
+        [self startRecording];
+        _microphoneButton.title = @"Stop Recording";
+    }
+}
+-(void)startRecording{
+    if (_recognitionTask != nil){
+        [_recognitionTask cancel];
+        _recognitionTask = nil;
+    }
+    NSError *error;
+    _audioSession = [AVAudioSession sharedInstance];
+    [_audioSession setCategory:AVAudioSessionCategoryRecord error: &error];
+    [_audioSession setMode:AVAudioSessionModeMeasurement error:&error];
+    [_audioSession setActive:true withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:&error];
+    if(error){
+        NSLog(@"audioSession properites weren't set because of an error");
+    }
+    _inputNode = _audioEngine.inputNode;
+    _recognitionRequest = [[SFSpeechAudioBufferRecognitionRequest alloc]init];
+    _recognitionRequest.shouldReportPartialResults = true;
+    
+    _recognitionRequest= [[SFSpeechAudioBufferRecognitionRequest alloc] init];
+    
+    _recognitionRequest.shouldReportPartialResults = true;
+    
+    _recognitionTask = [_speechRecognizer recognitionTaskWithRequest:_recognitionRequest resultHandler:^(SFSpeechRecognitionResult * _Nullable result, NSError * _Nullable error) {
+        BOOL isFinal = false;
+        if(result != nil){
+            
+        }
+        if(error != nil || isFinal){
+            [_audioEngine stop];
+            [_inputNode removeTapOnBus:0];
+            _recognitionRequest = nil;
+            _recognitionTask = nil;
+            [_microphoneButton setEnabled:false];
+        }
+    }];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
