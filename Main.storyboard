@@ -462,7 +462,11 @@
                                     </connections>
                                 </barButtonItem>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="Eyu-HE-6Bk"/>
-                                <barButtonItem title="Dictation" id="PQt-kf-Si7"/>
+                                <barButtonItem title="Dictation" id="PQt-kf-Si7">
+                                    <connections>
+                                        <action selector="microphoneTapped:" destination="cU9-B8-Ixp" id="CQ6-vm-FXX"/>
+                                    </connections>
+                                </barButtonItem>
                                 <barButtonItem style="plain" systemItem="flexibleSpace" id="Qgt-Jh-yoH"/>
                                 <barButtonItem title="Data Select" width="91" id="URV-y5-hHB">
                                     <connections>

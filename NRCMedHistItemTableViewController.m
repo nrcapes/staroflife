@@ -16,11 +16,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
     self.textView = [self.cellToZoom viewWithTag:1];
     self.displayedText.text= self.textView.text;
     self.displayedText.delegate = self;
     [self.microphoneButton setEnabled:false];
+    
+    _audioEngine = [[AVAudioEngine alloc] init];
+    _speechSynthesizer  = [[AVSpeechSynthesizer alloc] init];
+    [_speechSynthesizer setDelegate:self];
+    
     self.speechRecognizer.delegate = self;
     
     [SFSpeechRecognizer requestAuthorization:^(SFSpeechRecognizerAuthorizationStatus status) {
@@ -28,34 +33,53 @@
         switch(status){
             case SFSpeechRecognizerAuthorizationStatusAuthorized:{
                 _isButtonEnabled = true;
+                [storage setBool:_isButtonEnabled forKey:@"isButtonEnabled"];
+                [storage synchronize];
                 break;
             }
             case SFSpeechRecognizerAuthorizationStatusDenied:{
                 _isButtonEnabled = false;
+                [storage setBool:_isButtonEnabled forKey:@"isButtonEnabled"];
+                [storage synchronize];
                 break;
             }
             case SFSpeechRecognizerAuthorizationStatusRestricted:{
                 _isButtonEnabled = false;
+                [storage setBool:_isButtonEnabled forKey:@"isButtonEnabled"];
+                [storage synchronize];
                 NSLog(@"Speech recognition restricted on this device");
                 break;
             }
             case SFSpeechRecognizerAuthorizationStatusNotDetermined:{
+                _isButtonEnabled = false;
+                [storage setBool:_isButtonEnabled forKey:@"isButtonEnabled"];
+                [storage synchronize];
                 NSLog(@"Speech recognition not yet authorized");
                 break;
             }
         }
     }
      ];
-    operationQueue = [NSOperationQueue new];
+    //operationQueue = [NSOperationQueue new];
+    NSOperationQueue *operationQueue = NSOperationQueue.mainQueue;
+    [operationQueue addOperationWithBlock:^(void){
+        NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+        _isButtonEnabled = [storage boolForKey:@"isButtonEnabled"];
+        if(_isButtonEnabled == true){
+            [_microphoneButton setEnabled:true];
+        }
+    }];
+     
+    
+    /*
     NSInvocationOperation *operation =[[NSInvocationOperation alloc]initWithTarget:self selector:@selector(checkButtonEnabled) object:nil];
     [operationQueue addOperation:operation];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    */
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 -(void)checkButtonEnabled{
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+    _isButtonEnabled = [storage boolForKey:@"isButtonEnabled"];
     if(_isButtonEnabled == true){
         [self.microphoneButton setEnabled:true];
     }else{
@@ -104,8 +128,8 @@
     [self performSegueWithIdentifier:@"toSelectData" sender:self];
 }
 -(IBAction)microphoneTapped :(id)sender{
-    if(_audioEngine.isRunning){
-        [_audioEngine stop];
+    if(self.audioEngine.isRunning){
+        [self.audioEngine stop];
         [_recognitionRequest endAudio];
         [_microphoneButton setEnabled:false];
         _microphoneButton.title = @"Start Recording";
@@ -114,6 +138,15 @@
         _microphoneButton.title = @"Stop Recording";
     }
 }
+
+-(void)speechRecognizer:(SFSpeechRecognizer *)speechRecognizer availabilityDidChange:(BOOL)available{
+    if (available){
+        [_microphoneButton setEnabled:true];
+    }else{
+        [_microphoneButton setEnabled:false];
+    }
+}
+
 -(void)startRecording{
     if (_recognitionTask != nil){
         [_recognitionTask cancel];
@@ -122,22 +155,28 @@
     NSError *error;
     _audioSession = [AVAudioSession sharedInstance];
     [_audioSession setCategory:AVAudioSessionCategoryRecord error: &error];
+    if(error){
+        NSLog(@"audioSession properites weren't set because of an error");
+    }
     [_audioSession setMode:AVAudioSessionModeMeasurement error:&error];
+    if(error){
+        NSLog(@"audioSession properites weren't set because of an error");
+    }
     [_audioSession setActive:true withOptions:AVAudioSessionSetActiveOptionNotifyOthersOnDeactivation error:&error];
     if(error){
         NSLog(@"audioSession properites weren't set because of an error");
     }
-    _inputNode = _audioEngine.inputNode;
+    self.audioEngine = [[AVAudioEngine alloc]init];
+    _inputNode = self.audioEngine.inputNode;
     _recognitionRequest = [[SFSpeechAudioBufferRecognitionRequest alloc]init];
+    if(!_recognitionTask){
+        NSLog(@"unable to create an SFSpeechAudioBufferRecognitionRequest object");
+    }else{
     _recognitionRequest.shouldReportPartialResults = true;
-    
-    _recognitionRequest= [[SFSpeechAudioBufferRecognitionRequest alloc] init];
-    
-    _recognitionRequest.shouldReportPartialResults = true;
-    
     _recognitionTask = [_speechRecognizer recognitionTaskWithRequest:_recognitionRequest resultHandler:^(SFSpeechRecognitionResult * _Nullable result, NSError * _Nullable error) {
         BOOL isFinal = false;
         if(result != nil){
+            self.textView.text = result.bestTranscription.formattedString;
             
         }
         if(error != nil || isFinal){
@@ -145,9 +184,20 @@
             [_inputNode removeTapOnBus:0];
             _recognitionRequest = nil;
             _recognitionTask = nil;
-            [_microphoneButton setEnabled:false];
+            [_microphoneButton setEnabled:true];
         }
     }];
+    AVAudioFormat *recordingFormat = [_inputNode outputFormatForBus:0];
+    [_inputNode installTapOnBus:0 bufferSize:1024 format:recordingFormat block:^(AVAudioPCMBuffer * _Nonnull buffer, AVAudioTime * _Nonnull when) {
+        [_recognitionRequest appendAudioPCMBuffer:buffer];
+    }];
+    
+    [_audioEngine prepare];
+    [_audioEngine startAndReturnError:&error];
+    if(error){
+        NSLog(@"audio engine couldn't start because of error %@", error);
+    }
+    }
 }
 #pragma mark - Table view data source
 

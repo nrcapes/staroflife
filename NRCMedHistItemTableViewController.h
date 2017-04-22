@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <Speech/Speech.h>
 @interface NRCMedHistItemTableViewController : UITableViewController <UITextViewDelegate, SFSpeechRecognizerDelegate>{
-    NSOperationQueue *operationQueue;
 }
 @property  UITableViewCell *cellToZoom;
 @property (weak, nonatomic) IBOutlet UITextView *displayedText;
@@ -18,6 +17,7 @@
 @property NSMutableArray *interventions;
 @property NSInteger row;
 @property SFSpeechRecognizer *speechRecognizer;
+@property AVSpeechSynthesizer * speechSynthesizer;
 @property SFSpeechAudioBufferRecognitionRequest *recognitionRequest;
 @property SFSpeechRecognitionTask *recognitionTask;
 @property AVAudioEngine * audioEngine;
