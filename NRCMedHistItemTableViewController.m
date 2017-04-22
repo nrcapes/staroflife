@@ -22,11 +22,8 @@
     self.displayedText.delegate = self;
     [self.microphoneButton setEnabled:false];
     
-    _audioEngine = [[AVAudioEngine alloc] init];
-    _speechSynthesizer  = [[AVSpeechSynthesizer alloc] init];
-    [_speechSynthesizer setDelegate:self];
-    
-    self.speechRecognizer.delegate = self;
+    _speechRecognizer = [[SFSpeechRecognizer alloc]init];
+    [_speechRecognizer setDelegate:self];
     
     [SFSpeechRecognizer requestAuthorization:^(SFSpeechRecognizerAuthorizationStatus status) {
         _isButtonEnabled = false;
@@ -60,7 +57,13 @@
         }
     }
      ];
-    //operationQueue = [NSOperationQueue new];
+    
+    _audioEngine = [[AVAudioEngine alloc] init];
+    _speechSynthesizer  = [[AVSpeechSynthesizer alloc] init];
+    [_speechSynthesizer setDelegate:self];
+
+    [self checkButtonEnabled];
+    /*
     NSOperationQueue *operationQueue = NSOperationQueue.mainQueue;
     [operationQueue addOperationWithBlock:^(void){
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
@@ -71,7 +74,7 @@
     }];
      
     
-    /*
+    
     NSInvocationOperation *operation =[[NSInvocationOperation alloc]initWithTarget:self selector:@selector(checkButtonEnabled) object:nil];
     [operationQueue addOperation:operation];
     */
@@ -148,10 +151,12 @@
 }
 
 -(void)startRecording{
-    if (_recognitionTask != nil){
-        [_recognitionTask cancel];
-        _recognitionTask = nil;
-    }
+    /*
+     if (_recognitionTask != nil){
+     [_recognitionTask cancel];
+     _recognitionTask = nil;
+     }
+     */
     NSError *error;
     _audioSession = [AVAudioSession sharedInstance];
     [_audioSession setCategory:AVAudioSessionCategoryRecord error: &error];
@@ -166,27 +171,30 @@
     if(error){
         NSLog(@"audioSession properites weren't set because of an error");
     }
-    self.audioEngine = [[AVAudioEngine alloc]init];
+    // self.audioEngine = [[AVAudioEngine alloc]init];
     _inputNode = self.audioEngine.inputNode;
     _recognitionRequest = [[SFSpeechAudioBufferRecognitionRequest alloc]init];
-    if(!_recognitionTask){
-        NSLog(@"unable to create an SFSpeechAudioBufferRecognitionRequest object");
-    }else{
+    if(_recognitionRequest == nil){
+        NSLog(@"Unable to create a SFSpeechAudioBufferRecognitionRequest");
+    }
     _recognitionRequest.shouldReportPartialResults = true;
-    _recognitionTask = [_speechRecognizer recognitionTaskWithRequest:_recognitionRequest resultHandler:^(SFSpeechRecognitionResult * _Nullable result, NSError * _Nullable error) {
-        BOOL isFinal = false;
-        if(result != nil){
-            self.textView.text = result.bestTranscription.formattedString;
-            
-        }
-        if(error != nil || isFinal){
-            [_audioEngine stop];
-            [_inputNode removeTapOnBus:0];
-            _recognitionRequest = nil;
-            _recognitionTask = nil;
-            [_microphoneButton setEnabled:true];
-        }
-    }];
+    _recognitionTask = [_speechRecognizer recognitionTaskWithRequest:_recognitionRequest delegate:self];
+    /*
+     _recognitionTask = [_speechRecognizer recognitionTaskWithRequest:_recognitionRequest resultHandler:^(SFSpeechRecognitionResult * _Nullable result, NSError * _Nullable error) {
+     BOOL isFinal = false;
+     if(result != nil){
+     self.textView.text = result.bestTranscription.formattedString;
+     
+     }
+     if(error != nil || isFinal){
+     [_audioEngine stop];
+     [_inputNode removeTapOnBus:0];
+     _recognitionRequest = nil;
+     _recognitionTask = nil;
+     [_microphoneButton setEnabled:true];
+     }
+     }];
+     */
     AVAudioFormat *recordingFormat = [_inputNode outputFormatForBus:0];
     [_inputNode installTapOnBus:0 bufferSize:1024 format:recordingFormat block:^(AVAudioPCMBuffer * _Nonnull buffer, AVAudioTime * _Nonnull when) {
         [_recognitionRequest appendAudioPCMBuffer:buffer];
@@ -197,6 +205,33 @@
     if(error){
         NSLog(@"audio engine couldn't start because of error %@", error);
     }
+    self.displayedText.text = @"Recording...";
+}
+-(void)speechRecognitionDidDetectSpeech:(SFSpeechRecognitionTask *)task{
+    NSLog(@"speechRecognitionTask didDetectSpeech");
+    
+}
+// Called for all recognitions, including non-final hypothesis -
+-(void)speechRecognitionTask:(SFSpeechRecognitionTask *)task didHypothesizeTranscription:(SFTranscription *)transcription {
+    NSString * translatedString = [transcription formattedString];
+    NSLog(@"%@", translatedString);
+    
+    self.displayedText.text = translatedString;
+    
+    [self.speechSynthesizer speakUtterance:[AVSpeechUtterance speechUtteranceWithString:translatedString]];
+}
+-(void)speechRecognitionTask:(SFSpeechRecognitionTask *)task didFinishRecognition:(SFSpeechRecognitionResult *)result{
+    NSLog(@"speechRecognitionTask:(SFSpeechRecognitionTask *)task didFinishRecogntion");
+    NSString *translatedString = [[[result bestTranscription]formattedString]stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSLog(@"translated string: %@", translatedString);
+    
+    self.displayedText.text = translatedString;
+    
+    if([result isFinal]){
+        [_audioEngine stop];
+        [_inputNode removeTapOnBus:0];
+        _recognitionTask = nil;
+        _recognitionRequest = nil;
     }
 }
 #pragma mark - Table view data source

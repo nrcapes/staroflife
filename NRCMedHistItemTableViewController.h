@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Speech/Speech.h>
-@interface NRCMedHistItemTableViewController : UITableViewController <UITextViewDelegate, SFSpeechRecognizerDelegate>{
+@interface NRCMedHistItemTableViewController : UITableViewController <UITextViewDelegate, SFSpeechRecognizerDelegate, SFSpeechRecognitionTaskDelegate, AVSpeechSynthesizerDelegate>{
 }
 @property  UITableViewCell *cellToZoom;
 @property (weak, nonatomic) IBOutlet UITextView *displayedText;
