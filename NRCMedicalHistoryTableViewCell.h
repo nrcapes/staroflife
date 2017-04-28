@@ -11,5 +11,6 @@
 @interface NRCMedicalHistoryTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *item;
 @property (weak, nonatomic) IBOutlet UITextField *text;
+@property (weak, nonatomic) IBOutlet UITextField *text1;
 
 @end

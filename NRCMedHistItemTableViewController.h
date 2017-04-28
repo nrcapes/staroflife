@@ -8,10 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <Speech/Speech.h>
+#import "patientItem.h"
+
 @interface NRCMedHistItemTableViewController : UITableViewController <UITextViewDelegate, SFSpeechRecognizerDelegate, SFSpeechRecognitionTaskDelegate, AVSpeechSynthesizerDelegate>{
 }
+@property (strong, nonatomic)patientItem *patientItem;
 @property  UITableViewCell *cellToZoom;
 @property (weak, nonatomic) IBOutlet UITextView *displayedText;
+@property (strong, nonatomic) IBOutlet UITextView *heldText;
+
+@property (nonatomic, strong) NSString *temp;
 @property IBOutlet UITextView * textView;
 @property NSMutableArray *medications;
 @property NSMutableArray *interventions;

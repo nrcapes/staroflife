@@ -19,6 +19,7 @@
 		52109E2A1D443E4500DF27E5 /* tblFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 52109E291D443E4500DF27E5 /* tblFiles.m */; };
 		521B85641CD54BBC0044D4FF /* Add Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B85631CD54BBC0044D4FF /* Add Patient.swift */; };
 		52208E441BEAE06D00A2DF93 /* star-of-life.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 52208E431BEAE06D00A2DF93 /* star-of-life.jpeg */; };
+		52308FE21EB2DD6600B936F2 /* NRCTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52308FE11EB2DD6600B936F2 /* NRCTextView.m */; };
 		5237938C1CD51E3900265063 /* Display Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5237938B1CD51E3900265063 /* Display Data.swift */; };
 		5244AA3C1CA45DB6004F8849 /* NRCPasscodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5244AA3B1CA45DB6004F8849 /* NRCPasscodeViewController.xib */; };
 		5246836C1BEAAC430086213B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5246836B1BEAAC430086213B /* main.m */; };
@@ -157,6 +158,8 @@
 		52109E291D443E4500DF27E5 /* tblFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tblFiles.m; sourceTree = "<group>"; };
 		521B85631CD54BBC0044D4FF /* Add Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Patient.swift"; sourceTree = "<group>"; };
 		52208E431BEAE06D00A2DF93 /* star-of-life.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "star-of-life.jpeg"; sourceTree = "<group>"; };
+		52308FE01EB2DD6600B936F2 /* NRCTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCTextView.h; sourceTree = "<group>"; };
+		52308FE11EB2DD6600B936F2 /* NRCTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCTextView.m; sourceTree = "<group>"; };
 		5237938B1CD51E3900265063 /* Display Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Display Data.swift"; sourceTree = "<group>"; };
 		5244AA3B1CA45DB6004F8849 /* NRCPasscodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NRCPasscodeViewController.xib; sourceTree = "<group>"; };
 		524683671BEAAC430086213B /* EMSTimers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EMSTimers.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -389,6 +392,8 @@
 				520727FB1C7180510019096D /* NRCMedicalHistoryItemTableViewController.h */,
 				520727FC1C7180510019096D /* NRCMedicalHistoryItemTableViewController.m */,
 				5251FCAC1C73C6D700E819FF /* NRCMedHistItemTableViewController.m */,
+				52308FE01EB2DD6600B936F2 /* NRCTextView.h */,
+				52308FE11EB2DD6600B936F2 /* NRCTextView.m */,
 				5251FCAB1C73C6D700E819FF /* NRCMedHistItemTableViewController.h */,
 				5251154C1C976C0600DCAD9B /* NRCSelectDataTableViewController.h */,
 				5251154B1C976C0600DCAD9B /* NRCSelectDataTableViewController.m */,
@@ -792,6 +797,7 @@
 				52A0B05E1C615E7D0015D481 /* NRCAssessmentViewControllerTableViewController.m in Sources */,
 				526C3CA51D2B1CD0003A1322 /* NRCEmailTableViewController.m in Sources */,
 				5270883C1CAF20D30059163F /* Note.m in Sources */,
+				52308FE21EB2DD6600B936F2 /* NRCTextView.m in Sources */,
 				52A0B0611C62542C0015D481 /* PatientListTableViewController.m in Sources */,
 				52491D7D1CED520D00D19190 /* KeychainWrapper.m in Sources */,
 				5251154D1C976C0600DCAD9B /* NRCSelectDataTableViewController.m in Sources */,

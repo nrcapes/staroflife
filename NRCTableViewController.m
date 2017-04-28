@@ -358,7 +358,7 @@ static NSString *const iOSAppStoreURLFormat = @"itms-apps://itunes.apple.com/Web
 -(void)applicationBecameActive{
     
     self.isAuthenticated = NO;
-   [self showLoginView];
+ //  [self showLoginView];
     
     
  //  [self refresh];
@@ -1413,6 +1413,7 @@ AVAudioPlayer *_audioPlayer2;
     if(!self.patientItem){
         self.patientItem = [[patientItem alloc]init];
     }
+    self.patientItem = sourceViewController.patientItem;
     [self.patientItem.assessments addObject:self.assessmentItem];
     
     // check for iCloud

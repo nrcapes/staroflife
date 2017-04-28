@@ -177,9 +177,12 @@
 -(void)textFieldDidEndEditing:(UITextField *)textField{
         NSString *temp = [textField.text stringByReplacingOccurrencesOfString:@"," withString:@";"];
         textField.text = temp;
-        if (textField == self.chiefComplaint){
+    if (textField == self.chiefComplaint){
         self.chiefComplaint.text = textField.text;
-        self.item.chiefComplaint = self.chiefComplaint.text;
+        if(self.item.chiefComplaint ==  nil || [self.item.chiefComplaint  isEqual: @""]){
+            self.item.chiefComplaint = self.chiefComplaint.text;
+            self.patientItem.chiefComplaint = self.item.chiefComplaint;
+        }
     }else if (textField == self.clinicalImpression){
         self.clinicalImpression.text =textField.text;
         self.item.clinicalImpression = self.clinicalImpression.text;
@@ -264,6 +267,8 @@
         NRCMedHistItemTableViewController *destController =segue.destinationViewController;
         destController.cellToZoom = self.cellToZoom;
         destController.row = self.row;
+        destController.patientItem = self.patientItem;
+        
       //  destController.medications = self.medications;
        // destController.interventions = self.interventions;
     }

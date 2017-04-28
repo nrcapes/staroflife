@@ -22,7 +22,7 @@
 @property  UITableViewCell *cellToZoom;
 @property (weak, nonatomic) IBOutlet UITextView *displayedText;
 @property IBOutlet UITextView * textView;
-@property patientItem *patientItem;
+@property (strong, nonatomic) patientItem *patientItem;
 @property NSMutableArray *medications;
 @property NSMutableArray *interventions;
 @property NSInteger row;

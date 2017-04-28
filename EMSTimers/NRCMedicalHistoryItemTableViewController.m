@@ -1,11 +1,12 @@
 //
 //  NRCMedicalHistoryItemTableViewController.m
-//  EMSTimers
+//  EMSTimers Professional
 //
 //  Created by Nelson Capes on 2/14/16.
 //  Copyright © 2016 Nelson Capes. All rights reserved.
 //
-//  This controller is called by segue from NRCMedicalHistoryTableViewController.  It shows an expanded view of the medical history item (cellToZoom) in a UITextView and lets the user add more text. When the user clicks the DONE button in the navigation bar it unwinds a segue "unwindToDisplay" back to the NRCMedicalHistoryTableViewController.
+//  This controller is called by segue from NRCMedicalHistoryTableViewController.  It shows an expanded view of the medical history item (cellToZoom) in a UITextView but does not let the user enter more text When the user clicks the DONE button in the navigation bar it unwinds a segue "unwindToDisplay" back to the NRCMedicalHistoryTableViewController.
+// for peer, see NRCMedHistItemTableViewController, which lets the user enter text
 #import "NRCMedicalHistoryItemTableViewController.h"
 
 @interface NRCMedicalHistoryItemTableViewController ()

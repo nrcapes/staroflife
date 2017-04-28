@@ -15,10 +15,18 @@
     [super awakeFromNib];
 }
 
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    UIColor *color = [UIColor colorWithRed:0.0f/255 green:125.0f/255 blue:150.0f/255 alpha:0.8f];
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    
+    if (selected){
+        NSArray *subViews = self.subviews;
+        UIView *displayedText = subViews[0];
+        [displayedText setBackgroundColor:[UIColor whiteColor]];
+        
+        UIView *heldText = subViews[1];
+        [heldText setBackgroundColor:[UIColor whiteColor]];
+    }
 }
-
 @end

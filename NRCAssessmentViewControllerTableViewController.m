@@ -266,6 +266,7 @@ typedef NS_ENUM(int, row){
     NSLog(@"unwind from medical history");
     NRCMedicalHistoryTableViewController *sourceController = segue.sourceViewController;
     self.assessmentItem = sourceController.item;
+    self.patientItem = sourceController.patientItem;
 }
 
 @end

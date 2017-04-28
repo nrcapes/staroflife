@@ -20,7 +20,7 @@
 @property NSMutableArray *taskCategories;
 @property NSIndexPath *currentCategory;
 @property assessmentItem *assessmentItem;
-@property patientItem * patientItem;
+@property (strong, nonatomic)patientItem * patientItem;
 @property NSMutableArray *medications;
 @property NSMutableArray *interventions;
 -(BOOL)verifyRange:(int)lowValue highValue:(int)highValue value:(int)value;
