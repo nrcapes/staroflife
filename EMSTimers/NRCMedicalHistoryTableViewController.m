@@ -38,9 +38,6 @@
     self.treatments.text = @"";
     self.narrative.text = @"";
     [self.navigationItem setHidesBackButton:YES animated:YES];
-    
-    
-    
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -265,6 +262,20 @@
     // Pass the selected object to the new view controller.
     if([segue.identifier isEqualToString:@"toMedHistItem"]){
         NRCMedHistItemTableViewController *destController =segue.destinationViewController;
+       
+        self.heldText = [[UITextView alloc]init];
+        self.heldText.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.heldText.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        self.heldText.font = [destController.heldText.font fontWithSize:12];
+        self.heldText.textAlignment = NSTextAlignmentCenter;
+       // [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
+        
+        [self.heldText setUserInteractionEnabled:NO];
+        [self.heldText setEditable:NO];
+      //  self.heldText.frame = CGRectMake(160, 12, 170, 60);
+        [self.cellToZoom addSubview:self.heldText];
+        NSArray *subViews = [[NSArray alloc]init];
+        subViews = self.cellToZoom.subviews;
         destController.cellToZoom = self.cellToZoom;
         destController.row = self.row;
         destController.patientItem = self.patientItem;

@@ -14,7 +14,7 @@
 }
 @property (strong, nonatomic)patientItem *patientItem;
 @property  UITableViewCell *cellToZoom;
-@property (weak, nonatomic) IBOutlet UITextView *displayedText;
+@property (strong, nonatomic) IBOutlet UITextView *displayedText;
 @property (strong, nonatomic) IBOutlet UITextView *heldText;
 
 @property (nonatomic, strong) NSString *temp;

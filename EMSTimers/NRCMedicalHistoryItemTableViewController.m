@@ -41,15 +41,12 @@
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    
-   
     if([text isEqualToString:@"\n"]) {
         self.textView = [self.cellToZoom viewWithTag:1];
         self.textView.text = self.displayedText.text;
         [textView resignFirstResponder];
         return NO;
     }
-    
     return YES;
 }
 

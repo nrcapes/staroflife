@@ -392,9 +392,9 @@
 				520727FB1C7180510019096D /* NRCMedicalHistoryItemTableViewController.h */,
 				520727FC1C7180510019096D /* NRCMedicalHistoryItemTableViewController.m */,
 				5251FCAC1C73C6D700E819FF /* NRCMedHistItemTableViewController.m */,
+				5251FCAB1C73C6D700E819FF /* NRCMedHistItemTableViewController.h */,
 				52308FE01EB2DD6600B936F2 /* NRCTextView.h */,
 				52308FE11EB2DD6600B936F2 /* NRCTextView.m */,
-				5251FCAB1C73C6D700E819FF /* NRCMedHistItemTableViewController.h */,
 				5251154C1C976C0600DCAD9B /* NRCSelectDataTableViewController.h */,
 				5251154B1C976C0600DCAD9B /* NRCSelectDataTableViewController.m */,
 			);

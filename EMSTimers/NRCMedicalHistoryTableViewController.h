@@ -18,6 +18,7 @@
 @property IBOutlet UITextField *mechanismOfInjury;
 @property IBOutlet UITextField *treatments;
 @property IBOutlet UITextField *narrative;
+@property UITextView *heldText;
 @property assessmentItem *item;
 @property  UITableViewCell *cellToZoom;
 @property (weak, nonatomic) IBOutlet UITextView *displayedText;

@@ -480,37 +480,43 @@
                         <sections>
                             <tableViewSection id="J60-jJ-aur">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="medHistItemCell" rowHeight="180" id="Syz-Rk-AMh" customClass="NRCMedicalHistoryTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="medHistItemCell" rowHeight="180" id="Syz-Rk-AMh">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Syz-Rk-AMh" id="bMF-C6-9BM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-1D-vdl">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-1D-vdl">
                                                     <rect key="frame" x="11" y="8" width="352" height="77"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="cU9-B8-Ixp" id="UgY-Pe-8lW"/>
+                                                    </connections>
+                                                </textView>
+                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="scaleToFill" scrollEnabled="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Incoming Text" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZ2-03-aQj" customClass="NRCTextView">
+                                                    <rect key="frame" x="13" y="93" width="354" height="74"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="77" id="pyL-un-Zm0"/>
+                                                        <constraint firstAttribute="height" constant="74" id="9Xl-8D-nng"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="scaleToFill" scrollEnabled="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZ2-03-aQj" customClass="NRCTextView">
-                                                    <rect key="frame" x="13" y="93" width="354" height="74"/>
-                                                    <color key="backgroundColor" red="0.015686274510000001" green="1" blue="0.92036119439999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="cU9-B8-Ixp" id="GZ2-ra-Ahc"/>
+                                                    </connections>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ozX-1D-vdl" firstAttribute="top" secondItem="bMF-C6-9BM" secondAttribute="topMargin" id="Ihw-Vb-rNb"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="OZ2-03-aQj" secondAttribute="bottom" constant="5" id="JlX-V6-bUw"/>
-                                                <constraint firstItem="ozX-1D-vdl" firstAttribute="leading" secondItem="OZ2-03-aQj" secondAttribute="leading" constant="-2" id="QID-LS-f10"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ozX-1D-vdl" secondAttribute="trailing" constant="4" id="T7K-Nu-KVs"/>
-                                                <constraint firstItem="OZ2-03-aQj" firstAttribute="top" secondItem="ozX-1D-vdl" secondAttribute="bottom" constant="8" symbolic="YES" id="hqI-il-lYJ"/>
-                                                <constraint firstItem="ozX-1D-vdl" firstAttribute="leading" secondItem="bMF-C6-9BM" secondAttribute="leadingMargin" constant="3" id="kpt-Dt-M92"/>
-                                                <constraint firstItem="ozX-1D-vdl" firstAttribute="trailing" secondItem="OZ2-03-aQj" secondAttribute="trailing" constant="-4" id="nYM-hE-0M4"/>
+                                                <constraint firstItem="OZ2-03-aQj" firstAttribute="top" secondItem="ozX-1D-vdl" secondAttribute="bottom" constant="8" symbolic="YES" id="JDn-yu-JJk"/>
+                                                <constraint firstItem="ozX-1D-vdl" firstAttribute="top" secondItem="bMF-C6-9BM" secondAttribute="topMargin" id="ZMg-bS-Qh2"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="OZ2-03-aQj" secondAttribute="bottom" constant="4.5" id="b0d-3W-DyX"/>
+                                                <constraint firstItem="ozX-1D-vdl" firstAttribute="centerX" secondItem="bMF-C6-9BM" secondAttribute="centerX" id="dmC-cj-WVy"/>
+                                                <constraint firstItem="OZ2-03-aQj" firstAttribute="trailing" secondItem="bMF-C6-9BM" secondAttribute="trailingMargin" id="eha-id-7Kz"/>
+                                                <constraint firstItem="ozX-1D-vdl" firstAttribute="leading" secondItem="bMF-C6-9BM" secondAttribute="leadingMargin" constant="3" id="iCe-8o-rgV"/>
+                                                <constraint firstItem="OZ2-03-aQj" firstAttribute="leading" secondItem="bMF-C6-9BM" secondAttribute="leadingMargin" constant="5" id="mv0-he-dKA"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.22733345627784729" green="0.60663789510726929" blue="0.67481845617294312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

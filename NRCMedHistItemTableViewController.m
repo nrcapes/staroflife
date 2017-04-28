@@ -18,16 +18,12 @@
     [super viewDidLoad];
     [self startSpeechSynthesis];
     [self checkButtonEnabled];
-    self.displayedText.delegate = self;
+    
    // self.heldText.delegate = self;
-    [self.heldText setUserInteractionEnabled:NO];
-    [self.heldText setEditable:NO];
-    UITextField* tf = nil ;
-    // Textfield dimensions
-    tf.frame = CGRectMake(160, 12, 170, 60);
     
     // Workaround to dismiss keyboard when Done/Return is tapped
-    [tf addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    self.displayedText.delegate = self;
+    self.heldText.delegate = self;
     
     // We want to handle textFieldDidEndEditing
   //  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
@@ -41,13 +37,21 @@
     
     switch(self.row){
         case 0:{
-            if((![self.patientItem.chiefComplaint isEqualToString:@""]) || (self.patientItem.chiefComplaint != nil)){
+            if((self.patientItem.chiefComplaint != nil)){
+                /*
                 NSArray *subViews = [self.cellToZoom subviews];
                 UIView *view1 = subViews[1];
                 [view1 removeFromSuperview];
                 [_cellToZoom addSubview:view1];
+                 
+                UIView *displayedText = [self.cellToZoom viewWithTag:1];
+                displayedText.tintColor = [UIColor blackColor];
+                UIView *heldText = [self.cellToZoom viewWithTag:1001];
+                heldText.tintColor = [UIColor blueColor];
+                 */
                 self.displayedText.text = self.patientItem.chiefComplaint;
                 self.heldText.text = self.patientItem.chiefComplaint;
+                
             }
             break;
         }
@@ -58,6 +62,7 @@
                 [view1 removeFromSuperview];
                 [_cellToZoom addSubview:view1];
                 self.displayedText.text = self.patientItem.clinicalImpression;
+                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.clinicalImpression;
                 break;
             }
@@ -69,6 +74,7 @@
                 [view1 removeFromSuperview];
                 [_cellToZoom addSubview:view1];
                 self.displayedText.text = self.patientItem.medicalHistory;
+                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.medicalHistory;
                 break;
             }
@@ -80,6 +86,7 @@
                 [view1 removeFromSuperview];
                 [_cellToZoom addSubview:view1];
                 self.displayedText.text = self.patientItem.currentMedications;
+                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.currentMedications;
                 break;
             }
@@ -91,6 +98,7 @@
                 [view1 removeFromSuperview];
                 [_cellToZoom addSubview:view1];
                 self.displayedText.text = self.patientItem.allergies;
+                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.allergies;
                 break;
             }}
@@ -102,6 +110,7 @@
                 [view1 removeFromSuperview];
                 [_cellToZoom addSubview:view1];
                 self.displayedText.text = self.patientItem.mechanismOfInjury;
+                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.mechanismOfInjury;
             }
         }
@@ -112,6 +121,7 @@
                 [view1 removeFromSuperview];
                 [_cellToZoom addSubview:view1];
                 self.displayedText.text = self.patientItem.treatments;
+                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.treatments;
             }
         }
@@ -122,6 +132,7 @@
                 [view1 removeFromSuperview];
                 [_cellToZoom addSubview:view1];
                 self.displayedText.text = self.patientItem.narrative;
+                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.narrative;
             }
         }
@@ -134,12 +145,18 @@
 }
 
 -(IBAction)textFieldFinished:(id)sender{
-    if([sender isEqual:self.displayedText]){
     [sender resignFirstResponder];
-    }else{
-        [self.cellToZoom setBackgroundColor:[UIColor colorWithRed:0.0f/255 green:125.0f/255 blue:150.0f/255 alpha:0.8f]];
-        [sender resignFirstResponder];
+
+}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if([text isEqualToString:@"\n"]) {
+        self.textView = [self.cellToZoom viewWithTag:1];
+        self.textView.text = self.displayedText.text;
+        [textView resignFirstResponder];
+        self.heldText.text = self.displayedText.text;
+        return NO;
     }
+    return YES;
 }
 -(UITextField *)makeTextField:(NSString *)text placeholder:(NSString *)placeholder{
     UITextField *tf = [[UITextField alloc]init];
@@ -245,20 +262,11 @@
     self.textView.text = self.displayedText.text;
     [self.textView.text stringByReplacingOccurrencesOfString:@"," withString:@";"];
     [_textView resignFirstResponder];
+    self.heldText.text = @"";
     [self performSegueWithIdentifier:@"unwindToMedHistory" sender:self];
 }
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-   // this code is necessary to tell when the user hits RETURN because UITextView does not signal that.
-    if([text isEqualToString:@"\n"]) {
-        self.textView = [self.cellToZoom viewWithTag:1];
-        self.textView.text = self.displayedText.text;
-        [textView resignFirstResponder];
-        return NO;
-    }
-    
-    return YES;
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
