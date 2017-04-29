@@ -496,12 +496,14 @@
                                                         <outlet property="delegate" destination="cU9-B8-Ixp" id="UgY-Pe-8lW"/>
                                                     </connections>
                                                 </textView>
-                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="scaleToFill" scrollEnabled="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Incoming Text" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZ2-03-aQj" customClass="NRCTextView">
+                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" tag="1001" contentMode="scaleToFill" scrollEnabled="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OZ2-03-aQj" customClass="NRCTextView">
                                                     <rect key="frame" x="13" y="93" width="354" height="74"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" red="0.27417010068893433" green="0.66741138696670532" blue="0.73107606172561646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="74" id="9Xl-8D-nng"/>
                                                     </constraints>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <connections>

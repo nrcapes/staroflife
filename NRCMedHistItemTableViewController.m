@@ -38,101 +38,70 @@
     switch(self.row){
         case 0:{
             if((self.patientItem.chiefComplaint != nil)){
-                /*
-                NSArray *subViews = [self.cellToZoom subviews];
-                UIView *view1 = subViews[1];
-                [view1 removeFromSuperview];
-                [_cellToZoom addSubview:view1];
-                 
                 UIView *displayedText = [self.cellToZoom viewWithTag:1];
                 displayedText.tintColor = [UIColor blackColor];
-                UIView *heldText = [self.cellToZoom viewWithTag:1001];
-                heldText.tintColor = [UIColor blueColor];
-                 */
                 self.displayedText.text = self.patientItem.chiefComplaint;
                 self.heldText.text = self.patientItem.chiefComplaint;
-                
             }
             break;
         }
         case 1:{
             if((![self.patientItem.clinicalImpression isEqualToString:@""]) || (self.patientItem.clinicalImpression != nil)){
-                NSArray *subViews = [self.cellToZoom subviews];
-                UIView *view1 = subViews[1];
-                [view1 removeFromSuperview];
-                [_cellToZoom addSubview:view1];
+                UIView *displayedText = [self.cellToZoom viewWithTag:1];
+                displayedText.tintColor = [UIColor blackColor];
                 self.displayedText.text = self.patientItem.clinicalImpression;
-                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.clinicalImpression;
                 break;
             }
         }
         case 2:{
             if((![self.patientItem.chiefComplaint isEqualToString:@""]) || (self.patientItem.chiefComplaint != nil)){
-                NSArray *subViews = [self.cellToZoom subviews];
-                UIView *view1 = subViews[1];
-                [view1 removeFromSuperview];
-                [_cellToZoom addSubview:view1];
+                UIView *displayedText = [self.cellToZoom viewWithTag:1];
+                displayedText.tintColor = [UIColor blackColor];
                 self.displayedText.text = self.patientItem.medicalHistory;
-                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.medicalHistory;
                 break;
             }
         }
         case 3:{
             if((![self.patientItem.chiefComplaint isEqualToString:@""]) || (self.patientItem.chiefComplaint != nil)){
-                NSArray *subViews = [self.cellToZoom subviews];
-                UIView *view1 = subViews[1];
-                [view1 removeFromSuperview];
-                [_cellToZoom addSubview:view1];
+                UIView *displayedText = [self.cellToZoom viewWithTag:1];
+                displayedText.tintColor = [UIColor blackColor];
                 self.displayedText.text = self.patientItem.currentMedications;
-                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.currentMedications;
                 break;
             }
         }
         case 4:{
             if((![self.patientItem.chiefComplaint isEqualToString:@""]) || (self.patientItem.chiefComplaint != nil)){
-                NSArray *subViews = [self.cellToZoom subviews];
-                UIView *view1 = subViews[1];
-                [view1 removeFromSuperview];
-                [_cellToZoom addSubview:view1];
+                UIView *displayedText = [self.cellToZoom viewWithTag:1];
+                displayedText.tintColor = [UIColor blackColor];
                 self.displayedText.text = self.patientItem.allergies;
-                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.allergies;
                 break;
             }}
             
         case 5:{
             if((![self.patientItem.chiefComplaint isEqualToString:@""]) || (self.patientItem.chiefComplaint != nil)){
-                NSArray *subViews = [self.cellToZoom subviews];
-                UIView *view1 = subViews[1];
-                [view1 removeFromSuperview];
-                [_cellToZoom addSubview:view1];
+                UIView *displayedText = [self.cellToZoom viewWithTag:1];
+                displayedText.tintColor = [UIColor blackColor];
                 self.displayedText.text = self.patientItem.mechanismOfInjury;
-                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.mechanismOfInjury;
             }
         }
         case 6:{
             if((![self.patientItem.chiefComplaint isEqualToString:@""]) || (self.patientItem.chiefComplaint != nil)){
-                NSArray *subViews = [self.cellToZoom subviews];
-                UIView *view1 = subViews[1];
-                [view1 removeFromSuperview];
-                [_cellToZoom addSubview:view1];
+                UIView *displayedText = [self.cellToZoom viewWithTag:1];
+                displayedText.tintColor = [UIColor blackColor];
                 self.displayedText.text = self.patientItem.treatments;
-                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.treatments;
             }
         }
         case 7:{
             if((![self.patientItem.chiefComplaint isEqualToString:@""]) || (self.patientItem.chiefComplaint != nil)){
-                NSArray *subViews = [self.cellToZoom subviews];
-                UIView *view1 = subViews[1];
-                [view1 removeFromSuperview];
-                [_cellToZoom addSubview:view1];
+                UIView *displayedText = [self.cellToZoom viewWithTag:1];
+                displayedText.tintColor = [UIColor blackColor];
                 self.displayedText.text = self.patientItem.narrative;
-                [self.heldText setBackgroundColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.05f]];
                 self.heldText.text = self.patientItem.narrative;
             }
         }
@@ -396,11 +365,12 @@
     
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
         [storage setBool:YES forKey:@"speechRecognitionHasBeenDone"];
-        self.heldText.text = translatedString;
+        self.heldText.text = @";";
+        self.heldText.text = [ self.heldText.text stringByAppendingString:translatedString];
         self.displayedText.text = [self.displayedText.text stringByAppendingString:self.heldText.text];
         self.heldText.text = @"";
-        [storage setObject:self.displayedText.text forKey:@"displayedText"];
-        [storage synchronize];
+       // [storage setObject:self.displayedText.text forKey:@"displayedText"];
+       // [storage synchronize];
         self.temp = self.displayedText.text;
         if([result isFinal]){
         [_audioEngine stop];
