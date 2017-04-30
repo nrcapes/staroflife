@@ -7,7 +7,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AudioToolbox/AudioServices.h>
 
-@interface NRCPasscodeViewController ()
+@interface NRCPasscodeViewController () <CAAnimationDelegate>
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag;
 - (void)internalResetWithAnimation:(NSNumber *)animationStyleNumber;

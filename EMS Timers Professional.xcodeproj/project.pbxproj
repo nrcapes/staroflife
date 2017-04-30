@@ -50,8 +50,6 @@
 		5273238D1D090518003CA93B /* NRCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5273238C1D090518003CA93B /* NRCLoginViewController.swift */; };
 		527494CF1CD55CEA00469CFA /* Add Patient and Assess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527494CE1CD55CEA00469CFA /* Add Patient and Assess.swift */; };
 		5274CD1D1C39D0AC00708C95 /* NRCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5274CD1C1C39D0AC00708C95 /* NRCTableViewController.m */; };
-		527D90111CA8682000361DF7 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 527D900F1CA8682000361DF7 /* PurchaseViewController.m */; };
-		527D90121CA8682000361DF7 /* PurchaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527D90101CA8682000361DF7 /* PurchaseViewController.xib */; };
 		5280BA7E1CBD9D170039DF4C /* jsondata in Resources */ = {isa = PBXBuildFile; fileRef = 5280BA7D1CBD9D170039DF4C /* jsondata */; };
 		52932FDD1C3200D10046BB5A /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52932FD81C31FD960046BB5A /* images.xcassets */; };
 		529415371C3F688200D790E1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 529415361C3F688200D790E1 /* AVFoundation.framework */; };
@@ -71,6 +69,8 @@
 		52AF0E231D4051DA002CA4E6 /* testtext.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52AF0E211D4051DA002CA4E6 /* testtext.txt */; };
 		52B23FCA1CD45215006231EC /* EMSTimersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B23FC91CD45215006231EC /* EMSTimersUITests.swift */; };
 		52B6B7251BEAC849007B8ACD /* star-of-life.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 52B6B7241BEAC849007B8ACD /* star-of-life.jpeg */; };
+		52BB8A9F1EB5714A00F37B91 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BB8A9E1EB5714A00F37B91 /* PurchaseViewController.m */; };
+		52BB8AA11EB5727200F37B91 /* PurchaseViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 52BB8AA01EB5727200F37B91 /* PurchaseViewController.h */; };
 		52BFCAF01C57150200970D40 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52BFCAEF1C57150200970D40 /* Settings.bundle */; };
 		52CA8F8B1C6E8BEB00F392FF /* NRCMedicalHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CA8F8A1C6E8BEB00F392FF /* NRCMedicalHistoryTableViewController.m */; };
 		52D637B61C9DAE550024E97E /* checkout scanner beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 52D637B51C9DAE550024E97E /* checkout scanner beep.mp3 */; };
@@ -207,9 +207,6 @@
 		5273238C1D090518003CA93B /* NRCLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRCLoginViewController.swift; sourceTree = "<group>"; };
 		527494CE1CD55CEA00469CFA /* Add Patient and Assess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Patient and Assess.swift"; sourceTree = "<group>"; };
 		5274CD1C1C39D0AC00708C95 /* NRCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCTableViewController.m; sourceTree = "<group>"; };
-		527D900E1CA8682000361DF7 /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = EMSTimers/PurchaseViewController.h; sourceTree = "<group>"; };
-		527D900F1CA8682000361DF7 /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = EMSTimers/PurchaseViewController.m; sourceTree = "<group>"; };
-		527D90101CA8682000361DF7 /* PurchaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PurchaseViewController.xib; path = EMSTimers/PurchaseViewController.xib; sourceTree = "<group>"; };
 		5280BA7D1CBD9D170039DF4C /* jsondata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = jsondata; sourceTree = "<group>"; };
 		52932FD81C31FD960046BB5A /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = images.xcassets; path = ../images.xcassets; sourceTree = "<group>"; };
 		529415361C3F688200D790E1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -243,6 +240,9 @@
 		52B23FCB1CD45215006231EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52B6B7241BEAC849007B8ACD /* star-of-life.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "star-of-life.jpeg"; sourceTree = "<group>"; };
 		52BAF8151C289CE4008D2F05 /* NRCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCTableViewController.h; sourceTree = "<group>"; };
+		52BB8A9E1EB5714A00F37B91 /* PurchaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = "EMS Timers Professional.xcodeproj/PurchaseViewController.m"; sourceTree = "<group>"; };
+		52BB8AA01EB5727200F37B91 /* PurchaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = "EMS Timers Professional.xcodeproj/PurchaseViewController.h"; sourceTree = "<group>"; };
+		52BB8AA51EB575C700F37B91 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		52BFCAEF1C57150200970D40 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		52CA8F891C6E8BEB00F392FF /* NRCMedicalHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRCMedicalHistoryTableViewController.h; path = EMSTimers/NRCMedicalHistoryTableViewController.h; sourceTree = "<group>"; };
 		52CA8F8A1C6E8BEB00F392FF /* NRCMedicalHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRCMedicalHistoryTableViewController.m; path = EMSTimers/NRCMedicalHistoryTableViewController.m; sourceTree = "<group>"; };
@@ -431,6 +431,9 @@
 		5246835E1BEAAC430086213B = {
 			isa = PBXGroup;
 			children = (
+				52BB8AA51EB575C700F37B91 /* constants.h */,
+				52BB8AA01EB5727200F37B91 /* PurchaseViewController.h */,
+				52BB8A9E1EB5714A00F37B91 /* PurchaseViewController.m */,
 				52676E091D6110F600B0CC85 /* DBBViewController.h */,
 				52676E0A1D6110F600B0CC85 /* DBBViewController.m */,
 				52676E061D61107600B0CC85 /* DropboxBrowserViewController.h */,
@@ -477,9 +480,6 @@
 				52D637B81C9DE4230024E97E /* NRCErrorStore.m */,
 				52A0B0481C5F03B20015D481 /* patientItemStore.m */,
 				52A0B0491C5F03B20015D481 /* patientItemStore.h */,
-				527D900E1CA8682000361DF7 /* PurchaseViewController.h */,
-				527D900F1CA8682000361DF7 /* PurchaseViewController.m */,
-				527D90101CA8682000361DF7 /* PurchaseViewController.xib */,
 				52115FA11C78D448002A05B2 /* Cells */,
 				52115FA01C78D415002A05B2 /* Items */,
 				52115FA21C78D4C1002A05B2 /* Initial View Controller */,
@@ -739,7 +739,6 @@
 				5280BA7E1CBD9D170039DF4C /* jsondata in Resources */,
 				52AF0E231D4051DA002CA4E6 /* testtext.txt in Resources */,
 				524683771BEAAC430086213B /* Assets.xcassets in Resources */,
-				527D90121CA8682000361DF7 /* PurchaseViewController.xib in Resources */,
 				525302671C727A7200D4414E /* Beeping-sound.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -774,6 +773,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52BB8AA11EB5727200F37B91 /* PurchaseViewController.h in Sources */,
+				52BB8A9F1EB5714A00F37B91 /* PurchaseViewController.m in Sources */,
 				52E5039D1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift in Sources */,
 				529FBBCF1CA97FBA0018C97D /* iapstore.m in Sources */,
 				52F01B771D401BD80055BD45 /* temp.swift in Sources */,
@@ -787,7 +788,6 @@
 				52F6D7D21C9A07C900C6F39E /* jsonStore.m in Sources */,
 				52A0B0501C5F03B20015D481 /* NRCPatientDataTableViewController.m in Sources */,
 				52A0B0541C5F03B20015D481 /* NRCPatientDataTableViewCell.m in Sources */,
-				527D90111CA8682000361DF7 /* PurchaseViewController.m in Sources */,
 				52109E2A1D443E4500DF27E5 /* tblFiles.m in Sources */,
 				52676E0B1D6110F600B0CC85 /* DBBViewController.m in Sources */,
 				52676E081D61107600B0CC85 /* DropboxBrowserViewController.m in Sources */,
@@ -918,7 +918,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -958,7 +958,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -977,7 +977,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = EMSTimers/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nelsoncapes.ems-timers-pro";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -999,7 +999,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = EMSTimers/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nelsoncapes.ems-timers-pro";
 				PRODUCT_NAME = "$(TARGET_NAME)";

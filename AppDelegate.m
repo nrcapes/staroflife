@@ -18,6 +18,7 @@
 @end
 
 @implementation AppDelegate
+@class PurchaseViewController;
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
    // self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
    // self.window.backgroundColor = [UIColor whiteColor];

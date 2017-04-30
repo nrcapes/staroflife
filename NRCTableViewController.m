@@ -117,7 +117,7 @@
 #import "NRCSelectDataTableViewController.h"
 #import "EMSTimers-Swift.h"
 #import "NRCEmailTableViewController.h"
-
+#import "constants.h"
 @interface NRCTableViewController ()
 
 @end
@@ -455,7 +455,7 @@ AVAudioPlayer *_audioPlayer2;
     self.reviewCount = 0;
     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
     [storage setInteger:self.reviewCount forKey:@"reviewCount"];
-    
+    [storage setBool:NO forKey:kspeechRecognitionUnlockedKey];
     self.isAuthenticated = NO;
 // to allow for in app purchase upgrade to unlimited emails, in the non-
     // upgraded object we count the number of emails sent.

@@ -9,6 +9,7 @@
 #import "NRCMedHistItemTableViewController.h"
 #import "NRCSelectDataTableViewController.h"
 #import "NRCMedicalHistoryTableViewCell.h"
+#import "constants.h"
 @interface NRCMedHistItemTableViewController ()
 
 @end
@@ -16,9 +17,9 @@
 @implementation NRCMedHistItemTableViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self startSpeechSynthesis];
-    [self checkButtonEnabled];
     
+    [self checkButtonEnabled];
+    [self startSpeechSynthesis];
    // self.heldText.delegate = self;
     
     // Workaround to dismiss keyboard when Done/Return is tapped
@@ -143,14 +144,18 @@
 }
 
 -(void)checkButtonEnabled{
-    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-    _isButtonEnabled = [storage boolForKey:@"isButtonEnabled"];
-    if(_isButtonEnabled == true){
-        [self.microphoneButton setEnabled:true];
-    }else{
-        [self.microphoneButton setEnabled:false];
-    };
+    if (NSClassFromString(@"SFSpeechRecognizer")) {
+        // Do something
+        NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+        _isButtonEnabled = [storage boolForKey:kspeechRecognitionUnlockedKey];
+        if(_isButtonEnabled == true){
+            [self.microphoneButton setEnabled:true];
+        }else{
+            [self.microphoneButton setEnabled:false];
+        };
+    }
 }
+
 -(void)startSpeechSynthesis{
     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
     _speechRecognizer = [[SFSpeechRecognizer alloc]init];
