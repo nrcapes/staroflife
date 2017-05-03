@@ -16,6 +16,7 @@
 #import "patientItemStore.h"
 #import "assessmentItem.h"
 #import "iapstore.h"
+#import <MessageUI/MessageUI.h>
 typedef NS_ENUM(int, row){
     first_name,
     middle_name,
