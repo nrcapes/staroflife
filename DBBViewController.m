@@ -34,7 +34,8 @@ typedef NS_ENUM(NSInteger, backup_restore){
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
@@ -42,7 +43,7 @@ typedef NS_ENUM(NSInteger, backup_restore){
         clearDocsBtn.alpha = 1.0;
     }];
 }
-
+#pragma clang diagnostic pop
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -320,7 +320,7 @@ typedef NS_ENUM(int, row){
     self.emailActivated = [defaults boolForKey:@"email_unlocked"];
 
     
-    //self.emailActivated = YES;
+    self.emailActivated = YES;
      self.centralAdmin = [[defaults valueForKey:@"centralAdmin"]boolValue];
     
         

@@ -175,7 +175,8 @@ static NSUInteger const kDBSignOutAlertViewTag = 3;
         [self listDirectoryAtPath:@"/"];
     }
 }
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (![self isDropboxLinked]) {
@@ -203,6 +204,7 @@ static NSUInteger const kDBSignOutAlertViewTag = 3;
     alertView.tag = kDBSignOutAlertViewTag;
     [alertView show];
 }
+#pragma clang diagnostic pop
 
 //------------------------------------------------------------------------------------------------------------//
 //------- Table View -----------------------------------------------------------------------------------------//
@@ -451,7 +453,8 @@ static NSUInteger const kDBSignOutAlertViewTag = 3;
         self.tableView.alpha = 1.0;
         self.downloadProgressView.alpha = 0.0;
     }];
-    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"File Downloaded", @"DropboxBrowser: Alert Title") message:[NSString stringWithFormat:NSLocalizedString(@"%@ was downloaded from Dropbox.", @"DropboxBrowser: Alert Message"), self.currentFileName] delegate:nil cancelButtonTitle:NSLocalizedString(@"Okay", @"DropboxBrowser: Alert Button") otherButtonTitles:nil];
     [alertView show];
