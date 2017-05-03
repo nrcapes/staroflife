@@ -10,8 +10,10 @@
 #define constants_h
 #define kInAppPurchaseUnlimitedEmailsKey @"com.nelsoncapes.emstimerspro.emailunlock"
 #define kInAppPurchaseSpeechRecognitionUnlockedKey @"com.nelsoncapes.emstimerspro.speechRecognitionunlock"
+#define kInAppPurchaseSpeechRecognition7DayTrialKey @"com.nelsoncapes.emstimerspro.speechRecognition7DayTrialKey"
 #define kunlimitedEmailsUnlockedKey @"unlimitedEmailsUnlocked"
 #define kspeechRecognitionUnlockedKey @"speechRecognitionUnlocked"
+#define kspeechRecognition7DayTrialUnlockedKey @"speechRecognition7DayTrialUnlocked"
 #define kSegueIdentifierToTableView @"unwindPurchaseToTableView"
 #define kSegueIdentifierToInAppPurchase @"toInAppPurchase"
 

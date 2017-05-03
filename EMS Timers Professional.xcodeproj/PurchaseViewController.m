@@ -70,7 +70,7 @@
 {
     //self.homeViewController = viewController;
     
-    NSArray *productIDArray = [[NSArray alloc]initWithObjects:@"com.nelsoncapes.emstimerspro.emailunlock",  nil];
+    NSArray *productIDArray = [[NSArray alloc]initWithObjects:kInAppPurchaseUnlimitedEmailsKey,kInAppPurchaseSpeechRecognitionUnlockedKey , nil];
     
     if ([SKPaymentQueue canMakePayments])
     {
@@ -256,7 +256,7 @@
         [storage synchronize];
         self.productTitle.text = @"Purchase completed";
     }else{// alert editor includes alert viewer
-        if([productIdPayment isEqual:kspeechRecognitionUnlockedKey]){
+        if([productIdPayment isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
             NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
             [storage setBool:YES forKey:kspeechRecognitionUnlockedKey];
             [storage synchronize];
