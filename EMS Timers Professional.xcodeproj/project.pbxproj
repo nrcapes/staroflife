@@ -65,6 +65,7 @@
 		52A0B05B1C615D410015D481 /* assessmentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A0B05A1C615D410015D481 /* assessmentItem.m */; };
 		52A0B05E1C615E7D0015D481 /* NRCAssessmentViewControllerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A0B05D1C615E7D0015D481 /* NRCAssessmentViewControllerTableViewController.m */; };
 		52A0B0611C62542C0015D481 /* PatientListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52A0B0601C62542C0015D481 /* PatientListTableViewController.m */; };
+		52A497231EBAA139001C33D1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A497221EBAA139001C33D1 /* MessageUI.framework */; };
 		52AF0E1B1D40289B002CA4E6 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52AF0E1A1D40289B002CA4E6 /* DropboxSDK.framework */; };
 		52AF0E221D4051DA002CA4E6 /* nature.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52AF0E201D4051DA002CA4E6 /* nature.jpg */; };
 		52AF0E231D4051DA002CA4E6 /* testtext.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52AF0E211D4051DA002CA4E6 /* testtext.txt */; };
@@ -230,6 +231,7 @@
 		52A0B05D1C615E7D0015D481 /* NRCAssessmentViewControllerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCAssessmentViewControllerTableViewController.m; sourceTree = "<group>"; };
 		52A0B05F1C62542C0015D481 /* PatientListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientListTableViewController.h; sourceTree = "<group>"; };
 		52A0B0601C62542C0015D481 /* PatientListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientListTableViewController.m; sourceTree = "<group>"; };
+		52A497221EBAA139001C33D1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		52AF0E161D4021D4002CA4E6 /* EMSTimers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EMSTimers-Bridging-Header.h"; sourceTree = "<group>"; };
 		52AF0E171D402457002CA4E6 /* emstimers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "emstimers-Bridging-Header.h"; sourceTree = "<group>"; };
 		52AF0E1A1D40289B002CA4E6 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A497231EBAA139001C33D1 /* MessageUI.framework in Frameworks */,
 				52AF0E1B1D40289B002CA4E6 /* DropboxSDK.framework in Frameworks */,
 				52F01B671D4010360055BD45 /* Security.framework in Frameworks */,
 				52F01B651D40102C0055BD45 /* QuartzCore.framework in Frameworks */,
@@ -433,6 +436,7 @@
 				52E96C441D46BDE800F92BEA /* Main.storyboard */,
 				52109E281D443E4500DF27E5 /* tblFiles.h */,
 				52109E291D443E4500DF27E5 /* tblFiles.m */,
+				52A497221EBAA139001C33D1 /* MessageUI.framework */,
 				52AF0E1A1D40289B002CA4E6 /* DropboxSDK.framework */,
 				52AF0E171D402457002CA4E6 /* emstimers-Bridging-Header.h */,
 				52F01B761D401BD80055BD45 /* temp.swift */,
@@ -489,6 +493,7 @@
 				5250256D1C249FFC0047DA16 /* EMSTimers WatchKit 1 App */,
 				52B23FC81CD45215006231EC /* EMSTimersUITests */,
 				524683681BEAAC430086213B /* Products */,
+				52A497211EBAA138001C33D1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -563,6 +568,13 @@
 				525025731C249FFC0047DA16 /* Info.plist */,
 			);
 			path = "EMSTimers WatchKit 1 App";
+			sourceTree = "<group>";
+		};
+		52A497211EBAA138001C33D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		52B23FC81CD45215006231EC /* EMSTimersUITests */ = {
