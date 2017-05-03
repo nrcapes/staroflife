@@ -163,6 +163,8 @@ typedef NS_ENUM(int, row){
     self.assessmentItem.assessmentTime = date;
     [sender resignFirstResponder];
 }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     [self animateTextField: textField up: NO];
     int value = [textField.text integerValue];
@@ -213,6 +215,8 @@ typedef NS_ENUM(int, row){
         }
         }
 }
+#pragma clang diagnostic pop
+
 -(BOOL)verifyRange:(int)lowValue highValue:(int)highValue value:(int)value{
     if(value >= lowValue && value <=highValue){
         return YES;

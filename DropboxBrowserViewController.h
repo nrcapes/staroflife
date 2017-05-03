@@ -186,8 +186,10 @@ NS_CLASS_AVAILABLE_IOS(6_0) @interface DropboxBrowserViewController : UITableVie
 - (void)dropboxBrowser:(DropboxBrowserViewController *)browser didFailToLoadShareLinkWithError:(NSError *)error;
 
 /// Sent to the delegate when a file download notification is delivered to the user. You can use this method to record the notification ID so you can clear the notification if ncessary.
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)dropboxBrowser:(DropboxBrowserViewController *)browser deliveredFileDownloadNotification:(UILocalNotification *)notification;
-
+#pragma clang diagnostic pop
 /// Sent to the delegate after the DropboxBrowserViewController is dismissed by the user - Do \b NOT use this method to dismiss the DropboxBrowser
 - (void)dropboxBrowserDismissed:(DropboxBrowserViewController *)browser;
 

@@ -266,6 +266,8 @@
                 dateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"ddMMyyyy" options:0 locale:myLocale];
                 }
                 }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         NSDate * dateFromString = [dateFormatter dateFromString:self.dateofBirthField.text];
         if(!dateFromString){
             UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Invalid Input" message:@"Only acceptable formats are: MM/dd/yyyy and dd/MM/YYYY." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
@@ -306,7 +308,7 @@
         self.item.event = self.eventField.text;
     }
 }
-
+#pragma clank diagnostic pop
 
 /*
 // Override to support conditional editing of the table view.

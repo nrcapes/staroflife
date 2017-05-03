@@ -101,7 +101,7 @@
         {
             NSString *productIdentifier = skProduct.productIdentifier;
             if([productIdentifier isEqualToString:kInAppPurchaseUnlimitedEmailsKey]){
-                UIAlertAction* buyAlertViewer = [UIAlertAction actionWithTitle:@"Unlimited Emails" style:UIAlertActionStyleDefault
+                UIAlertAction* buyUnlimitedEmails = [UIAlertAction actionWithTitle:@"Unlimited Emails" style:UIAlertActionStyleDefault
                                                                        handler:^(UIAlertAction * action) {
                                                                            _buyButton.enabled = YES;
                                                                            _productTitle.text = skProduct.localizedTitle;
@@ -116,10 +116,10 @@
                                                                            [storage setObject:self.productDict forKey:@"productDict"];
                                                                            [storage synchronize];
                                                                        }];
-                [alert addAction:buyAlertViewer];
+                [alert addAction:buyUnlimitedEmails];
             }else{
                 if([productIdentifier isEqualToString:kInAppPurchaseSpeechRecognitionUnlockedKey]){
-                    UIAlertAction* buyAlertEditor = [UIAlertAction actionWithTitle:@"Speech Recognition" style:UIAlertActionStyleDefault
+                    UIAlertAction* buySpeechRecognition = [UIAlertAction actionWithTitle:@"Speech Recognition" style:UIAlertActionStyleDefault
                                                                            handler:^(UIAlertAction * action) {
                                                                                _buyButton.enabled = YES;
                                                                                _productTitle.text = skProduct.localizedTitle;
@@ -135,7 +135,7 @@
                                                                                [storage synchronize];
                                                                            }];
                     
-                    [alert addAction:buyAlertEditor];
+                    [alert addAction:buySpeechRecognition];
                 }
             }
         }

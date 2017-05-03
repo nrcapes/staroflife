@@ -363,6 +363,8 @@ typedef NS_ENUM(int, row){
         }else{
             dateFormatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"ddMMyyyy" options:0 locale:myLocale];
         }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         NSDate * dateFromString = [dateFormatter dateFromString:self.dateofBirthField.text];
       //  if([self isNumericOrSlash:textField.text] == NO && ![textField.text  isEqual:@""]){
         if(!dateFromString){
@@ -478,7 +480,7 @@ typedef NS_ENUM(int, row){
     }
 
 }
-    
+#pragma clang diagnostic pop 
 
 /*
 // Override to support conditional editing of the table view.

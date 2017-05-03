@@ -377,7 +377,8 @@ static NSUInteger const kDBSignOutAlertViewTag = 3;
 //------- AlertView Delegate ---------------------------------------------------------------------------------//
 //------------------------------------------------------------------------------------------------------------//
 #pragma mark - AlertView Delegate
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView.tag == kDBSignInAlertViewTag) {
         switch (buttonIndex) {
@@ -413,6 +414,7 @@ static NSUInteger const kDBSignOutAlertViewTag = 3;
         }
     }
 }
+#pragma clang diagnostic pop
 
 //------------------------------------------------------------------------------------------------------------//
 //------- Content Refresh ------------------------------------------------------------------------------------//

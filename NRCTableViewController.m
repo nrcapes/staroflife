@@ -420,7 +420,8 @@ AVAudioPlayer *_audioPlayer2;
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"We would really appreciate your review! Your review will help us continue to produce great software!" message:@"Do you want to write a review? We won't bug you again." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok =[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
             NSURL *appStoreURL = [NSURL URLWithString:[NSString stringWithFormat:iOSAppStoreURLFormat, APP_STORE_ID]];
-            
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             if ([[UIApplication sharedApplication] canOpenURL:appStoreURL]) {
                 [[UIApplication sharedApplication] openURL:appStoreURL];
             }
@@ -447,6 +448,7 @@ AVAudioPlayer *_audioPlayer2;
         [storage synchronize];
     }
 }
+#pragma clang diagnostic pop
 
 #pragma mark - viewDidLoad
 - (void)viewDidLoad {

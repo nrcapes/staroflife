@@ -201,11 +201,13 @@ typedef NS_ENUM(NSInteger, backup_restore){
     
     
 }
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)dropboxBrowser:(DropboxBrowserViewController *)browser deliveredFileDownloadNotification:(UILocalNotification *)notification {
     long badgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber]+1;
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:badgeNumber];
 }
+#pragma clang diagnostic pop
 
 //------------------------------------------------------------------------------------------------------------//
 //------- Documents ------------------------------------------------------------------------------------------//
