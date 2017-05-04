@@ -629,7 +629,7 @@ AVAudioPlayer *_audioPlayer2;
     [self presentViewController:alert animated:YES completion:nil];
 }
     
-
+#pragma mark - enablePurchase
 -(void)enablePurchase{
 
 
