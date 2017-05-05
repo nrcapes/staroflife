@@ -38,6 +38,9 @@
 		525A22B41C24A4E4006021C2 /* EMSTimers WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 525025571C249FFC0047DA16 /* EMSTimers WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		525A22B71C24A4E4006021C2 /* EMSTimers WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 525025691C249FFC0047DA16 /* EMSTimers WatchKit App.app */; };
 		525D33811D3197E700862C26 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 525D33801D3197E700862C26 /* StoreKit.framework */; };
+		525DF10E1EBD0D9100060BD2 /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 525DF10C1EBD0D9100060BD2 /* MKStoreKitConfigs.plist */; };
+		525DF1101EBD0F3100060BD2 /* MKStoreKitConfigs.plist in Sources */ = {isa = PBXBuildFile; fileRef = 525DF10C1EBD0D9100060BD2 /* MKStoreKitConfigs.plist */; };
+		525DF1131EBD102A00060BD2 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DF1121EBD102A00060BD2 /* MKStoreKit.m */; };
 		526290A41C26083100289F2A /* NRCInterfaceController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A31C26083100289F2A /* NRCInterfaceController2.m */; };
 		526290A61C26083100289F2A /* NRCInterfaceController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A31C26083100289F2A /* NRCInterfaceController2.m */; };
 		526290A91C2614C000289F2A /* NRCInterfaceController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A81C2614C000289F2A /* NRCInterfaceController3.m */; };
@@ -191,6 +194,9 @@
 		525302641C727A7200D4414E /* Beep-short.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Beep-short.mp3"; sourceTree = "<group>"; };
 		525302651C727A7200D4414E /* Beeping-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Beeping-sound.mp3"; sourceTree = "<group>"; };
 		525D33801D3197E700862C26 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		525DF10C1EBD0D9100060BD2 /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = MKStoreKitConfigs.plist; path = "../Downloads/MKStoreKit-master/MKStoreKitConfigs.plist"; sourceTree = "<group>"; };
+		525DF1111EBD0F5C00060BD2 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
+		525DF1121EBD102A00060BD2 /* MKStoreKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreKit.m; sourceTree = "<group>"; };
 		526290A21C26083100289F2A /* NRCInterfaceController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRCInterfaceController2.h; path = "../EMSTimers WatchKit 1 App/NRCInterfaceController2.h"; sourceTree = "<group>"; };
 		526290A31C26083100289F2A /* NRCInterfaceController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRCInterfaceController2.m; path = "../EMSTimers WatchKit 1 App/NRCInterfaceController2.m"; sourceTree = "<group>"; };
 		526290A71C2614C000289F2A /* NRCInterfaceController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCInterfaceController3.h; sourceTree = "<group>"; };
@@ -437,6 +443,9 @@
 				52BB8AA51EB575C700F37B91 /* constants.h */,
 				52BB8AA01EB5727200F37B91 /* PurchaseViewController.h */,
 				52BB8A9E1EB5714A00F37B91 /* PurchaseViewController.m */,
+				525DF1111EBD0F5C00060BD2 /* MKStoreKit.h */,
+				525DF1121EBD102A00060BD2 /* MKStoreKit.m */,
+				525DF10C1EBD0D9100060BD2 /* MKStoreKitConfigs.plist */,
 				52676E091D6110F600B0CC85 /* DBBViewController.h */,
 				52676E0A1D6110F600B0CC85 /* DBBViewController.m */,
 				52676E061D61107600B0CC85 /* DropboxBrowserViewController.h */,
@@ -739,6 +748,7 @@
 				5246837A1BEAAC430086213B /* LaunchScreen.storyboard in Resources */,
 				52681A1B1C2DCCEE00B2656A /* Launch.png in Resources */,
 				5244AA3C1CA45DB6004F8849 /* NRCPasscodeViewController.xib in Resources */,
+				525DF10E1EBD0D9100060BD2 /* MKStoreKitConfigs.plist in Resources */,
 				52BFCAF01C57150200970D40 /* Settings.bundle in Resources */,
 				52D637B61C9DAE550024E97E /* checkout scanner beep.mp3 in Resources */,
 				524683911BEAB1F10086213B /* Media.xcassets in Resources */,
@@ -785,6 +795,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525DF1101EBD0F3100060BD2 /* MKStoreKitConfigs.plist in Sources */,
 				52BB8AA11EB5727200F37B91 /* PurchaseViewController.h in Sources */,
 				52BB8A9F1EB5714A00F37B91 /* PurchaseViewController.m in Sources */,
 				52E5039D1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift in Sources */,
@@ -823,6 +834,7 @@
 				5202ECAF1C66C5F8001FF0FA /* NRCAssessmentDisplayTableViewController.m in Sources */,
 				52ED66321C26003C00BFFCD5 /* NRCInterfaceController1.m in Sources */,
 				5246836C1BEAAC430086213B /* main.m in Sources */,
+				525DF1131EBD102A00060BD2 /* MKStoreKit.m in Sources */,
 				5274CD1D1C39D0AC00708C95 /* NRCTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
