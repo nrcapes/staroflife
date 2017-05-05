@@ -259,6 +259,8 @@
         if([productIdPayment isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
             NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
             [storage setBool:YES forKey:kspeechRecognitionUnlockedKey];
+            NSInteger numberOfSpeechRecognitionRequests = 0;
+            [storage setInteger:numberOfSpeechRecognitionRequests forKey:kNumberOfSpeechRecognitonRequests];
             [storage synchronize];
             self.productTitle.text = @"Purchase completed";
         }

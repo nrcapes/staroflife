@@ -16,5 +16,6 @@
 #define kspeechRecognition7DayTrialUnlockedKey @"speechRecognition7DayTrialUnlocked"
 #define kSegueIdentifierToTableView @"unwindPurchaseToTableView"
 #define kSegueIdentifierToInAppPurchase @"toInAppPurchase"
-
+#define kNumberOfSpeechRecognitonRequests @"numberOfSpeechRecognitionRequests"
+#define kNumberOfSpeechRecognitionRequestsWithoutUpgrade 2
 #endif /* constants_h */

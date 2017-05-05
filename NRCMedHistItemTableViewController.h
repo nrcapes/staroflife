@@ -16,7 +16,7 @@
 @property  UITableViewCell *cellToZoom;
 @property (strong, nonatomic) IBOutlet UITextView *displayedText;
 @property (strong, nonatomic) IBOutlet UITextView *heldText;
-
+@property (nonatomic) NSInteger numberOfSpeechRecognitionRequests;
 @property (nonatomic, strong) NSString *temp;
 @property IBOutlet UITextView * textView;
 @property NSMutableArray *medications;
@@ -32,5 +32,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *microphoneButton;
 @property NSOperation *setButtonMicrophoneEnabled;
 @property BOOL isButtonEnabled;
+@property BOOL reachedNumberOfSpeechRecognitionRequestsWithoutUpgrade;
 -(void)checkButtonEnabled;
 @end

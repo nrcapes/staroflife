@@ -16,6 +16,7 @@
 #import "patientItemStore.h"
 #import "assessmentItem.h"
 #import "iapstore.h"
+#import "constants.h"
 #import <MessageUI/MessageUI.h>
 typedef NS_ENUM(int, row){
     first_name,
@@ -60,7 +61,7 @@ typedef NS_ENUM(int, row){
     
     //here we set the maximum number of emails that a user may send without buying an upgrade.
 
-    self.maxEmails = [NSNumber numberWithInteger:5];
+    self.maxEmails = 5;
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Prepare email" message:@"Checkmark the items you want to send" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -318,10 +319,10 @@ typedef NS_ENUM(int, row){
 // handles all emailing of data
 - (IBAction)emailData:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.emailActivated = [defaults boolForKey:@"email_unlocked"];
+    self.emailActivated = [defaults boolForKey:kunlimitedEmailsUnlockedKey];
 
     
-    self.emailActivated = YES;
+   // self.emailActivated = YES;
      self.centralAdmin = [[defaults valueForKey:@"centralAdmin"]boolValue];
     
         
@@ -336,7 +337,8 @@ typedef NS_ENUM(int, row){
         else{
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             BOOL stopEmails = [[defaults valueForKey:@"maximumEmailsExceeded"]boolValue];
-            if(stopEmails == YES){
+            self.unlimitedEmailsUnlocked = [defaults boolForKey:kunlimitedEmailsUnlockedKey];
+            if(stopEmails == YES && self.unlimitedEmailsUnlocked == NO){
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Email Unavailable" message:@"Unlimited emails are only available with an upgrade" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Press any key to continue." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
                     
@@ -435,16 +437,20 @@ typedef NS_ENUM(int, row){
     
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.numberOfEmailsSent = [defaults valueForKey:@"emailsSent"];
-    int value = [self.numberOfEmailsSent intValue];
-    self.numberOfEmailsSent = [NSNumber numberWithInt:value + 1];
-    [defaults setValue:self.numberOfEmailsSent forKey:@"emailsSent"];
-    NSLog(@"Emails sent = %@", self.numberOfEmailsSent);
-    if(![defaults boolForKey:@"email_unlocked"]){
-        if(self.numberOfEmailsSent == self.maxEmails){
+    self.numberOfEmailsSent = [defaults integerForKey:@"emailsSent"];
+    int value = (int)self.numberOfEmailsSent;
+    value += 1;
+    self.numberOfEmailsSent = (NSInteger)value;
+    [defaults setInteger:self.numberOfEmailsSent forKey:@"emailsSent"];
+    NSLog(@"Emails sent = %ld", (long)self.numberOfEmailsSent);
+    self.unlimitedEmailsUnlocked = [defaults boolForKey:kunlimitedEmailsUnlockedKey];
+    if(self.unlimitedEmailsUnlocked == NO){
+        if(self.numberOfEmailsSent >= self.maxEmails){
+            NSLog(@"number of emails sent = maxEmails");
             [defaults setBool:YES forKey:@"maximumEmailsExceeded"];
         }
     }
+    [defaults synchronize];
 }
 #pragma mark - buildEmail
 -(void)buildEmail{

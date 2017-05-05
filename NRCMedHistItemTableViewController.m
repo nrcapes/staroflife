@@ -17,8 +17,7 @@
 @implementation NRCMedHistItemTableViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self checkButtonEnabled];
+ //   [self checkButtonEnabled];
     [self startSpeechSynthesis];
    // self.heldText.delegate = self;
     
@@ -149,7 +148,9 @@
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
         _isButtonEnabled = [storage boolForKey:kspeechRecognitionUnlockedKey];
         if(_isButtonEnabled == true){
-            [self.microphoneButton setEnabled:true];
+            {
+                [self.microphoneButton setEnabled:true];
+            }
         }else{
             [self.microphoneButton setEnabled:false];
         };
@@ -165,28 +166,18 @@
         _isButtonEnabled = false;
         switch(status){
             case SFSpeechRecognizerAuthorizationStatusAuthorized:{
-                _isButtonEnabled = true;
-                [storage setBool:_isButtonEnabled forKey:@"isButtonEnabled"];
-                [storage synchronize];
+                NSLog(@"speech recognizer authorized");
                 break;
             }
             case SFSpeechRecognizerAuthorizationStatusDenied:{
-                _isButtonEnabled = false;
-                [storage setBool:_isButtonEnabled forKey:@"isButtonEnabled"];
-                [storage synchronize];
+                NSLog(@"speech recognizer status denied");
                 break;
             }
             case SFSpeechRecognizerAuthorizationStatusRestricted:{
-                _isButtonEnabled = false;
-                [storage setBool:_isButtonEnabled forKey:@"isButtonEnabled"];
-                [storage synchronize];
                 NSLog(@"Speech recognition restricted on this device");
                 break;
             }
             case SFSpeechRecognizerAuthorizationStatusNotDetermined:{
-                _isButtonEnabled = false;
-                [storage setBool:_isButtonEnabled forKey:@"isButtonEnabled"];
-                [storage synchronize];
                 NSLog(@"Speech recognition not yet authorized");
                 break;
             }
@@ -270,11 +261,31 @@
         [_microphoneButton setEnabled:false];
         _microphoneButton.title = @"Start Recording";
     }else{
-        [self startRecording];
-        _microphoneButton.title = @"Stop Recording";
+        NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+        BOOL speechRecognitionUnlocked = [storage boolForKey:kspeechRecognitionUnlockedKey];
+        if(speechRecognitionUnlocked == NO){
+            self.numberOfSpeechRecognitionRequests = [storage integerForKey:kNumberOfSpeechRecognitonRequests];
+            if(self.numberOfSpeechRecognitionRequests < kNumberOfSpeechRecognitionRequestsWithoutUpgrade){
+                self.numberOfSpeechRecognitionRequests += 1;
+                [storage setInteger:self.numberOfSpeechRecognitionRequests forKey:kNumberOfSpeechRecognitonRequests];
+                [storage synchronize];
+                [self startRecording];
+                _microphoneButton.title = @"Stop Recording";
+            }else{
+                NSLog(@"max speech recognition requests reached");
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"You have reached the maximum # of dictation requests" message:@"return to the first screen and touch Upgrade" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Touch here to continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
+                [alert addAction:ok];
+                [self presentViewController:alert animated:YES completion:nil];
+            };
+        }else{
+            [self startRecording];
+            _microphoneButton.title = @"Stop Recording";
+        }
     }
 }
-
 -(void)speechRecognizer:(SFSpeechRecognizer *)speechRecognizer availabilityDidChange:(BOOL)available{
     if (available){
         [_microphoneButton setEnabled:true];
