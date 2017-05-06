@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *productTitle;
 @property (strong, nonatomic) IBOutlet UIButton *buyButton;
 @property (strong, nonatomic) IBOutlet UITextView *productDescription;
+@property (strong, nonatomic) IBOutlet UILabel *price;
 @property (strong, nonatomic)  NSArray *products;
 @property (strong) NSString *productToBuy;
 @property (strong, nonatomic) SKProduct *product;

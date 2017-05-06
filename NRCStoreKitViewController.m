@@ -52,6 +52,10 @@
                                                                                                                              handler:^(UIAlertAction * action) {
                                                                                                                                  _buyButton.enabled = YES;
                                                                                                                                  _productTitle.text = skProduct.localizedTitle;
+                                                                                                                                 
+                                                                                                                                 NSString *formattedPrice = [self formatPrice:skProduct];
+                                                                                                                                 
+                                                                                                                                 _price.text = formattedPrice;
                                                                                                                                  NSLog(@"PurchaseViewController(productsRequestdidReceiveResponse) localized title: %@", _productTitle.text);
                                                                                                                                  _productDescription.text = skProduct.localizedDescription;
                                                                                                                                  self.payment = [SKPayment paymentWithProduct:skProduct];
@@ -70,6 +74,10 @@
                                                                                                                                    handler:^(UIAlertAction * action) {
                                                                                                                                        _buyButton.enabled = YES;
                                                                                                                                        _productTitle.text = skProduct.localizedTitle;
+                                                                                                                                       
+                                                                                                                                       NSString *formattedPrice = [self formatPrice:skProduct];
+                                                                                                                                       
+                                                                                                                                       _price.text = formattedPrice;
                                                                                                                                        NSLog(@"PurchaseViewController(productsRequestdidReceiveResponse) localized title: %@", _productTitle.text);
                                                                                                                                        _productDescription.text = skProduct.localizedDescription;
                                                                                                                                        self.payment = [SKPayment paymentWithProduct:skProduct];
@@ -119,6 +127,15 @@
     
     
     // Do any additional setup after loading the view.
+}
+-(NSString *)formatPrice:(SKProduct *)product{
+    NSString *formattedPrice;
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc]init];
+    [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [numberFormatter setLocale:product.priceLocale];
+    formattedPrice = [numberFormatter stringFromNumber:product.price];
+    return formattedPrice;
 }
 -(IBAction)restoreProduct:(id)sender{
     
