@@ -94,7 +94,11 @@
                                                       object:nil
                                                        queue:[[NSOperationQueue alloc] init]
                                                   usingBlock:^(NSNotification *note) {
-                                                      
+                                                      NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:note, nil];
+                                                      NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:array, kAvailableProductKey, nil];
+                                                      NRCStoreKitViewController *storeKitVC = [[NRCStoreKitViewController alloc]init];
+                                                      [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationOfProductPurchase object:storeKitVC userInfo:dict];
+
                                                       NSLog(@"Purchased/Subscribed to product with id: %@", [note object]);
                                                   }];
     

@@ -24,7 +24,7 @@
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         
         [nc addObserver:self selector:@selector(notifyOfAvailableProducts:) name:kNotificationOfAvailableProducts object:nil];
-        
+        [nc addObserver:self selector:@selector(notifyOfProductPurchase:) name:kNotificationOfProductPurchase object:nil];
     }
     return self;
 }
@@ -33,6 +33,16 @@
   [[MKStoreKit sharedKit] startProductRequest];  
 }
  */
+-(void)notifyOfProductPurchase:(NSNotification *)notification{
+    NSLog(@"userInfo: %@", notification);
+    NSDictionary *userinfo = [notification userInfo];
+    NSArray *array = [userinfo objectForKey:kAvailableProductKey];
+    NSNotification *not = [array objectAtIndex:0];
+    _productTitle.text = @"Product Purchased";
+    self.productToUnlock = [not object];
+    [self unlockFeature];
+    
+}
 -(void)notifyOfAvailableProducts:(NSNotification *)notification{
     NSLog(@"userInfo: %@", notification);
     NSDictionary *userinfo = [notification userInfo];

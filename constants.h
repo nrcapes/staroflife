@@ -23,6 +23,7 @@
 #define kInAppPurchaseUnlockedProductKey @"unlockedProduct"
 #define kNumberOfSpeechRecognitionRequestsWithoutUpgrade 2
 #define kNotificationOfAvailableProducts @"notifyOfAvailableProducts"
+#define kNotificationOfProductPurchase @"notifyOfProductPurchase"
 #define kAvailableProductKey @"availableProduct"
 #define kProductIdentifierKey @"productIdentifier"
 #define kProductsArrayKey @"productsArray"
