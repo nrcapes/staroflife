@@ -91,6 +91,8 @@
                                                                                                                                    }];
                                                                       
                                                                       [alert addAction:buySpeechRecognition];
+                                                                  }else{
+                                                                      NSLog(@"invalid product identifier");
                                                                   }
                                                               }
                                                           }

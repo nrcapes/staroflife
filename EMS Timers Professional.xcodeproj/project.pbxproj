@@ -41,7 +41,6 @@
 		525DF10E1EBD0D9100060BD2 /* MKStoreKitConfigs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 525DF10C1EBD0D9100060BD2 /* MKStoreKitConfigs.plist */; };
 		525DF1101EBD0F3100060BD2 /* MKStoreKitConfigs.plist in Sources */ = {isa = PBXBuildFile; fileRef = 525DF10C1EBD0D9100060BD2 /* MKStoreKitConfigs.plist */; };
 		525DF1131EBD102A00060BD2 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DF1121EBD102A00060BD2 /* MKStoreKit.m */; };
-		525DF1161EBD1F8E00060BD2 /* NRCStoreKitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DF1151EBD1F8E00060BD2 /* NRCStoreKitTableViewController.m */; };
 		525DF1191EBD3E5800060BD2 /* NRCStoreKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DF1181EBD3E5800060BD2 /* NRCStoreKitViewController.m */; };
 		526290A41C26083100289F2A /* NRCInterfaceController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A31C26083100289F2A /* NRCInterfaceController2.m */; };
 		526290A61C26083100289F2A /* NRCInterfaceController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A31C26083100289F2A /* NRCInterfaceController2.m */; };
@@ -199,8 +198,6 @@
 		525DF10C1EBD0D9100060BD2 /* MKStoreKitConfigs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = MKStoreKitConfigs.plist; path = "../Downloads/MKStoreKit-master/MKStoreKitConfigs.plist"; sourceTree = "<group>"; };
 		525DF1111EBD0F5C00060BD2 /* MKStoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKStoreKit.h; sourceTree = "<group>"; };
 		525DF1121EBD102A00060BD2 /* MKStoreKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreKit.m; sourceTree = "<group>"; };
-		525DF1141EBD1F8E00060BD2 /* NRCStoreKitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCStoreKitTableViewController.h; sourceTree = "<group>"; };
-		525DF1151EBD1F8E00060BD2 /* NRCStoreKitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCStoreKitTableViewController.m; sourceTree = "<group>"; };
 		525DF1171EBD3E5800060BD2 /* NRCStoreKitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCStoreKitViewController.h; sourceTree = "<group>"; };
 		525DF1181EBD3E5800060BD2 /* NRCStoreKitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCStoreKitViewController.m; sourceTree = "<group>"; };
 		526290A21C26083100289F2A /* NRCInterfaceController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRCInterfaceController2.h; path = "../EMSTimers WatchKit 1 App/NRCInterfaceController2.h"; sourceTree = "<group>"; };
@@ -451,8 +448,6 @@
 				52BB8A9E1EB5714A00F37B91 /* PurchaseViewController.m */,
 				525DF1111EBD0F5C00060BD2 /* MKStoreKit.h */,
 				525DF1121EBD102A00060BD2 /* MKStoreKit.m */,
-				525DF1141EBD1F8E00060BD2 /* NRCStoreKitTableViewController.h */,
-				525DF1151EBD1F8E00060BD2 /* NRCStoreKitTableViewController.m */,
 				525DF1171EBD3E5800060BD2 /* NRCStoreKitViewController.h */,
 				525DF1181EBD3E5800060BD2 /* NRCStoreKitViewController.m */,
 				525DF10C1EBD0D9100060BD2 /* MKStoreKitConfigs.plist */,
@@ -817,7 +812,6 @@
 				526290A91C2614C000289F2A /* NRCInterfaceController3.m in Sources */,
 				52A0B05B1C615D410015D481 /* assessmentItem.m in Sources */,
 				5251FCAD1C73C6D700E819FF /* NRCMedHistItemTableViewController.m in Sources */,
-				525DF1161EBD1F8E00060BD2 /* NRCStoreKitTableViewController.m in Sources */,
 				52F01B611D4001940055BD45 /* NRCTransmitTableViewController.m in Sources */,
 				52F6D7D21C9A07C900C6F39E /* jsonStore.m in Sources */,
 				52A0B0501C5F03B20015D481 /* NRCPatientDataTableViewController.m in Sources */,
