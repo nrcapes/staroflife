@@ -612,6 +612,23 @@ AVAudioPlayer *_audioPlayer2;
 }
 #pragma MARK In App Store Purchasing
 
+-(IBAction)toStoreKit:(id)sender{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"In App Purchase" message:@"Do Want to Purchase an Upgrade or Restore a Purchase?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *ok =[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+        [self performSegueWithIdentifier:@"toStoreKit" sender:self];
+        
+    }];
+    
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                   }];
+    
+    [alert addAction:ok];
+    [alert addAction:cancel];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 -(IBAction)purchaseItem:(id)sender{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"In App Purchase" message:@"Do Want to Purchase an Upgrade or Restore a Purchase?" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *ok =[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
@@ -1361,6 +1378,9 @@ AVAudioPlayer *_audioPlayer2;
         destViewController.patients = self.patients;
         destViewController.checkedArray = self.checkedArray;
     }
+    if([segue.identifier isEqualToString:@"toStoreKit"]){
+        NSLog(@"Initiating segue to StoreKit controller");
+    }
 }
 # pragma mark unwind segues
 -(IBAction)unwindFromLoginViewController:(UIStoryboardSegue *)seque{
@@ -1423,6 +1443,9 @@ AVAudioPlayer *_audioPlayer2;
 }
 
 -(IBAction)unwindFromPurchase:(UIStoryboardSegue*)segue{
+    [self enablePurchase];
+}
+-(IBAction)unwindFromStoreKit:(UIStoryboardSegue*)segue{
     [self enablePurchase];
 }
 -(IBAction)unwindFromLogin:(UIStoryboardSegue *)segue{

@@ -235,15 +235,6 @@
 }
 -(void)unlockFeature
 {
-    /*
-    _buyButton.enabled = NO;
-    //[_buyButton setTitle:@"Purchased"
-    //            forState:UIControlStateDisabled];
-    
-    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-    BOOL centAdmin = [storage boolForKey:@"central_admin_requested"];
-    BOOL keyIcloud = [storage boolForKey:@"iCloud_support_requested"];
-    */
     
     SKPayment *payment = self.transaction.payment;
     NSString *productIdPayment = payment.productIdentifier;

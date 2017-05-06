@@ -15,7 +15,11 @@
 #define kspeechRecognitionUnlockedKey @"speechRecognitionUnlocked"
 #define kspeechRecognition7DayTrialUnlockedKey @"speechRecognition7DayTrialUnlocked"
 #define kSegueIdentifierToTableView @"unwindPurchaseToTableView"
+#define kSegueIdentifierStoreKitToTableView @"unwindStoreKitToTableView"
 #define kSegueIdentifierToInAppPurchase @"toInAppPurchase"
+#define kSegueIdentifierUnwindToInitialController @"unwindToInitialController"
 #define kNumberOfSpeechRecognitonRequests @"numberOfSpeechRecognitionRequests"
+#define kInAppPurchaseAvailableProductsKey @"availableProducts"
+#define kInAppPurchaseUnlockedProductKey @"unlockedProduct"
 #define kNumberOfSpeechRecognitionRequestsWithoutUpgrade 2
 #endif /* constants_h */

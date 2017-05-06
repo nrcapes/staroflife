@@ -151,7 +151,7 @@ typedef NS_ENUM(int, row){
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault
-                                                  reuseIdentifier:nil];
+                                                  reuseIdentifier:@"patientDataCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
    // tableView.rowHeight = 30.0f;
     UITextField* tf = nil ;
