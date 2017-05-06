@@ -20,130 +20,116 @@
     if(self){
         UINavigationItem *navItem = self.navigationItem;
         navItem.hidesBackButton = YES;
+        
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        
+        [nc addObserver:self selector:@selector(notifyOfAvailableProducts:) name:kNotificationOfAvailableProducts object:nil];
+        
     }
     return self;
 }
-
+/*
+-(void)startMHStoreKit{
+  [[MKStoreKit sharedKit] startProductRequest];  
+}
+ */
+-(void)notifyOfAvailableProducts:(NSNotification *)notification{
+    NSLog(@"userInfo: %@", notification);
+    NSDictionary *userinfo = [notification userInfo];
+    NSArray *array = [userinfo objectForKey:kAvailableProductKey];
+    NSNotification *not = [array objectAtIndex:0];
+    self.products = [not object];
+    NSMutableArray *productArray = [[NSMutableArray alloc]init];
+    SKProduct *product;
+    for(product in self.products){
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+        [dict setObject:product.productIdentifier forKey:@"product_productIdentifier"];
+        [dict setObject:product.localizedTitle forKey:@"product_localizedTitle"];
+        [dict setObject:product.localizedDescription forKey:@"product_localizedDescription"];
+        [dict setObject:product.price forKey:@"product_price"];
+       // [dict setObject:product.priceLocale forKey:@"product_price_locale"];
+        [productArray addObject:dict];
+    }
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+    [storage setObject:productArray forKey:kProductsArrayKey];
+    [storage synchronize];
+    // [self displayAvailableProducts:self.products];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES animated:YES];
-    _buyButton.enabled = NO;
-    if(!self.productDict){
-        self.productDict = [[NSMutableDictionary alloc]init];
-    }
-    
-    [[MKStoreKit sharedKit] startProductRequest];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitProductsAvailableNotification
-                                                      object:nil
-                                                       queue:[[NSOperationQueue alloc] init]
-                                                  usingBlock:^(NSNotification *note) {
-                                                      
-                                                      NSLog(@"Products available: %@", [[MKStoreKit sharedKit] availableProducts]);
-                                                      self.products = [[MKStoreKit sharedKit] availableProducts];
-                                                      UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Purchase Products" message:@"Which product do you want to purchase or restore?" preferredStyle:UIAlertControllerStyleAlert];
-                                                      for (SKProduct * skProduct in self.products) {
-                                                          NSLog(@"Found product: %@ – Product: %@ – Price: %0.2f", skProduct.productIdentifier, skProduct.localizedTitle, skProduct.price.floatValue);
-                                                          if (self.products.count != 0)
-                                                          {
-                                                              NSString *productIdentifier = skProduct.productIdentifier;
-                                                              if([productIdentifier isEqualToString:kInAppPurchaseUnlimitedEmailsKey]){
-                                                                  UIAlertAction* buyUnlimitedEmails = [UIAlertAction actionWithTitle:@"Unlimited Emails" style:UIAlertActionStyleDefault
-                                                                                                                             handler:^(UIAlertAction * action) {
-                                                                                                                                 _buyButton.enabled = YES;
-                                                                                                                                 _productTitle.text = skProduct.localizedTitle;
-                                                                                                                                 
-                                                                                                                                 NSString *formattedPrice = [self formatPrice:skProduct];
-                                                                                                                                 
-                                                                                                                                 _price.text = formattedPrice;
-                                                                                                                                 NSLog(@"PurchaseViewController(productsRequestdidReceiveResponse) localized title: %@", _productTitle.text);
-                                                                                                                                 _productDescription.text = skProduct.localizedDescription;
-                                                                                                                                 self.payment = [SKPayment paymentWithProduct:skProduct];
-                                                                                                                                 NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-                                                                                                                                 if(!self.productDict){
-                                                                                                                                     self.productDict = [storage objectForKey:@"productDict"];
-                                                                                                                                 }
-                                                                                                                                 [self.productDict setObject:skProduct.productIdentifier forKey:kInAppPurchaseUnlimitedEmailsKey];
-                                                                                                                                 [storage setObject:self.productDict forKey:@"productDict"];
-                                                                                                                                 [storage synchronize];
-                                                                                                                             }];
-                                                                  [alert addAction:buyUnlimitedEmails];
-                                                              }else{
-                                                                  if([productIdentifier isEqualToString:kInAppPurchaseSpeechRecognitionUnlockedKey]){
-                                                                      UIAlertAction* buySpeechRecognition = [UIAlertAction actionWithTitle:@"Speech Recognition" style:UIAlertActionStyleDefault
-                                                                                                                                   handler:^(UIAlertAction * action) {
-                                                                                                                                       _buyButton.enabled = YES;
-                                                                                                                                       _productTitle.text = skProduct.localizedTitle;
-                                                                                                                                       
-                                                                                                                                       NSString *formattedPrice = [self formatPrice:skProduct];
-                                                                                                                                       
-                                                                                                                                       _price.text = formattedPrice;
-                                                                                                                                       NSLog(@"PurchaseViewController(productsRequestdidReceiveResponse) localized title: %@", _productTitle.text);
-                                                                                                                                       _productDescription.text = skProduct.localizedDescription;
-                                                                                                                                       self.payment = [SKPayment paymentWithProduct:skProduct];
-                                                                                                                                       NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-                                                                                                                                       if(!self.productDict){
-                                                                                                                                           self.productDict = [storage objectForKey:@"productDict"];
-                                                                                                                                       }
-                                                                                                                                       [self.productDict setObject:skProduct.productIdentifier forKey:kInAppPurchaseSpeechRecognitionUnlockedKey];
-                                                                                                                                       [storage setObject:self.productDict forKey:@"productDict"];
-                                                                                                                                       [storage synchronize];
-                                                                                                                                   }];
-                                                                      
-                                                                      [alert addAction:buySpeechRecognition];
-                                                                  }else{
-                                                                      NSLog(@"invalid product identifier");
-                                                                  }
-                                                              }
-                                                          }
-                                                      }
-                                                      [self presentViewController:alert animated:YES completion:nil];
-                                                  }];
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitProductPurchasedNotification
-                                                      object:nil
-                                                       queue:[[NSOperationQueue alloc] init]
-                                                  usingBlock:^(NSNotification *note) {
-                                                      
-                                                      NSLog(@"Purchased/Subscribed to product with id: %@", [note object]);
-                                                      self.productToUnlock = [note object];
-                                                      [self unlockFeature];
-                                                  }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitRestoredPurchasesNotification
-                                                      object:nil
-                                                       queue:[[NSOperationQueue alloc] init]
-                                                  usingBlock:^(NSNotification *note) {
-                                                      
-                                                      NSLog(@"Restored Purchases");
-                                                  }];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitRestoringPurchasesFailedNotification
-                                                      object:nil
-                                                       queue:[[NSOperationQueue alloc] init]
-                                                  usingBlock:^(NSNotification *note) {
-                                                      
-                                                      NSLog(@"Failed restoring purchases with error: %@", [note object]);
-                                                  }];
+   // _buyButton.enabled = NO;
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *productArray = [[NSMutableArray alloc]init];
+    productArray = [storage objectForKey:kProductsArrayKey];
+    [self displayAvailableProducts:productArray];
     
     
     // Do any additional setup after loading the view.
 }
--(NSString *)formatPrice:(SKProduct *)product{
-    NSString *formattedPrice;
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc]init];
+-(void)displayAvailableProducts:(NSMutableArray *)availableProducts{
+    NSLog(@"available products %@", availableProducts);
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Purchase Products" message:@"Which product do you want to purchase or restore?" preferredStyle:UIAlertControllerStyleAlert];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+    for (dict in availableProducts) {
+        NSString *productIdentifier = [dict objectForKey:@"product_productIdentifier"];
+        NSString *productLocalizedTitle = [dict objectForKey:@"product_localizedTitle"];
+        NSString *productLocalizedDescription = [dict objectForKey:@"product_localizedDescription"];
+      //  NSDecimalNumber *productPrice = [dict objectForKey:@"product_price"];
+        NSLog(@"Found product: %@ – Product", productLocalizedTitle);
+        if (availableProducts.count != 0)
+        {
+        if([productIdentifier isEqualToString:kInAppPurchaseUnlimitedEmailsKey]){
+                UIAlertAction* buyUnlimitedEmails = [UIAlertAction actionWithTitle:@"Unlimited Emails" style:UIAlertActionStyleDefault
+                                                                           handler:^(UIAlertAction * action) {
+                                                                               
+                                                                               NSLog(@"PurchaseViewController(productsRequestdidReceiveResponse) localized title: %@", _productTitle.text);
+                                                                               _productTitle.text = productLocalizedTitle;
+                                                                               //_price.text = productPrice;
+                                                                               _productDescription.text = productLocalizedDescription;
+                                                                               self.productIdentifier = productIdentifier;
+                                                                              // SKProduct *productToBuy = [[SKProduct alloc]init];
+                                                                        
+                                                                           }];
+                [alert addAction:buyUnlimitedEmails];
+            }else{
+                if([productIdentifier isEqualToString:kInAppPurchaseSpeechRecognitionUnlockedKey]){
+                    UIAlertAction* buySpeechRecognition = [UIAlertAction actionWithTitle:@"Speech Recognition" style:UIAlertActionStyleDefault
+                                                                                 handler:^(UIAlertAction * action) {
+                                                                                     NSLog(@"PurchaseViewController(productsRequestdidReceiveResponse) localized title: %@", _productTitle.text);
+                                                                                     _productTitle.text = productLocalizedTitle;
+                                                                                     //_price.text = productPrice;
+                                                                                     _productDescription.text = productLocalizedDescription;
+                                                                                     self.productIdentifier = productIdentifier;
+                                                                                     //self.payment = [SKPayment paymentWithProduct:skProduct];
+                                                                                     
+                                                                                 }];
+                    
+                    [alert addAction:buySpeechRecognition];
+                }else{
+                    NSLog(@"invalid product identifier");
+                }
+            }
+        }
+    }
+    [self presentViewController:alert animated:YES completion:nil];
+};
+
+
+-(NSString *)formatPrice:(NSDecimalNumber *)price{
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [numberFormatter setLocale:product.priceLocale];
-    formattedPrice = [numberFormatter stringFromNumber:product.price];
-    return formattedPrice;
+ //   [numberFormatter setLocale:product.priceLocale];
+    NSString *formattedString = [numberFormatter stringFromNumber:price];
+    return formattedString;
 }
 -(IBAction)restoreProduct:(id)sender{
     
 }
 -(IBAction)buyProduct:(id)sender{
-    [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:self.payment.productIdentifier];
+
+    [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:self.productIdentifier];
     
 }
 - (void)didReceiveMemoryWarning {

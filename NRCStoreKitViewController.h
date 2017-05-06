@@ -28,4 +28,8 @@
 @property (strong, nonatomic) NSDate *transactionDate;
 @property (strong, nonatomic) NSMutableDictionary *productDict;
 @property (strong, nonatomic) NSMutableDictionary *transactionDates;
+@property (strong, nonatomic) NSString *productIdentifier;
+-(void)notifyOfAvailableProducts:(NSNotification *)userInfo;
+-(void)displayAvailableProducts:(NSMutableArray *)availableProducts;
+
 @end

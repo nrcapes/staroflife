@@ -12,6 +12,9 @@
 #import "patientItemStore.h"
 #import "PurchaseViewController.h"
 #import "NRCEmailTableViewController.h"
+#import "constants.h"
+#import "NRCStoreKitViewController.h"
+#import "MKStoreKit.h"
 #import <DropboxSDK/DropboxSDK.h>
 @interface AppDelegate () 
 
@@ -46,10 +49,12 @@
     NSError *activationError = nil;
     [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error:&sessionError];
     [[AVAudioSession sharedInstance] setActive: YES error: &activationError];
-    _purchaseController = [[PurchaseViewController alloc]init];
     
+    /* uncomment if no longer using MKStoreKit as payment queue observer
+    _purchaseController = [[PurchaseViewController alloc]init];
     [[SKPaymentQueue defaultQueue]
      addTransactionObserver:_purchaseController];
+     */
     
     // icloud setup
     NSURL *ubiq = [[NSFileManager defaultManager]
@@ -71,7 +76,45 @@
                             root:kDBRootAppFolder]; // either kDBRootAppFolder or kDBRootDropbox
     [DBSession setSharedSession:dbSession];
     
-
+    [[MKStoreKit sharedKit] startProductRequest];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitProductsAvailableNotification
+                                                      object:nil
+                                                       queue:[[NSOperationQueue alloc] init]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:note, nil];
+                                                      NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:array, kAvailableProductKey, nil];
+                                                      NRCStoreKitViewController *storeKitVC = [[NRCStoreKitViewController alloc]init];
+                                                      [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationOfAvailableProducts object:storeKitVC userInfo:dict];
+                                                      NSLog(@"Products available: %@", [[MKStoreKit sharedKit] availableProducts]);
+                                                  }];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitProductPurchasedNotification
+                                                      object:nil
+                                                       queue:[[NSOperationQueue alloc] init]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      
+                                                      NSLog(@"Purchased/Subscribed to product with id: %@", [note object]);
+                                                  }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitRestoredPurchasesNotification
+                                                      object:nil
+                                                       queue:[[NSOperationQueue alloc] init]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      
+                                                      NSLog(@"Restored Purchases");
+                                                  }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitRestoringPurchasesFailedNotification
+                                                      object:nil
+                                                       queue:[[NSOperationQueue alloc] init]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      
+                                                      NSLog(@"Failed restoring purchases with error: %@", [note object]);
+                                                  }];
+    
+    
     
     return YES;
 }
