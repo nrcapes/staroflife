@@ -29,7 +29,9 @@
 @property (strong, nonatomic) NSMutableDictionary *productDict;
 @property (strong, nonatomic) NSMutableDictionary *transactionDates;
 @property (strong, nonatomic) NSString *productIdentifier;
+@property UIAlertView * alert;
 -(void)notifyOfAvailableProducts:(NSNotification *)userInfo;
 -(void)displayAvailableProducts:(NSMutableArray *)availableProducts;
-
+-(void)notifyOfFailedProductPurchase:(NSNotification *)notification;
+-(void)showAlert;
 @end

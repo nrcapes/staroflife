@@ -14,6 +14,12 @@
 
 @end
 
+// View tags to differeniate alert views
+static NSUInteger const kProductPurchasedAlertViewTag = 1;
+static NSUInteger const kPurchaseFailedAlertViewTag = 2;
+static NSUInteger const kPurchaseRestoredAlertViewTag = 3;
+static NSUInteger const kReceiptValidationFailedAlertViewTag = 4;
+static NSUInteger const kSubscriptionExpiredAlertViewTag = 5;
 @implementation NRCStoreKitViewController
 -(instancetype)init{
     self = [super init];
@@ -25,6 +31,10 @@
         
         [nc addObserver:self selector:@selector(notifyOfAvailableProducts:) name:kNotificationOfAvailableProducts object:nil];
         [nc addObserver:self selector:@selector(notifyOfProductPurchase:) name:kNotificationOfProductPurchase object:nil];
+        [nc addObserver:self selector:@selector(notifyOfRestoredPurchase:) name:kNotificationOfRestoredPurchase object:nil];
+        [nc addObserver:self selector:@selector(notifyOfFailedProductPurchase:) name:KNotificationOfFailedProductPurchase object:nil];
+        [nc addObserver:self selector:@selector(notifyOfFailedReceiptValidation:) name:kNotificationOfFailedReceiptValidation object:nil];
+        [nc addObserver:self selector:@selector(notifyOfFailedReceiptValidation:) name:kNotificationOfSubscriptionExpiry object:nil];
     }
     return self;
 }
@@ -34,21 +44,98 @@
 }
  */
 -(void)notifyOfProductPurchase:(NSNotification *)notification{
+    NSLog(@"Product purchased");
     NSLog(@"userInfo: %@", notification);
     NSDictionary *userinfo = [notification userInfo];
     NSArray *array = [userinfo objectForKey:kAvailableProductKey];
-    NSNotification *not = [array objectAtIndex:0];
-    _productTitle.text = @"Product Purchased";
-    self.productToUnlock = [not object];
-    [self unlockFeature];
+   NSNotification *note = [array objectAtIndex:0];
     
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Product purchased!" message:@"Tap to continue" delegate:self cancelButtonTitle:@"" otherButtonTitles:@"Continue", nil];
+        alert.tag = kProductPurchasedAlertViewTag;
+        [alert show];
+    });
+    self.productToUnlock = [note object];
+    [self unlockFeature];
+
+}
+-(void)notifyOfRestoredPurchase:(NSNotification *)notification{
+    NSLog(@"Purchases restored");
+    NSLog(@"userInfo: %@", notification);
+    NSDictionary *userinfo = [notification userInfo];
+    NSArray *array = [userinfo objectForKey:kAvailableProductKey];
+    NSNotification *note = [array objectAtIndex:0];
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Product restored!" message:@"Tap to continue" delegate:self cancelButtonTitle:@"" otherButtonTitles:@"Continue", nil];
+        alert.tag = kProductPurchasedAlertViewTag;
+        [alert show];
+    });
+    self.productToUnlock = [note object];
+    [self unlockFeature];
+}
+-(void)notifyOfFailedProductPurchase:(NSNotification *)notification{
+    NSLog(@"Purchase failed");
+    NSLog(@"userInfo: %@", notification);
+    NSDictionary *userinfo = [notification userInfo];
+    NSArray *array = [userinfo objectForKey:kAvailableProductKey];
+    NSNotification *note = [array objectAtIndex:0];
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Purchase failed!" message:@"Tap to continue" delegate:self cancelButtonTitle:@"" otherButtonTitles:@"Continue", nil];
+        alert.tag = kProductPurchasedAlertViewTag;
+        [alert show];
+    });
+    self.productToUnlock = [note object];
+    [self lockFeature];
+}
+-(void)notifyOfFailedReceiptValidation:(NSNotification *)notification{
+    NSLog(@"Receipt validation failed");
+    NSLog(@"userInfo: %@", notification);
+    NSDictionary *userinfo = [notification userInfo];
+    NSArray *array = [userinfo objectForKey:kAvailableProductKey];
+    NSNotification *note = [array objectAtIndex:0];
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Bad receipt!" message:@"Tap to continue" delegate:self cancelButtonTitle:@"" otherButtonTitles:@"Continue", nil];
+        alert.tag = kProductPurchasedAlertViewTag;
+        [alert show];
+    });
+    self.productToUnlock = [note object];
+    [self lockFeature];
+}
+
+-(void)notifyOfSubscriptionExpiry:(NSNotification *)notification{
+    NSLog(@"Subscription expired");
+    NSLog(@"userInfo: %@", notification);
+    NSDictionary *userinfo = [notification userInfo];
+    NSArray *array = [userinfo objectForKey:kAvailableProductKey];
+    NSNotification *note = [array objectAtIndex:0];
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Subsription expired!" message:@"Tap to continue" delegate:self cancelButtonTitle:@"" otherButtonTitles:@"Continue", nil];
+        alert.tag = kProductPurchasedAlertViewTag;
+        [alert show];
+    });
+    self.productToUnlock = [note object];
+    [self lockFeature];
 }
 -(void)notifyOfAvailableProducts:(NSNotification *)notification{
     NSLog(@"userInfo: %@", notification);
     NSDictionary *userinfo = [notification userInfo];
     NSArray *array = [userinfo objectForKey:kAvailableProductKey];
-    NSNotification *not = [array objectAtIndex:0];
-    self.products = [not object];
+    NSNotification *note = [array objectAtIndex:0];
+    self.products = [note object];
     NSMutableArray *productArray = [[NSMutableArray alloc]init];
     SKProduct *product;
     for(product in self.products){
@@ -135,28 +222,20 @@
     return formattedString;
 }
 -(IBAction)restoreProduct:(id)sender{
-    
+    [[MKStoreKit sharedKit]restorePurchases];
 }
 -(IBAction)buyProduct:(id)sender{
 
     [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:self.productIdentifier];
-    
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 -(void)unlockFeature
 {
-    
-    /*
-    SKPayment *payment = self.transaction.payment;
-    NSString *productIdPayment = payment.productIdentifier;
-     */
-    // ************** testing ***********
-    // productId2 = kInAppPurchaseAlertViewerKey;
-    
-    if([self.productToUnlock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
+        if([self.productToUnlock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
         [storage setBool:YES forKey:kunlimitedEmailsUnlockedKey];
         [storage synchronize];
@@ -171,19 +250,33 @@
             self.productTitle.text = @"Purchase completed";
         }
     }
-    
-    /*
-     ****** testing ********
-     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-     [storage setBool:YES forKey:kspeechRecognitionUnlockedKey];
-     [storage synchronize];
-     */
+}
+-(void)lockFeature{
+    NSLog(@"relocking feature");
+    if([self.productToUnlock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
+        NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+        [storage setBool:NO forKey:kunlimitedEmailsUnlockedKey];
+        [storage synchronize];
+    }else{// alert editor includes alert viewer
+        if([self.productToUnlock isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
+            NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+            [storage setBool:NO forKey:kspeechRecognitionUnlockedKey];
+            NSInteger numberOfSpeechRecognitionRequests = 0;
+            [storage setInteger:numberOfSpeechRecognitionRequests forKey:kNumberOfSpeechRecognitonRequests];
+            [storage synchronize];
+        }
+    }
 }
 - (IBAction)finished:(id)sender {
     // [self  unlockFeature];
     NSLog(@"initiating unwind from purchase controller to initial controller");
     [self performSegueWithIdentifier:kSegueIdentifierStoreKitToTableView sender:self];
 }
+-(void)finishedIt{
+    [self performSegueWithIdentifier:kSegueIdentifierStoreKitToTableView sender:self];
+}
+
+
 /*
 #pragma mark - Navigation
 

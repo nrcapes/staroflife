@@ -23,8 +23,13 @@
 #define kInAppPurchaseUnlockedProductKey @"unlockedProduct"
 #define kNumberOfSpeechRecognitionRequestsWithoutUpgrade 2
 #define kNotificationOfAvailableProducts @"notifyOfAvailableProducts"
+#define kNotificationOfRestoredPurchase @"notifyOfRestoredPurchase"
 #define kNotificationOfProductPurchase @"notifyOfProductPurchase"
+#define KNotificationOfFailedProductPurchase @"notifyOfFailedProductPurchase"
+#define kNotificationOfFailedReceiptValidation @"notifyOfFailedReceiptValidation"
+#define kNotificationOfSubscriptionExpiry @"notifyOfSubscriptionExpiry"
 #define kAvailableProductKey @"availableProduct"
 #define kProductIdentifierKey @"productIdentifier"
 #define kProductsArrayKey @"productsArray"
+
 #endif /* constants_h */

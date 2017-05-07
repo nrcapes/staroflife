@@ -106,7 +106,10 @@
                                                       object:nil
                                                        queue:[[NSOperationQueue alloc] init]
                                                   usingBlock:^(NSNotification *note) {
-                                                      
+                                                      NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:note, nil];
+                                                      NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:array, kAvailableProductKey, nil];
+                                                      NRCStoreKitViewController *storeKitVC = [[NRCStoreKitViewController alloc]init];
+                                                      [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationOfRestoredPurchase object:storeKitVC userInfo:dict];
                                                       NSLog(@"Restored Purchases");
                                                   }];
     
@@ -117,7 +120,20 @@
                                                       
                                                       NSLog(@"Failed restoring purchases with error: %@", [note object]);
                                                   }];
-    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitSubscriptionExpiredNotification
+                                                      object:nil
+                                                       queue:[[NSOperationQueue alloc] init]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      
+                                                      NSLog(@"Subscription expired with error: %@", [note object]);
+                                                  }];
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitReceiptValidationFailedNotification
+                                                      object:nil
+                                                       queue:[[NSOperationQueue alloc] init]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      
+                                                      NSLog(@"Receipt validation failed with error: %@", [note object]);
+                                                  }];
     
     
     return YES;
