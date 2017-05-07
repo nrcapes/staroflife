@@ -158,7 +158,7 @@
 }
 
 -(void)startSpeechSynthesis{
-    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+    
     _speechRecognizer = [[SFSpeechRecognizer alloc]init];
     [_speechRecognizer setDelegate:self];
     

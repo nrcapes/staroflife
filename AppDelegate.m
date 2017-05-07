@@ -131,8 +131,22 @@
                                                       object:nil
                                                        queue:[[NSOperationQueue alloc] init]
                                                   usingBlock:^(NSNotification *note) {
-                                                      
+                                                      NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:note, nil];
+                                                      NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:array, kAvailableProductKey, nil];
+                                                      NRCStoreKitViewController *storeKitVC = [[NRCStoreKitViewController alloc]init];
+                                                      [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationOfValidReceipt object:storeKitVC userInfo:dict];
                                                       NSLog(@"Receipt validation failed with error: %@", [note object]);
+                                                  }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitReceiptValidNotification
+                                                      object:nil
+                                                       queue:[[NSOperationQueue alloc] init]
+                                                  usingBlock:^(NSNotification *note) {
+                                                      NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:note, nil];
+                                                      NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:array, kAvailableProductKey, nil];
+                                                      NRCStoreKitViewController *storeKitVC = [[NRCStoreKitViewController alloc]init];
+                                                      [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationOfValidReceipt object:storeKitVC userInfo:dict];
+                                                      NSLog(@"Receipt valid");
                                                   }];
     
     

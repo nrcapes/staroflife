@@ -29,9 +29,11 @@
 @property (strong, nonatomic) NSMutableDictionary *productDict;
 @property (strong, nonatomic) NSMutableDictionary *transactionDates;
 @property (strong, nonatomic) NSString *productIdentifier;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 @property UIAlertView * alert;
+#pragma clang diagnostic pop
 -(void)notifyOfAvailableProducts:(NSNotification *)userInfo;
 -(void)displayAvailableProducts:(NSMutableArray *)availableProducts;
 -(void)notifyOfFailedProductPurchase:(NSNotification *)notification;
--(void)showAlert;
 @end

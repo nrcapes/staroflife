@@ -49,7 +49,7 @@ NSString *const kMKStoreKitReceiptValidationFailedNotification = @"com.mugunthku
 NSString *const kMKStoreKitSubscriptionExpiredNotification = @"com.mugunthkumar.mkstorekit.subscriptionexpired";
 NSString *const kMKStoreKitDownloadProgressNotification = @"com.mugunthkumar.mkstorekit.downloadprogress";
 NSString *const kMKStoreKitDownloadCompletedNotification = @"com.mugunthkumar.mkstorekit.downloadcompleted";
-
+NSString *const kMKStoreKitReceiptValidNotification = @"com.mugunthkumar.mkstorekit.receiptvalid";
 
 NSString *const kSandboxServer = @"https://sandbox.itunes.apple.com/verifyReceipt";
 NSString *const kLiveServer = @"https://buy.itunes.apple.com/verifyReceipt";
@@ -417,7 +417,12 @@ static NSDictionary *errorDictionary;
         if (![expiresDateMs isKindOfClass: [NSNull class]]) {
           if ([[NSDate date] timeIntervalSince1970] > [expiresDateMs doubleValue]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitSubscriptionExpiredNotification object:productIdentifier];
+          }else{
+             [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitSubscriptionExpiredNotification object:productIdentifier];
           }
+        }
+        else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitReceiptValidNotification object:productIdentifier];
         }
       }];
     }

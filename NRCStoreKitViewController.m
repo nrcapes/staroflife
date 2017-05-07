@@ -16,10 +16,7 @@
 
 // View tags to differeniate alert views
 static NSUInteger const kProductPurchasedAlertViewTag = 1;
-static NSUInteger const kPurchaseFailedAlertViewTag = 2;
-static NSUInteger const kPurchaseRestoredAlertViewTag = 3;
-static NSUInteger const kReceiptValidationFailedAlertViewTag = 4;
-static NSUInteger const kSubscriptionExpiredAlertViewTag = 5;
+
 @implementation NRCStoreKitViewController
 -(instancetype)init{
     self = [super init];
@@ -35,14 +32,27 @@ static NSUInteger const kSubscriptionExpiredAlertViewTag = 5;
         [nc addObserver:self selector:@selector(notifyOfFailedProductPurchase:) name:KNotificationOfFailedProductPurchase object:nil];
         [nc addObserver:self selector:@selector(notifyOfFailedReceiptValidation:) name:kNotificationOfFailedReceiptValidation object:nil];
         [nc addObserver:self selector:@selector(notifyOfFailedReceiptValidation:) name:kNotificationOfSubscriptionExpiry object:nil];
+        [nc addObserver:self selector:@selector(notifyOfValidReceipt:) name:kNotificationOfValidReceipt object:nil];
     }
     return self;
 }
-/*
--(void)startMHStoreKit{
-  [[MKStoreKit sharedKit] startProductRequest];  
+-(void)notifyOfValidReceipt:(NSNotification *)notification{
+    NSLog(@"receipt was valid");
+    NSLog(@"userInfo: %@", notification);
+    NSDictionary *userinfo = [notification userInfo];
+    NSArray *array = [userinfo objectForKey:kAvailableProductKey];
+    NSNotification *note = [array objectAtIndex:0];
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Product restored!" message:@"Tap to continue" delegate:self cancelButtonTitle:@"" otherButtonTitles:@"Continue", nil];
+        alert.tag = kProductPurchasedAlertViewTag;
+        [alert show];
+    });
+    self.productToUnlock = [note object];
+    [self unlockFeature];
 }
- */
 -(void)notifyOfProductPurchase:(NSNotification *)notification{
     NSLog(@"Product purchased");
     NSLog(@"userInfo: %@", notification);
@@ -222,7 +232,9 @@ static NSUInteger const kSubscriptionExpiredAlertViewTag = 5;
     return formattedString;
 }
 -(IBAction)restoreProduct:(id)sender{
-    [[MKStoreKit sharedKit]restorePurchases];
+   // [[MKStoreKit sharedKit]restorePurchases];
+    
+    [[MKStoreKit sharedKit]refreshAppStoreReceipt];
 }
 -(IBAction)buyProduct:(id)sender{
 

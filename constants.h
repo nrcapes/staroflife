@@ -25,6 +25,7 @@
 #define kNotificationOfAvailableProducts @"notifyOfAvailableProducts"
 #define kNotificationOfRestoredPurchase @"notifyOfRestoredPurchase"
 #define kNotificationOfProductPurchase @"notifyOfProductPurchase"
+#define kNotificationOfValidReceipt @"notifyOfValidReceipt"
 #define KNotificationOfFailedProductPurchase @"notifyOfFailedProductPurchase"
 #define kNotificationOfFailedReceiptValidation @"notifyOfFailedReceiptValidation"
 #define kNotificationOfSubscriptionExpiry @"notifyOfSubscriptionExpiry"
