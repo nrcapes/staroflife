@@ -153,8 +153,13 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
         [dict setObject:product.productIdentifier forKey:@"product_productIdentifier"];
         [dict setObject:product.localizedTitle forKey:@"product_localizedTitle"];
         [dict setObject:product.localizedDescription forKey:@"product_localizedDescription"];
-        [dict setObject:product.price forKey:@"product_price"];
-       // [dict setObject:product.priceLocale forKey:@"product_price_locale"];
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+        [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        [numberFormatter setLocale:product.priceLocale];
+        NSString *formattedPrice = [numberFormatter stringFromNumber:product.price];
+        [dict setObject:formattedPrice forKey:@"product_localizedPrice"];
+        // [dict setObject:product.priceLocale forKey:@"product_price_locale"];
         [productArray addObject:dict];
     }
     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
@@ -182,6 +187,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
         NSString *productIdentifier = [dict objectForKey:@"product_productIdentifier"];
         NSString *productLocalizedTitle = [dict objectForKey:@"product_localizedTitle"];
         NSString *productLocalizedDescription = [dict objectForKey:@"product_localizedDescription"];
+        NSString *productLocalizedPrice = [dict objectForKey:@"product_localizedPrice"];
       //  NSDecimalNumber *productPrice = [dict objectForKey:@"product_price"];
         NSLog(@"Found product: %@ – Product", productLocalizedTitle);
         if (availableProducts.count != 0)
@@ -194,6 +200,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
                                                                                _productTitle.text = productLocalizedTitle;
                                                                                //_price.text = productPrice;
                                                                                _productDescription.text = productLocalizedDescription;
+                                                                               _price.text = productLocalizedPrice;
                                                                                self.productIdentifier = productIdentifier;
                                                                               // SKProduct *productToBuy = [[SKProduct alloc]init];
                                                                         
@@ -207,6 +214,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
                                                                                      _productTitle.text = productLocalizedTitle;
                                                                                      //_price.text = productPrice;
                                                                                      _productDescription.text = productLocalizedDescription;
+                                                                                     _price.text = productLocalizedPrice;
                                                                                      self.productIdentifier = productIdentifier;
                                                                                      //self.payment = [SKPayment paymentWithProduct:skProduct];
                                                                                      
