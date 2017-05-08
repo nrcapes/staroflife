@@ -12,6 +12,8 @@
 #define kInAppPurchaseSpeechRecognitionUnlockedKey @"com.nelsoncapes.emstimerspro.speechRecognitionunlock"
 #define kInAppPurchaseSpeechRecognition7DayTrialKey @"com.nelsoncapes.emstimerspro.speechRecognition7DayTrialKey"
 #define kunlimitedEmailsUnlockedKey @"unlimitedEmailsUnlocked"
+#define kInAppPurchaseEmails7DayTrialKey @"com.nelsoncapes.emstimers.sendemailstrial"
+#define kemails7DayTrialUnlockedKey @"emails7DayTrialUnlocked"
 #define kspeechRecognitionUnlockedKey @"speechRecognitionUnlocked"
 #define kspeechRecognition7DayTrialUnlockedKey @"speechRecognition7DayTrialUnlocked"
 #define kSegueIdentifierToTableView @"unwindPurchaseToTableView"

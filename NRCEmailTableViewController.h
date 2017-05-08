@@ -56,4 +56,5 @@
 @property NSArray *iapdata;
 @property BOOL centralAdminSelected;
 @property (nonatomic) BOOL unlimitedEmailsUnlocked;
+@property (nonatomic) BOOL trialEmailsUnlocked;
 @end

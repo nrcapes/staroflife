@@ -222,14 +222,27 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
                     
                     [alert addAction:buySpeechRecognition];
                 }else{
-                    NSLog(@"invalid product identifier");
+                    if([productIdentifier isEqualToString:kInAppPurchaseEmails7DayTrialKey]){
+                        UIAlertAction* buyemails7daytrial = [UIAlertAction actionWithTitle:@"Send Emails (Trial)" style:UIAlertActionStyleDefault
+                                                                                     handler:^(UIAlertAction * action) {
+                                                                                         NSLog(@"PurchaseViewController(productsRequestdidReceiveResponse) localized title: %@", _productTitle.text);
+                                                                                         _productTitle.text = productLocalizedTitle;
+                                                                                         //_price.text = productPrice;
+                                                                                         _productDescription.text = productLocalizedDescription;
+                                                                                         _price.text = productLocalizedPrice;
+                                                                                         self.productIdentifier = productIdentifier;
+                                                                                         //self.payment = [SKPayment paymentWithProduct:skProduct];
+                                                                                         
+                                                                                     }];
+                        
+                        [alert addAction:buyemails7daytrial];
                 }
             }
         }
     }
-    [self presentViewController:alert animated:YES completion:nil];
 };
-
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 -(NSString *)formatPrice:(NSDecimalNumber *)price{
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
@@ -268,6 +281,11 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
             [storage setInteger:numberOfSpeechRecognitionRequests forKey:kNumberOfSpeechRecognitonRequests];
             [storage synchronize];
             self.productTitle.text = @"Purchase completed";
+        }else{
+            if([self.productToUnlock isEqual:kInAppPurchaseEmails7DayTrialKey]){
+                NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+                [storage setBool:YES forKey:kemails7DayTrialUnlockedKey];
+            }
         }
     }
 }

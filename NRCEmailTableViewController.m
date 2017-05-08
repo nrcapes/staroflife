@@ -444,7 +444,8 @@ typedef NS_ENUM(int, row){
     [defaults setInteger:self.numberOfEmailsSent forKey:@"emailsSent"];
     NSLog(@"Emails sent = %ld", (long)self.numberOfEmailsSent);
     self.unlimitedEmailsUnlocked = [defaults boolForKey:kunlimitedEmailsUnlockedKey];
-    if(self.unlimitedEmailsUnlocked == NO){
+    self.trialEmailsUnlocked = [defaults boolForKey:kemails7DayTrialUnlockedKey];
+    if(self.unlimitedEmailsUnlocked == NO && self.trialEmailsUnlocked == NO){
         if(self.numberOfEmailsSent >= self.maxEmails){
             NSLog(@"number of emails sent = maxEmails");
             [defaults setBool:YES forKey:@"maximumEmailsExceeded"];
