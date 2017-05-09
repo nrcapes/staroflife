@@ -320,12 +320,8 @@ typedef NS_ENUM(int, row){
 - (IBAction)emailData:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.emailActivated = [defaults boolForKey:kunlimitedEmailsUnlockedKey];
-
-    
    // self.emailActivated = YES;
      self.centralAdmin = [[defaults valueForKey:@"centralAdmin"]boolValue];
-    
-        
         if(self.centralAdmin == NO){
             UIAlertController *alert1 = [UIAlertController alertControllerWithTitle:@"Email Unavailable" message:@"Central Administration must be enabled in Settings" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *ok1 = [UIAlertAction actionWithTitle:@"Press any key to continue." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
@@ -337,8 +333,9 @@ typedef NS_ENUM(int, row){
         else{
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             BOOL stopEmails = [[defaults valueForKey:@"maximumEmailsExceeded"]boolValue];
+            self.trialEmailsUnlocked = [defaults boolForKey:kemails7DayTrialUnlockedKey];
             self.unlimitedEmailsUnlocked = [defaults boolForKey:kunlimitedEmailsUnlockedKey];
-            if(stopEmails == YES && self.unlimitedEmailsUnlocked == NO){
+            if(stopEmails == YES && self.unlimitedEmailsUnlocked == NO && self.trialEmailsUnlocked == NO){
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Email Unavailable" message:@"Unlimited emails are only available with an upgrade" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Press any key to continue." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
                     

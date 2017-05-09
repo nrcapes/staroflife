@@ -20,6 +20,7 @@
 @property (strong, nonatomic) SKPaymentTransaction *transaction;
 @property (strong, nonatomic) SKPayment *payment;
 @property (strong) NSString *productToUnlock;
+@property NSString *productToLock;
 @property BOOL centralAdminUnlocked;
 @property BOOL iCloudSupportUnlocked;
 @property BOOL productAvailable;

@@ -385,45 +385,57 @@ static NSDictionary *errorDictionary;
 }
 
 - (void)startValidatingReceiptsAndUpdateLocalStore {
-  [self startValidatingAppStoreReceiptWithCompletionHandler:^(NSArray *receipts, NSError *error) {
-    if (error) {
-      NSLog(@"Receipt validation failed with error: %@", error);
-      [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitReceiptValidationFailedNotification object:error];
-    } else {
-      __block BOOL purchaseRecordDirty = NO;
-      [receipts enumerateObjectsUsingBlock:^(NSDictionary *receiptDictionary, NSUInteger idx, BOOL *stop) {
-        NSString *productIdentifier = receiptDictionary[@"product_id"];
-        NSNumber *expiresDateMs = receiptDictionary[@"expires_date_ms"];
-        if (expiresDateMs) { // renewable subscription
-          NSNumber *previouslyStoredExpiresDateMs = self.purchaseRecord[productIdentifier];
-          if (!previouslyStoredExpiresDateMs ||
-              [previouslyStoredExpiresDateMs isKindOfClass:NSNull.class]) {
-            self.purchaseRecord[productIdentifier] = expiresDateMs;
-            purchaseRecordDirty = YES;
-          } else {
-            if ([expiresDateMs doubleValue] > [previouslyStoredExpiresDateMs doubleValue]) {
-              self.purchaseRecord[productIdentifier] = expiresDateMs;
-              purchaseRecordDirty = YES;
+    [self startValidatingAppStoreReceiptWithCompletionHandler:^(NSArray *receipts, NSError *error) {
+        if (error) {
+            NSLog(@"Receipt validation failed with error: %@", error);
+            [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitReceiptValidationFailedNotification object:error];
+        } else {
+            __block BOOL purchaseRecordDirty = NO;
+            [receipts enumerateObjectsUsingBlock:^(NSDictionary *receiptDictionary, NSUInteger idx, BOOL *stop) {
+                NSString *productIdentifier = receiptDictionary[@"product_id"];
+                NSNumber *expiresDateMs = receiptDictionary[@"expires_date_ms"];
+                if (expiresDateMs) { // renewable subscription
+                    NSNumber *previouslyStoredExpiresDateMs = self.purchaseRecord[productIdentifier];
+                    if (!previouslyStoredExpiresDateMs ||
+                        [previouslyStoredExpiresDateMs isKindOfClass:NSNull.class]) {
+                        self.purchaseRecord[productIdentifier] = expiresDateMs;
+                        purchaseRecordDirty = YES;
+                    } else {
+                        if ([expiresDateMs doubleValue] > [previouslyStoredExpiresDateMs doubleValue]) {
+                            self.purchaseRecord[productIdentifier] = expiresDateMs;
+                            purchaseRecordDirty = YES;
+                        }
+                    }
+                }
+                
+                if (purchaseRecordDirty) {
+                    [self savePurchaseRecord];
+                }
+                NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+                [dict addEntriesFromDictionary:self.purchaseRecord];
+                NSLog(@"dictionary from purchaseRecord: %@", dict);
+                NSDictionary *purchases = [[NSDictionary alloc]init];
+                purchases = [NSDictionary dictionaryWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"MKStoreKitConfigs.plist"]];
+                NSArray *myStuff = [purchases valueForKey:@"Others"];
+                NSLog(@"other purchases: %@", myStuff);
+                NSString *key;
+                for(key in myStuff){
+                    if([myStuff containsObject:key]){
+                        productIdentifier = key;
+                        [self.purchaseRecord enumerateKeysAndObjectsUsingBlock:^(NSString *productIdentifier, NSNumber *expiresDateMs, BOOL *stop) {
+                            if (![expiresDateMs isKindOfClass: [NSNull class]]) {
+                                if ([[NSDate date] timeIntervalSince1970] > [expiresDateMs doubleValue]) {
+                                    [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitSubscriptionExpiredNotification object:key];
+                                }
+                            }
+                        }];
+                    }
+                }
             }
-          }
+             ];
         }
-      }];
-
-      if (purchaseRecordDirty) {
-        [self savePurchaseRecord];
-      }
-
-      [self.purchaseRecord enumerateKeysAndObjectsUsingBlock:^(NSString *productIdentifier, NSNumber *expiresDateMs, BOOL *stop) {
-        if (![expiresDateMs isKindOfClass: [NSNull class]]) {
-          if ([[NSDate date] timeIntervalSince1970] > [expiresDateMs doubleValue]) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitSubscriptionExpiredNotification object:productIdentifier];
-          }
-          }
-      }];
     }
-  }];
-    
-    
+     ];
 }
 
 #pragma mark -
