@@ -60,8 +60,8 @@ typedef NS_ENUM(int, row){
     [self.navigationItem setHidesBackButton:YES animated:YES];
     
     //here we set the maximum number of emails that a user may send without buying an upgrade.
-
-    self.maxEmails = 5;
+    // this will allow one email to be sent before locking.
+    self.maxEmails = 0;
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Prepare email" message:@"Checkmark the items you want to send" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault

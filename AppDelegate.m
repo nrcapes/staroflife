@@ -124,7 +124,10 @@
                                                       object:nil
                                                        queue:[[NSOperationQueue alloc] init]
                                                   usingBlock:^(NSNotification *note) {
-                                                      
+                                                      NSMutableArray *array = [[NSMutableArray alloc]initWithObjects:note, nil];
+                                                      NSMutableDictionary *dict = [[NSMutableDictionary alloc]initWithObjectsAndKeys:array, kAvailableProductKey, nil];
+                                                      NRCStoreKitViewController *storeKitVC = [[NRCStoreKitViewController alloc]init];
+                                                      [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationOfSubscriptionExpiry object:storeKitVC userInfo:dict];
                                                       NSLog(@"Subscription expired with error: %@", [note object]);
                                                   }];
     [[NSNotificationCenter defaultCenter] addObserverForName:kMKStoreKitReceiptValidationFailedNotification

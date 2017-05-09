@@ -417,13 +417,8 @@ static NSDictionary *errorDictionary;
         if (![expiresDateMs isKindOfClass: [NSNull class]]) {
           if ([[NSDate date] timeIntervalSince1970] > [expiresDateMs doubleValue]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitSubscriptionExpiredNotification object:productIdentifier];
-          }else{
-             [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitSubscriptionExpiredNotification object:productIdentifier];
           }
-        }
-        else{
-            [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitReceiptValidNotification object:productIdentifier];
-        }
+          }
       }];
     }
   }];

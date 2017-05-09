@@ -31,7 +31,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
         [nc addObserver:self selector:@selector(notifyOfRestoredPurchase:) name:kNotificationOfRestoredPurchase object:nil];
         [nc addObserver:self selector:@selector(notifyOfFailedProductPurchase:) name:KNotificationOfFailedProductPurchase object:nil];
         [nc addObserver:self selector:@selector(notifyOfFailedReceiptValidation:) name:kNotificationOfFailedReceiptValidation object:nil];
-        [nc addObserver:self selector:@selector(notifyOfFailedReceiptValidation:) name:kNotificationOfSubscriptionExpiry object:nil];
+        [nc addObserver:self selector:@selector(notifyOfSubscriptionExpiry:) name:kNotificationOfSubscriptionExpiry object:nil];
         [nc addObserver:self selector:@selector(notifyOfValidReceipt:) name:kNotificationOfValidReceipt object:nil];
     }
     return self;
@@ -58,7 +58,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
     NSLog(@"userInfo: %@", notification);
     NSDictionary *userinfo = [notification userInfo];
     NSArray *array = [userinfo objectForKey:kAvailableProductKey];
-   NSNotification *note = [array objectAtIndex:0];
+    NSNotification *note = [array objectAtIndex:0];
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -69,7 +69,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
     });
     self.productToUnlock = [note object];
     [self unlockFeature];
-
+    
 }
 -(void)notifyOfRestoredPurchase:(NSNotification *)notification{
     NSLog(@"Purchases restored");
@@ -115,8 +115,8 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Bad receipt!" message:@"Tap to continue" delegate:self cancelButtonTitle:@"" otherButtonTitles:@"Continue", nil];
-        alert.tag = kProductPurchasedAlertViewTag;
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Bad receipt!" message:@"There is something wrong with your subscription.  This may be due to failing to renew the subscription.  If not, you can restore prior purchases by touching on 'Restore Purchases.'" delegate:self cancelButtonTitle:@"" otherButtonTitles:nil];
+        [alert addButtonWithTitle:@"Continue"];
         [alert show];
     });
     self.productToUnlock = [note object];
@@ -129,14 +129,17 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
     NSDictionary *userinfo = [notification userInfo];
     NSArray *array = [userinfo objectForKey:kAvailableProductKey];
     NSNotification *note = [array objectAtIndex:0];
-    
+    NSString *subscription = [note object];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Subsription expired!" message:@"Tap to continue" delegate:self cancelButtonTitle:@"" otherButtonTitles:@"Continue", nil];
-        alert.tag = kProductPurchasedAlertViewTag;
+    if([subscription isEqualToString:@"SKOrigBundleRef"]) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"An auto-renewing subscription has expired" message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles: nil];
+        [alert addButtonWithTitle:@"Continue"];
         [alert show];
+        }
     });
+    
     self.productToUnlock = [note object];
     [self lockFeature];
 }
@@ -170,7 +173,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationItem setHidesBackButton:YES animated:YES];
-   // _buyButton.enabled = NO;
+    // _buyButton.enabled = NO;
     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
     NSMutableArray *productArray = [[NSMutableArray alloc]init];
     productArray = [storage objectForKey:kProductsArrayKey];
@@ -188,11 +191,11 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
         NSString *productLocalizedTitle = [dict objectForKey:@"product_localizedTitle"];
         NSString *productLocalizedDescription = [dict objectForKey:@"product_localizedDescription"];
         NSString *productLocalizedPrice = [dict objectForKey:@"product_localizedPrice"];
-      //  NSDecimalNumber *productPrice = [dict objectForKey:@"product_price"];
+        //  NSDecimalNumber *productPrice = [dict objectForKey:@"product_price"];
         NSLog(@"Found product: %@ – Product", productLocalizedTitle);
         if (availableProducts.count != 0)
         {
-        if([productIdentifier isEqualToString:kInAppPurchaseUnlimitedEmailsKey]){
+            if([productIdentifier isEqualToString:kInAppPurchaseUnlimitedEmailsKey]){
                 UIAlertAction* buyUnlimitedEmails = [UIAlertAction actionWithTitle:@"Unlimited Emails" style:UIAlertActionStyleDefault
                                                                            handler:^(UIAlertAction * action) {
                                                                                
@@ -202,8 +205,8 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
                                                                                _productDescription.text = productLocalizedDescription;
                                                                                _price.text = productLocalizedPrice;
                                                                                self.productIdentifier = productIdentifier;
-                                                                              // SKProduct *productToBuy = [[SKProduct alloc]init];
-                                                                        
+                                                                               // SKProduct *productToBuy = [[SKProduct alloc]init];
+                                                                               
                                                                            }];
                 [alert addAction:buyUnlimitedEmails];
             }else{
@@ -224,23 +227,23 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
                 }else{
                     if([productIdentifier isEqualToString:kInAppPurchaseEmails7DayTrialKey]){
                         UIAlertAction* buyemails7daytrial = [UIAlertAction actionWithTitle:@"Send Emails (Trial)" style:UIAlertActionStyleDefault
-                                                                                     handler:^(UIAlertAction * action) {
-                                                                                         NSLog(@"PurchaseViewController(productsRequestdidReceiveResponse) localized title: %@", _productTitle.text);
-                                                                                         _productTitle.text = productLocalizedTitle;
-                                                                                         //_price.text = productPrice;
-                                                                                         _productDescription.text = productLocalizedDescription;
-                                                                                         _price.text = productLocalizedPrice;
-                                                                                         self.productIdentifier = productIdentifier;
-                                                                                         //self.payment = [SKPayment paymentWithProduct:skProduct];
-                                                                                         
-                                                                                     }];
+                                                                                   handler:^(UIAlertAction * action) {
+                                                                                       NSLog(@"PurchaseViewController(productsRequestdidReceiveResponse) localized title: %@", _productTitle.text);
+                                                                                       _productTitle.text = productLocalizedTitle;
+                                                                                       //_price.text = productPrice;
+                                                                                       _productDescription.text = productLocalizedDescription;
+                                                                                       _price.text = productLocalizedPrice;
+                                                                                       self.productIdentifier = productIdentifier;
+                                                                                       //self.payment = [SKPayment paymentWithProduct:skProduct];
+                                                                                       
+                                                                                   }];
                         
                         [alert addAction:buyemails7daytrial];
+                    }
                 }
             }
         }
-    }
-};
+    };
     [self presentViewController:alert animated:YES completion:nil];
 }
 
@@ -248,17 +251,17 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
- //   [numberFormatter setLocale:product.priceLocale];
+    //   [numberFormatter setLocale:product.priceLocale];
     NSString *formattedString = [numberFormatter stringFromNumber:price];
     return formattedString;
 }
 -(IBAction)restoreProduct:(id)sender{
-   // [[MKStoreKit sharedKit]restorePurchases];
+    // [[MKStoreKit sharedKit]restorePurchases];
     
     [[MKStoreKit sharedKit]refreshAppStoreReceipt];
 }
 -(IBAction)buyProduct:(id)sender{
-
+    
     [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:self.productIdentifier];
 }
 
@@ -268,7 +271,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
 }
 -(void)unlockFeature
 {
-        if([self.productToUnlock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
+    if([self.productToUnlock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
         [storage setBool:YES forKey:kunlimitedEmailsUnlockedKey];
         [storage synchronize];
@@ -302,8 +305,14 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
             NSInteger numberOfSpeechRecognitionRequests = 0;
             [storage setInteger:numberOfSpeechRecognitionRequests forKey:kNumberOfSpeechRecognitonRequests];
             [storage synchronize];
+        }else{
+        if([self.productToUnlock isEqual:kInAppPurchaseEmails7DayTrialKey]){
+            NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+            [storage setBool:NO forKey:kemails7DayTrialUnlockedKey];
+            [storage synchronize];
         }
     }
+}
 }
 - (IBAction)finished:(id)sender {
     // [self  unlockFeature];
@@ -316,13 +325,13 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
