@@ -425,7 +425,7 @@ static NSDictionary *errorDictionary;
                         [self.purchaseRecord enumerateKeysAndObjectsUsingBlock:^(NSString *productIdentifier, NSNumber *expiresDateMs, BOOL *stop) {
                             if (![expiresDateMs isKindOfClass: [NSNull class]]) {
                                 if ([[NSDate date] timeIntervalSince1970] > [expiresDateMs doubleValue]) {
-                                    [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitSubscriptionExpiredNotification object:key];
+                                    [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitSubscriptionExpiredNotification object:productIdentifier];
                                 }
                             }
                         }];

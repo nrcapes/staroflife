@@ -50,8 +50,8 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
         alert.tag = kProductPurchasedAlertViewTag;
         [alert show];
     });
-    self.productToUnlock = [note object];
-    [self unlockFeature];
+    NSString * productToUnlock = [note object];
+    [self unlockFeature:productToUnlock];
 }
 -(void)notifyOfProductPurchase:(NSNotification *)notification{
     NSLog(@"Product purchased");
@@ -71,8 +71,8 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
         _productTitle.text = @"Purchased";
     });
     */
-    self.productToUnlock = [note object];
-    [self unlockFeature];
+    NSString *productToUnlock = [note object];
+    [self unlockFeature:productToUnlock];
     
 }
 -(void)notifyOfRestoredPurchase:(NSNotification *)notification{
@@ -92,8 +92,8 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
         */
     });
     
-    self.productToUnlock = [note object];
-    [self unlockFeature];
+    NSString *productToUnlock = [note object];
+    [self unlockFeature:productToUnlock];
 }
 -(void)notifyOfFailedProductPurchase:(NSNotification *)notification{
     NSLog(@"Purchase failed");
@@ -281,39 +281,49 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)unlockFeature
+-(void)unlockFeature:(NSString *)productToUnlock
 {
-    if([self.productToUnlock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
+    NSString* title = [[NSString alloc]init];
+    if([productToUnlock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
         [storage setBool:YES forKey:kunlimitedEmailsUnlockedKey];
         [storage synchronize];
-        self.productTitle.text = @"Purchase completed";
-    }else{// alert editor includes alert viewer
+        NSString *featureUnlocked = kunlimitedEmailsUnlockedKey;
+        title = featureUnlocked;
+        title = [title stringByAppendingString:@" Unlocked"];
+    }else{
         if([self.productToUnlock isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
             NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
             [storage setBool:YES forKey:kspeechRecognitionUnlockedKey];
             NSInteger numberOfSpeechRecognitionRequests = 0;
             [storage setInteger:numberOfSpeechRecognitionRequests forKey:kNumberOfSpeechRecognitonRequests];
             [storage synchronize];
-            self.productTitle.text = @"Purchase completed";
+            NSString *featureUnlocked = kspeechRecognitionUnlockedKey;
+            title = featureUnlocked;
+            title = [title stringByAppendingString:@" Unlocked"];
+
         }else{
             if([self.productToUnlock isEqual:kInAppPurchaseEmails7DayTrialKey]){
                 NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
                 [storage setBool:YES forKey:kemails7DayTrialUnlockedKey];
                 [storage synchronize];
+                NSString *featureUnlocked = kemails7DayTrialUnlockedKey;
+                title = featureUnlocked;
+                title = [self.title stringByAppendingString:@" Unlocked"];
+            }else{
+                self.productToUnlock = kInAppPurchaseUnknownProductKey;
+                NSString *featureUnlocked = kInAppPurchaseUnknownProductKey;
+                title = featureUnlocked;
+                title = [title stringByAppendingString:@" Unlocked"];
             }
-        }
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-    
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Feature is unlocked!" message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
-        alert.tag = kProductPurchasedAlertViewTag;
-        [alert show];
-        
-    //    self.productTitle.text = @"Purchase completed";
-    //    [self.view setNeedsDisplay];
-    });
-}
+            dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
+            alert.tag = kProductPurchasedAlertViewTag;
+            [alert show];
+          });
+        };
+    }}
+
 -(void)lockFeature{
     NSLog(@"relocking feature");
     if([self.productToLock isEqual:kInAppPurchaseUnlimitedEmailsKey]){

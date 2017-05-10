@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSMutableDictionary *productDict;
 @property (strong, nonatomic) NSMutableDictionary *transactionDates;
 @property (strong, nonatomic) NSString *productIdentifier;
+@property NSString *title;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 @property UIAlertView * alert;
@@ -37,4 +38,5 @@
 -(void)notifyOfAvailableProducts:(NSNotification *)userInfo;
 -(void)displayAvailableProducts:(NSMutableArray *)availableProducts;
 -(void)notifyOfFailedProductPurchase:(NSNotification *)notification;
+-(void)unlockFeature:(NSString *)productToUnlock;
 @end

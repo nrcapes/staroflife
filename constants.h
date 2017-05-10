@@ -16,6 +16,7 @@
 #define kemails7DayTrialUnlockedKey @"emails7DayTrialUnlocked"
 #define kspeechRecognitionUnlockedKey @"speechRecognitionUnlocked"
 #define kspeechRecognition7DayTrialUnlockedKey @"speechRecognition7DayTrialUnlocked"
+#define kInAppPurchaseUnknownProductKey @"Product"
 #define kSegueIdentifierToTableView @"unwindPurchaseToTableView"
 #define kSegueIdentifierStoreKitToTableView @"unwindStoreKitToTableView"
 #define kSegueIdentifierToInAppPurchase @"toInAppPurchase"
