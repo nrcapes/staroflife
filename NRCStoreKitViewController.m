@@ -291,8 +291,15 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
         NSString *featureUnlocked = kunlimitedEmailsUnlockedKey;
         title = featureUnlocked;
         title = [title stringByAppendingString:@" Unlocked"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Unlimited emails is unlocked." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
+                alert.tag = kProductPurchasedAlertViewTag;
+                [alert show];
+            
+        });
     }else{
-        if([self.productToUnlock isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
+        if([productToUnlock isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
             NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
             [storage setBool:YES forKey:kspeechRecognitionUnlockedKey];
             NSInteger numberOfSpeechRecognitionRequests = 0;
@@ -301,29 +308,45 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
             NSString *featureUnlocked = kspeechRecognitionUnlockedKey;
             title = featureUnlocked;
             title = [title stringByAppendingString:@" Unlocked"];
-
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Unlimited speech recognition is unlocked." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
+                    alert.tag = kProductPurchasedAlertViewTag;
+                    [alert show];
+                
+            });
         }else{
-            if([self.productToUnlock isEqual:kInAppPurchaseEmails7DayTrialKey]){
+            if([productToUnlock isEqual:kInAppPurchaseEmails7DayTrialKey]){
                 NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
                 [storage setBool:YES forKey:kemails7DayTrialUnlockedKey];
                 [storage synchronize];
                 NSString *featureUnlocked = kemails7DayTrialUnlockedKey;
                 title = featureUnlocked;
                 title = [self.title stringByAppendingString:@" Unlocked"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"One week unlimited emails is unlocked." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
+                        alert.tag = kProductPurchasedAlertViewTag;
+                        [alert show];
+                    
+                });
             }else{
-                self.productToUnlock = kInAppPurchaseUnknownProductKey;
+                 self.productToUnlock = kInAppPurchaseUnknownProductKey;
+                /*
                 NSString *featureUnlocked = kInAppPurchaseUnknownProductKey;
                 title = featureUnlocked;
                 title = [title stringByAppendingString:@" Unlocked"];
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
-            alert.tag = kProductPurchasedAlertViewTag;
-            [alert show];
-          });
-        };
-    }}
-
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if(![title isEqual:kInAppPurchaseUnknownProductKey]){
+                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
+                        alert.tag = kProductPurchasedAlertViewTag;
+                        [alert show];
+                    }
+                });
+                */
+            };
+        }}
+}
 -(void)lockFeature{
     NSLog(@"relocking feature");
     if([self.productToLock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
