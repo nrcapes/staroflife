@@ -11,7 +11,7 @@
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 			<key>DefaultValue</key>
-			<string></string>
+			<string>YES</string>
 			<key>KeyboardType</key>
 			<string>NumbersAndPunctuation</string>
 			<key>Title</key>
@@ -27,7 +27,7 @@
 			<key>Key</key>
 			<string>centralAdmin</string>
 			<key>DefaultValue</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Type</key>

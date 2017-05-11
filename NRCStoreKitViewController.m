@@ -93,25 +93,24 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
 -(void)notifyOfSubscriptionExpiry:(NSNotification *)notification{
     NSLog(@"Subscription expired");
     NSLog(@"userInfo: %@", notification);
-    
     NSDictionary *userinfo = [notification userInfo];
     NSArray *array = [userinfo objectForKey:kAvailableProductKey];
     NSNotification *note = [array objectAtIndex:0];
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-    dict = [note object];
-    /*
-    NSString *subscription = [note object];
+  //  NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+  //  dict = [note object];
+  //  NSString *subscription = [note object];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
+/*
     dispatch_async(dispatch_get_main_queue(), ^{
-    if([subscription isEqualToString:@"SKOrigBundleRef"]) {
+    if(![subscription isEqualToString:@"SKOrigBundleRef"]) {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"An auto-renewing subscription has expired" message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles: nil];
         [alert addButtonWithTitle:@"Continue"];
         [alert show];
         }
     });
     */
-    _productTitle.text = @"Expired!";
+   // _productTitle.text = @"Expired!";
     self.productToLock = [note object];
     [self lockFeature];
 }
@@ -313,23 +312,47 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
     NSLog(@"relocking feature");
     if([self.productToLock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+        BOOL itsUnlocked = [storage boolForKey:kunlimitedEmailsUnlockedKey];
+        if(itsUnlocked == YES){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Unlimited emails is locked." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
+                alert.tag = kProductPurchasedAlertViewTag;
+                [alert show];
+            });}
         [storage setBool:NO forKey:kunlimitedEmailsUnlockedKey];
         [storage synchronize];
     }else{
         if([self.productToLock isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
             NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-            [storage setBool:NO forKey:kspeechRecognitionUnlockedKey];
-            NSInteger numberOfSpeechRecognitionRequests = 0;
-            [storage setInteger:numberOfSpeechRecognitionRequests forKey:kNumberOfSpeechRecognitonRequests];
-            [storage synchronize];
+            BOOL itsUnlocked = [storage boolForKey:kspeechRecognitionUnlockedKey];
+            if(itsUnlocked == YES){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Speech recognition is locked." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
+                    alert.tag = kProductPurchasedAlertViewTag;
+                    [alert show];
+                });
+                [storage setBool:NO forKey:kspeechRecognitionUnlockedKey];
+                NSInteger numberOfSpeechRecognitionRequests = 0;
+                [storage setInteger:numberOfSpeechRecognitionRequests forKey:kNumberOfSpeechRecognitonRequests];
+                [storage synchronize];
+            }
         }else{
-        if([self.productToLock isEqual:kInAppPurchaseEmails7DayTrialKey]){
-            NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-            [storage setBool:NO forKey:kemails7DayTrialUnlockedKey];
-            [storage synchronize];
+            if([self.productToLock isEqual:kInAppPurchaseEmails7DayTrialKey]){
+                NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+                BOOL itsUnlocked = [storage boolForKey:kemails7DayTrialUnlockedKey];
+                if(itsUnlocked == YES){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Email 7 day trial is locked." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
+                        alert.tag = kProductPurchasedAlertViewTag;
+                        [alert show];
+                    });
+                    [storage setBool:NO forKey:kemails7DayTrialUnlockedKey];
+                    [storage synchronize];
+                    
+                }
+            }
         }
     }
-}
 }
 - (IBAction)finished:(id)sender {
     // [self  unlockFeature];
