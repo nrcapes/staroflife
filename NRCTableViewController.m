@@ -457,7 +457,10 @@ AVAudioPlayer *_audioPlayer2;
     self.reviewCount = 0;
     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
     [storage setInteger:self.reviewCount forKey:@"reviewCount"];
+    
+    //disable speech recognition until unlocked.
     [storage setBool:NO forKey:kspeechRecognitionUnlockedKey];
+    
     self.isAuthenticated = NO;
 // to allow for in app purchase upgrade to unlimited emails, in the non-
     // upgraded object we count the number of emails sent.
@@ -465,6 +468,7 @@ AVAudioPlayer *_audioPlayer2;
     self.numberofEmailsSent = 0;
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setValue:0 forKey:@"emailsSent"];
+    
     
     [self splashScreen];
     
@@ -608,6 +612,7 @@ AVAudioPlayer *_audioPlayer2;
     NSArray *myButtonsArray = [[NSArray alloc]initWithObjects:resetButton, self.iCloudButton, nil];
     
     self.navigationItem.rightBarButtonItems = myButtonsArray;
+    [storage synchronize];
     
 }
 #pragma MARK In App Store Purchasing

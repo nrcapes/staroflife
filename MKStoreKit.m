@@ -414,20 +414,6 @@ static NSDictionary *errorDictionary;
                 if (purchaseRecordDirty) {
                     [self savePurchaseRecord];
                 }
-                /*
-                 NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-                 [dict addEntriesFromDictionary:self.purchaseRecord];
-                 NSLog(@"dictionary from purchaseRecord: %@", dict);
-                 NSDictionary *purchases = [[NSDictionary alloc]init];
-                 purchases = [NSDictionary dictionaryWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"MKStoreKitConfigs.plist"]];
-                 NSArray *myStuff = [purchases valueForKey:@"Others"];
-                 NSLog(@"other purchases: %@", myStuff);
-                 NSString *key;
-                 
-                 for(key in myStuff){
-                 if([myStuff containsObject:key]){
-                 productIdentifier = key;
-                 */
                 NSLog(@"purchaseRecord:%@", self.purchaseRecord);
                 [self.purchaseRecord enumerateKeysAndObjectsUsingBlock:^(NSString *productIdentifier, NSNumber *expiresDateMs, BOOL *stop) {                        NSLog(@"productIdentifier: %@, expiresDateMS: %@", productIdentifier, expiresDateMs);
                     if (![expiresDateMs isKindOfClass: [NSNull class]]) {
@@ -435,6 +421,7 @@ static NSDictionary *errorDictionary;
                         if(![productIdentifier isEqual:kOriginalAppVersionKey]){
                             NSDate *date = [NSDate date];
                             NSTimeInterval interval = [date timeIntervalSince1970];
+                            //note: the following line of code was incorrect in the original MKStoreKit.
                             NSTimeInterval expiresDate = [expiresDateMs doubleValue]/1000.0f;
                             NSLog(@"timeIntervalSince1970: %f, expiresDate: %f", interval, expiresDate);
                             if ([[NSDate date] timeIntervalSince1970] > expiresDate) {

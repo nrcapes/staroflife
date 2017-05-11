@@ -24,7 +24,7 @@
 #define kNumberOfSpeechRecognitonRequests @"numberOfSpeechRecognitionRequests"
 #define kInAppPurchaseAvailableProductsKey @"availableProducts"
 #define kInAppPurchaseUnlockedProductKey @"unlockedProduct"
-#define kNumberOfSpeechRecognitionRequestsWithoutUpgrade 2
+#define kNumberOfSpeechRecognitionRequestsWithoutUpgrade 0
 #define kNotificationOfAvailableProducts @"notifyOfAvailableProducts"
 #define kNotificationOfRestoredPurchase @"notifyOfRestoredPurchase"
 #define kNotificationOfProductPurchase @"notifyOfProductPurchase"

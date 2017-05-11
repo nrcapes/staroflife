@@ -293,18 +293,6 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
                 }
             }else{
                 self.productToUnlock = kInAppPurchaseUnknownProductKey;
-                /*
-                 NSString *featureUnlocked = kInAppPurchaseUnknownProductKey;
-                 title = featureUnlocked;
-                 title = [title stringByAppendingString:@" Unlocked"];
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                 if(![title isEqual:kInAppPurchaseUnknownProductKey]){
-                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
-                 alert.tag = kProductPurchasedAlertViewTag;
-                 [alert show];
-                 }
-                 });
-                 */
             };
         }}
 }
