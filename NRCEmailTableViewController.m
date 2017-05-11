@@ -320,6 +320,7 @@ typedef NS_ENUM(int, row){
 - (IBAction)emailData:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.emailActivated = [defaults boolForKey:kunlimitedEmailsUnlockedKey];
+    [self checkNumberOfEmailsSent];
    // self.emailActivated = YES;
      self.centralAdmin = [[defaults valueForKey:@"centralAdmin"]boolValue];
         if(self.centralAdmin == NO){
