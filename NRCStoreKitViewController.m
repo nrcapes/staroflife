@@ -167,49 +167,22 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
         if (availableProducts.count != 0)
         {
             if([productIdentifier isEqualToString:kInAppPurchaseUnlimitedEmailsKey]){
-                UIAlertAction* buyUnlimitedEmails = [UIAlertAction actionWithTitle:@"Unlimited Emails" style:UIAlertActionStyleDefault
-                                                                           handler:^(UIAlertAction * action) {
-                                                                               
-                                                                               NSLog(@"PurchaseViewController(productsRequestdidReceiveResponse) localized title: %@", _productTitle.text);
-                                                                               _productTitle.text = productLocalizedTitle;
-                                                                               //_price.text = productPrice;
-                                                                               _productDescription.text = productLocalizedDescription;
-                                                                               _price.text = productLocalizedPrice;
-                                                                               self.productIdentifier = productIdentifier;
-                                                                               // SKProduct *productToBuy = [[SKProduct alloc]init];
-                                                                               
-                                                                           }];
+                UIAlertAction *buyUnlimitedEmails = [self alertTheUser:@"UnlimitedEmails" :kInAppPurchaseUnlimitedEmailsKey :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
                 [alert addAction:buyUnlimitedEmails];
             }else{
                 if([productIdentifier isEqualToString:kInAppPurchaseSpeechRecognitionUnlockedKey]){
-                    UIAlertAction* buySpeechRecognition = [UIAlertAction actionWithTitle:@"Speech Recognition" style:UIAlertActionStyleDefault
-                                                                                 handler:^(UIAlertAction * action) {
-                                                                                     NSLog(@"PurchaseViewController(productsRequestdidReceiveResponse) localized title: %@", _productTitle.text);
-                                                                                     _productTitle.text = productLocalizedTitle;
-                                                                                     //_price.text = productPrice;
-                                                                                     _productDescription.text = productLocalizedDescription;
-                                                                                     _price.text = productLocalizedPrice;
-                                                                                     self.productIdentifier = productIdentifier;
-                                                                                     //self.payment = [SKPayment paymentWithProduct:skProduct];
-                                                                                     
-                                                                                 }];
-                    
+                    UIAlertAction *buySpeechRecognition = [self alertTheUser:@"Unlimited Speech Recognition" :kInAppPurchaseSpeechRecognitionUnlockedKey :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
                     [alert addAction:buySpeechRecognition];
                 }else{
                     if([productIdentifier isEqualToString:kInAppPurchaseEmails7DayTrialKey]){
-                        UIAlertAction* buyemails7daytrial = [UIAlertAction actionWithTitle:@"Send Emails (Trial)" style:UIAlertActionStyleDefault
-                                                                                   handler:^(UIAlertAction * action) {
-                                                                                       NSLog(@"PurchaseViewController(productsRequestdidReceiveResponse) localized title: %@", _productTitle.text);
-                                                                                       _productTitle.text = productLocalizedTitle;
-                                                                                       //_price.text = productPrice;
-                                                                                       _productDescription.text = productLocalizedDescription;
-                                                                                       _price.text = productLocalizedPrice;
-                                                                                       self.productIdentifier = productIdentifier;
-                                                                                       //self.payment = [SKPayment paymentWithProduct:skProduct];
-                                                                                       
-                                                                                   }];
-                        
+                        UIAlertAction *buyemails7daytrial =  [self alertTheUser:@"Emails 7 day trial" :kInAppPurchaseEmails7DayTrialKey :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
                         [alert addAction:buyemails7daytrial];
+                    }else{
+                    //****tests********
+                    if([productIdentifier isEqualToString:kInAppPurchaseTestsOneWeek]){
+                        UIAlertAction *buyOneWeekTest = [self alertTheUser:@"One Week Test" :kInAppPurchaseTestsOneWeek :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
+                        [alert addAction:buyOneWeekTest];
+                    }
                     }
                 }
             }
@@ -217,7 +190,15 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
     };
     [self presentViewController:alert animated:YES completion:nil];
 }
-
+-(UIAlertAction *)alertTheUser:(NSString *)actionName :(NSString *)productIdentifier :(NSString *)productTitle :(NSString *)productDescription :(NSString *)productPrice{
+    UIAlertAction *action = [UIAlertAction actionWithTitle:actionName style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+    _productTitle.text = productTitle;
+    _productDescription.text = productDescription;
+    _price.text = productPrice;
+    self.productIdentifier = productIdentifier;
+    }];
+    return action;
+}
 -(NSString *)formatPrice:(NSDecimalNumber *)price{
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
@@ -242,59 +223,36 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
 }
 -(void)unlockFeature:(NSString *)productToUnlock
 {
-    NSString* title = [[NSString alloc]init];
     if([productToUnlock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
-        NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-        BOOL itsUnlocked = [storage boolForKey:kunlimitedEmailsUnlockedKey];
-        if(itsUnlocked == NO){
-            [storage setBool:YES forKey:kunlimitedEmailsUnlockedKey];
-            [storage synchronize];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Unlimited emails is unlocked." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
-                alert.tag = kProductPurchasedAlertViewTag;
-                [alert show];
-                
-            });
-        }
-    }else{
+        [self informTheUser:productToUnlock :kInAppPurchaseUnlimitedEmailsKey :kunlimitedEmailsUnlockedKey];
+    }
+    else{
         if([productToUnlock isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
-            NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-            BOOL itsUnlocked = [storage boolForKey:kspeechRecognitionUnlockedKey];
-            if(itsUnlocked == NO){
-                [storage setBool:YES forKey:kspeechRecognitionUnlockedKey];
-                NSInteger numberOfSpeechRecognitionRequests = 0;
-                [storage setInteger:numberOfSpeechRecognitionRequests forKey:kNumberOfSpeechRecognitonRequests];
-                [storage synchronize];
-                NSString *featureUnlocked = kspeechRecognitionUnlockedKey;
-                title = featureUnlocked;
-                title = [title stringByAppendingString:@" Unlocked"];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Unlimited speech recognition is unlocked." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
-                    alert.tag = kProductPurchasedAlertViewTag;
-                    [alert show];
-                });
-            }
+            [self informTheUser:productToUnlock :kInAppPurchaseSpeechRecognitionUnlockedKey :kspeechRecognitionUnlockedKey];
         }else{
             if([productToUnlock isEqual:kInAppPurchaseEmails7DayTrialKey]){
-                NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-                BOOL itsUnlocked = [storage boolForKey:kemails7DayTrialUnlockedKey];
-                if(itsUnlocked == NO){
-                    
-                    [storage setBool:YES forKey:kemails7DayTrialUnlockedKey];
-                    [storage synchronize];
-                    NSString *featureUnlocked = kemails7DayTrialUnlockedKey;
-                    title = featureUnlocked;
-                    title = [self.title stringByAppendingString:@" Unlocked"];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"One week unlimited emails is unlocked." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
-                        alert.tag = kProductPurchasedAlertViewTag;
-                        [alert show];
-                    });
-                }
+                [self informTheUser:productToUnlock :kInAppPurchaseEmails7DayTrialKey :kemails7DayTrialUnlockedKey];
+            }
+            if([productToUnlock isEqual:kInAppPurchaseSpeechRecognition7DayTrialKey]){
+                [self informTheUser:productToUnlock :kspeechRecognition7DayTrialUnlockedKey :kspeechRecognition7DayTrialUnlockedKey];
             }else{
                 self.productToUnlock = kInAppPurchaseUnknownProductKey;
             };
-        }}
+        }
+    }
+}
+-(void)informTheUser:(NSString *)productToUnlock :(NSString *)lockKey :(NSString *)message{
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+    BOOL itsUnlocked = [storage boolForKey:lockKey];
+    if(itsUnlocked == NO){
+        [storage setBool:YES forKey:lockKey];
+        [storage synchronize];
+        dispatch_async(dispatch_get_main_queue(), ^{
+                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:message message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
+                        alert.tag = kProductPurchasedAlertViewTag;
+                        [alert show];
+                    });
+    }
 }
 -(void)lockFeature{
     NSLog(@"relocking feature");
