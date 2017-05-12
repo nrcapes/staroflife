@@ -460,6 +460,9 @@ AVAudioPlayer *_audioPlayer2;
     
     //disable speech recognition until unlocked.
     [storage setBool:NO forKey:kspeechRecognitionUnlockedKey];
+    [storage setBool:NO forKey:kBasicFunctionsOneWeekUnlockedKey];
+    [storage setBool:NO forKey:kBasicFunctionsOneMonthUnlockedKey];
+    [storage setBool:NO forKey:kBasicFunctionsOneYearUnlockedKey];
     
     self.isAuthenticated = NO;
 // to allow for in app purchase upgrade to unlimited emails, in the non-
@@ -872,6 +875,7 @@ AVAudioPlayer *_audioPlayer2;
     self.outputStrings[ip.row] = dateString;
     [self enterPatientData];
 
+
 }
 // timestamp the transport time
 - (void)enterTransport{
@@ -935,6 +939,26 @@ AVAudioPlayer *_audioPlayer2;
     cell.detailTextLabel.text = dateString;
     self.outputStrings[ip.row] = dateString;
 }
+-(BOOL)isSubscriptionActive{
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+    BOOL returnedAnswer = NO;
+    BOOL basicFunctionsOneYearIsUnlocked = [storage boolForKey:kBasicFunctionsOneYearUnlockedKey];
+    BOOL basicFunctionsOneMonthIsUnlocked = [storage boolForKey:kBasicFunctionsOneMonthUnlockedKey];
+    BOOL basicFunctionsOneWeekIsUnlocked = [storage boolForKey:kBasicFunctionsOneWeekUnlockedKey];
+    if(basicFunctionsOneYearIsUnlocked == NO && basicFunctionsOneMonthIsUnlocked == NO && basicFunctionsOneWeekIsUnlocked == NO){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"To use this function, you must have a basic subscription. Press 'Upgrade' below" message:@"Continue" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            self.SubscriptionIsActive = NO;
+        }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+    }else{
+        self.SubscriptionIsActive = YES;
+    }
+    returnedAnswer = self.SubscriptionIsActive;
+    return returnedAnswer;
+}
+
 // start the 5 minute re-assess timer
 -(void)check5minuteReassess{
     
@@ -1471,7 +1495,7 @@ AVAudioPlayer *_audioPlayer2;
                                   preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action) {
-                                                   //Do Some action here
+                                                   self.SubscriptionIsActive = [self isSubscriptionActive];
                                                    self.providerID = [[NSUserDefaults standardUserDefaults]valueForKey:@"providerID"];
                                                    [self addNewItem];
                                                 

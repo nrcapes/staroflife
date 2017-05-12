@@ -18,6 +18,7 @@
 @class PurchaseViewController;
 @class LoginViewController;
 @interface NRCTableViewController : UITableViewController <MFMailComposeViewControllerDelegate, NRCPasscodeViewControllerDelegate, UIAlertViewDelegate>
+@property (nonatomic) BOOL SubscriptionIsActive;
 @property (nonatomic) NSMutableArray *productIDS;
 @property (strong, nonatomic) NSString *providerID;
 @property (strong, nonatomic)NSString *emailAddress;
