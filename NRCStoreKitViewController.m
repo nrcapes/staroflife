@@ -167,7 +167,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
         if (availableProducts.count != 0)
         {
             if([productIdentifier isEqualToString:kInAppPurchaseUnlimitedEmailsKey]){
-                UIAlertAction *buyUnlimitedEmails = [self alertTheUser:@"UnlimitedEmails" :kInAppPurchaseUnlimitedEmailsKey :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
+                UIAlertAction *buyUnlimitedEmails = [self alertTheUser:@"Unlimited Emails" :kInAppPurchaseUnlimitedEmailsKey :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
                 [alert addAction:buyUnlimitedEmails];
             }else{
                 if([productIdentifier isEqualToString:kInAppPurchaseSpeechRecognitionUnlockedKey]){
@@ -235,7 +235,14 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
             }
             if([productToUnlock isEqual:kInAppPurchaseSpeechRecognition7DayTrialKey]){
                 [self informTheUser:productToUnlock :kspeechRecognition7DayTrialUnlockedKey :kspeechRecognition7DayTrialUnlockedKey];
-            }else{
+            }else if ([productToUnlock isEqual:kInAppPurchaseBasicFunctionsOneYearKey]){
+                [self informTheUser:productToUnlock :kInAppPurchaseBasicFunctionsOneYearKey :kBasicFunctionsOneYearUnlockedKey];
+            }else if ([productToUnlock isEqual:kInAppPurchaseBasicFunctionsOneMonthKey]){
+                [self informTheUser:kInAppPurchaseBasicFunctionsOneMonthKey :kBasicFunctionsOneMonthUnlockedKey :kBasicFunctionsOneMonthUnlockedKey];
+            }else if ([productToUnlock isEqual:kInAppPurchaseBasicFunctionsOneWeekKey]){
+                [self informTheUser:kInAppPurchaseBasicFunctionsOneWeekKey :kBasicFunctionsOneWeekUnlockedKey :kBasicFunctionsOneWeekUnlockedKey];
+            }
+            else{
                 self.productToUnlock = kInAppPurchaseUnknownProductKey;
             };
         }
@@ -254,52 +261,42 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
                     });
     }
 }
+-(void)informTheUserOfLocked:(NSString *)productToLock :(NSString *)lockKey :(NSString *)message{
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+    BOOL itsUnlocked = [storage boolForKey:lockKey];
+    if(itsUnlocked == YES){
+        [storage setBool:NO forKey:lockKey];
+        [storage synchronize];
+        dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:message message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
+                alert.tag = kProductPurchasedAlertViewTag;
+                [alert show];
+            });
+        }
+    }
 -(void)lockFeature{
     NSLog(@"relocking feature");
     if([self.productToLock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
-        NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-        BOOL itsUnlocked = [storage boolForKey:kunlimitedEmailsUnlockedKey];
-        if(itsUnlocked == YES){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Unlimited emails is locked." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
-                alert.tag = kProductPurchasedAlertViewTag;
-                [alert show];
-            });}
-        [storage setBool:NO forKey:kunlimitedEmailsUnlockedKey];
-        [storage synchronize];
-    }else{
+        [self informTheUserOfLocked:self.productToLock :kunlimitedEmailsUnlockedKey :kUnlimitedEmailsLockedKey];
+        }else{
         if([self.productToLock isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
             NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-            BOOL itsUnlocked = [storage boolForKey:kspeechRecognitionUnlockedKey];
-            if(itsUnlocked == YES){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Speech recognition is locked." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
-                    alert.tag = kProductPurchasedAlertViewTag;
-                    [alert show];
-                });
+            [self informTheUserOfLocked:self.productToLock :kspeechRecognitionUnlockedKey :kspeechRecognitionLockedKey];
                 [storage setBool:NO forKey:kspeechRecognitionUnlockedKey];
                 NSInteger numberOfSpeechRecognitionRequests = 0;
                 [storage setInteger:numberOfSpeechRecognitionRequests forKey:kNumberOfSpeechRecognitonRequests];
                 [storage synchronize];
             }
-        }else{
+        else{
             if([self.productToLock isEqual:kInAppPurchaseEmails7DayTrialKey]){
-                NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-                BOOL itsUnlocked = [storage boolForKey:kemails7DayTrialUnlockedKey];
-                if(itsUnlocked == YES){
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Email 7 day trial is locked." message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
-                        alert.tag = kProductPurchasedAlertViewTag;
-                        [alert show];
-                    });
-                    [storage setBool:NO forKey:kemails7DayTrialUnlockedKey];
-                    [storage synchronize];
+                [self informTheUserOfLocked: self.productToLock :kInAppPurchaseEmails7DayTrialKey :kemails7DayTrialLockedKey];
+                
                     
                 }
             }
         }
     }
-}
+
 - (IBAction)finished:(id)sender {
     // [self  unlockFeature];
     NSLog(@"initiating unwind from purchase controller to initial controller");
