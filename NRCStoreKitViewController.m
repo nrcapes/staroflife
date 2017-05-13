@@ -175,14 +175,16 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
                     [alert addAction:buySpeechRecognition];
                 }else{
                     if([productIdentifier isEqualToString:kInAppPurchaseEmails7DayTrialKey]){
-                        UIAlertAction *buyemails7daytrial =  [self alertTheUser:@"Emails 7 day trial" :kInAppPurchaseEmails7DayTrialKey :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
+                        UIAlertAction *buyemails7daytrial =  [self alertTheUser:@"One Week of Emals" :kInAppPurchaseEmails7DayTrialKey :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
                         [alert addAction:buyemails7daytrial];
                     }else{
-                    //****tests********
-                    if([productIdentifier isEqualToString:kInAppPurchaseTestsOneWeek]){
-                        UIAlertAction *buyOneWeekTest = [self alertTheUser:@"One Week Test" :kInAppPurchaseTestsOneWeek :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
-                        [alert addAction:buyOneWeekTest];
-                    }
+                    if([productIdentifier isEqualToString:kInAppPurchaseBasicFunctionsOneWeekKey]){
+                        UIAlertAction *buybasicFunctionOneWeek = [self alertTheUser:@"One Week of Backup/Restore" :kInAppPurchaseBasicFunctionsOneWeekKey  :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
+                        [alert addAction:buybasicFunctionOneWeek];
+                    }else if ([productIdentifier isEqualToString:kInAppPurchaseSpeechRecognition7DayTrialKey]){
+                        UIAlertAction *buyspeechRecognition7DayTrial = [self alertTheUser:@"One Week of Speech Recognition" :kInAppPurchaseSpeechRecognition7DayTrialKey :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
+                        [alert addAction:buyspeechRecognition7DayTrial];
+                        }
                     }
                 }
             }

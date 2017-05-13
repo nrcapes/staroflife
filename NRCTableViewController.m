@@ -939,6 +939,7 @@ AVAudioPlayer *_audioPlayer2;
     cell.detailTextLabel.text = dateString;
     self.outputStrings[ip.row] = dateString;
 }
+/*
 -(BOOL)isSubscriptionActive{
     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
     BOOL returnedAnswer = NO;
@@ -958,7 +959,7 @@ AVAudioPlayer *_audioPlayer2;
     returnedAnswer = self.SubscriptionIsActive;
     return returnedAnswer;
 }
-
+*/
 // start the 5 minute re-assess timer
 -(void)check5minuteReassess{
     
@@ -1483,7 +1484,7 @@ AVAudioPlayer *_audioPlayer2;
 }
 // this method lets the user enter patient data.
 // an alert is displayed asking the user whether they want to enter patient data.  If they touch on "OK" the block calls addNewItem to create a new patient item and then segues to the patient datatable view controller.
-
+#pragma mark - enterPatientData
 -(void)enterPatientData{
     
     // check for iCloud and Central Administration.
@@ -1495,7 +1496,7 @@ AVAudioPlayer *_audioPlayer2;
                                   preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action) {
-                                                   self.SubscriptionIsActive = [self isSubscriptionActive];
+                                                  // self.SubscriptionIsActive = [self isSubscriptionActive];
                                                    self.providerID = [[NSUserDefaults standardUserDefaults]valueForKey:@"providerID"];
                                                    [self addNewItem];
                                                 
