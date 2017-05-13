@@ -226,23 +226,21 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
 -(void)unlockFeature:(NSString *)productToUnlock
 {
     if([productToUnlock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
-        [self informTheUser:productToUnlock :kInAppPurchaseUnlimitedEmailsKey :kunlimitedEmailsUnlockedKey];
+        [self informTheUser:productToUnlock :kunlimitedEmailsUnlockedKey :kunlimitedEmailsUnlockedKey];
     }
     else{
         if([productToUnlock isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
             [self informTheUser:productToUnlock :kInAppPurchaseSpeechRecognitionUnlockedKey :kspeechRecognitionUnlockedKey];
         }else{
             if([productToUnlock isEqual:kInAppPurchaseEmails7DayTrialKey]){
-                [self informTheUser:productToUnlock :kInAppPurchaseEmails7DayTrialKey :kemails7DayTrialUnlockedKey];
+                [self informTheUser:productToUnlock :kemails7DayTrialUnlockedKey :kemails7DayTrialUnlockedKey];
             }
             if([productToUnlock isEqual:kInAppPurchaseSpeechRecognition7DayTrialKey]){
                 [self informTheUser:productToUnlock :kspeechRecognition7DayTrialUnlockedKey :kspeechRecognition7DayTrialUnlockedKey];
-            }else if ([productToUnlock isEqual:kInAppPurchaseBasicFunctionsOneYearKey]){
-                [self informTheUser:productToUnlock :kInAppPurchaseBasicFunctionsOneYearKey :kBasicFunctionsOneYearUnlockedKey];
-            }else if ([productToUnlock isEqual:kInAppPurchaseBasicFunctionsOneMonthKey]){
-                [self informTheUser:kInAppPurchaseBasicFunctionsOneMonthKey :kBasicFunctionsOneMonthUnlockedKey :kBasicFunctionsOneMonthUnlockedKey];
             }else if ([productToUnlock isEqual:kInAppPurchaseBasicFunctionsOneWeekKey]){
-                [self informTheUser:kInAppPurchaseBasicFunctionsOneWeekKey :kBasicFunctionsOneWeekUnlockedKey :kBasicFunctionsOneWeekUnlockedKey];
+                [self informTheUser:productToUnlock :kBasicFunctionsOneWeekUnlockedKey :kBasicFunctionsOneWeekUnlockedKey];
+            }else if ([productToUnlock isEqualToString:kInAppPurchaseUnlimitedBasicFunctionsKey]){
+                [self informTheUser:productToUnlock :kUnlimitedBasicFunctionsUnlockedKey :kUnlimitedBasicFunctionsUnlockedKey];
             }
             else{
                 self.productToUnlock = kInAppPurchaseUnknownProductKey;
@@ -280,24 +278,26 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
     NSLog(@"relocking feature");
     if([self.productToLock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
         [self informTheUserOfLocked:self.productToLock :kunlimitedEmailsUnlockedKey :kUnlimitedEmailsLockedKey];
-        }else{
+    }else{
         if([self.productToLock isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
             NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
             [self informTheUserOfLocked:self.productToLock :kspeechRecognitionUnlockedKey :kspeechRecognitionLockedKey];
-                [storage setBool:NO forKey:kspeechRecognitionUnlockedKey];
-                NSInteger numberOfSpeechRecognitionRequests = 0;
-                [storage setInteger:numberOfSpeechRecognitionRequests forKey:kNumberOfSpeechRecognitonRequests];
-                [storage synchronize];
-            }
+            [storage setBool:NO forKey:kspeechRecognitionUnlockedKey];
+            NSInteger numberOfSpeechRecognitionRequests = 0;
+            [storage setInteger:numberOfSpeechRecognitionRequests forKey:kNumberOfSpeechRecognitonRequests];
+            [storage synchronize];
+        }
         else{
             if([self.productToLock isEqual:kInAppPurchaseEmails7DayTrialKey]){
                 [self informTheUserOfLocked: self.productToLock :kInAppPurchaseEmails7DayTrialKey :kemails7DayTrialLockedKey];
-                
-                    
-                }
+            }else if ([self.productToLock isEqual:kInAppPurchaseBasicFunctionsOneWeekKey]){
+                [self informTheUserOfLocked:self.productToLock :kInAppPurchaseBasicFunctionsOneWeekKey :kBasicFunctionsOneWeekLockedKey];
+            }else if ([self.productToLock isEqual:kInAppPurchaseUnlimitedBasicFunctionsKey]){
+            [self informTheUserOfLocked:self.productToLock :kInAppPurchaseUnlimitedBasicFunctionsKey :kUnlimitedBasicFunctionsLockedKey];
             }
         }
     }
+}
 
 - (IBAction)finished:(id)sender {
     // [self  unlockFeature];

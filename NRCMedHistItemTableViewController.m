@@ -263,7 +263,8 @@
     }else{
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
         BOOL speechRecognitionUnlocked = [storage boolForKey:kspeechRecognitionUnlockedKey];
-        if(speechRecognitionUnlocked == NO){
+        BOOL speechRecognitionTrialUnlocked = [storage boolForKey:kspeechRecognition7DayTrialUnlockedKey];
+        if(speechRecognitionUnlocked == NO && speechRecognitionTrialUnlocked == NO){
             self.numberOfSpeechRecognitionRequests = [storage integerForKey:kNumberOfSpeechRecognitonRequests];
             if(self.numberOfSpeechRecognitionRequests < kNumberOfSpeechRecognitionRequestsWithoutUpgrade){
                 self.numberOfSpeechRecognitionRequests += 1;
