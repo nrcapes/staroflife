@@ -44,7 +44,7 @@
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
         BOOL isEmailUnlocked = [storage boolForKey:kunlimitedEmailsUnlockedKey];
         BOOL isEmailTrialUnlocked = [storage boolForKey:kemails7DayTrialUnlockedKey];
-        if(isEmailUnlocked == NO && isEmailTrialUnlocked == NO){
+        if(isEmailUnlocked == NO){
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Upgrade is needed" message:@"You can try out emails by buying a one week trial." preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Press to continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
             }];
@@ -55,9 +55,9 @@
         }
     }else if(indexPath.section == 1){
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-        BOOL isBasicFunctionsTrialUnlocked = [storage boolForKey:kBasicFunctionsOneWeekUnlockedKey];
-        BOOL isUnlimitedBasicFunctionsUnlocked = [storage boolForKey:kUnlimitedBasicFunctionsUnlockedKey];
-        if(isBasicFunctionsTrialUnlocked == NO && isUnlimitedBasicFunctionsUnlocked == NO){
+        BOOL isProfessionalOneYearUnlocked = [storage boolForKey:kProfessionalOneYearUnlockedKey];
+        BOOL isProfessionalOneWeekUnlocked = [storage boolForKey:kProfessionalOneWeekUnlockedKey];
+        if(isProfessionalOneYearUnlocked == NO && isProfessionalOneWeekUnlocked == NO){
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Upgrade is needed" message:@"You can try out backup/restore by buying a one week trial." preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Press to continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
             }];

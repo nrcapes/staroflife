@@ -8,6 +8,8 @@
 
 #ifndef constants_h
 #define constants_h
+#define kInAppPurchaseProfessionalOneYearKey @"com.nelsoncapes.emstimerspro.ProOneYear"
+#define kInAppPurchaseProfessionalOneWeekKey @"com.nelsoncapes.emstimerspro.ProOneWeek"
 #define kInAppPurchaseEmails7DayTrialKey @"com.nelsoncapes.emstimers.sendemailstrial"
 #define kInAppPurchaseUnlimitedEmailsKey @"com.nelsoncapes.emstimerspro.emailunlock"
 #define kInAppPurchaseSpeechRecognitionUnlockedKey @"com.nelsoncapes.emstimerspro.speechRecognitionunlock"
@@ -19,6 +21,10 @@
 #define kInAppPurchaseBasicFunctionsOneMonthKey @"com.nelsoncapes.basicfunctions.oneMonth"
 #define kInAppPurchaseBasicFunctionsOneYearKey @"com.nelsoncapes.basicfunctions.oneYear"
 #define kInAppPurchaseUnlimitedBasicFunctionsKey @"com.nelsoncapes.emstimerspro.basicfunctionsunlock"
+#define kProfessionalOneYearUnlockedKey @"One Year Professional Version unlocked"
+#define kProfessionalOneYearLockedKey @"One Year Professional Version locked"
+#define kProfessionalOneWeekUnlockedKey @"One Week Professional Version unlocked"
+#define kProfessionalOneWeekLockedKey @"One Week Professional Version locked"
 #define kunlimitedEmailsUnlockedKey @"unlimitedEmailsUnlocked"
 #define kUnlimitedEmailsLockedKey @"unlimitedEmailsLocked"
 #define kemails7DayTrialUnlockedKey @"emails7DayTrialUnlocked"

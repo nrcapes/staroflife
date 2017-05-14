@@ -60,8 +60,11 @@ typedef NS_ENUM(int, row){
     [self.navigationItem setHidesBackButton:YES animated:YES];
     
     //here we set the maximum number of emails that a user may send without buying an upgrade.
-    // this will allow one email to be sent before locking.
     self.maxEmails = 0;
+    // allow all emails in basic version
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+    [storage setBool:YES forKey:kunlimitedEmailsUnlockedKey];
+    [storage synchronize];
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Prepare email" message:@"Checkmark the items you want to send" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -334,9 +337,8 @@ typedef NS_ENUM(int, row){
         else{
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             BOOL stopEmails = [[defaults valueForKey:@"maximumEmailsExceeded"]boolValue];
-            self.trialEmailsUnlocked = [defaults boolForKey:kemails7DayTrialUnlockedKey];
             self.unlimitedEmailsUnlocked = [defaults boolForKey:kunlimitedEmailsUnlockedKey];
-            if(stopEmails == YES && self.unlimitedEmailsUnlocked == NO && self.trialEmailsUnlocked == NO){
+            if(stopEmails == YES && self.unlimitedEmailsUnlocked == NO){
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Email Unavailable" message:@"Unlimited emails are only available with an upgrade" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Press any key to continue." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
                     
@@ -442,8 +444,7 @@ typedef NS_ENUM(int, row){
     [defaults setInteger:self.numberOfEmailsSent forKey:@"emailsSent"];
     NSLog(@"Emails sent = %ld", (long)self.numberOfEmailsSent);
     self.unlimitedEmailsUnlocked = [defaults boolForKey:kunlimitedEmailsUnlockedKey];
-    self.trialEmailsUnlocked = [defaults boolForKey:kemails7DayTrialUnlockedKey];
-    if(self.unlimitedEmailsUnlocked == NO && self.trialEmailsUnlocked == NO){
+    if(self.unlimitedEmailsUnlocked == NO){
         if(self.numberOfEmailsSent >= self.maxEmails){
             NSLog(@"number of emails sent = maxEmails");
             [defaults setBool:YES forKey:@"maximumEmailsExceeded"];

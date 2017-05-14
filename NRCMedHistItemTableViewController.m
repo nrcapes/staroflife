@@ -262,9 +262,9 @@
         _microphoneButton.title = @"Start Recording";
     }else{
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-        BOOL speechRecognitionUnlocked = [storage boolForKey:kspeechRecognitionUnlockedKey];
-        BOOL speechRecognitionTrialUnlocked = [storage boolForKey:kspeechRecognition7DayTrialUnlockedKey];
-        if(speechRecognitionUnlocked == NO && speechRecognitionTrialUnlocked == NO){
+        BOOL isProfessionalOneYearUnlocked = [storage boolForKey:kProfessionalOneYearUnlockedKey];
+        BOOL isProfessionalOneWeekUnlocked = [storage boolForKey:kProfessionalOneWeekUnlockedKey];
+        if(isProfessionalOneYearUnlocked == NO && isProfessionalOneWeekUnlocked == NO){
             self.numberOfSpeechRecognitionRequests = [storage integerForKey:kNumberOfSpeechRecognitonRequests];
             if(self.numberOfSpeechRecognitionRequests < kNumberOfSpeechRecognitionRequestsWithoutUpgrade){
                 self.numberOfSpeechRecognitionRequests += 1;

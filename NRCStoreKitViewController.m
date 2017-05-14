@@ -169,7 +169,14 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
             if([productIdentifier isEqualToString:kInAppPurchaseUnlimitedEmailsKey]){
                 UIAlertAction *buyUnlimitedEmails = [self alertTheUser:@"Unlimited Emails" :kInAppPurchaseUnlimitedEmailsKey :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
                 [alert addAction:buyUnlimitedEmails];
-            }else{
+            }else if ([productIdentifier isEqualToString:kInAppPurchaseProfessionalOneYearKey]){
+                UIAlertAction *buyOneYearProfessional = [self alertTheUser:@"Professional Version (One Year)" :kInAppPurchaseProfessionalOneYearKey :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
+                [alert addAction:buyOneYearProfessional];
+            }else if ([productIdentifier isEqualToString:kInAppPurchaseProfessionalOneWeekKey]){
+                UIAlertAction *buyOneWeekProfessional = [self alertTheUser:@"Professional Version (One Week" :kInAppPurchaseProfessionalOneWeekKey :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
+                [alert addAction:buyOneWeekProfessional];
+            }
+            else{
                 if([productIdentifier isEqualToString:kInAppPurchaseSpeechRecognitionUnlockedKey]){
                     UIAlertAction *buySpeechRecognition = [self alertTheUser:@"Unlimited Speech Recognition" :kInAppPurchaseSpeechRecognitionUnlockedKey :productLocalizedTitle :productLocalizedDescription :productLocalizedPrice];
                     [alert addAction:buySpeechRecognition];
@@ -227,7 +234,11 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
 {
     if([productToUnlock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
         [self informTheUser:productToUnlock :kunlimitedEmailsUnlockedKey :kunlimitedEmailsUnlockedKey];
-    }
+    }else if ([productToUnlock isEqual:kInAppPurchaseProfessionalOneYearKey]){
+        [self informTheUser:productToUnlock :kProfessionalOneYearUnlockedKey :kProfessionalOneYearUnlockedKey];
+    }else if ([productToUnlock isEqual:kInAppPurchaseProfessionalOneWeekKey]){
+        [self informTheUser:productToUnlock :kProfessionalOneWeekUnlockedKey :kProfessionalOneWeekUnlockedKey];
+    }/*
     else{
         if([productToUnlock isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
             [self informTheUser:productToUnlock :kInAppPurchaseSpeechRecognitionUnlockedKey :kspeechRecognitionUnlockedKey];
@@ -247,6 +258,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
             };
         }
     }
+    */
 }
 -(void)informTheUser:(NSString *)productToUnlock :(NSString *)lockKey :(NSString *)message{
     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
@@ -278,7 +290,13 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
     NSLog(@"relocking feature");
     if([self.productToLock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
         [self informTheUserOfLocked:self.productToLock :kunlimitedEmailsUnlockedKey :kUnlimitedEmailsLockedKey];
-    }else{
+    }else if ([self.productToLock isEqual:kInAppPurchaseProfessionalOneYearKey]){
+        [self informTheUserOfLocked:self.productToLock :kProfessionalOneWeekUnlockedKey :kProfessionalOneYearLockedKey];
+    } else if ([self.productToLock isEqual:kInAppPurchaseProfessionalOneWeekKey]){
+        [self informTheUserOfLocked:self.productToLock :kProfessionalOneWeekUnlockedKey :kProfessionalOneWeekLockedKey];
+        }
+        /*
+    else{
         if([self.productToLock isEqual:kInAppPurchaseSpeechRecognitionUnlockedKey]){
             NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
             [self informTheUserOfLocked:self.productToLock :kspeechRecognitionUnlockedKey :kspeechRecognitionLockedKey];
@@ -297,6 +315,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
             }
         }
     }
+    */
 }
 
 - (IBAction)finished:(id)sender {
