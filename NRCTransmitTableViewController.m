@@ -9,6 +9,9 @@
 #import "NRCTransmitTableViewController.h"
 #import "constants.h"
 @implementation NRCTransmitTableViewController
+#define APP_STORE_ID 1076129873
+#define stopsBeforeReview 4
+static NSString *const iOSAppStoreURLFormat = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%d";
 - (instancetype)init
 {
     // Call the superclass's designated initializer
@@ -24,7 +27,7 @@
     [self.navigationItem setHidesBackButton:YES animated:YES];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -35,6 +38,8 @@
        cell.textLabel.text =@"Email Data";
     }else if (indexPath.section == 1){
         cell.textLabel.text = @"Backup/Restore to Dropbox";
+    }else if (indexPath.section == 2){
+        cell.textLabel.text = @"Write a Review";
     }
     cell.backgroundColor = [UIColor colorWithRed:0.0f/255 green:125.0f/255 blue:150.0f/255 alpha:0.8f];
     return  cell;
@@ -43,7 +48,6 @@
     if(indexPath.section == 0){
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
         BOOL isEmailUnlocked = [storage boolForKey:kunlimitedEmailsUnlockedKey];
-        BOOL isEmailTrialUnlocked = [storage boolForKey:kemails7DayTrialUnlockedKey];
         if(isEmailUnlocked == NO){
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Upgrade is needed" message:@"You can try out emails by buying a one week trial." preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Press to continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
@@ -66,8 +70,27 @@
         }else{
             [self performSegueWithIdentifier:@"toDropbox" sender:self];
         }
+    }else if (indexPath.section == 2){
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"We would really appreciate your review! Your review will help us continue to produce great software!" message:@"Do you want to write a review?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok =[UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+            NSURL *appStoreURL = [NSURL URLWithString:[NSString stringWithFormat:iOSAppStoreURLFormat, APP_STORE_ID]];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+            if ([[UIApplication sharedApplication] canOpenURL:appStoreURL]) {
+                [[UIApplication sharedApplication] openURL:appStoreURL];
+            }
+        }];
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"No" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                                                                                  }];
+        
+        [alert addAction:ok];
+        [alert addAction:cancel];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"toEmail"]){
         NRCEmailTableViewController *destViewController = segue.destinationViewController;
