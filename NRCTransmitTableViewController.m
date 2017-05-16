@@ -46,23 +46,27 @@ static NSString *const iOSAppStoreURLFormat = @"itms-apps://itunes.apple.com/Web
 }
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == 0){
+    /*
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
         BOOL isEmailUnlocked = [storage boolForKey:kunlimitedEmailsUnlockedKey];
         if(isEmailUnlocked == NO){
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Upgrade is needed" message:@"You can try out emails by buying a one week trial." preferredStyle:UIAlertControllerStyleAlert];
+        
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Emails are not available without upgrading" message:nil preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Press to continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
             }];
             [alert addAction:action];
             [self presentViewController:alert animated:YES completion:nil];
+            
         }else{
             [self performSegueWithIdentifier:@"toEmail" sender:self];
-        }
+    */
+    [self performSegueWithIdentifier:@"toEmail" sender:self];
     }else if(indexPath.section == 1){
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
         BOOL isProfessionalOneYearUnlocked = [storage boolForKey:kProfessionalOneYearUnlockedKey];
         BOOL isProfessionalOneWeekUnlocked = [storage boolForKey:kProfessionalOneWeekUnlockedKey];
         if(isProfessionalOneYearUnlocked == NO && isProfessionalOneWeekUnlocked == NO){
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Upgrade is needed" message:@"You can try out backup/restore by buying a one week trial." preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"These features are not available without upgrading" message:@"You can try out backup/restore by buying a one week trial." preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action = [UIAlertAction actionWithTitle:@"Press to continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
             }];
             [alert addAction:action];

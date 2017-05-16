@@ -60,11 +60,12 @@ typedef NS_ENUM(int, row){
     [self.navigationItem setHidesBackButton:YES animated:YES];
     
     //here we set the maximum number of emails that a user may send without buying an upgrade.
-    self.maxEmails = 0;
-    // allow all emails in basic version
+    self.maxEmails = 5;
+    /*
     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
     [storage setBool:YES forKey:kunlimitedEmailsUnlockedKey];
     [storage synchronize];
+    */
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Prepare email" message:@"Checkmark the items you want to send" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
