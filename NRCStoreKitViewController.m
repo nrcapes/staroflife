@@ -291,7 +291,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
     if([self.productToLock isEqual:kInAppPurchaseUnlimitedEmailsKey]){
         [self informTheUserOfLocked:self.productToLock :kunlimitedEmailsUnlockedKey :kUnlimitedEmailsLockedKey];
     }else if ([self.productToLock isEqual:kInAppPurchaseProfessionalOneYearKey]){
-        [self informTheUserOfLocked:self.productToLock :kProfessionalOneWeekUnlockedKey :kProfessionalOneYearLockedKey];
+        [self informTheUserOfLocked:self.productToLock :kProfessionalOneYearUnlockedKey :kProfessionalOneYearLockedKey];
     } else if ([self.productToLock isEqual:kInAppPurchaseProfessionalOneWeekKey]){
         [self informTheUserOfLocked:self.productToLock :kProfessionalOneWeekUnlockedKey :kProfessionalOneWeekLockedKey];
         }
