@@ -235,14 +235,30 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
 -(IBAction)buyProduct:(id)sender{
    [self conformSect2_38_b:self.userSelectedProductLocalizedTitle];
     
-   // NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
-   // BOOL proceedWithPurchase = [storage boolForKey:kProceedWithPurchaseKey];
-   // if(proceedWithPurchase == YES){
-   // [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:self.userSelectedProductIdentifier];
-  //}
+  
 }
 -(void)conformSect2_38_b:(NSString *)localizedTitle{
     // this is added to overcome a rejection under Section 2 3.8b of the Apple developer agreement
+    if([localizedTitle isEqualToString:@"Send Unlimited Emails"]){
+    NSString *title = localizedTitle;
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:title
+                                  message:@"Do you want to do buy this product?"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+                                  UIAlertAction *yes = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+        [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:self.userSelectedProductIdentifier];
+        
+       // [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    UIAlertAction *no = [UIAlertAction actionWithTitle:@"NO" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+        
+       // [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alert addAction:yes];
+    [alert addAction:no];
+    [self presentViewController:alert animated:YES completion:nil// Email Subject
+     ];
+}else{
     NSString *title = @"Length of subscription: ";
     _productSubscriptionLength = [self identiySubscriptionLength:self.userSelectedProductLocalizedTitle];
     title = [title stringByAppendingString:_productSubscriptionLength];
@@ -258,6 +274,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
                                   alertControllerWithTitle:title
                                   message:@"Do you want to do buy this product?"
                                   preferredStyle:UIAlertControllerStyleAlert];
+    
     UIAlertAction *yes = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
         [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:self.userSelectedProductIdentifier];
         
@@ -271,7 +288,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
     [alert addAction:no];
     [self presentViewController:alert animated:YES completion:nil// Email Subject
      ];
-    
+  }
 }
 -(NSString *)identiySubscriptionLength:(NSString *)localizedTitle{
     if([localizedTitle isEqualToString:@"Send Unlimited Emails"]){
