@@ -30,6 +30,13 @@
 @property (strong, nonatomic) NSMutableDictionary *productDict;
 @property (strong, nonatomic) NSMutableDictionary *transactionDates;
 @property (strong, nonatomic) NSString *productIdentifier;
+@property (strong, nonatomic) NSString * productLocalizedTitle;
+@property (strong, nonatomic) NSString * productSubscriptionLength;
+@property (strong,nonatomic) NSString *productLocalizedPrice;
+@property (strong, nonatomic) NSString *productLocalizedDescription;
+@property (strong, nonatomic) NSString *userSelectedProductIdentifier;
+@property (strong, nonatomic) NSString *userSelectedProductLocalizedTitle;
+@property (strong, nonatomic) NSString *userSelectedProductLocalizedPrice;
 //@property NSString *title;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -39,4 +46,6 @@
 -(void)displayAvailableProducts:(NSMutableArray *)availableProducts;
 -(void)notifyOfFailedProductPurchase:(NSNotification *)notification;
 -(void)unlockFeature:(NSString *)productToUnlock;
+-(NSString *)identiySubscriptionLength:(NSString *)localizedTitle;
+-(void)conformSect2_38_b:(NSString *)localizedTitle;
 @end

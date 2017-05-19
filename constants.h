@@ -43,6 +43,7 @@
 #define kUnlimitedBasicFunctionsUnlockedKey @"backup/restore is unlocked"
 #define kUnlimitedBasicFunctionsLockedKey @"backup/restore is locked"
 #define kInAppPurchaseUnknownProductKey @"Product"
+#define kProceedWithPurchaseKey @"proceedWithPurchase"
 #define kSegueIdentifierToTableView @"unwindPurchaseToTableView"
 #define kSegueIdentifierStoreKitToTableView @"unwindStoreKitToTableView"
 #define kSegueIdentifierToInAppPurchase @"toInAppPurchase"
