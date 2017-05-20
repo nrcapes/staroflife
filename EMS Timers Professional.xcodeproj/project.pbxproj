@@ -42,6 +42,8 @@
 		525DF1101EBD0F3100060BD2 /* MKStoreKitConfigs.plist in Sources */ = {isa = PBXBuildFile; fileRef = 525DF10C1EBD0D9100060BD2 /* MKStoreKitConfigs.plist */; };
 		525DF1131EBD102A00060BD2 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DF1121EBD102A00060BD2 /* MKStoreKit.m */; };
 		525DF1191EBD3E5800060BD2 /* NRCStoreKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DF1181EBD3E5800060BD2 /* NRCStoreKitViewController.m */; };
+		5260B2531ED099E70067BC04 /* Icon-40 copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5260B2521ED099E70067BC04 /* Icon-40 copy.png */; };
+		5260B2551ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 5260B2541ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png */; };
 		526290A41C26083100289F2A /* NRCInterfaceController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A31C26083100289F2A /* NRCInterfaceController2.m */; };
 		526290A61C26083100289F2A /* NRCInterfaceController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A31C26083100289F2A /* NRCInterfaceController2.m */; };
 		526290A91C2614C000289F2A /* NRCInterfaceController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A81C2614C000289F2A /* NRCInterfaceController3.m */; };
@@ -200,6 +202,8 @@
 		525DF1121EBD102A00060BD2 /* MKStoreKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKStoreKit.m; sourceTree = "<group>"; };
 		525DF1171EBD3E5800060BD2 /* NRCStoreKitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCStoreKitViewController.h; sourceTree = "<group>"; };
 		525DF1181EBD3E5800060BD2 /* NRCStoreKitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCStoreKitViewController.m; sourceTree = "<group>"; };
+		5260B2521ED099E70067BC04 /* Icon-40 copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40 copy.png"; path = "Media.xcassets/AppIcon.appiconset/Icon-40 copy.png"; sourceTree = "<group>"; };
+		5260B2541ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot May 20, 2017, 10.46.18 AM.png"; path = "../Desktop/Simulator Screen Shot May 20, 2017, 10.46.18 AM.png"; sourceTree = "<group>"; };
 		526290A21C26083100289F2A /* NRCInterfaceController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRCInterfaceController2.h; path = "../EMSTimers WatchKit 1 App/NRCInterfaceController2.h"; sourceTree = "<group>"; };
 		526290A31C26083100289F2A /* NRCInterfaceController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRCInterfaceController2.m; path = "../EMSTimers WatchKit 1 App/NRCInterfaceController2.m"; sourceTree = "<group>"; };
 		526290A71C2614C000289F2A /* NRCInterfaceController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCInterfaceController3.h; sourceTree = "<group>"; };
@@ -443,6 +447,7 @@
 		5246835E1BEAAC430086213B = {
 			isa = PBXGroup;
 			children = (
+				5260B2541ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png */,
 				52BB8AA51EB575C700F37B91 /* constants.h */,
 				52BB8AA01EB5727200F37B91 /* PurchaseViewController.h */,
 				52BB8A9E1EB5714A00F37B91 /* PurchaseViewController.m */,
@@ -495,6 +500,7 @@
 				52F6D7D01C9A07C900C6F39E /* jsonStore.h */,
 				52F6D7D11C9A07C900C6F39E /* jsonStore.m */,
 				52D637B71C9DE4230024E97E /* NRCErrorStore.h */,
+				5260B2521ED099E70067BC04 /* Icon-40 copy.png */,
 				52D637B81C9DE4230024E97E /* NRCErrorStore.m */,
 				52A0B0481C5F03B20015D481 /* patientItemStore.m */,
 				52A0B0491C5F03B20015D481 /* patientItemStore.h */,
@@ -756,7 +762,9 @@
 				525DF10E1EBD0D9100060BD2 /* MKStoreKitConfigs.plist in Resources */,
 				52BFCAF01C57150200970D40 /* Settings.bundle in Resources */,
 				52D637B61C9DAE550024E97E /* checkout scanner beep.mp3 in Resources */,
+				5260B2551ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png in Resources */,
 				524683911BEAB1F10086213B /* Media.xcassets in Resources */,
+				5260B2531ED099E70067BC04 /* Icon-40 copy.png in Resources */,
 				52AF0E221D4051DA002CA4E6 /* nature.jpg in Resources */,
 				52B6B7251BEAC849007B8ACD /* star-of-life.jpeg in Resources */,
 				52E96C451D46BDE800F92BEA /* Main.storyboard in Resources */,
