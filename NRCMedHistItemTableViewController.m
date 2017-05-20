@@ -225,7 +225,7 @@
         }
     }
     self.textView.text = self.displayedText.text;
-    [self.textView.text stringByReplacingOccurrencesOfString:@"," withString:@";"];
+//    [self.textView.text stringByReplacingOccurrencesOfString:@"," withString:@";"];
     [_textView resignFirstResponder];
     self.heldText.text = @"";
     [self performSegueWithIdentifier:@"unwindToMedHistory" sender:self];
@@ -382,7 +382,7 @@
     
         NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
         [storage setBool:YES forKey:@"speechRecognitionHasBeenDone"];
-        self.heldText.text = @";";
+        self.heldText.text = @"";
         self.heldText.text = [ self.heldText.text stringByAppendingString:translatedString];
         self.displayedText.text = [self.displayedText.text stringByAppendingString:self.heldText.text];
         self.heldText.text = @"";
