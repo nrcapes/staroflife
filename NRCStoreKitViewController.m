@@ -130,6 +130,8 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
         [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+        // the App Store will provide the price for the locale of the purchaser's app store account,not the locale that the purchaser is in
+        // at the time of purchase.
         [numberFormatter setLocale:product.priceLocale];
         NSString *formattedPrice = [numberFormatter stringFromNumber:product.price];
         [dict setObject:formattedPrice forKey:@"product_localizedPrice"];
