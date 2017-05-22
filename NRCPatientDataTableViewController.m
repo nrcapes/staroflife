@@ -175,7 +175,7 @@ typedef NS_ENUM(int, row){
                 [cell addSubview:self.lastNameField];
                 break;
             case 3:
-                cell.textLabel.text = @"Date of Birth";
+                cell.textLabel.text = @"DOB";
                 tf = self.dateofBirthField = [self makeTextField:self.item.dateOfBirth placeholder:@"10/27/1946" type_of_text:(date_of_birth)];
                 [cell addSubview:self.dateofBirthField];
                 break;

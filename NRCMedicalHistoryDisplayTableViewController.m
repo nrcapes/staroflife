@@ -106,7 +106,7 @@
                 break;
             case 3:{
                 cell.textLabel.font = [cell.textLabel.font fontWithSize:19];
-                cell.textLabel.text = @"Curr. Medications";
+                cell.textLabel.text = @"Medications";
                 tf = self.currentMedications = [self makeTextField:self.item.currentMedications placeholder:@""];
                 [cell addSubview:self.currentMedications];
             }
