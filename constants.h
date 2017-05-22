@@ -60,5 +60,5 @@
 #define kAvailableProductKey @"availableProduct"
 #define kProductIdentifierKey @"productIdentifier"
 #define kProductsArrayKey @"productsArray"
-
+#define kNotificationOfInAppPurchaseDisabled @"inAppPurchaseDisabled"
 #endif /* constants_h */

@@ -33,6 +33,7 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
         [nc addObserver:self selector:@selector(notifyOfFailedReceiptValidation:) name:kNotificationOfFailedReceiptValidation object:nil];
         [nc addObserver:self selector:@selector(notifyOfSubscriptionExpiry:) name:kNotificationOfSubscriptionExpiry object:nil];
         [nc addObserver:self selector:@selector(notifyOfValidReceipt:) name:kNotificationOfValidReceipt object:nil];
+        [nc addObserver:self selector:@selector(notifyOfInAppPurchaseDisabled) name:kNotificationOfInAppPurchaseDisabled object:nil];
     }
     return self;
 }
@@ -113,6 +114,25 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
    // _productTitle.text = @"Expired!";
     self.productToLock = [note object];
     [self lockFeature];
+}
+-(void)notifyOfInAppPurchaseDisabled{
+// user has disabled in app purchase in Settings
+/*
+UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"You have disabled in app purchases in Settings"
+                                  message:@"Enable it in Settings>General>Restrictions in order to purchase!"
+                                  preferredStyle:UIAlertControllerStyleAlert];
+UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+    
+    }];
+ [alert addAction:action];
+ [self presentViewController:alert animated:YES completion:nil
+     ];
+     */
+     dispatch_async(dispatch_get_main_queue(), ^{
+                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"In app purchase is disabled. Enable it in Settings>General>Restrictions in order to purchase!" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:@"Continue", nil];
+                        [alert show];
+                    });
 }
 -(void)notifyOfAvailableProducts:(NSNotification *)notification{
     NSLog(@"userInfo: %@", notification);
@@ -247,8 +267,8 @@ static NSUInteger const kProductPurchasedAlertViewTag = 1;
                                   alertControllerWithTitle:title
                                   message:@"Do you want to do buy this product?"
                                   preferredStyle:UIAlertControllerStyleAlert];
-                                  UIAlertAction *yes = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
-        [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:self.userSelectedProductIdentifier];
+    UIAlertAction *yes = [UIAlertAction actionWithTitle:@"YES" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+    [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:self.userSelectedProductIdentifier];
         
        // [self dismissViewControllerAnimated:YES completion:nil];
     }];

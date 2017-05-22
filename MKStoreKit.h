@@ -117,6 +117,8 @@ extern NSString *const kMKStoreKitDownloadProgressNotification;
 extern NSString *const kMKStoreKitDownloadCompletedNotification;
 
 extern NSString *const kMKStoreKitReceiptValidNotification;
+
+extern NSString *const kMKStoreKitInAppPurchaseDisabledNotification;
 /*!
  *  @abstract The singleton class that takes care of In App Purchasing
  *  @discussion

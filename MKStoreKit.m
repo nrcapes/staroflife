@@ -50,7 +50,8 @@ NSString *const kMKStoreKitSubscriptionExpiredNotification = @"com.mugunthkumar.
 NSString *const kMKStoreKitDownloadProgressNotification = @"com.mugunthkumar.mkstorekit.downloadprogress";
 NSString *const kMKStoreKitDownloadCompletedNotification = @"com.mugunthkumar.mkstorekit.downloadcompleted";
 NSString *const kMKStoreKitReceiptValidNotification = @"com.mugunthkumar.mkstorekit.receiptvalid";
-
+// added by me
+NSString *const kMKStoreKitInAppPurchaseDisabledNotification = @"com.mugunthkumar.mkstorekit.inapppurchasedisabled";
 NSString *const kSandboxServer = @"https://sandbox.itunes.apple.com/verifyReceipt";
 NSString *const kLiveServer = @"https://buy.itunes.apple.com/verifyReceipt";
 
@@ -253,11 +254,16 @@ static NSDictionary *errorDictionary;
 
   if (![SKPaymentQueue canMakePayments]) {
 #if TARGET_OS_IPHONE
+// this code is bad for the case where the observer is not App Delegate.  Instead, post a notification and let the observer
+// notify the user.
+/*
     UIAlertController *controller = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"In App Purchasing Disabled", @"")
                                                                         message:NSLocalizedString(@"Check your parental control settings and try again later", @"") preferredStyle:UIAlertControllerStyleAlert];
 
     [[UIApplication sharedApplication].keyWindow.rootViewController
      presentViewController:controller animated:YES completion:nil];
+     */
+     [[NSNotificationCenter defaultCenter] postNotificationName:kMKStoreKitInAppPurchaseDisabledNotification object:nil];
 #elif TARGET_OS_MAC
     NSAlert *alert = [[NSAlert alloc] init];
     alert.messageText = NSLocalizedString(@"In App Purchasing Disabled", @"");
