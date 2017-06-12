@@ -16,7 +16,6 @@
 		520F3C3E1CD6B3AA00D4EC94 /* Add Multiple Patients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520F3C3D1CD6B3A900D4EC94 /* Add Multiple Patients.swift */; };
 		520F3C421CD6D25000D4EC94 /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 520F3C411CD6D25000D4EC94 /* cloud.png */; };
 		520F3C461CD6D54400D4EC94 /* central.png in Resources */ = {isa = PBXBuildFile; fileRef = 520F3C451CD6D54400D4EC94 /* central.png */; };
-		52109E2A1D443E4500DF27E5 /* tblFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 52109E291D443E4500DF27E5 /* tblFiles.m */; };
 		521B85641CD54BBC0044D4FF /* Add Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521B85631CD54BBC0044D4FF /* Add Patient.swift */; };
 		52208E441BEAE06D00A2DF93 /* star-of-life.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 52208E431BEAE06D00A2DF93 /* star-of-life.jpeg */; };
 		52308FE21EB2DD6600B936F2 /* NRCTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52308FE11EB2DD6600B936F2 /* NRCTextView.m */; };
@@ -73,7 +72,6 @@
 		52A497261EBAA52B001C33D1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A497251EBAA52B001C33D1 /* MessageUI.framework */; };
 		52AF0E1B1D40289B002CA4E6 /* DropboxSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52AF0E1A1D40289B002CA4E6 /* DropboxSDK.framework */; };
 		52AF0E221D4051DA002CA4E6 /* nature.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52AF0E201D4051DA002CA4E6 /* nature.jpg */; };
-		52AF0E231D4051DA002CA4E6 /* testtext.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52AF0E211D4051DA002CA4E6 /* testtext.txt */; };
 		52B23FCA1CD45215006231EC /* EMSTimersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B23FC91CD45215006231EC /* EMSTimersUITests.swift */; };
 		52B6B7251BEAC849007B8ACD /* star-of-life.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 52B6B7241BEAC849007B8ACD /* star-of-life.jpeg */; };
 		52BB8A9F1EB5714A00F37B91 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BB8A9E1EB5714A00F37B91 /* PurchaseViewController.m */; };
@@ -92,7 +90,6 @@
 		52F01B611D4001940055BD45 /* NRCTransmitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F01B601D4001940055BD45 /* NRCTransmitTableViewController.m */; };
 		52F01B651D40102C0055BD45 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52F01B641D40102C0055BD45 /* QuartzCore.framework */; };
 		52F01B671D4010360055BD45 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52F01B661D4010360055BD45 /* Security.framework */; };
-		52F01B771D401BD80055BD45 /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01B761D401BD80055BD45 /* temp.swift */; };
 		52F6D7D21C9A07C900C6F39E /* jsonStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F6D7D11C9A07C900C6F39E /* jsonStore.m */; };
 /* End PBXBuildFile section */
 
@@ -161,8 +158,6 @@
 		520F3C411CD6D25000D4EC94 /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
 		520F3C451CD6D54400D4EC94 /* central.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = central.png; sourceTree = "<group>"; };
 		52109E1E1D419E4300DF27E5 /* NRCPasscodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCPasscodeViewController.h; sourceTree = "<group>"; };
-		52109E281D443E4500DF27E5 /* tblFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tblFiles.h; sourceTree = "<group>"; };
-		52109E291D443E4500DF27E5 /* tblFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tblFiles.m; sourceTree = "<group>"; };
 		521B85631CD54BBC0044D4FF /* Add Patient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Add Patient.swift"; sourceTree = "<group>"; };
 		52208E431BEAE06D00A2DF93 /* star-of-life.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "star-of-life.jpeg"; sourceTree = "<group>"; };
 		52308FE01EB2DD6600B936F2 /* NRCTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCTextView.h; sourceTree = "<group>"; };
@@ -179,7 +174,7 @@
 		524683901BEAB1F10086213B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		52491D7B1CED520D00D19190 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		52491D7C1CED520D00D19190 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
-		525025281C238F4F0047DA16 /* test1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = test1.m; sourceTree = "<group>"; };
+		525025281C238F4F0047DA16 /* test1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = test1.m; path = ../test1.m; sourceTree = "<group>"; };
 		525025571C249FFC0047DA16 /* EMSTimers WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "EMSTimers WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5250255A1C249FFC0047DA16 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		5250255B1C249FFC0047DA16 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
@@ -249,7 +244,6 @@
 		52AF0E171D402457002CA4E6 /* emstimers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "emstimers-Bridging-Header.h"; sourceTree = "<group>"; };
 		52AF0E1A1D40289B002CA4E6 /* DropboxSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropboxSDK.framework; sourceTree = "<group>"; };
 		52AF0E201D4051DA002CA4E6 /* nature.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nature.jpg; sourceTree = "<group>"; };
-		52AF0E211D4051DA002CA4E6 /* testtext.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = testtext.txt; sourceTree = "<group>"; };
 		52B23FC71CD45215006231EC /* EMSTimersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EMSTimersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B23FC91CD45215006231EC /* EMSTimersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMSTimersUITests.swift; sourceTree = "<group>"; };
 		52B23FCB1CD45215006231EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -275,7 +269,6 @@
 		52F01B601D4001940055BD45 /* NRCTransmitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCTransmitTableViewController.m; sourceTree = "<group>"; };
 		52F01B641D40102C0055BD45 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		52F01B661D4010360055BD45 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		52F01B761D401BD80055BD45 /* temp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
 		52F6D7D01C9A07C900C6F39E /* jsonStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsonStore.h; sourceTree = "<group>"; };
 		52F6D7D11C9A07C900C6F39E /* jsonStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jsonStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -314,16 +307,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		52115F9F1C78D3E1002A05B2 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		52115FA01C78D415002A05B2 /* Items */ = {
 			isa = PBXGroup;
 			children = (
+				52A0B0491C5F03B20015D481 /* patientItemStore.h */,
+				52A0B0481C5F03B20015D481 /* patientItemStore.m */,
 				52A0B0471C5F03B20015D481 /* patientItem.h */,
 				52A0B04A1C5F03B20015D481 /* patientItem.m */,
 				52A0B0591C615D410015D481 /* assessmentItem.h */,
@@ -357,6 +345,9 @@
 		52115FA31C78D4E1002A05B2 /* Passcode controllers */ = {
 			isa = PBXGroup;
 			children = (
+				52491D7B1CED520D00D19190 /* KeychainWrapper.h */,
+				52491D7C1CED520D00D19190 /* KeychainWrapper.m */,
+				52109E1E1D419E4300DF27E5 /* NRCPasscodeViewController.h */,
 				52E5039C1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift */,
 				52AF0E161D4021D4002CA4E6 /* EMSTimers-Bridging-Header.h */,
 				529EC4ED1CB9AAB4006DE53F /* NRCPasscodeViewController.m */,
@@ -417,9 +408,100 @@
 			name = "Medical History Item Controllers";
 			sourceTree = "<group>";
 		};
+		5226CA0F1EEDE9820001BD43 /* Dropbox controllers */ = {
+			isa = PBXGroup;
+			children = (
+				52676E091D6110F600B0CC85 /* DBBViewController.h */,
+				52676E0A1D6110F600B0CC85 /* DBBViewController.m */,
+				52676E061D61107600B0CC85 /* DropboxBrowserViewController.h */,
+				52676E071D61107600B0CC85 /* DropboxBrowserViewController.m */,
+			);
+			name = "Dropbox controllers";
+			sourceTree = "<group>";
+		};
+		5226CA101EEDE99E0001BD43 /* Storekit controllers */ = {
+			isa = PBXGroup;
+			children = (
+				52BB8AA01EB5727200F37B91 /* PurchaseViewController.h */,
+				52BB8A9E1EB5714A00F37B91 /* PurchaseViewController.m */,
+				525DF1111EBD0F5C00060BD2 /* MKStoreKit.h */,
+				525DF1121EBD102A00060BD2 /* MKStoreKit.m */,
+				525DF1171EBD3E5800060BD2 /* NRCStoreKitViewController.h */,
+				525DF1181EBD3E5800060BD2 /* NRCStoreKitViewController.m */,
+				525DF10C1EBD0D9100060BD2 /* MKStoreKitConfigs.plist */,
+				5226CA0F1EEDE9820001BD43 /* Dropbox controllers */,
+			);
+			name = "Storekit controllers";
+			sourceTree = "<group>";
+		};
+		5226CA111EEDE9F20001BD43 /* Transmit/email controllers */ = {
+			isa = PBXGroup;
+			children = (
+				52F01B601D4001940055BD45 /* NRCTransmitTableViewController.m */,
+				52F01B5D1D40015D0055BD45 /* NRCTransmitTableViewController.h */,
+				526C3CA31D2B1CD0003A1322 /* NRCEmailTableViewController.m */,
+				526C3CA41D2B1CD0003A1322 /* NRCEmailTableViewController.h */,
+			);
+			name = "Transmit/email controllers";
+			sourceTree = "<group>";
+		};
+		5226CA121EEDEA470001BD43 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				525302641C727A7200D4414E /* Beep-short.mp3 */,
+				52D637B51C9DAE550024E97E /* checkout scanner beep.mp3 */,
+				525302651C727A7200D4414E /* Beeping-sound.mp3 */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		5226CA131EEDEA5C0001BD43 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				5226CA121EEDEA470001BD43 /* Sounds */,
+				52F6D7D01C9A07C900C6F39E /* jsonStore.h */,
+				52F6D7D11C9A07C900C6F39E /* jsonStore.m */,
+				52D637B71C9DE4230024E97E /* NRCErrorStore.h */,
+				52D637B81C9DE4230024E97E /* NRCErrorStore.m */,
+			);
+			name = Singletons;
+			sourceTree = "<group>";
+		};
+		5226CA141EEDEAB30001BD43 /* png */ = {
+			isa = PBXGroup;
+			children = (
+				52B6B7241BEAC849007B8ACD /* star-of-life.jpeg */,
+				52AF0E201D4051DA002CA4E6 /* nature.jpg */,
+				5260B2541ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png */,
+				520F3C451CD6D54400D4EC94 /* central.png */,
+				520F3C411CD6D25000D4EC94 /* cloud.png */,
+				5260B2521ED099E70067BC04 /* Icon-40 copy.png */,
+			);
+			name = png;
+			sourceTree = "<group>";
+		};
+		5226CA151EEDEB770001BD43 /* iCloud */ = {
+			isa = PBXGroup;
+			children = (
+				5270883A1CAF20D20059163F /* Note.h */,
+				5270883B1CAF20D20059163F /* Note.m */,
+			);
+			name = iCloud;
+			sourceTree = "<group>";
+		};
+		5226CA161EEDEC5C0001BD43 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				524683811BEAAC780086213B /* AppDelegate.h */,
+				524683821BEAAC780086213B /* AppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
 		5230B0FB1D3FE6140098D7FB /* Swift controllers */ = {
 			isa = PBXGroup;
 			children = (
+				52AF0E171D402457002CA4E6 /* emstimers-Bridging-Header.h */,
 				5273238C1D090518003CA93B /* NRCLoginViewController.swift */,
 			);
 			name = "Swift controllers";
@@ -428,6 +510,7 @@
 		523793891CD51DE900265063 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
+				525025281C238F4F0047DA16 /* test1.m */,
 				52B23FC91CD45215006231EC /* EMSTimersUITests.swift */,
 			);
 			name = Basic;
@@ -447,78 +530,32 @@
 		5246835E1BEAAC430086213B = {
 			isa = PBXGroup;
 			children = (
-				5260B2541ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png */,
-				52BB8AA51EB575C700F37B91 /* constants.h */,
-				52BB8AA01EB5727200F37B91 /* PurchaseViewController.h */,
-				52BB8A9E1EB5714A00F37B91 /* PurchaseViewController.m */,
-				525DF1111EBD0F5C00060BD2 /* MKStoreKit.h */,
-				525DF1121EBD102A00060BD2 /* MKStoreKit.m */,
-				525DF1171EBD3E5800060BD2 /* NRCStoreKitViewController.h */,
-				525DF1181EBD3E5800060BD2 /* NRCStoreKitViewController.m */,
-				525DF10C1EBD0D9100060BD2 /* MKStoreKitConfigs.plist */,
-				52676E091D6110F600B0CC85 /* DBBViewController.h */,
-				52676E0A1D6110F600B0CC85 /* DBBViewController.m */,
-				52676E061D61107600B0CC85 /* DropboxBrowserViewController.h */,
-				52676E071D61107600B0CC85 /* DropboxBrowserViewController.m */,
-				52E96C441D46BDE800F92BEA /* Main.storyboard */,
-				52109E281D443E4500DF27E5 /* tblFiles.h */,
-				52109E291D443E4500DF27E5 /* tblFiles.m */,
-				52A497251EBAA52B001C33D1 /* MessageUI.framework */,
-				52AF0E1A1D40289B002CA4E6 /* DropboxSDK.framework */,
-				52AF0E171D402457002CA4E6 /* emstimers-Bridging-Header.h */,
-				52F01B761D401BD80055BD45 /* temp.swift */,
-				52AF0E201D4051DA002CA4E6 /* nature.jpg */,
-				52109E1E1D419E4300DF27E5 /* NRCPasscodeViewController.h */,
-				52AF0E211D4051DA002CA4E6 /* testtext.txt */,
-				52F01B661D4010360055BD45 /* Security.framework */,
-				52F01B641D40102C0055BD45 /* QuartzCore.framework */,
-				52F01B601D4001940055BD45 /* NRCTransmitTableViewController.m */,
-				52F01B5D1D40015D0055BD45 /* NRCTransmitTableViewController.h */,
-				525D33801D3197E700862C26 /* StoreKit.framework */,
-				5230B0FB1D3FE6140098D7FB /* Swift controllers */,
-				526C3CA31D2B1CD0003A1322 /* NRCEmailTableViewController.m */,
-				526C3CA41D2B1CD0003A1322 /* NRCEmailTableViewController.h */,
-				52491D7B1CED520D00D19190 /* KeychainWrapper.h */,
-				52491D7C1CED520D00D19190 /* KeychainWrapper.m */,
-				520F3C451CD6D54400D4EC94 /* central.png */,
-				520F3C411CD6D25000D4EC94 /* cloud.png */,
-				5280BA7D1CBD9D170039DF4C /* jsondata */,
-				5270883A1CAF20D20059163F /* Note.h */,
-				5270883B1CAF20D20059163F /* Note.m */,
-				52DD282D1C92798200F036AE /* UIKit.framework */,
-				52DD282B1C92796100F036AE /* CoreGraphics.framework */,
-				52DD28291C92794200F036AE /* project.pbxproj */,
-				52115F9F1C78D3E1002A05B2 /* New Group */,
-				525302641C727A7200D4414E /* Beep-short.mp3 */,
-				52D637B51C9DAE550024E97E /* checkout scanner beep.mp3 */,
-				525302651C727A7200D4414E /* Beeping-sound.mp3 */,
-				52BFCAEF1C57150200970D40 /* Settings.bundle */,
-				529415361C3F688200D790E1 /* AVFoundation.framework */,
-				525025281C238F4F0047DA16 /* test1.m */,
-				524683811BEAAC780086213B /* AppDelegate.h */,
-				524683821BEAAC780086213B /* AppDelegate.m */,
-				52F6D7D01C9A07C900C6F39E /* jsonStore.h */,
-				52F6D7D11C9A07C900C6F39E /* jsonStore.m */,
-				52D637B71C9DE4230024E97E /* NRCErrorStore.h */,
-				5260B2521ED099E70067BC04 /* Icon-40 copy.png */,
-				52D637B81C9DE4230024E97E /* NRCErrorStore.m */,
-				52A0B0481C5F03B20015D481 /* patientItemStore.m */,
-				52A0B0491C5F03B20015D481 /* patientItemStore.h */,
-				52115FA11C78D448002A05B2 /* Cells */,
-				52115FA01C78D415002A05B2 /* Items */,
-				52115FA21C78D4C1002A05B2 /* Initial View Controller */,
-				52115FA31C78D4E1002A05B2 /* Passcode controllers */,
-				52115FA41C78D51B002A05B2 /* Patient Data Controllers */,
+				5226CA161EEDEC5C0001BD43 /* AppDelegate */,
 				52115FA51C78D592002A05B2 /* Assessment  Controllers */,
+				52115FA11C78D448002A05B2 /* Cells */,
+				52BB8AA51EB575C700F37B91 /* constants.h */,
+				524683691BEAAC430086213B /* EMSTimers */,
+				5250256D1C249FFC0047DA16 /* EMSTimers WatchKit 1 App */,
+				525025581C249FFC0047DA16 /* EMSTimers WatchKit 1 Extension */,
+				52B23FC81CD45215006231EC /* EMSTimersUITests */,
+				52A497241EBAA52B001C33D1 /* Frameworks */,
+				5226CA151EEDEB770001BD43 /* iCloud */,
+				52115FA21C78D4C1002A05B2 /* Initial View Controller */,
+				52115FA01C78D415002A05B2 /* Items */,
+				5280BA7D1CBD9D170039DF4C /* jsondata */,
+				52E96C441D46BDE800F92BEA /* Main.storyboard */,
 				52115FA61C78D606002A05B2 /* Medical History Controllers */,
 				52115FA71C78D61A002A05B2 /* Medical History Item Controllers */,
-				52B6B7241BEAC849007B8ACD /* star-of-life.jpeg */,
-				524683691BEAAC430086213B /* EMSTimers */,
-				525025581C249FFC0047DA16 /* EMSTimers WatchKit 1 Extension */,
-				5250256D1C249FFC0047DA16 /* EMSTimers WatchKit 1 App */,
-				52B23FC81CD45215006231EC /* EMSTimersUITests */,
+				52115FA31C78D4E1002A05B2 /* Passcode controllers */,
+				52115FA41C78D51B002A05B2 /* Patient Data Controllers */,
+				5226CA141EEDEAB30001BD43 /* png */,
 				524683681BEAAC430086213B /* Products */,
-				52A497241EBAA52B001C33D1 /* Frameworks */,
+				52DD28291C92794200F036AE /* project.pbxproj */,
+				52BFCAEF1C57150200970D40 /* Settings.bundle */,
+				5226CA131EEDEA5C0001BD43 /* Singletons */,
+				5226CA101EEDE99E0001BD43 /* Storekit controllers */,
+				5230B0FB1D3FE6140098D7FB /* Swift controllers */,
+				5226CA111EEDE9F20001BD43 /* Transmit/email controllers */,
 			);
 			sourceTree = "<group>";
 		};
@@ -598,6 +635,14 @@
 		52A497241EBAA52B001C33D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				52DD282D1C92798200F036AE /* UIKit.framework */,
+				525D33801D3197E700862C26 /* StoreKit.framework */,
+				52F01B641D40102C0055BD45 /* QuartzCore.framework */,
+				52F01B661D4010360055BD45 /* Security.framework */,
+				529415361C3F688200D790E1 /* AVFoundation.framework */,
+				52DD282B1C92796100F036AE /* CoreGraphics.framework */,
+				52AF0E1A1D40289B002CA4E6 /* DropboxSDK.framework */,
+				52A497251EBAA52B001C33D1 /* MessageUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -772,7 +817,6 @@
 				520F3C421CD6D25000D4EC94 /* cloud.png in Resources */,
 				52A0B0531C5F03B20015D481 /* NRCPatientDataTableViewCell.xib in Resources */,
 				5280BA7E1CBD9D170039DF4C /* jsondata in Resources */,
-				52AF0E231D4051DA002CA4E6 /* testtext.txt in Resources */,
 				524683771BEAAC430086213B /* Assets.xcassets in Resources */,
 				525302671C727A7200D4414E /* Beeping-sound.mp3 in Resources */,
 			);
@@ -813,7 +857,6 @@
 				52BB8A9F1EB5714A00F37B91 /* PurchaseViewController.m in Sources */,
 				52E5039D1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift in Sources */,
 				529FBBCF1CA97FBA0018C97D /* iapstore.m in Sources */,
-				52F01B771D401BD80055BD45 /* temp.swift in Sources */,
 				524683861BEAAC780086213B /* AppDelegate.m in Sources */,
 				5273238D1D090518003CA93B /* NRCLoginViewController.swift in Sources */,
 				52A0B0581C6100460015D481 /* NRCDisplayTableViewController.m in Sources */,
@@ -824,7 +867,6 @@
 				52F6D7D21C9A07C900C6F39E /* jsonStore.m in Sources */,
 				52A0B0501C5F03B20015D481 /* NRCPatientDataTableViewController.m in Sources */,
 				52A0B0541C5F03B20015D481 /* NRCPatientDataTableViewCell.m in Sources */,
-				52109E2A1D443E4500DF27E5 /* tblFiles.m in Sources */,
 				52676E0B1D6110F600B0CC85 /* DBBViewController.m in Sources */,
 				52676E081D61107600B0CC85 /* DropboxBrowserViewController.m in Sources */,
 				520727F61C712FB50019096D /* NRCMedicalHistoryTableViewCell.m in Sources */,
