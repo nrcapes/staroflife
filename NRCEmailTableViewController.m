@@ -60,7 +60,7 @@ typedef NS_ENUM(int, row){
     [self.navigationItem setHidesBackButton:YES animated:YES];
     
     //here we set the maximum number of emails that a user may send without buying an upgrade.
-    self.maxEmails = 5;
+    self.maxEmails = 1;
     /*
     NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
     [storage setBool:YES forKey:kunlimitedEmailsUnlockedKey];
