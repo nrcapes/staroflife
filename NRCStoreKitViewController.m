@@ -181,7 +181,7 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
 // out: UIAlertController with text and action for each auto-renewing subscription
     NSLog(@"available products %@", availableProducts);
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
-    NSString *title = @"";;
+  self.alertTitle = @"";
     
     for (dict in availableProducts){
     if(![[dict objectForKey:@"product_localizedTitle"] isEqual:@"Send Unlimited Emails"]){
@@ -189,32 +189,35 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
         self.productLocalizedTitle = [dict objectForKey:@"product_localizedTitle"];
         self.productLocalizedDescription = [dict objectForKey:@"product_localizedDescription"];
         self.productLocalizedPrice = [dict objectForKey:@"product_localizedPrice"];
-        title = [title stringByAppendingString:@"Product: "];
-        title = [title stringByAppendingString:[dict objectForKey:@"product_localizedTitle"]];
-        title = [title stringByAppendingString:@" Subscription length: "];
+        self.alertTitle = [self.alertTitle stringByAppendingString:@"Product: "];
+        self.alertTitle = [self.alertTitle stringByAppendingString:[dict objectForKey:@"product_localizedTitle"]];
+        self.alertTitle = [self.alertTitle stringByAppendingString:@" Subscription length: "];
         _productSubscriptionLength = [self identiySubscriptionLength:[dict objectForKey:@"product_localizedTitle"]];
-        title = [title stringByAppendingString:_productSubscriptionLength];
-        title = [title stringByAppendingString:@". Price of subscription: "];
-        title = [title stringByAppendingString:[dict objectForKey:@"product_localizedPrice"]];
-        title = [title stringByAppendingString:@". Payment will be charged to iTunesAccount at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period, and the cost of renewal is:"];
-        title = [title stringByAppendingString:@""];
-        title = [title stringByAppendingString:[dict objectForKey:@"product_localizedPrice"]];
-        title = [title stringByAppendingString:@"\n\n"];
+        self.alertTitle = [self.alertTitle stringByAppendingString:_productSubscriptionLength];
+        self.alertTitle = [self.alertTitle stringByAppendingString:@". Price of subscription: "];
+        self.alertTitle = [self.alertTitle stringByAppendingString:[dict objectForKey:@"product_localizedPrice"]];
+        self.alertTitle = [self.alertTitle stringByAppendingString:@". Payment will be charged to iTunesAccount at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period, and the cost of renewal is:"];
+        self.alertTitle = [self.alertTitle stringByAppendingString:@""];
+        self.alertTitle = [self.alertTitle stringByAppendingString:[dict objectForKey:@"product_localizedPrice"]];
+        self.alertTitle = [self.alertTitle stringByAppendingString:@"\n\n"];
     }else{
-        title = [title stringByAppendingString:@"Product: "];
-        title = [title stringByAppendingString:[dict objectForKey:@"product_localizedTitle"]];
-        title = [title stringByAppendingString:@" Subscription length: Non-consumable"];
-        title = [title stringByAppendingString:@". Price of subscription: "];
-        title = [title stringByAppendingString:[dict objectForKey:@"product_localizedPrice"]];
-        title = [title stringByAppendingString:@"\n\n"];
-        title = [title stringByAppendingString:@"Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase. Privacy policy is at: http://www.starpointsoftware.com/privacy-policy.html. Terms of Use at http://www.starpointsoftware.com/terms-of-use.html."];
-        title = [title stringByAppendingString:@" Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where appropriate."];
+        self.alertTitle = [self.alertTitle stringByAppendingString:@"Product: "];
+        self.alertTitle = [self.alertTitle stringByAppendingString:[dict objectForKey:@"product_localizedTitle"]];
+        self.alertTitle = [self.alertTitle stringByAppendingString:@" Subscription length: Non-consumable"];
+        self.alertTitle = [self.alertTitle stringByAppendingString:@". Price of subscription: "];
+        self.alertTitle = [self.alertTitle stringByAppendingString:[dict objectForKey:@"product_localizedPrice"]];
+        self.alertTitle = [self.alertTitle stringByAppendingString:@"\n\n"];
+        self.alertTitle = [self.alertTitle stringByAppendingString:@"Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase. Privacy policy is at: http://www.starpointsoftware.com/privacy-policy.html. Terms of Use at http://www.starpointsoftware.com/terms-of-use.html."];
+        self.alertTitle = [self.alertTitle stringByAppendingString:@" Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where appropriate."];
     }
     }
     UIAlertController * alert=   [UIAlertController
-                                  alertControllerWithTitle:title
-                                  message:@""
-                                  preferredStyle:UIAlertControllerStyleAlert];
+                                  alertControllerWithTitle:@"Information"
+                                  message:self.alertTitle
+                                  preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"Send Unlimited Emails" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+    }];
     
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"Professional Version (One Week)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
     }];
@@ -224,12 +227,11 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
     }];
     
 
-    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"Send Unlimited Emails" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
-    }];
     
-    [alert addAction:action1];
-    [alert addAction:action2];
+    
     [alert addAction:action3];
+    [alert addAction:action2];
+    [alert addAction:action1];
     
     [self presentViewController:alert animated:YES completion:nil
      ];

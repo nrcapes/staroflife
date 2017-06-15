@@ -37,6 +37,7 @@
 @property (strong, nonatomic) NSString *userSelectedProductIdentifier;
 @property (strong, nonatomic) NSString *userSelectedProductLocalizedTitle;
 @property (strong, nonatomic) NSString *userSelectedProductLocalizedPrice;
+@property (strong, nonatomic) NSString *alertTitle;
 //@property NSString *title;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
