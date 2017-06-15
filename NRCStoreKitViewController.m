@@ -172,16 +172,23 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
     productArray = [storage objectForKey:kProductsArrayKey];
     
     [self displayAvailableProducts:productArray];
-     [self selectProduct:productArray];
+    
     
     // Do any additional setup after loading the view.
 }
 -(void)displayAvailableProducts:(NSMutableArray *)availableProducts{
+// in: productArray of dictionaries
+// out: UIAlertController with text and action for each auto-renewing subscription
     NSLog(@"available products %@", availableProducts);
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
     NSString *title = @"";;
+    
     for (dict in availableProducts){
     if(![[dict objectForKey:@"product_localizedTitle"] isEqual:@"Send Unlimited Emails"]){
+        self.productIdentifier = [dict objectForKey:@"product_productIdentifier"];
+        self.productLocalizedTitle = [dict objectForKey:@"product_localizedTitle"];
+        self.productLocalizedDescription = [dict objectForKey:@"product_localizedDescription"];
+        self.productLocalizedPrice = [dict objectForKey:@"product_localizedPrice"];
         title = [title stringByAppendingString:@"Product: "];
         title = [title stringByAppendingString:[dict objectForKey:@"product_localizedTitle"]];
         title = [title stringByAppendingString:@" Subscription length: "];
@@ -193,23 +200,42 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
         title = [title stringByAppendingString:@""];
         title = [title stringByAppendingString:[dict objectForKey:@"product_localizedPrice"]];
         title = [title stringByAppendingString:@"\n\n"];
-    }
-    else{
-        title = [title stringByAppendingString:@" .Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase. Privacy policy is at: http://www.starpointsoftware.com/privacy-policy.html. Terms of Use at http://www.starpointsoftware.com/terms-of-use.html."];
+    }else{
+        title = [title stringByAppendingString:@"Product: "];
+        title = [title stringByAppendingString:[dict objectForKey:@"product_localizedTitle"]];
+        title = [title stringByAppendingString:@" Subscription length: Non-consumable"];
+        title = [title stringByAppendingString:@". Price of subscription: "];
+        title = [title stringByAppendingString:[dict objectForKey:@"product_localizedPrice"]];
+        title = [title stringByAppendingString:@"\n\n"];
+        title = [title stringByAppendingString:@"Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase. Privacy policy is at: http://www.starpointsoftware.com/privacy-policy.html. Terms of Use at http://www.starpointsoftware.com/terms-of-use.html."];
         title = [title stringByAppendingString:@" Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription to that publication, where appropriate."];
     }
     }
-     UIAlertController * alert=   [UIAlertController
+    UIAlertController * alert=   [UIAlertController
                                   alertControllerWithTitle:title
-                                  message:@"Press below to continue"
+                                  message:@""
                                   preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-       [self dismissViewControllerAnimated:YES completion:nil];
+    
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"Professional Version (One Week)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
     }];
-    [alert addAction:action];
-    [self presentViewController:alert animated:YES completion:nil// Email Subject
+    
+    
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"Professional Version (One Year)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+    }];
+    
+
+    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"Send Unlimited Emails" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+    }];
+    
+    [alert addAction:action1];
+    [alert addAction:action2];
+    [alert addAction:action3];
+    
+    [self presentViewController:alert animated:YES completion:nil
      ];
+
 }
+
 -(void)selectProduct:(NSMutableArray *)availableProducts{
     UIAlertController *alert1 = [UIAlertController alertControllerWithTitle:@"Purchase Products" message:@"Which product do you want to purchase or restore?" preferredStyle:UIAlertControllerStyleAlert];
     NSMutableDictionary *dict1 = [[NSMutableDictionary alloc]init];
@@ -264,6 +290,8 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
 
 }
 -(UIAlertAction *)alertTheUser:(NSString *)actionName :(NSString *)productIdentifier :(NSString *)productTitle :(NSString *)productDescription :(NSString *)productPrice{
+// in: actionName : productIdentifier : productTitle : productDescription : productPrice
+// out: UIAlertAction
     UIAlertAction *action = [UIAlertAction actionWithTitle:actionName style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
     _productTitle.text = productTitle;
     _productDescription.text = productDescription;
@@ -276,6 +304,8 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
     return action;
 }
 -(NSString *)formatPrice:(NSDecimalNumber *)price{
+// in: product_locailizedPrice
+// out: price as formatted string
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
@@ -347,6 +377,8 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
   }
 }
 -(NSString *)identiySubscriptionLength:(NSString *)localizedTitle{
+// in: product_localizedTitle
+// out: string with length of subscription
     if([localizedTitle isEqualToString:@"Send Unlimited Emails"]){
     _productSubscriptionLength = @"No Limit";
     }else if ([localizedTitle isEqual:@"Professional (One Year)"]){
