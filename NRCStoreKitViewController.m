@@ -216,14 +216,27 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
                                   message:self.alertTitle
                                   preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"Send Unlimited Emails" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"Send Unlimited Emails" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+        [self identifySelectedProduct:kInAppPurchaseUnlimitedEmailsKey];
+        _productTitle.text = self.userSelectedProductLocalizedTitle;
+        _productDescription.text = self.userSelectedProductLocalizedDescription;
+        _price.text = self.userSelectedProductLocalizedPrice;
+        
     }];
     
-    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"Professional Version (One Week)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"Professional Version (One Week)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+        [self identifySelectedProduct:kInAppPurchaseProfessionalOneWeekKey];
+        _productTitle.text = self.userSelectedProductLocalizedTitle;
+        _productDescription.text = self.userSelectedProductLocalizedDescription;
+        _price.text = self.userSelectedProductLocalizedPrice;
     }];
     
     
-    UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"Professional Version (One Year)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+    UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"Professional Version (One Year)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
+        [self identifySelectedProduct:kInAppPurchaseProfessionalOneYearKey];
+        _productTitle.text = self.userSelectedProductLocalizedTitle;
+        _productDescription.text = self.userSelectedProductLocalizedDescription;
+        _price.text = self.userSelectedProductLocalizedPrice;
     }];
     
 
@@ -237,58 +250,19 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
      ];
 
 }
-
--(void)selectProduct:(NSMutableArray *)availableProducts{
-    UIAlertController *alert1 = [UIAlertController alertControllerWithTitle:@"Purchase Products" message:@"Which product do you want to purchase or restore?" preferredStyle:UIAlertControllerStyleAlert];
-    NSMutableDictionary *dict1 = [[NSMutableDictionary alloc]init];
-    for (dict1 in availableProducts) {
-        self.productIdentifier = [dict1 objectForKey:@"product_productIdentifier"];
-        self.productLocalizedTitle = [dict1 objectForKey:@"product_localizedTitle"];
-        self.productLocalizedDescription = [dict1 objectForKey:@"product_localizedDescription"];
-        self.productLocalizedPrice = [dict1 objectForKey:@"product_localizedPrice"];
-        //  NSDecimalNumber *productPrice = [dict objectForKey:@"product_price"];
-        NSLog(@"Found product: %@ – Product", self.productLocalizedTitle);
-        if (availableProducts.count != 0)
-        {
-            if([self.productIdentifier isEqualToString:kInAppPurchaseUnlimitedEmailsKey]){
-                UIAlertAction *buyUnlimitedEmails = [self alertTheUser:@"Unlimited Emails" :kInAppPurchaseUnlimitedEmailsKey :self.productLocalizedTitle :self.productLocalizedDescription :self.productLocalizedPrice];
-                
-                [alert1 addAction:buyUnlimitedEmails];
-            }else if ([self.productIdentifier isEqualToString:kInAppPurchaseProfessionalOneYearKey]){
-                UIAlertAction *buyOneYearProfessional = [self alertTheUser:@"Professional Version (One Year)" :kInAppPurchaseProfessionalOneYearKey :self.productLocalizedTitle :self.productLocalizedDescription :self.productLocalizedPrice];
-                
-                [alert1 addAction:buyOneYearProfessional];
-            }else if ([self.productIdentifier isEqualToString:kInAppPurchaseProfessionalOneWeekKey]){
-                UIAlertAction *buyOneWeekProfessional = [self alertTheUser:@"Professional Version (One Week" :kInAppPurchaseProfessionalOneWeekKey :self.productLocalizedTitle :self.productLocalizedDescription :self.productLocalizedPrice];
-                
-                [alert1 addAction:buyOneWeekProfessional];
-            }
-            else{
-                if([self.productIdentifier isEqualToString:kInAppPurchaseSpeechRecognitionUnlockedKey]){
-                    UIAlertAction *buySpeechRecognition = [self alertTheUser:@"Unlimited Speech Recognition" :kInAppPurchaseSpeechRecognitionUnlockedKey :self.productLocalizedTitle :self.productLocalizedDescription :self.productLocalizedPrice];
-                    
-                    [alert1 addAction:buySpeechRecognition];
-                }else{
-                    if([self.productIdentifier isEqualToString:kInAppPurchaseEmails7DayTrialKey]){
-                        UIAlertAction *buyemails7daytrial =  [self alertTheUser:@"One Week of Emals" :kInAppPurchaseEmails7DayTrialKey :self.productLocalizedTitle :self.productLocalizedDescription :self.productLocalizedPrice];
-                        
-                        [alert1 addAction:buyemails7daytrial];
-                    }else{
-                    if([self.productIdentifier isEqualToString:kInAppPurchaseBasicFunctionsOneWeekKey]){
-                        UIAlertAction *buybasicFunctionOneWeek = [self alertTheUser:@"One Week of Backup/Restore" :kInAppPurchaseBasicFunctionsOneWeekKey  :self.productLocalizedTitle :self.productLocalizedDescription :self.productLocalizedPrice];
-                        
-                        [alert1 addAction:buybasicFunctionOneWeek];
-                    }else if ([self.productIdentifier isEqualToString:kInAppPurchaseSpeechRecognition7DayTrialKey]){
-                        UIAlertAction *buyspeechRecognition7DayTrial = [self alertTheUser:@"One Week of Speech Recognition" :kInAppPurchaseSpeechRecognition7DayTrialKey :self.productLocalizedTitle :self.productLocalizedDescription :self.productLocalizedPrice];
-                        
-                        [alert1 addAction:buyspeechRecognition7DayTrial];
-                        }
-                    }
-                }
-            }
+-(void)identifySelectedProduct:(NSString *)product{
+    NSUserDefaults *storage = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *productArray = [[NSMutableArray alloc]init];
+    productArray = [storage objectForKey:kProductsArrayKey];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+    for(dict in productArray){
+    if([[dict objectForKey:@"product_productIdentifier"] isEqualToString:product]){
+        self.userSelectedProductIdentifier = [dict objectForKey:@"product_productIdentifier"];
+        self.userSelectedProductLocalizedTitle = [dict objectForKey:@"product_localizedTitle"];
+        self.userSelectedProductLocalizedDescription = [dict objectForKey:@"product_localizedDescription"];
+        self.userSelectedProductLocalizedPrice = [dict objectForKey:@"product_localizedPrice"];
         }
-        [self presentViewController:alert1 animated:YES completion:nil];
-    };
+}
 
 }
 -(UIAlertAction *)alertTheUser:(NSString *)actionName :(NSString *)productIdentifier :(NSString *)productTitle :(NSString *)productDescription :(NSString *)productPrice{
@@ -321,10 +295,11 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
    // [[MKStoreKit sharedKit]refreshAppStoreReceipt];
 }
 -(IBAction)buyProduct:(id)sender{
-   [self conformSect2_38_b:self.userSelectedProductLocalizedTitle];
-    
+   
+    [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:self.userSelectedProductIdentifier];
   
 }
+/*
 -(void)conformSect2_38_b:(NSString *)localizedTitle{
     // this is added to overcome a rejection under Section 2 3.8b of the Apple developer agreement
     if([localizedTitle isEqualToString:@"Send Unlimited Emails"]){
@@ -378,6 +353,7 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
      ];
   }
 }
+*/
 -(NSString *)identiySubscriptionLength:(NSString *)localizedTitle{
 // in: product_localizedTitle
 // out: string with length of subscription
