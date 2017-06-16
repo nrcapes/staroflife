@@ -299,6 +299,9 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
     [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:self.userSelectedProductIdentifier];
   
 }
+-(IBAction)removeAllPayments:(id)sender{
+    [[MKStoreKit sharedKit] removeAllPayments];
+}
 /*
 -(void)conformSect2_38_b:(NSString *)localizedTitle{
     // this is added to overcome a rejection under Section 2 3.8b of the Apple developer agreement

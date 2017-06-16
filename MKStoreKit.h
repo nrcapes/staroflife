@@ -188,7 +188,11 @@ extern NSString *const kMKStoreKitInAppPurchaseDisabledNotification;
  *	This method restores your user's In App Purchases made on other devices.
  */
 - (void)restorePurchases;
-
+/*!
+ * @abstract Removes all payments fromo the transaction queue
+ * testing only!
+ */
+-(void)removeAllPayments;
 /*!
  *  @abstract Refreshes the App Store receipt and prompts the user to authenticate.
  *

@@ -226,6 +226,18 @@ static NSDictionary *errorDictionary;
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
   NSLog(@"Product request failed with error: %@", error);
 }
+#pragma mark -
+#pragma mark Remove all payments
+-(void)removeAllPayments{
+    NSLog(@"Purchase controller: removing all transactions");
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    SKPaymentQueue *currentQueue = [SKPaymentQueue defaultQueue];
+    [currentQueue.transactions enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
+        [currentQueue finishTransaction:(SKPaymentTransaction *)obj];
+     }];
+    
+    [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+}
 
 #pragma mark -
 #pragma mark Restore Purchases
