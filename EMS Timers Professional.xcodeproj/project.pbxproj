@@ -75,14 +75,10 @@
 		52AF0E221D4051DA002CA4E6 /* nature.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 52AF0E201D4051DA002CA4E6 /* nature.jpg */; };
 		52AF0E231D4051DA002CA4E6 /* testtext.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52AF0E211D4051DA002CA4E6 /* testtext.txt */; };
 		52B23FCA1CD45215006231EC /* EMSTimersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B23FC91CD45215006231EC /* EMSTimersUITests.swift */; };
-		52B6B7251BEAC849007B8ACD /* star-of-life.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 52B6B7241BEAC849007B8ACD /* star-of-life.jpeg */; };
-		52BB8A9F1EB5714A00F37B91 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BB8A9E1EB5714A00F37B91 /* PurchaseViewController.m */; };
-		52BB8AA11EB5727200F37B91 /* PurchaseViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 52BB8AA01EB5727200F37B91 /* PurchaseViewController.h */; };
 		52BFCAF01C57150200970D40 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52BFCAEF1C57150200970D40 /* Settings.bundle */; };
 		52CA8F8B1C6E8BEB00F392FF /* NRCMedicalHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CA8F8A1C6E8BEB00F392FF /* NRCMedicalHistoryTableViewController.m */; };
 		52D637B61C9DAE550024E97E /* checkout scanner beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 52D637B51C9DAE550024E97E /* checkout scanner beep.mp3 */; };
 		52D637B91C9DE4240024E97E /* NRCErrorStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D637B81C9DE4230024E97E /* NRCErrorStore.m */; };
-		52DD282A1C92794200F036AE /* project.pbxproj in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DD28291C92794200F036AE /* project.pbxproj */; };
 		52DD282C1C92796100F036AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DD282B1C92796100F036AE /* CoreGraphics.framework */; };
 		52DD282E1C92798200F036AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DD282D1C92798200F036AE /* UIKit.framework */; };
 		52E5039D1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E5039C1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift */; };
@@ -292,7 +288,6 @@
 				52DD282E1C92798200F036AE /* UIKit.framework in Frameworks */,
 				52DD282C1C92796100F036AE /* CoreGraphics.framework in Frameworks */,
 				525D33811D3197E700862C26 /* StoreKit.framework in Frameworks */,
-				52DD282A1C92794200F036AE /* project.pbxproj in Frameworks */,
 				529415371C3F688200D790E1 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -766,7 +761,6 @@
 				524683911BEAB1F10086213B /* Media.xcassets in Resources */,
 				5260B2531ED099E70067BC04 /* Icon-40 copy.png in Resources */,
 				52AF0E221D4051DA002CA4E6 /* nature.jpg in Resources */,
-				52B6B7251BEAC849007B8ACD /* star-of-life.jpeg in Resources */,
 				52E96C451D46BDE800F92BEA /* Main.storyboard in Resources */,
 				52208E441BEAE06D00A2DF93 /* star-of-life.jpeg in Resources */,
 				520F3C421CD6D25000D4EC94 /* cloud.png in Resources */,
@@ -809,8 +803,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				525DF1101EBD0F3100060BD2 /* MKStoreKitConfigs.plist in Sources */,
-				52BB8AA11EB5727200F37B91 /* PurchaseViewController.h in Sources */,
-				52BB8A9F1EB5714A00F37B91 /* PurchaseViewController.m in Sources */,
 				52E5039D1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift in Sources */,
 				529FBBCF1CA97FBA0018C97D /* iapstore.m in Sources */,
 				52F01B771D401BD80055BD45 /* temp.swift in Sources */,
@@ -950,7 +942,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
@@ -990,7 +982,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;

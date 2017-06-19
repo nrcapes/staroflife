@@ -49,5 +49,5 @@
 -(void)notifyOfFailedProductPurchase:(NSNotification *)notification;
 -(void)unlockFeature:(NSString *)productToUnlock;
 -(NSString *)identiySubscriptionLength:(NSString *)localizedTitle;
--(void)conformSect2_38_b:(NSString *)localizedTitle;
+
 @end
