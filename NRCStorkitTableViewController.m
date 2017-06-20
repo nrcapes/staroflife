@@ -10,6 +10,7 @@
 #import "MKStoreKit.h"
 #import <StoreKit/StoreKit.h>
 #import "constants.h"
+//#import "StorkitTableViewCell.h"
 @interface NRCStorkitTableViewController ()
 
 @end
@@ -175,8 +176,9 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
 -(void)displayAvailableProducts:(NSMutableArray *)availableProducts{
 // in: productArray of dictionaries
 // out: UIAlertController with text and action for each auto-renewing subscription
+/*
     NSLog(@"available products %@", availableProducts);
-    /*
+    
     NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
   self.alertTitle = @"";
     
@@ -193,11 +195,7 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
         self.alertTitle = [self.alertTitle stringByAppendingString:_productSubscriptionLength];
         self.alertTitle = [self.alertTitle stringByAppendingString:@". Price of subscription: "];
         self.alertTitle = [self.alertTitle stringByAppendingString:[dict objectForKey:@"product_localizedPrice"]];
-        self.alertTitle = [self.alertTitle stringByAppendingString:@". Payment will be charged to iTunesAccount at confirmation of purchase. Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period. Account will be charged for renewal within 24-hours prior to the end of the current period, and the cost of renewal is:"];
-        self.alertTitle = [self.alertTitle stringByAppendingString:@""];
-        self.alertTitle = [self.alertTitle stringByAppendingString:[dict objectForKey:@"product_localizedPrice"]];
-        self.alertTitle = [self.alertTitle stringByAppendingString:@"\n\n"];
-    }else{
+        }else{
         self.alertTitle = [self.alertTitle stringByAppendingString:@"Product: "];
         self.alertTitle = [self.alertTitle stringByAppendingString:[dict objectForKey:@"product_localizedTitle"]];
         self.alertTitle = [self.alertTitle stringByAppendingString:@" Subscription length: Non-consumable"];
@@ -277,7 +275,7 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
     
    // [[MKStoreKit sharedKit]refreshAppStoreReceipt];
 }
--(IBAction)buyProduct:(id)sender{
+-(void)buyProduct:(id)sender{
    
     [[MKStoreKit sharedKit] initiatePaymentRequestForProductWithIdentifier:self.userSelectedProductIdentifier];
   
@@ -390,24 +388,100 @@ UIAlertAction *action = [UIAlertAction actionWithTitle:@"Continue." style:UIAler
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //#warning Incomplete implementation, return the number of sections
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 //#warning Incomplete implementation, return the number of rows
     return 1;
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"storekitCell"];
+    UITableViewCell *cell = [[UITableViewCell alloc]init];
+    NSString *product =@"";
+    NSString *outputString = @"";
     if(indexPath.section == 0){
-       cell.textLabel.text =@"Unlimited emails";
+        product = kInAppPurchaseUnlimitedEmailsKey;
+        [self identifySelectedProduct:product];
+        outputString = self.userSelectedProductLocalizedTitle;
+        outputString = [outputString stringByAppendingString:@" Price: "];
+        outputString = [outputString stringByAppendingString:self.userSelectedProductLocalizedPrice];
+        NSString *subscriptionLength = [self identiySubscriptionLength:self.userSelectedProductLocalizedTitle];
+        outputString = [outputString stringByAppendingString:@" Length: "];
+        outputString = [outputString stringByAppendingString:subscriptionLength];
+        cell.textLabel.font=[UIFont fontWithName:@"Arial" size:14];
+        cell.textLabel.adjustsFontSizeToFitWidth=YES;
+        cell.backgroundColor = [UIColor colorWithRed:0.0f/255 green:125.0f/255 blue:150.0f/255 alpha:0.8f];
+        cell.textLabel.text = outputString;
     }else if (indexPath.section == 1){
-        cell.textLabel.text = @"Professional (OneYear)";
+        product = kInAppPurchaseProfessionalOneYearKey;
+        [self identifySelectedProduct:product];
+        outputString = self.userSelectedProductLocalizedTitle;
+        outputString = [outputString stringByAppendingString:@" Price: "];
+        outputString = [outputString stringByAppendingString:self.userSelectedProductLocalizedPrice];
+        NSString *subscriptionLength = [self identiySubscriptionLength:self.userSelectedProductLocalizedTitle];
+        outputString = [outputString stringByAppendingString:@" Length: "];
+        outputString = [outputString stringByAppendingString:subscriptionLength];
+        cell.textLabel.font=[UIFont fontWithName:@"Arial" size:14];
+        cell.textLabel.adjustsFontSizeToFitWidth=YES;
+        cell.backgroundColor = [UIColor colorWithRed:0.0f/255 green:125.0f/255 blue:150.0f/255 alpha:0.8f];
+        cell.textLabel.text = outputString;
     }else if (indexPath.section == 2){
-        cell.textLabel.text = @"Professional (One Week)";
+        product = kInAppPurchaseProfessionalOneWeekKey;
+        [self identifySelectedProduct:product];
+        outputString = self.userSelectedProductLocalizedTitle;
+        outputString = [outputString stringByAppendingString:@" Price: "];
+        outputString = [outputString stringByAppendingString:self.userSelectedProductLocalizedPrice];
+        NSString *subscriptionLength = [self identiySubscriptionLength:self.userSelectedProductLocalizedTitle];
+        outputString = [outputString stringByAppendingString:@" Length: "];
+        outputString = [outputString stringByAppendingString:subscriptionLength];
+        cell.textLabel.font=[UIFont fontWithName:@"Arial" size:14];
+        cell.textLabel.adjustsFontSizeToFitWidth=YES;
+        cell.backgroundColor = [UIColor colorWithRed:0.0f/255 green:125.0f/255 blue:150.0f/255 alpha:0.8f];
+        cell.textLabel.text = outputString;
+    }else{
+        
+        //cell.textLabel.text = @"Description";
+        outputString = @"";
+        outputString = [outputString stringByAppendingString:@"Payment will be charged to iTunesAccount at confirmation of purchase. \nSubscription automatically renews unless auto-renew is turned off\n at least 24-hours before the end of the current period. \nAccount will be charged for renewal within 24-hours \nprior to the end of the current period. \n Renewal price is the same as the initial price.\nSubscriptions may be managed by the user and \nauto-renewal may be turned off\n by going to the user's Account Settings after purchase.\n Privacy policy is at:\n http://www.starpointsoftware.com/privacy-policy.html. \nTerms of Use at \n http://www.starpointsoftware.com/terms-of-use.html. \nAny unused portion of a free trial period, if offered, \nwill be forfeited \nwhen the user purchases a subscription to that publication."];
+        // cell.textLabel.font=[UIFont fontWithName:@"Arial" size:16];
+        //  cell.textLabel.adjustsFontSizeToFitWidth=YES;
+        self.infoTextView = [[UITextView alloc]initWithFrame:CGRectMake(0.0, 0.0, 480.0, 200.0)];
+        self.infoTextView.tag = 1000;
+        self.infoTextView.font = [UIFont fontWithName:@"Arial" size:10];
+       // infoTextView.backgroundColor = [UIColor colorWithRed:0.0f/255 green:125.0f/255 blue:150.0f/255 alpha:0.8f];
+        self.infoTextView.scrollEnabled = NO;
+        self.infoTextView.editable = NO;
+        self.infoTextView.selectable = YES;
+        self.infoTextView.dataDetectorTypes = UIDataDetectorTypeLink;
+        self.infoTextView.text = outputString;
+        
+        cell.backgroundColor = [UIColor colorWithRed:0.0f/255 green:125.0f/255 blue:150.0f/255 alpha:0.8f];
+        [cell.contentView addSubview:self.infoTextView];
     }
-    cell.backgroundColor = [UIColor colorWithRed:0.0f/255 green:125.0f/255 blue:150.0f/255 alpha:0.8f];
     return  cell;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    if (indexPath.section == 3) { //change 0 to whatever cell index you want taller
+        return 200;
+    }
+    else {
+        return 44;
+    }   
+}
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.section == 0){
+    self.userSelectedProductIdentifier = kInAppPurchaseUnlimitedEmailsKey;
+    }else if (indexPath.section == 1){
+    self.userSelectedProductIdentifier = kInAppPurchaseProfessionalOneYearKey;
+    }else if (indexPath.section == 2){
+    self.userSelectedProductIdentifier = kInAppPurchaseProfessionalOneWeekKey;
+    }
+    [self buyProduct:self.userSelectedProductIdentifier];
+}
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    return NO;
 }
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

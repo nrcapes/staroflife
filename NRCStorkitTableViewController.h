@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Storekit/Storekit.h>
-@interface NRCStorkitTableViewController : UITableViewController
+@interface NRCStorkitTableViewController : UITableViewController <UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *productTitle;
 @property (strong, nonatomic) IBOutlet UIButton *buyButton;
 @property (strong, nonatomic) IBOutlet UITextView *productDescription;
@@ -39,6 +39,7 @@
 @property (strong, nonatomic) NSString *userSelectedProductLocalizedPrice;
 @property (strong, nonatomic) NSString *userSelectedProductLocalizedDescription;
 @property (strong, nonatomic) NSString *alertTitle;
+@property UITextView *infoTextView;
 //@property NSString *title;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"

@@ -82,6 +82,7 @@
 		52DD282C1C92796100F036AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DD282B1C92796100F036AE /* CoreGraphics.framework */; };
 		52DD282E1C92798200F036AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52DD282D1C92798200F036AE /* UIKit.framework */; };
 		52DF04AF1EF87E6700366F88 /* NRCStorkitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DF04AE1EF87E6700366F88 /* NRCStorkitTableViewController.m */; };
+		52DF04B51EF8BFC800366F88 /* storkitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DF04B41EF8BFC800366F88 /* storkitTableViewCell.m */; };
 		52E5039D1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E5039C1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift */; };
 		52E96C451D46BDE800F92BEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52E96C441D46BDE800F92BEA /* Main.storyboard */; };
 		52ED66321C26003C00BFFCD5 /* NRCInterfaceController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 52ED66311C26003C00BFFCD5 /* NRCInterfaceController1.m */; };
@@ -266,6 +267,8 @@
 		52DD282D1C92798200F036AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		52DF04AD1EF87E6700366F88 /* NRCStorkitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCStorkitTableViewController.h; sourceTree = "<group>"; };
 		52DF04AE1EF87E6700366F88 /* NRCStorkitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCStorkitTableViewController.m; sourceTree = "<group>"; };
+		52DF04B31EF8BFC800366F88 /* storkitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = storkitTableViewCell.h; sourceTree = "<group>"; };
+		52DF04B41EF8BFC800366F88 /* storkitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = storkitTableViewCell.m; sourceTree = "<group>"; };
 		52E5039C1D0E5D1E00A1B109 /* NRCResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRCResetPasswordViewController.swift; sourceTree = "<group>"; };
 		52E96C441D46BDE800F92BEA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		52ED66301C26003C00BFFCD5 /* NRCInterfaceController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRCInterfaceController1.h; path = ../NRCInterfaceController1.h; sourceTree = "<group>"; };
@@ -445,6 +448,8 @@
 		5246835E1BEAAC430086213B = {
 			isa = PBXGroup;
 			children = (
+				52DF04B31EF8BFC800366F88 /* storkitTableViewCell.h */,
+				52DF04B41EF8BFC800366F88 /* storkitTableViewCell.m */,
 				5260B2541ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png */,
 				52BB8AA51EB575C700F37B91 /* constants.h */,
 				52BB8AA01EB5727200F37B91 /* PurchaseViewController.h */,
@@ -817,6 +822,7 @@
 				526290A91C2614C000289F2A /* NRCInterfaceController3.m in Sources */,
 				52A0B05B1C615D410015D481 /* assessmentItem.m in Sources */,
 				5251FCAD1C73C6D700E819FF /* NRCMedHistItemTableViewController.m in Sources */,
+				52DF04B51EF8BFC800366F88 /* storkitTableViewCell.m in Sources */,
 				52F01B611D4001940055BD45 /* NRCTransmitTableViewController.m in Sources */,
 				52F6D7D21C9A07C900C6F39E /* jsonStore.m in Sources */,
 				52A0B0501C5F03B20015D481 /* NRCPatientDataTableViewController.m in Sources */,
