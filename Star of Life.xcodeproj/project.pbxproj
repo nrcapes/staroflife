@@ -43,7 +43,6 @@
 		525DF1131EBD102A00060BD2 /* MKStoreKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DF1121EBD102A00060BD2 /* MKStoreKit.m */; };
 		525DF1191EBD3E5800060BD2 /* NRCStoreKitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 525DF1181EBD3E5800060BD2 /* NRCStoreKitViewController.m */; };
 		5260B2531ED099E70067BC04 /* Icon-40 copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 5260B2521ED099E70067BC04 /* Icon-40 copy.png */; };
-		5260B2551ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 5260B2541ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png */; };
 		526290A41C26083100289F2A /* NRCInterfaceController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A31C26083100289F2A /* NRCInterfaceController2.m */; };
 		526290A61C26083100289F2A /* NRCInterfaceController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A31C26083100289F2A /* NRCInterfaceController2.m */; };
 		526290A91C2614C000289F2A /* NRCInterfaceController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 526290A81C2614C000289F2A /* NRCInterfaceController3.m */; };
@@ -92,6 +91,7 @@
 		52F01B671D4010360055BD45 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52F01B661D4010360055BD45 /* Security.framework */; };
 		52F01B771D401BD80055BD45 /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F01B761D401BD80055BD45 /* temp.swift */; };
 		52F6D7D21C9A07C900C6F39E /* jsonStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 52F6D7D11C9A07C900C6F39E /* jsonStore.m */; };
+		52FB2FFC1F2BA96B0011E308 /* PurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FB2FFB1F2BA96B0011E308 /* PurchaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,7 +201,6 @@
 		525DF1171EBD3E5800060BD2 /* NRCStoreKitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCStoreKitViewController.h; sourceTree = "<group>"; };
 		525DF1181EBD3E5800060BD2 /* NRCStoreKitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NRCStoreKitViewController.m; sourceTree = "<group>"; };
 		5260B2521ED099E70067BC04 /* Icon-40 copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40 copy.png"; path = "Media.xcassets/AppIcon.appiconset/Icon-40 copy.png"; sourceTree = "<group>"; };
-		5260B2541ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Simulator Screen Shot May 20, 2017, 10.46.18 AM.png"; path = "../Desktop/Simulator Screen Shot May 20, 2017, 10.46.18 AM.png"; sourceTree = "<group>"; };
 		526290A21C26083100289F2A /* NRCInterfaceController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRCInterfaceController2.h; path = "../EMSTimers WatchKit 1 App/NRCInterfaceController2.h"; sourceTree = "<group>"; };
 		526290A31C26083100289F2A /* NRCInterfaceController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRCInterfaceController2.m; path = "../EMSTimers WatchKit 1 App/NRCInterfaceController2.m"; sourceTree = "<group>"; };
 		526290A71C2614C000289F2A /* NRCInterfaceController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCInterfaceController3.h; sourceTree = "<group>"; };
@@ -253,8 +252,6 @@
 		52B23FCB1CD45215006231EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52B6B7241BEAC849007B8ACD /* star-of-life.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "star-of-life.jpeg"; sourceTree = "<group>"; };
 		52BAF8151C289CE4008D2F05 /* NRCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NRCTableViewController.h; sourceTree = "<group>"; };
-		52BB8A9E1EB5714A00F37B91 /* PurchaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PurchaseViewController.m; path = "EMS Timers Professional.xcodeproj/PurchaseViewController.m"; sourceTree = "<group>"; };
-		52BB8AA01EB5727200F37B91 /* PurchaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PurchaseViewController.h; path = "EMS Timers Professional.xcodeproj/PurchaseViewController.h"; sourceTree = "<group>"; };
 		52BB8AA51EB575C700F37B91 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 		52BFCAEF1C57150200970D40 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		52CA8F891C6E8BEB00F392FF /* NRCMedicalHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRCMedicalHistoryTableViewController.h; path = EMSTimers/NRCMedicalHistoryTableViewController.h; sourceTree = "<group>"; };
@@ -280,6 +277,8 @@
 		52F01B761D401BD80055BD45 /* temp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
 		52F6D7D01C9A07C900C6F39E /* jsonStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jsonStore.h; sourceTree = "<group>"; };
 		52F6D7D11C9A07C900C6F39E /* jsonStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = jsonStore.m; sourceTree = "<group>"; };
+		52FB2FFA1F2BA96B0011E308 /* PurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseViewController.h; sourceTree = "<group>"; };
+		52FB2FFB1F2BA96B0011E308 /* PurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -448,12 +447,11 @@
 		5246835E1BEAAC430086213B = {
 			isa = PBXGroup;
 			children = (
+				52FB2FFA1F2BA96B0011E308 /* PurchaseViewController.h */,
+				52FB2FFB1F2BA96B0011E308 /* PurchaseViewController.m */,
 				52DF04B31EF8BFC800366F88 /* storkitTableViewCell.h */,
 				52DF04B41EF8BFC800366F88 /* storkitTableViewCell.m */,
-				5260B2541ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png */,
 				52BB8AA51EB575C700F37B91 /* constants.h */,
-				52BB8AA01EB5727200F37B91 /* PurchaseViewController.h */,
-				52BB8A9E1EB5714A00F37B91 /* PurchaseViewController.m */,
 				525DF1111EBD0F5C00060BD2 /* MKStoreKit.h */,
 				525DF1121EBD102A00060BD2 /* MKStoreKit.m */,
 				525DF1171EBD3E5800060BD2 /* NRCStoreKitViewController.h */,
@@ -703,7 +701,7 @@
 				TargetAttributes = {
 					524683661BEAAC430086213B = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = USKME82367;
+						DevelopmentTeam = 66RQ7B5Z22;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -732,7 +730,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 524683621BEAAC430086213B /* Build configuration list for PBXProject "EMS Timers Professional" */;
+			buildConfigurationList = 524683621BEAAC430086213B /* Build configuration list for PBXProject "Star of Life" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -767,7 +765,6 @@
 				525DF10E1EBD0D9100060BD2 /* MKStoreKitConfigs.plist in Resources */,
 				52BFCAF01C57150200970D40 /* Settings.bundle in Resources */,
 				52D637B61C9DAE550024E97E /* checkout scanner beep.mp3 in Resources */,
-				5260B2551ED09CB00067BC04 /* Simulator Screen Shot May 20, 2017, 10.46.18 AM.png in Resources */,
 				524683911BEAB1F10086213B /* Media.xcassets in Resources */,
 				5260B2531ED099E70067BC04 /* Icon-40 copy.png in Resources */,
 				52AF0E221D4051DA002CA4E6 /* nature.jpg in Resources */,
@@ -850,6 +847,7 @@
 				52A0B0511C5F03B20015D481 /* patientItemStore.m in Sources */,
 				5202ECA21C658BCD001FF0FA /* AssessmentListTableViewController.m in Sources */,
 				5202ECAF1C66C5F8001FF0FA /* NRCAssessmentDisplayTableViewController.m in Sources */,
+				52FB2FFC1F2BA96B0011E308 /* PurchaseViewController.m in Sources */,
 				52ED66321C26003C00BFFCD5 /* NRCInterfaceController1.m in Sources */,
 				5246836C1BEAAC430086213B /* main.m in Sources */,
 				525DF1131EBD102A00060BD2 /* MKStoreKit.m in Sources */,
@@ -1014,7 +1012,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = USKME82367;
+				DEVELOPMENT_TEAM = 66RQ7B5Z22;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1022,7 +1020,7 @@
 				INFOPLIST_FILE = EMSTimers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nelsoncapes.ems-timers-pro";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nelsoncapes.staroflife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "emstimers-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1037,7 +1035,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = USKME82367;
+				DEVELOPMENT_TEAM = 66RQ7B5Z22;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1045,7 +1043,7 @@
 				INFOPLIST_FILE = EMSTimers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nelsoncapes.ems-timers-pro";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nelsoncapes.staroflife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "emstimers-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1060,7 +1058,7 @@
 				INFOPLIST_FILE = "EMSTimers WatchKit 1 Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nelsoncapes.ems-timers-pro.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nelsoncapes.staroflife.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1076,7 +1074,7 @@
 				INFOPLIST_FILE = "EMSTimers WatchKit 1 Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nelsoncapes.ems-timers-pro.watchkitapp.watchkitextension";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nelsoncapes.staroflife.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1093,7 +1091,7 @@
 				DEVELOPMENT_TEAM = USKME82367;
 				IBSC_MODULE = EMSTimers_WatchKit_1_Extension;
 				INFOPLIST_FILE = "EMSTimers WatchKit 1 App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nelsoncapes.ems-timers-pro.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nelsoncapes.staroflife.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1110,7 +1108,7 @@
 				DEVELOPMENT_TEAM = USKME82367;
 				IBSC_MODULE = EMSTimers_WatchKit_1_Extension;
 				INFOPLIST_FILE = "EMSTimers WatchKit 1 App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nelsoncapes.ems-timers-pro.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nelsoncapes.staroflife.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1151,7 +1149,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		524683621BEAAC430086213B /* Build configuration list for PBXProject "EMS Timers Professional" */ = {
+		524683621BEAAC430086213B /* Build configuration list for PBXProject "Star of Life" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5246837C1BEAAC430086213B /* Debug */,
