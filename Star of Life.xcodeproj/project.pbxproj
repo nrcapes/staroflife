@@ -717,11 +717,11 @@
 					};
 					525025561C249FFC0047DA16 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = USKME82367;
+						DevelopmentTeam = 66RQ7B5Z22;
 					};
 					525025681C249FFC0047DA16 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = USKME82367;
+						DevelopmentTeam = 66RQ7B5Z22;
 					};
 					52B23FC61CD45215006231EC = {
 						CreatedOnToolsVersion = 7.3;
@@ -1055,6 +1055,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 66RQ7B5Z22;
 				INFOPLIST_FILE = "EMSTimers WatchKit 1 Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1071,6 +1072,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 66RQ7B5Z22;
 				INFOPLIST_FILE = "EMSTimers WatchKit 1 Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1088,7 +1090,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = USKME82367;
+				DEVELOPMENT_TEAM = 66RQ7B5Z22;
 				IBSC_MODULE = EMSTimers_WatchKit_1_Extension;
 				INFOPLIST_FILE = "EMSTimers WatchKit 1 App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nelsoncapes.staroflife.watchkitapp;
@@ -1105,7 +1107,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = USKME82367;
+				DEVELOPMENT_TEAM = 66RQ7B5Z22;
 				IBSC_MODULE = EMSTimers_WatchKit_1_Extension;
 				INFOPLIST_FILE = "EMSTimers WatchKit 1 App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nelsoncapes.staroflife.watchkitapp;

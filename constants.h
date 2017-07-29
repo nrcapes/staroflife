@@ -8,12 +8,12 @@
 
 #ifndef constants_h
 #define constants_h
-#define kInAppPurchaseProfessionalOneYearKey @"com.nelsoncapes.emstimerspro.ProOneYear"
-#define kInAppPurchaseProfessionalOneWeekKey @"com.nelsoncapes.emstimerspro.ProOneWeek"
-#define kInAppPurchaseEmails7DayTrialKey @"com.nelsoncapes.emstimers.sendemailstrial"
-#define kInAppPurchaseUnlimitedEmailsKey @"com.nelsoncapes.emstimerspro.emailunlock"
-#define kInAppPurchaseSpeechRecognitionUnlockedKey @"com.nelsoncapes.emstimerspro.speechRecognitionunlock"
-#define kInAppPurchaseSpeechRecognition7DayTrialKey @"com.nelsoncapes.emstimerspro.speechRecognitionTrial"
+#define kInAppPurchaseProfessionalOneYearKey @"com.nelsoncapes.staroflife.ProOneYear"
+#define kInAppPurchaseProfessionalOneWeekKey @"com.nelsoncapes.staroflife.ProOneWeek"
+#define kInAppPurchaseEmails7DayTrialKey @"com.nelsoncapes.staroflife.sendemailstrial"
+#define kInAppPurchaseUnlimitedEmailsKey @"com.nelsoncapes.staroflife.emailunlock"
+#define kInAppPurchaseSpeechRecognitionUnlockedKey @"com.nelsoncapes.staroflife.speechRecognitionunlock"
+#define kInAppPurchaseSpeechRecognition7DayTrialKey @"com.nelsoncapes.staroflife.speechRecognitionTrial"
 #define kInAppPurchaseTestsOneWeek @"com.nelsoncapes.emstimerspro.sub.oneweek"
 #define kInAppPurchaseAvailableProductsKey @"availableProducts"
 //#define kInAppPurchaseUnlockedProductKey @"unlockedProduct"
