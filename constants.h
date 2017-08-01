@@ -11,7 +11,7 @@
 #define kInAppPurchaseProfessionalOneYearKey @"com.nelsoncapes.staroflife.ProOneYear"
 #define kInAppPurchaseProfessionalOneWeekKey @"com.nelsoncapes.staroflife.ProOneWeek"
 #define kInAppPurchaseEmails7DayTrialKey @"com.nelsoncapes.staroflife.sendemailstrial"
-#define kInAppPurchaseUnlimitedEmailsKey @"com.nelsoncapes.staroflife.emailunlock"
+#define kInAppPurchaseUnlimitedEmailsKey @"com.nelsoncapes.staroflife.unlockemail"
 #define kInAppPurchaseSpeechRecognitionUnlockedKey @"com.nelsoncapes.staroflife.speechRecognitionunlock"
 #define kInAppPurchaseSpeechRecognition7DayTrialKey @"com.nelsoncapes.staroflife.speechRecognitionTrial"
 #define kInAppPurchaseTestsOneWeek @"com.nelsoncapes.emstimerspro.sub.oneweek"
